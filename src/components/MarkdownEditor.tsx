@@ -76,7 +76,6 @@ export function MarkdownEditor({
         tabIndex={-1}
         aria-hidden="true"
         data-testid="markdown-form-field"
-        className="pointer-events-none absolute h-px w-px overflow-hidden opacity-0"
       />
 
       <MDEditor
@@ -85,12 +84,19 @@ export function MarkdownEditor({
         height={height}
         visibleDragbar
         preview="live"
-        overflow={false}
+        // Keep internal scroll; avoids layout hacks that desync caret
+        overflow
         textareaProps={{
           placeholder,
           spellCheck: false,
           id: `${fieldId}-surface`,
           "aria-label": "Markdown 正文",
+          style: {
+            fontSize: 14,
+            lineHeight: "18px",
+            fontFamily:
+              "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
+          },
         }}
       />
     </div>
