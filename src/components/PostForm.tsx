@@ -41,6 +41,8 @@ type Props = {
   originalSlug?: string;
   /** From URL ?saved=1 after first create redirect */
   initialNotice?: string | null;
+  /** Drop ?saved=… from the address bar so refresh reloads latest content without replaying "创建成功" */
+  stripSavedQuery?: boolean;
 };
 
 const inputClass =
@@ -54,6 +56,7 @@ export function PostForm({
   initial,
   originalSlug,
   initialNotice = null,
+  stripSavedQuery = false,
 }: Props) {
   const action = mode === "create" ? createPost : updatePost;
   const [state, formAction, pending] = useActionState<PostFormState, FormData>(
@@ -77,6 +80,9 @@ export function PostForm({
   const [uploadMsg, setUploadMsg] = useState<string | null>(null);
   const [importMsg, setImportMsg] = useState<string | null>(null);
   const [uploading, startUpload] = useTransition();
+  // Holds create-redirect flash for this SPA session; URL query is stripped so
+  // a full refresh reloads post body from GitHub without replaying this string.
+  const [bootNotice] = useState<string | null>(initialNotice);
 
   const [slugOverride, setSlugOverride] = useState<string | null>(
     mode === "edit" ? initial.slug : initial.slug || null,
@@ -89,10 +95,22 @@ export function PostForm({
       : slugifyTitle(title);
 
   const statusError = state?.error;
-  // Stay visible: action notice, else URL flash from create redirect. Never auto-clear.
+  // useActionState notice sticks across re-renders; bootNotice only for first paint after create
   const statusNotice = statusError
     ? null
-    : (state?.notice ?? initialNotice ?? null);
+    : (state?.notice ?? bootNotice);
+
+  // Strip ?saved= so refresh hits clean URL and loads latest GitHub content
+  useEffect(() => {
+    if (!stripSavedQuery || typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    if (!url.searchParams.has("saved")) return;
+    url.searchParams.delete("saved");
+    url.searchParams.delete("via");
+    url.searchParams.delete("created");
+    const clean = url.pathname + (url.searchParams.toString() ? `?${url.searchParams}` : "");
+    window.history.replaceState({}, "", clean);
+  }, [stripSavedQuery]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

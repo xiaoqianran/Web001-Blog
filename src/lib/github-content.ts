@@ -1,6 +1,11 @@
 import "server-only";
 
-import { serializePost, type PostInput } from "./posts";
+import {
+  parsePostMarkdown,
+  serializePost,
+  type Post,
+  type PostInput,
+} from "./posts";
 
 type GhConfig = {
   token: string;
@@ -160,6 +165,30 @@ export async function githubRenamePost(
 export async function githubPostExists(slug: string): Promise<boolean> {
   const sha = await getFileSha(postPath(slug));
   return Boolean(sha);
+}
+
+/**
+ * Read latest post markdown from GitHub (source of truth on Vercel).
+ * Avoids serving stale deploy FS after Contents API writes.
+ */
+export async function githubReadPost(slug: string): Promise<Post | null> {
+  const filePath = postPath(slug);
+  const { owner, repo, branch } = getConfig();
+  const res = await ghFetch(
+    `/repos/${owner}/${repo}/contents/${encodeURI(filePath)}?ref=${encodeURIComponent(branch)}`,
+  );
+  if (res.status === 404) return null;
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`GitHub read post failed (${res.status}): ${text}`);
+  }
+  const data = (await res.json()) as { content?: string; encoding?: string };
+  if (!data.content) return null;
+  const raw = Buffer.from(
+    data.content.replace(/\n/g, ""),
+    "base64",
+  ).toString("utf8");
+  return parsePostMarkdown(slug, raw);
 }
 
 /**
