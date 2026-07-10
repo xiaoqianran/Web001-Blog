@@ -3,15 +3,16 @@
 用 Next.js App Router + Markdown 搭建的个人技术博客。  
 主站 [Vercel](https://web001-blog.vercel.app)；内容源 `content/posts`；在线写文经 GitHub API。
 
-> **完成态目标**：[`docs/ULTIMATE_GOAL.md`](docs/ULTIMATE_GOAL.md) · **验收**：[`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md)
+> **完成态目标**：[`docs/ULTIMATE_GOAL.md`](docs/ULTIMATE_GOAL.md) · **知识库写作台**：[`docs/GOAL_KNOWLEDGE_WORKSPACE.md`](docs/GOAL_KNOWLEDGE_WORKSPACE.md) · **验收**：[`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md)
 
 ## 功能矩阵（对标完成态）
 
 | 能力 | 状态 | 说明 |
 |------|------|------|
-| 首页流 / 置顶 | ✅ | `pinned` |
-| 文章列表分页 | ✅ | `/blog?page=` |
-| 文章详情 + TOC + 进度 + 相关 | ✅ | |
+| 首页流 / 置顶 | ✅ | Lab 优先 + `pinned` |
+| 文章列表分页 | ✅ | `/blog?page=` · 目录视图 `?view=dir` |
+| 知识库树浏览 | ✅ | `/kb` |
+| 文章详情 + TOC + 进度 + 相关 | ✅ | 面包屑 + 树序上下篇 |
 | 代码高亮 + 复制 | ✅ | |
 | 标签索引 / 归档分页 | ✅ | `/tags` |
 | 日期归档 | ✅ | `/archive` |
@@ -22,6 +23,10 @@
 | Giscus 评论 | ✅ | 可选 env |
 | 主题切换 | ✅ | |
 | 登录 + 后台 CRUD | ✅ | JWT |
+| 写作台：最近编辑 / 搜索 / 树 | ✅ | `/admin` |
+| 文件夹知识树 | ✅ | `content/tree.json` + 子目录 |
+| 模板 / 导入导出 md / ⌘K | ✅ | |
+| 回收站软删除 | ✅ | `/admin/trash` |
 | MD 预览 / 筛选 / 上传 | ✅ | |
 | GitHub 写文 | ✅ | `GITHUB_TOKEN` |
 | site.json 品牌配置 | ✅ | |

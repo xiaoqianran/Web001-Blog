@@ -20,15 +20,62 @@ type Props = {
 };
 
 export function KnowledgeTree({ tree, postsBySlug, folders }: Props) {
+  const empty =
+    tree.folders.length === 0 && tree.docs.length === 0;
+
   return (
     <div
-      className="space-y-4 rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950"
+      className="space-y-4 rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950 lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto"
       data-testid="knowledge-tree"
     >
-      <div className="flex items-center justify-between gap-2">
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500">
-          知识树
-        </h2>
+      {/* Mobile: collapsible drawer */}
+      <details className="lg:hidden group" open={false}>
+        <summary className="cursor-pointer list-none text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+          📁 知识树（点开）
+        </summary>
+        <div className="mt-3 space-y-3 border-t border-zinc-100 pt-3 dark:border-zinc-800">
+          <TreeBody
+            tree={tree}
+            postsBySlug={postsBySlug}
+            folders={folders}
+            empty={empty}
+          />
+        </div>
+      </details>
+      <div className="hidden space-y-4 lg:block">
+        <div className="flex items-center justify-between gap-2">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500">
+            知识树
+          </h2>
+          <form action={syncTreeFromPostsAction}>
+            <button
+              type="submit"
+              className="text-xs font-medium text-violet-600 hover:underline"
+            >
+              从磁盘同步
+            </button>
+          </form>
+        </div>
+        <TreeBody
+          tree={tree}
+          postsBySlug={postsBySlug}
+          folders={folders}
+          empty={empty}
+        />
+      </div>
+    </div>
+  );
+}
+
+function TreeBody({
+  tree,
+  postsBySlug,
+  folders,
+  empty,
+}: Props & { empty: boolean }) {
+  return (
+    <>
+      <div className="flex items-center justify-between gap-2 lg:hidden">
         <form action={syncTreeFromPostsAction}>
           <button
             type="submit"
@@ -54,14 +101,24 @@ export function KnowledgeTree({ tree, postsBySlug, folders }: Props) {
         </button>
       </form>
 
-      <TreeLevel
-        tree={tree}
-        parentId={null}
-        postsBySlug={postsBySlug}
-        folders={folders}
-        depth={0}
-      />
-    </div>
+      {empty ? (
+        <p className="rounded-lg border border-dashed border-zinc-200 p-4 text-center text-xs text-zinc-500 dark:border-zinc-700">
+          还没有文件夹。先「添加」一个，或点「从磁盘同步」导入已有文章。
+          <br />
+          <Link href="/admin/posts/new" className="text-violet-600 hover:underline">
+            写第一篇 →
+          </Link>
+        </p>
+      ) : (
+        <TreeLevel
+          tree={tree}
+          parentId={null}
+          postsBySlug={postsBySlug}
+          folders={folders}
+          depth={0}
+        />
+      )}
+    </>
   );
 }
 
