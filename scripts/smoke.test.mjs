@@ -20,6 +20,27 @@ test("slugifyTitle from shipped module", async () => {
   assert.equal(isValidSlug("Bad Slug"), false);
 });
 
+test("createPost/updatePost do not catch NEXT_REDIRECT inside try", () => {
+  const src = fs.readFileSync(
+    path.join(root, "src/app/actions/posts.ts"),
+    "utf8",
+  );
+  // redirect() must not sit inside the write try/catch (swallows as "保存失败：NEXT_REDIRECT")
+  assert.match(src, /rethrowNextControlFlow|isRedirectError/);
+  // Successful path: write in try, redirect after try
+  assert.match(src, /await githubWritePost\(input\);/);
+  assert.match(src, /redirect\(\s*\n?\s*viaGithub/);
+  // Guard: no redirect immediately after githubWritePost inside same try before catch
+  const writeBlock = src.slice(
+    src.indexOf("export async function createPost"),
+    src.indexOf("export async function updatePost"),
+  );
+  assert.doesNotMatch(
+    writeBlock,
+    /await githubWritePost\(input\);\s*\n\s*revalidatePostPaths\([^)]*\);\s*\n\s*redirect\(/,
+  );
+});
+
 test("parseMarkdownImport fills form fields from .md + frontmatter", async () => {
   const { parseMarkdownImport, isMarkdownFile } = await loadTs(
     "src/lib/import-markdown.ts",
