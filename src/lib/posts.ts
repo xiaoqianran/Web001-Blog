@@ -21,6 +21,8 @@ export type PostMeta = {
   tags: string[];
   cover?: string;
   draft: boolean;
+  pinned: boolean;
+  series?: string;
   readingTime: string;
 };
 
@@ -33,6 +35,8 @@ export type PostInput = {
   content: string;
   draft?: boolean;
   cover?: string;
+  pinned?: boolean;
+  series?: string;
 };
 
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -58,7 +62,9 @@ export function serializePost(input: PostInput): string {
     tags: input.tags,
   };
   if (input.draft) data.draft = true;
+  if (input.pinned) data.pinned = true;
   if (input.cover?.trim()) data.cover = input.cover.trim();
+  if (input.series?.trim()) data.series = input.series.trim();
   return matter.stringify(body.endsWith("\n") ? body : `${body}\n`, data);
 }
 
@@ -143,6 +149,8 @@ function toMeta(post: Post): PostMeta {
     tags: post.tags,
     cover: post.cover,
     draft: post.draft,
+    pinned: post.pinned,
+    series: post.series,
     readingTime: post.readingTime,
   };
 }
@@ -169,6 +177,11 @@ export function getPostBySlug(slug: string): Post {
     tags: Array.isArray(data.tags) ? data.tags : [],
     cover: typeof data.cover === "string" ? data.cover : undefined,
     draft: Boolean(data.draft),
+    pinned: Boolean(data.pinned),
+    series:
+      typeof data.series === "string" && data.series.trim()
+        ? data.series.trim()
+        : undefined,
     readingTime: stats.text,
     content,
     contentHtml: "",
@@ -261,3 +274,85 @@ export function formatDate(date: string): string {
     day: "numeric",
   });
 }
+
+export type ArchiveYear = {
+  year: string;
+  months: { month: string; label: string; posts: PostMeta[] }[];
+};
+
+/** Group published posts by year → month (newest first). */
+export function getArchiveTree(): ArchiveYear[] {
+  const posts = getAllPosts();
+  const byYear = new Map<string, Map<string, PostMeta[]>>();
+
+  for (const post of posts) {
+    const d = new Date(post.date);
+    if (Number.isNaN(d.getTime())) continue;
+    const year = String(d.getFullYear());
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    if (!byYear.has(year)) byYear.set(year, new Map());
+    const ym = byYear.get(year)!;
+    if (!ym.has(month)) ym.set(month, []);
+    ym.get(month)!.push(post);
+  }
+
+  return Array.from(byYear.entries())
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([year, months]) => ({
+      year,
+      months: Array.from(months.entries())
+        .sort((a, b) => b[0].localeCompare(a[0]))
+        .map(([month, list]) => ({
+          month,
+          label: `${year}年${Number(month)}月`,
+          posts: list,
+        })),
+    }));
+}
+
+export type SeriesInfo = {
+  name: string;
+  slug: string;
+  count: number;
+  posts: PostMeta[];
+};
+
+export function seriesToSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[\s_]+/g, "-")
+    .replace(/[^a-z0-9\u4e00-\u9fff-]+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 80);
+}
+
+export function getAllSeries(): SeriesInfo[] {
+  const map = new Map<string, PostMeta[]>();
+  for (const post of getAllPosts()) {
+    if (!post.series) continue;
+    const key = post.series;
+    if (!map.has(key)) map.set(key, []);
+    map.get(key)!.push(post);
+  }
+  return Array.from(map.entries())
+    .map(([name, posts]) => ({
+      name,
+      slug: seriesToSlug(name),
+      count: posts.length,
+      posts: posts.sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+      ),
+    }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+}
+
+export function getSeriesBySlug(slug: string): SeriesInfo | null {
+  return getAllSeries().find((s) => s.slug === slug) ?? null;
+}
+
+export function getPinnedPosts(): PostMeta[] {
+  return getAllPosts().filter((p) => p.pinned);
+}
+

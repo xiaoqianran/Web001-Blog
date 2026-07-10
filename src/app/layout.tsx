@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { getSiteConfig } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,19 +16,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const site = getSiteConfig();
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Blog — 写一点，记一点",
-    template: "%s · Blog",
+    default: `${site.name} — ${site.tagline}`,
+    template: `%s · ${site.name}`,
   },
-  description: "一个用 Next.js 构建的简洁个人博客，支持 Markdown 文章与标签。",
+  description: site.description,
   openGraph: {
-    title: "Blog — 写一点，记一点",
-    description: "一个用 Next.js 构建的简洁个人博客。",
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
   },
   alternates: {
     types: {
@@ -64,9 +71,18 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="flex min-h-full flex-col font-sans">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:rounded-lg focus:bg-violet-600 focus:px-3 focus:py-2 focus:text-sm focus:text-white"
+        >
+          跳到正文
+        </a>
         <ThemeProvider>
           <Header />
-          <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-10 sm:px-6 sm:py-14">
+          <main
+            id="main-content"
+            className="mx-auto w-full max-w-3xl flex-1 px-5 py-10 sm:px-6 sm:py-14"
+          >
             {children}
           </main>
           <Footer />

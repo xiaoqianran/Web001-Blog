@@ -48,6 +48,8 @@ export default async function NewPostPage() {
             content: "",
             draft: false,
             cover: "",
+            pinned: false,
+            series: "",
           }}
         />
       </div>

@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllTags, getPostsByTag } from "@/lib/posts";
+import { paginate, parsePageParam } from "@/lib/pagination";
+import { Pagination } from "@/components/Pagination";
 import { PostCard } from "@/components/PostCard";
 import { Tag } from "@/components/Tag";
 
 type Props = {
   params: Promise<{ tag: string }>;
+  searchParams: Promise<{ page?: string }>;
 };
 
 export async function generateStaticParams() {
@@ -22,13 +25,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function TagPage({ params }: Props) {
+export default async function TagPage({ params, searchParams }: Props) {
   const { tag: raw } = await params;
   const tag = decodeURIComponent(raw);
-  const posts = getPostsByTag(tag);
+  const all = getPostsByTag(tag);
   const allTags = getAllTags();
+  const sp = await searchParams;
+  const { items, page, totalPages, total } = paginate(
+    all,
+    parsePageParam(sp.page),
+  );
 
-  if (posts.length === 0) {
+  if (total === 0) {
     notFound();
   }
 
@@ -36,28 +44,41 @@ export default async function TagPage({ params }: Props) {
     <div className="space-y-10">
       <header className="space-y-3">
         <Link
-          href="/blog"
+          href="/tags"
           className="text-sm font-medium text-violet-600 hover:text-violet-700 dark:text-violet-400"
         >
-          ← 全部文章
+          ← 全部标签
         </Link>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
           标签：{tag}
         </h1>
-        <p className="text-zinc-600 dark:text-zinc-400">共 {posts.length} 篇</p>
+        <p className="text-zinc-600 dark:text-zinc-400">
+          共 {total} 篇 · 第 {page} / {totalPages} 页
+        </p>
       </header>
 
       <div className="flex flex-wrap gap-2">
         {allTags.map(({ tag: t, count }) => (
-          <Tag key={t} tag={t} count={count} active={t.toLowerCase() === tag.toLowerCase()} />
+          <Tag
+            key={t}
+            tag={t}
+            count={count}
+            active={t.toLowerCase() === tag.toLowerCase()}
+          />
         ))}
       </div>
 
       <div className="grid gap-4">
-        {posts.map((post) => (
+        {items.map((post) => (
           <PostCard key={post.slug} post={post} />
         ))}
       </div>
+
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        basePath={`/tags/${encodeURIComponent(tag)}`}
+      />
     </div>
   );
 }
