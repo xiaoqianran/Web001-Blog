@@ -85,6 +85,18 @@ const hello = "world";
 | `npm run build` | 生产构建 |
 | `npm run start` | 启动生产服务 |
 | `npm run lint` | ESLint |
+| `npm test` | 冒烟测试（slug / frontmatter） |
+| `npm run ci` | lint + test + build（本地对齐 CI） |
+
+## CI / 协作流程
+
+1. **提 Issue** 描述目标与验收标准  
+2. **git worktree + feature 分支** 写代码（不要直接推 `main`）  
+3. **本地验证**：`npm run ci`，需要时再 `docker build` / `docker compose up --build`  
+4. **开 PR** 到 `main`（关联 Issue，如 `Closes #1`）  
+5. **GitHub Actions** 自动跑 lint / test / build / Docker 冒烟；全部通过后再合并  
+
+工作流文件：`.github/workflows/ci.yml`。
 
 ## Docker
 
