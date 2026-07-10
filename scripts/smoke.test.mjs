@@ -1227,3 +1227,42 @@ test("content source badge + git history UI wiring", () => {
   assert.match(edit, /GitHistory|fetchFileCommits/);
   assert.match(edit, /ContentSourceBadge/);
 });
+
+test("kb v1.1 phase D: capture errors + docs checkboxes + persist still holds", () => {
+  const papers = fs.readFileSync(
+    path.join(root, "src/app/lab/papers/page.tsx"),
+    "utf8",
+  );
+  assert.match(papers, /capture-error|captureError/);
+  const feeds = fs.readFileSync(
+    path.join(root, "src/app/lab/feeds/page.tsx"),
+    "utf8",
+  );
+  assert.match(feeds, /capture-error|captureError/);
+
+  const goal = fs.readFileSync(
+    path.join(root, "docs/GOAL_KB_V1_1_LINKS_AND_CAPTURE.md"),
+    "utf8",
+  );
+  assert.match(goal, /阶段 A ✅/);
+  assert.match(goal, /阶段 B ✅/);
+  assert.match(goal, /阶段 C ✅/);
+  assert.match(goal, /阶段 D ✅/);
+
+  const readme = fs.readFileSync(path.join(root, "README.md"), "utf8");
+  assert.match(readme, /双链|Lab 存为笔记|内容源/);
+
+  // content-persist contract still enforced on all actions
+  const actionsDir = path.join(root, "src/app/actions");
+  for (const file of fs.readdirSync(actionsDir).filter((f) => f.endsWith(".ts"))) {
+    const src = fs.readFileSync(path.join(actionsDir, file), "utf8");
+    assert.ok(
+      !/\bsaveTreeToDisk\s*\(/.test(src),
+      `${file} bare saveTreeToDisk`,
+    );
+    assert.ok(
+      !/\bloadTreeFromDisk\s*\(/.test(src),
+      `${file} bare loadTreeFromDisk`,
+    );
+  }
+});
