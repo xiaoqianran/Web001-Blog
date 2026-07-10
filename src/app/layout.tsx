@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@/components/Analytics";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { getSiteConfig } from "@/lib/site";
 import "./globals.css";
@@ -37,8 +39,10 @@ export const metadata: Metadata = {
     description: site.description,
   },
   alternates: {
+    canonical: siteUrl,
     types: {
       "application/rss+xml": `${siteUrl}/rss.xml`,
+      "application/atom+xml": `${siteUrl}/atom.xml`,
     },
   },
 };
@@ -71,6 +75,20 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="flex min-h-full flex-col font-sans">
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: site.name,
+            description: site.description,
+            url: siteUrl,
+            potentialAction: {
+              "@type": "SearchAction",
+              target: `${siteUrl}/search?q={search_term_string}`,
+              "query-input": "required name=search_term_string",
+            },
+          }}
+        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:rounded-lg focus:bg-violet-600 focus:px-3 focus:py-2 focus:text-sm focus:text-white"
@@ -86,6 +104,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

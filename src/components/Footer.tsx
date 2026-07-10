@@ -24,6 +24,12 @@ export function Footer() {
               {s.label}
             </Link>
           ))}
+          <Link
+            href="/atom.xml"
+            className="text-zinc-400 transition hover:text-violet-600 dark:text-zinc-500 dark:hover:text-violet-400"
+          >
+            Atom
+          </Link>
           <p className="text-zinc-400 dark:text-zinc-500">{site.tagline}</p>
         </div>
       </div>
