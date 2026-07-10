@@ -1,12 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState, useState } from "react";
+import {
+  useActionState,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useTransition,
+} from "react";
 import {
   createPost,
   updatePost,
   type PostFormState,
 } from "@/app/actions/posts";
+import { uploadImage } from "@/app/actions/upload";
 import { slugifyTitle } from "@/lib/slugify";
 
 export type PostFormValues = {
@@ -40,17 +48,90 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
     action,
     undefined,
   );
+  const formRef = useRef<HTMLFormElement>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
 
   const [title, setTitle] = useState(initial.title);
-  /** null = auto-generate from title (create mode only) */
+  const [content, setContent] = useState(initial.content);
+  const [previewHtml, setPreviewHtml] = useState("");
+  const [showPreview, setShowPreview] = useState(true);
+  const [uploadMsg, setUploadMsg] = useState<string | null>(null);
+  const [uploading, startUpload] = useTransition();
+
   const [slugOverride, setSlugOverride] = useState<string | null>(
     mode === "edit" ? initial.slug : null,
   );
   const slug =
     slugOverride !== null ? slugOverride : slugifyTitle(title);
 
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const { remark } = await import("remark");
+        const remarkGfm = (await import("remark-gfm")).default;
+        const remarkHtml = (await import("remark-html")).default;
+        const file = await remark()
+          .use(remarkGfm)
+          .use(remarkHtml)
+          .process(content || " ");
+        if (!cancelled) setPreviewHtml(String(file));
+      } catch {
+        if (!cancelled) setPreviewHtml("<p>（预览失败）</p>");
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [content]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "s") {
+        e.preventDefault();
+        formRef.current?.requestSubmit();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  const insertAtCursor = useCallback((snippet: string) => {
+    const el = document.getElementById("content") as HTMLTextAreaElement | null;
+    if (!el) {
+      setContent((c) => `${c}\n${snippet}\n`);
+      return;
+    }
+    const start = el.selectionStart;
+    const end = el.selectionEnd;
+    const next =
+      content.slice(0, start) + snippet + content.slice(end);
+    setContent(next);
+    requestAnimationFrame(() => {
+      el.focus();
+      const pos = start + snippet.length;
+      el.setSelectionRange(pos, pos);
+    });
+  }, [content]);
+
+  const onPickFile = (file: File | null) => {
+    if (!file) return;
+    setUploadMsg(null);
+    const fd = new FormData();
+    fd.set("file", file);
+    startUpload(async () => {
+      const res = await uploadImage(fd);
+      if (!res.ok) {
+        setUploadMsg(res.error);
+        return;
+      }
+      insertAtCursor(`\n![${file.name}](${res.path})\n`);
+      setUploadMsg(`已插入：${res.path}`);
+    });
+  };
+
   return (
-    <form action={formAction} className="space-y-6">
+    <form ref={formRef} action={formAction} className="space-y-6">
       {mode === "edit" && originalSlug && (
         <input type="hidden" name="originalSlug" value={originalSlug} />
       )}
@@ -78,11 +159,6 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
             className={inputClass}
             placeholder="文章标题"
           />
-          {state?.fieldErrors?.title && (
-            <p className="text-xs text-red-600 dark:text-red-400">
-              {state.fieldErrors.title}
-            </p>
-          )}
         </div>
 
         <div className="space-y-2">
@@ -98,16 +174,7 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
             className={inputClass}
             placeholder="my-first-post"
             pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
-            title="小写字母、数字与连字符"
           />
-          {state?.fieldErrors?.slug && (
-            <p className="text-xs text-red-600 dark:text-red-400">
-              {state.fieldErrors.slug}
-            </p>
-          )}
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
-            访问路径：/blog/{slug || "…"}
-          </p>
         </div>
 
         <div className="space-y-2">
@@ -122,11 +189,6 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
             defaultValue={initial.date}
             className={inputClass}
           />
-          {state?.fieldErrors?.date && (
-            <p className="text-xs text-red-600 dark:text-red-400">
-              {state.fieldErrors.date}
-            </p>
-          )}
         </div>
 
         <div className="space-y-2 sm:col-span-2">
@@ -138,7 +200,6 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
             name="description"
             defaultValue={initial.description}
             className={inputClass}
-            placeholder="一句话介绍这篇文章"
           />
         </div>
 
@@ -151,7 +212,7 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
             name="tags"
             defaultValue={initial.tags}
             className={inputClass}
-            placeholder="Next.js, 笔记, 博客（逗号分隔）"
+            placeholder="Next.js, 笔记"
           />
         </div>
 
@@ -162,10 +223,9 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
           <input
             id="cover"
             name="cover"
-            type="url"
             defaultValue={initial.cover ?? ""}
             className={inputClass}
-            placeholder="https://…"
+            placeholder="https://… 或 /uploads/…"
           />
         </div>
 
@@ -178,7 +238,6 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
             name="series"
             defaultValue={initial.series ?? ""}
             className={inputClass}
-            placeholder="例如：Next.js 入门"
           />
         </div>
 
@@ -189,15 +248,10 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
               name="draft"
               value="true"
               defaultChecked={Boolean(initial.draft)}
-              className="mt-1 h-4 w-4 rounded border-zinc-300 text-violet-600 focus:ring-violet-500"
+              className="mt-1 h-4 w-4 rounded border-zinc-300 text-violet-600"
             />
-            <span>
-              <span className="block text-sm font-medium text-zinc-800 dark:text-zinc-200">
-                存为草稿
-              </span>
-              <span className="mt-0.5 block text-xs text-zinc-500 dark:text-zinc-400">
-                草稿不会出现在首页、列表、搜索、RSS 与 sitemap
-              </span>
+            <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
+              存为草稿
             </span>
           </label>
           <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-zinc-200 px-4 py-3 dark:border-zinc-700">
@@ -206,56 +260,84 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
               name="pinned"
               value="true"
               defaultChecked={Boolean(initial.pinned)}
-              className="mt-1 h-4 w-4 rounded border-zinc-300 text-violet-600 focus:ring-violet-500"
+              className="mt-1 h-4 w-4 rounded border-zinc-300 text-violet-600"
             />
-            <span>
-              <span className="block text-sm font-medium text-zinc-800 dark:text-zinc-200">
-                首页置顶
-              </span>
-              <span className="mt-0.5 block text-xs text-zinc-500 dark:text-zinc-400">
-                在首页「置顶」区域展示（仅已发布文章）
-              </span>
+            <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
+              首页置顶
             </span>
           </label>
         </div>
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="content" className={labelClass}>
-          正文（Markdown）
-        </label>
-        <textarea
-          id="content"
-          name="content"
-          required
-          rows={18}
-          defaultValue={initial.content}
-          className={`${inputClass} font-mono text-[13px] leading-relaxed`}
-          placeholder={"## 小节标题\n\n正文从这里开始……"}
-          spellCheck={false}
-        />
-        {state?.fieldErrors?.content && (
-          <p className="text-xs text-red-600 dark:text-red-400">
-            {state.fieldErrors.content}
-          </p>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <label htmlFor="content" className={labelClass}>
+            正文（Markdown）
+          </label>
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setShowPreview((v) => !v)}
+              className="rounded-lg border border-zinc-200 px-2.5 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:text-zinc-300"
+            >
+              {showPreview ? "隐藏预览" : "显示预览"}
+            </button>
+            <button
+              type="button"
+              disabled={uploading}
+              onClick={() => fileRef.current?.click()}
+              className="rounded-lg border border-zinc-200 px-2.5 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:text-zinc-300"
+            >
+              {uploading ? "上传中…" : "插入图片"}
+            </button>
+            <input
+              ref={fileRef}
+              type="file"
+              accept="image/png,image/jpeg,image/gif,image/webp"
+              className="hidden"
+              onChange={(e) => onPickFile(e.target.files?.[0] ?? null)}
+            />
+          </div>
+        </div>
+
+        <div
+          className={`grid gap-3 ${showPreview ? "lg:grid-cols-2" : ""}`}
+        >
+          <textarea
+            id="content"
+            name="content"
+            required
+            rows={18}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            className={`${inputClass} font-mono text-[13px] leading-relaxed`}
+            placeholder={"## 小节\n\n正文…"}
+            spellCheck={false}
+          />
+          {showPreview && (
+            <div
+              className="prose prose-zinc max-h-[28rem] max-w-none overflow-y-auto rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm dark:prose-invert dark:border-zinc-700 dark:bg-zinc-900/50"
+              dangerouslySetInnerHTML={{ __html: previewHtml }}
+            />
+          )}
+        </div>
+        {uploadMsg && (
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">{uploadMsg}</p>
         )}
+        <p className="text-xs text-zinc-400">快捷键 ⌘/Ctrl + S 保存</p>
       </div>
 
       <div className="flex flex-wrap items-center gap-3 border-t border-zinc-200 pt-6 dark:border-zinc-800">
         <button
           type="submit"
           disabled={pending}
-          className="rounded-xl bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+          className="rounded-xl bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-700 disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900"
         >
-          {pending
-            ? "保存中…"
-            : mode === "create"
-              ? "保存文章"
-              : "保存修改"}
+          {pending ? "保存中…" : mode === "create" ? "保存文章" : "保存修改"}
         </button>
         <Link
           href="/admin"
-          className="rounded-xl border border-zinc-200 px-5 py-2.5 text-sm font-medium text-zinc-700 transition hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-900"
+          className="rounded-xl border border-zinc-200 px-5 py-2.5 text-sm font-medium text-zinc-700 dark:border-zinc-700 dark:text-zinc-300"
         >
           取消
         </Link>

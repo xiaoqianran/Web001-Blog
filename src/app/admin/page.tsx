@@ -19,6 +19,8 @@ type Props = {
     deleted?: string;
     error?: string;
     via?: string;
+    filter?: string;
+    q?: string;
   }>;
 };
 
@@ -29,11 +31,26 @@ export default async function AdminPage({ searchParams }: Props) {
   }
 
   const session = await requireSession();
-  const posts = getAllPosts({ includeDrafts: true });
-  const publishedCount = posts.filter((p) => !p.draft).length;
-  const draftCount = posts.filter((p) => p.draft).length;
+  const allPosts = getAllPosts({ includeDrafts: true });
+  const publishedCount = allPosts.filter((p) => !p.draft).length;
+  const draftCount = allPosts.filter((p) => p.draft).length;
   const tags = getAllTags();
   const params = await searchParams;
+  const filter =
+    params.filter === "published" || params.filter === "draft"
+      ? params.filter
+      : "all";
+  const q = (params.q ?? "").trim().toLowerCase();
+  const posts = allPosts.filter((p) => {
+    if (filter === "published" && p.draft) return false;
+    if (filter === "draft" && !p.draft) return false;
+    if (!q) return true;
+    return (
+      p.title.toLowerCase().includes(q) ||
+      p.slug.toLowerCase().includes(q) ||
+      p.tags.some((t) => t.toLowerCase().includes(q))
+    );
+  });
   const viaGithub = params.via === "github";
   const gitEnabled = isGitHubContentEnabled();
   const onVercel = Boolean(process.env.VERCEL);
@@ -167,6 +184,47 @@ export default async function AdminPage({ searchParams }: Props) {
           >
             查看前台 →
           </Link>
+        </div>
+
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap gap-1 rounded-lg border border-zinc-200 p-0.5 dark:border-zinc-800">
+            {(
+              [
+                ["all", "全部"],
+                ["published", "已发布"],
+                ["draft", "草稿"],
+              ] as const
+            ).map(([key, label]) => (
+              <Link
+                key={key}
+                href={`/admin?filter=${key}${q ? `&q=${encodeURIComponent(q)}` : ""}`}
+                className={`rounded-md px-3 py-1.5 text-xs font-medium transition ${
+                  filter === key
+                    ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
+                    : "text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-900"
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+          <form className="flex gap-2" action="/admin" method="get">
+            {filter !== "all" && (
+              <input type="hidden" name="filter" value={filter} />
+            )}
+            <input
+              name="q"
+              defaultValue={params.q ?? ""}
+              placeholder="搜索标题 / slug / 标签"
+              className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-900 sm:w-56"
+            />
+            <button
+              type="submit"
+              className="rounded-lg bg-zinc-100 px-3 py-1.5 text-sm font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-200"
+            >
+              搜
+            </button>
+          </form>
         </div>
 
         <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
