@@ -308,6 +308,11 @@ export async function getPostWithHtml(slug: string): Promise<Post> {
   const post = getPostBySlug(slug);
   const toc: TocItem[] = [];
 
+  // Expand [[slug]] wiki links before remark (published targets only on public path)
+  const { expandWikiLinks, knownSlugMap } = await import("./wiki-links");
+  const published = getAllPosts({ includeDrafts: false });
+  const md = expandWikiLinks(post.content, knownSlugMap(published));
+
   const processed = await remark()
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
@@ -315,7 +320,7 @@ export async function getPostWithHtml(slug: string): Promise<Post> {
     .use(rehypeCollectToc(toc))
     .use(rehypeHighlight, { detect: true })
     .use(rehypeStringify, { allowDangerousHtml: true })
-    .process(post.content);
+    .process(md);
 
   return {
     ...post,
