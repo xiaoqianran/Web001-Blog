@@ -148,6 +148,47 @@ test("getSiteConfig loads content/site.json", async () => {
   assert.ok(Array.isArray(site.social));
 });
 
+test("channelTitle and RSS route use site config (not hard-coded brand)", async () => {
+  const { getSiteConfig } = await loadTs("src/lib/site.ts");
+  const { channelTitle } = await loadTs("src/lib/feeds.ts");
+  const site = getSiteConfig();
+  const title = channelTitle(site);
+  assert.equal(title, `${site.name} — ${site.tagline}`);
+  assert.ok(title.includes(site.name));
+  assert.ok(title.includes(site.tagline));
+
+  const rssSrc = fs.readFileSync(
+    path.join(root, "src/app/rss.xml/route.ts"),
+    "utf8",
+  );
+  assert.match(rssSrc, /getSiteConfig/);
+  assert.match(rssSrc, /channelTitle/);
+  assert.match(rssSrc, /site\.description/);
+  assert.doesNotMatch(rssSrc, /Blog — 写一点，记一点/);
+  assert.doesNotMatch(
+    rssSrc,
+    /一个用 Next\.js 构建的简洁个人博客，支持 Markdown 文章与标签。/,
+  );
+});
+
+test("article OG image and revalidate paths use site identity routes", () => {
+  const og = fs.readFileSync(
+    path.join(root, "src/app/blog/[slug]/opengraph-image.tsx"),
+    "utf8",
+  );
+  assert.match(og, /getSiteConfig/);
+  assert.match(og, /site\.name|site\.tagline|brandLine/);
+  assert.doesNotMatch(og, /Blog · 写一点，记一点/);
+
+  const actions = fs.readFileSync(
+    path.join(root, "src/app/actions/posts.ts"),
+    "utf8",
+  );
+  assert.match(actions, /revalidatePath\("\/archive"\)/);
+  assert.match(actions, /revalidatePath\("\/atom\.xml"\)/);
+  assert.match(actions, /revalidatePath\("\/series"/);
+});
+
 test("content/posts sample files are healthy", () => {
   const dir = path.join(root, "content/posts");
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));

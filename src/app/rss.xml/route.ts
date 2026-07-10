@@ -1,8 +1,13 @@
+import { channelTitle } from "@/lib/feeds";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import { getSiteConfig } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(
+  /\/$/,
+  "",
+);
 
 function escapeXml(str: string): string {
   return str
@@ -14,7 +19,9 @@ function escapeXml(str: string): string {
 }
 
 export async function GET() {
+  const site = getSiteConfig();
   const posts = getAllPosts();
+  const title = channelTitle(site);
 
   const items = posts
     .map((meta) => {
@@ -36,9 +43,9 @@ export async function GET() {
   xmlns:content="http://purl.org/rss/1.0/modules/content/"
   xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog — 写一点，记一点</title>
+    <title>${escapeXml(title)}</title>
     <link>${siteUrl}</link>
-    <description>一个用 Next.js 构建的简洁个人博客，支持 Markdown 文章与标签。</description>
+    <description>${escapeXml(site.description)}</description>
     <language>zh-CN</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml"/>

@@ -100,7 +100,10 @@ function revalidatePostPaths(slug: string, previousSlug?: string) {
   revalidatePath("/admin");
   revalidatePath(`/blog/${slug}`);
   revalidatePath("/tags", "layout");
+  revalidatePath("/series", "layout");
+  revalidatePath("/archive");
   revalidatePath("/rss.xml");
+  revalidatePath("/atom.xml");
   revalidatePath("/sitemap.xml");
   revalidatePath("/search");
   if (previousSlug && previousSlug !== slug) {

@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import { getSiteConfig } from "@/lib/site";
 
 export const runtime = "nodejs";
 export const alt = "Blog post";
@@ -15,6 +16,10 @@ export async function generateStaticParams() {
 }
 
 export default async function Image({ params }: Props) {
+  const site = getSiteConfig();
+  const brandLetter = site.name.slice(0, 1).toUpperCase() || "B";
+  const brandLine = `${site.name} · ${site.tagline}`;
+
   const { slug } = await params;
   let title = slug;
   let description = "";
@@ -68,9 +73,9 @@ export default async function Image({ params }: Props) {
               fontSize: 24,
             }}
           >
-            B
+            {brandLetter}
           </div>
-          <span>Blog · 写一点，记一点</span>
+          <span>{brandLine}</span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
