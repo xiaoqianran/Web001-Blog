@@ -28,6 +28,22 @@
 | Sitemap / robots / RSS / Atom | ✅ | |
 | OG / Twitter / JSON-LD / canonical | ✅ | |
 | CI lint+test+build | ✅ | |
+| HF 论文热点实验室 | ✅ | `/lab/papers` + 日更 Actions |
+
+## Hugging Face 论文日刊
+
+每日自动拉取 [HF Daily Papers](https://huggingface.co/papers)：
+
+```bash
+npm run fetch:hf-daily
+# 数据写入 content/data/hf-daily/YYYY-MM-DD.json
+```
+
+- 页面：`/lab/papers`（导航「论文」）
+- 定时：`.github/workflows/hf-daily-papers.yml`（每天 UTC 08:00，可手动 workflow_dispatch）
+- 可选 Secret：`HF_TOKEN`（提高 API 限额；无 token 通常也可匿名拉取）
+
+深度长文仍建议人工筛选后写入 `content/posts`，避免污染主时间线。
 
 ## 快速开始
 

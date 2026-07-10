@@ -189,6 +189,22 @@ test("article OG image and revalidate paths use site identity routes", () => {
   assert.match(actions, /revalidatePath\("\/series"/);
 });
 
+test("HF daily papers data and helpers", async () => {
+  const { getLatestHfDaily, listHfDailyDates, getHfDailyOrFallback } =
+    await loadTs("src/lib/hf-papers.ts");
+  const dates = listHfDailyDates();
+  assert.ok(dates.length >= 1, "seed JSON should exist after fetch");
+  const latest = getLatestHfDaily();
+  assert.ok(latest, "getLatestHfDaily");
+  assert.ok(latest.data.papers.length > 0);
+  assert.ok(latest.data.papers[0].id);
+  assert.ok(latest.data.papers[0].title);
+  assert.ok(latest.data.papers[0].urls.hf.includes("huggingface.co/papers"));
+  const fb = getHfDailyOrFallback();
+  assert.equal(fb.date, latest.date);
+  assert.ok(fb.data?.attribution);
+});
+
 test("content/posts sample files are healthy", () => {
   const dir = path.join(root, "content/posts");
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
