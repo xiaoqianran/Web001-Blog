@@ -281,6 +281,20 @@ test("RSS feed parser and seed data", async () => {
   }
 });
 
+test("homepage prioritizes lab feeds over empty posts", () => {
+  const home = fs.readFileSync(path.join(root, "src/app/page.tsx"), "utf8");
+  assert.match(home, /HomePapersSection|getLatestHfDaily/);
+  assert.match(home, /HomeRssSection|getLatestRssFeeds/);
+  assert.match(home, /lab\/papers/);
+  assert.match(home, /lab\/feeds/);
+  // Empty-posts dashed CTA should not be the only home content path
+  assert.doesNotMatch(
+    home,
+    /还没有文章。在\{\s*" "\s*\}/,
+  );
+  assert.doesNotMatch(home, /还没有文章。在/);
+});
+
 test("lab lang helpers and RSS zh fields", async () => {
   const { pickLocalized, hasZhText, LAB_LANG_STORAGE_KEY } = await loadTs(
     "src/lib/lab-lang.ts",
