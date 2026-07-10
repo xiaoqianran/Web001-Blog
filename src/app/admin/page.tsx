@@ -1,0 +1,137 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { logout } from "@/app/actions/auth";
+import { getAllPosts, getAllTags, formatDate } from "@/lib/posts";
+import { requireSession } from "@/lib/session";
+
+export const metadata: Metadata = {
+  title: "管理后台",
+  robots: { index: false, follow: false },
+};
+
+export default async function AdminPage() {
+  const session = await requireSession();
+  const posts = getAllPosts();
+  const tags = getAllTags();
+
+  return (
+    <div className="space-y-10">
+      <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="space-y-2">
+          <p className="text-sm font-medium uppercase tracking-widest text-violet-600 dark:text-violet-400">
+            Admin
+          </p>
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+            管理后台
+          </h1>
+          <p className="text-zinc-600 dark:text-zinc-400">
+            你好，<span className="font-medium text-zinc-900 dark:text-zinc-100">{session.username}</span>
+          </p>
+        </div>
+        <form action={logout}>
+          <button
+            type="submit"
+            className="rounded-xl border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-900"
+          >
+            退出登录
+          </button>
+        </form>
+      </header>
+
+      <section className="grid gap-4 sm:grid-cols-3">
+        <StatCard label="文章" value={posts.length} />
+        <StatCard label="标签" value={tags.length} />
+        <StatCard label="会话" value="7 天" hint="JWT 有效期" />
+      </section>
+
+      <section className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            文章列表
+          </h2>
+          <Link
+            href="/blog"
+            className="text-sm font-medium text-violet-600 hover:text-violet-700 dark:text-violet-400"
+          >
+            查看前台 →
+          </Link>
+        </div>
+
+        <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <table className="w-full text-left text-sm">
+            <thead className="border-b border-zinc-200 bg-zinc-50 text-xs uppercase tracking-wider text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-400">
+              <tr>
+                <th className="px-4 py-3 font-medium">标题</th>
+                <th className="hidden px-4 py-3 font-medium sm:table-cell">日期</th>
+                <th className="hidden px-4 py-3 font-medium md:table-cell">标签</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
+              {posts.map((post) => (
+                <tr key={post.slug} className="bg-white dark:bg-zinc-950">
+                  <td className="px-4 py-3">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="font-medium text-zinc-900 hover:text-violet-600 dark:text-zinc-50 dark:hover:text-violet-400"
+                    >
+                      {post.title}
+                    </Link>
+                  </td>
+                  <td className="hidden px-4 py-3 text-zinc-500 sm:table-cell dark:text-zinc-400">
+                    {formatDate(post.date)}
+                  </td>
+                  <td className="hidden px-4 py-3 text-zinc-500 md:table-cell dark:text-zinc-400">
+                    {post.tags.join(" · ") || "—"}
+                  </td>
+                </tr>
+              ))}
+              {posts.length === 0 && (
+                <tr>
+                  <td
+                    colSpan={3}
+                    className="px-4 py-10 text-center text-zinc-500 dark:text-zinc-400"
+                  >
+                    暂无文章
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="rounded-xl border border-dashed border-zinc-300 p-6 text-sm text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
+        <p className="font-medium text-zinc-900 dark:text-zinc-100">下一步可扩展</p>
+        <ul className="mt-2 list-inside list-disc space-y-1">
+          <li>在后台新建 / 编辑 Markdown 文章</li>
+          <li>上传封面图</li>
+          <li>草稿与发布状态</li>
+        </ul>
+      </section>
+    </div>
+  );
+}
+
+function StatCard({
+  label,
+  value,
+  hint,
+}: {
+  label: string;
+  value: string | number;
+  hint?: string;
+}) {
+  return (
+    <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+      <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+        {label}
+      </p>
+      <p className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+        {value}
+      </p>
+      {hint && (
+        <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">{hint}</p>
+      )}
+    </div>
+  );
+}
