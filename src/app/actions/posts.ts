@@ -90,11 +90,23 @@ function revalidatePostPaths(slug: string, previousSlug?: string) {
   }
 }
 
+function serverlessWriteBlocked(): PostFormState {
+  if (process.env.VERCEL) {
+    return {
+      error:
+        "当前部署在 Vercel Serverless，文件系统只读，无法在线保存文章。请通过 Git 提交 content/posts，或使用 Docker 自托管。",
+    };
+  }
+  return undefined;
+}
+
 export async function createPost(
   _prev: PostFormState,
   formData: FormData,
 ): Promise<PostFormState> {
   await requireAdmin();
+  const blocked = serverlessWriteBlocked();
+  if (blocked) return blocked;
 
   const { input, fieldErrors } = parsePostForm(formData);
   if (fieldErrors || !input) {
@@ -124,6 +136,8 @@ export async function updatePost(
   formData: FormData,
 ): Promise<PostFormState> {
   await requireAdmin();
+  const blocked = serverlessWriteBlocked();
+  if (blocked) return blocked;
 
   const originalSlug = String(formData.get("originalSlug") ?? "").trim().toLowerCase();
   if (!originalSlug || !isValidSlug(originalSlug) || !postExists(originalSlug)) {
@@ -155,6 +169,9 @@ export async function updatePost(
 
 export async function deletePost(formData: FormData) {
   await requireAdmin();
+  if (process.env.VERCEL) {
+    redirect("/admin?error=readonly");
+  }
 
   const slug = String(formData.get("slug") ?? "").trim().toLowerCase();
   if (!slug || !isValidSlug(slug) || !postExists(slug)) {

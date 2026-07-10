@@ -15,9 +15,10 @@
 - SEO（Metadata / Open Graph / sitemap / robots）
 - RSS 订阅（`/rss.xml`）
 - 管理员登录（JWT 会话 + 受保护后台）
-- 后台新建 / 编辑 / 删除 Markdown 文章
+- 后台新建 / 编辑 / 删除 Markdown 文章（Docker / 本地可写；Vercel 为只读）
 - 响应式布局
-- Docker 部署（standalone + docker-compose，content 目录可写）
+- Docker 部署（standalone + docker-compose）
+- Vercel 部署（完整 Node 运行时：登录与前台可用）
 
 ## 快速开始
 
@@ -33,8 +34,6 @@ npm run dev
 - 登录页：[/login](http://localhost:3000/login)
 - 管理后台：[/admin](http://localhost:3000/admin)（需登录）
 - 新建文章：[/admin/posts/new](http://localhost:3000/admin/posts/new)
-
-后台保存的文章会写入 `content/posts/*.md`，Docker 下通过 volume 挂载该目录以持久化。
 
 ### 环境变量
 
@@ -54,28 +53,18 @@ node -e "require('bcryptjs').hash('your-password',10).then(console.log)"
 
 ## 写文章
 
-在 `content/posts/` 新建 Markdown 文件：
+### 本地 / Docker
 
-```md
----
-title: "标题"
-description: "摘要"
-date: "2026-07-10"
-tags: ["Next.js", "笔记"]
----
+后台保存会写入 `content/posts/*.md`（Docker 下通过 volume 持久化）。
 
-正文……
-```
+### Vercel
 
-文件名即 slug，例如 `hello.md` → `/blog/hello`。
+Vercel 的 Serverless 文件系统**只读**，在线后台**不能持久保存**文章。请：
 
-代码块可标注语言以获得高亮：
+1. 在本地编辑 `content/posts/*.md` 后 `git push`，或  
+2. 使用 Docker 自托管以获得可写后台。
 
-````md
-```ts
-const hello = "world";
-```
-````
+登录、前台阅读在 Vercel 上均可用。
 
 ## 脚本
 
@@ -85,47 +74,28 @@ const hello = "world";
 | `npm run build` | 生产构建 |
 | `npm run start` | 启动生产服务 |
 | `npm run lint` | ESLint |
-| `npm test` | 冒烟测试（slug / frontmatter） |
-| `npm run ci` | lint + test + build（本地对齐 CI） |
+| `npm test` | 冒烟测试 |
+| `npm run ci` | lint + test + build |
 
-## CI / 协作流程
-
-1. **提 Issue** 描述目标与验收标准  
-2. **git worktree + feature 分支** 写代码（不要直接推 `main`）  
-3. **本地验证**：`npm run ci`，需要时再 `docker build` / `docker compose up --build`  
-4. **开 PR** 到 `main`（关联 Issue，如 `Closes #1`）  
-5. **GitHub Actions** 自动跑 lint / test / build / Docker 冒烟；全部通过后再合并  
-
-工作流文件：`.github/workflows/ci.yml`。
-
-## GitHub Pages 部署
-
-仓库已配置 **Settings → Pages → Source: GitHub Actions**。
-
-推送到 `main` 后，工作流 [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) 会：
-
-1. `npm run build:pages` 静态导出到 `out/`
-2. 上传并部署到 GitHub Pages
-
-本地预览：
+## 部署到 Vercel
 
 ```bash
-npm run build:pages
-npx serve out
-# 项目站路径类似 http://localhost:3000/Web001-Blog/
+# 已登录 CLI 时
+vercel link          # 首次关联项目
+vercel env pull      # 可选
+vercel --prod        # 生产部署
 ```
 
-访问地址（示例）：
+在 Vercel 项目 **Settings → Environment Variables** 配置：
 
-`https://xiaoqianran.github.io/Web001-Blog/`
+| Name | 示例 |
+|------|------|
+| `SESSION_SECRET` | `openssl rand -base64 32` 的结果 |
+| `ADMIN_USERNAME` | `admin` |
+| `ADMIN_PASSWORD` | 强密码 |
+| `NEXT_PUBLIC_SITE_URL` | `https://你的项目.vercel.app` |
 
-**说明**：Pages 为纯静态托管。文章阅读、标签、主题切换可用；**登录 / 后台写文章** 需要 Docker 自托管（`docker compose up`）。
-
-自定义域名挂在根路径时，在仓库 **Settings → Secrets and variables → Actions → Variables** 添加：
-
-| Name | Value |
-|------|--------|
-| `BASE_PATH` | （空字符串） |
+也可在 GitHub 连接仓库后，由 Vercel 对 `main` 自动部署。
 
 ## Docker
 
@@ -133,7 +103,7 @@ npx serve out
 docker compose up --build -d
 ```
 
-需已存在外部网络 `web`（例如与 Caddy 共用）。
+需已存在外部网络 `web`（例如与 Caddy 共用）。Docker 构建会设置 `OUTPUT_STANDALONE=true`。
 
 ## 技术栈
 

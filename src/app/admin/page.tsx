@@ -42,7 +42,12 @@ export default async function AdminPage({ searchParams }: Props) {
             ? { type: "err" as const, text: "文章不存在或已被删除" }
             : params.error === "delete"
               ? { type: "err" as const, text: "删除失败，请检查写入权限" }
-              : null;
+              : params.error === "readonly"
+                ? {
+                    type: "err" as const,
+                    text: "Vercel 环境为只读文件系统，无法在线增删文章，请用 Git 更新 content/posts",
+                  }
+                : null;
 
   return (
     <div className="space-y-10">

@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test": "node --test scripts/smoke.test.mjs",
-    "ci": "npm run lint && npm test && npm run build",
-    "build:pages": "node scripts/build-pages.mjs"
+    "ci": "npm run lint && npm test && npm run build"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
