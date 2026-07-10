@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllPosts, getAllTags } from "@/lib/posts";
 import { PostCard } from "@/components/PostCard";
+import { SearchForm } from "@/components/SearchForm";
 import { Tag } from "@/components/Tag";
 
 export default function HomePage() {
@@ -24,6 +25,7 @@ export default function HomePage() {
         <p className="max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
           这是一个基于 Next.js 的个人博客。文章用 Markdown 撰写，支持标签分类、阅读时长与深色模式。
         </p>
+        <SearchForm />
       </section>
 
       {featured && (

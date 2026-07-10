@@ -7,6 +7,7 @@ import {
   getPostSlugs,
   getPostWithHtml,
 } from "@/lib/posts";
+import { CodeCopy } from "@/components/CodeCopy";
 import { Tag } from "@/components/Tag";
 import { TableOfContents } from "@/components/TableOfContents";
 
@@ -94,6 +95,7 @@ export default async function PostPage({ params }: Props) {
         className="prose prose-zinc max-w-none dark:prose-invert prose-headings:scroll-mt-24 prose-headings:tracking-tight"
         dangerouslySetInnerHTML={{ __html: post.contentHtml }}
       />
+      <CodeCopy />
 
       <nav className="mt-16 grid gap-4 border-t border-zinc-200 pt-10 sm:grid-cols-2 dark:border-zinc-800">
         {prev ? (
