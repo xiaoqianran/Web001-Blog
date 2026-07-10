@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useState } from "react";
 import {
   createPost,
   updatePost,
@@ -38,14 +38,12 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
   );
 
   const [title, setTitle] = useState(initial.title);
-  const [slug, setSlug] = useState(initial.slug);
-  const [slugTouched, setSlugTouched] = useState(mode === "edit");
-
-  useEffect(() => {
-    if (!slugTouched && mode === "create") {
-      setSlug(slugifyTitle(title));
-    }
-  }, [title, slugTouched, mode]);
+  /** null = auto-generate from title (create mode only) */
+  const [slugOverride, setSlugOverride] = useState<string | null>(
+    mode === "edit" ? initial.slug : null,
+  );
+  const slug =
+    slugOverride !== null ? slugOverride : slugifyTitle(title);
 
   return (
     <form action={formAction} className="space-y-6">
@@ -85,17 +83,14 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
 
         <div className="space-y-2">
           <label htmlFor="slug" className={labelClass}>
-            Slug（URL）
+            Slug （URL）
           </label>
           <input
             id="slug"
             name="slug"
             required
             value={slug}
-            onChange={(e) => {
-              setSlugTouched(true);
-              setSlug(e.target.value.toLowerCase());
-            }}
+            onChange={(e) => setSlugOverride(e.target.value.toLowerCase())}
             className={inputClass}
             placeholder="my-first-post"
             pattern="[a-z0-9]+(?:-[a-z0-9]+)*"

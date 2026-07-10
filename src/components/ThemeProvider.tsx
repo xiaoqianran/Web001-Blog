@@ -5,7 +5,9 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 
@@ -34,46 +36,74 @@ function applyTheme(resolved: "light" | "dark") {
   root.style.colorScheme = resolved;
 }
 
+function readStoredTheme(): Theme {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === "light" || stored === "dark" || stored === "system") {
+      return stored;
+    }
+  } catch {
+    /* ignore */
+  }
+  return "system";
+}
+
+function subscribeSystemTheme(onStoreChange: () => void) {
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  mq.addEventListener("change", onStoreChange);
+  return () => mq.removeEventListener("change", onStoreChange);
+}
+
+function subscribeStorage(onStoreChange: () => void) {
+  const handler = (e: StorageEvent) => {
+    if (e.key === STORAGE_KEY || e.key === null) onStoreChange();
+  };
+  window.addEventListener("storage", handler);
+  return () => window.removeEventListener("storage", handler);
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("system");
-  const [resolved, setResolved] = useState<"light" | "dark">("light");
+  // Local override for same-tab updates (storage event only fires cross-tab)
+  const [override, setOverride] = useState<Theme | null>(null);
 
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
-    const initial: Theme =
-      stored === "light" || stored === "dark" || stored === "system"
-        ? stored
-        : "system";
-    setThemeState(initial);
-    const next = initial === "system" ? getSystemTheme() : initial;
-    setResolved(next);
-    applyTheme(next);
-  }, []);
+  const storedTheme = useSyncExternalStore(
+    subscribeStorage,
+    readStoredTheme,
+    () => "system" as Theme,
+  );
 
+  const systemResolved = useSyncExternalStore(
+    subscribeSystemTheme,
+    getSystemTheme,
+    () => "light" as const,
+  );
+
+  const theme = override ?? storedTheme;
+  const resolved: "light" | "dark" =
+    theme === "system" ? systemResolved : theme;
+
+  // Sync DOM only — no React setState here
   useEffect(() => {
-    if (theme !== "system") return;
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = () => {
-      const next = getSystemTheme();
-      setResolved(next);
-      applyTheme(next);
-    };
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, [theme]);
+    applyTheme(resolved);
+  }, [resolved]);
 
   const setTheme = useCallback((next: Theme) => {
-    setThemeState(next);
-    localStorage.setItem(STORAGE_KEY, next);
-    const resolvedNext = next === "system" ? getSystemTheme() : next;
-    setResolved(resolvedNext);
-    applyTheme(resolvedNext);
+    try {
+      localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      /* ignore */
+    }
+    setOverride(next);
+    applyTheme(next === "system" ? getSystemTheme() : next);
   }, []);
 
+  const value = useMemo(
+    () => ({ theme, resolved, setTheme }),
+    [theme, resolved, setTheme],
+  );
+
   return (
-    <ThemeContext.Provider value={{ theme, resolved, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
 

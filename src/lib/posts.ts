@@ -180,8 +180,15 @@ export function getAllPosts(): PostMeta[] {
   const slugs = getPostSlugs();
   const posts = slugs.map((slug) => {
     const post = getPostBySlug(slug);
-    const { content: _c, contentHtml: _h, toc: _t, ...meta } = post;
-    return meta;
+    return {
+      slug: post.slug,
+      title: post.title,
+      description: post.description,
+      date: post.date,
+      tags: post.tags,
+      cover: post.cover,
+      readingTime: post.readingTime,
+    };
   });
 
   return posts.sort(
