@@ -3,7 +3,7 @@
 用 Next.js App Router + Markdown 搭建的个人技术博客。  
 主站 [Vercel](https://web001-blog.vercel.app)；内容源 `content/posts`；在线写文经 GitHub API。
 
-> **完成态目标**：[`docs/ULTIMATE_GOAL.md`](docs/ULTIMATE_GOAL.md) · **知识库写作台**：[`docs/GOAL_KNOWLEDGE_WORKSPACE.md`](docs/GOAL_KNOWLEDGE_WORKSPACE.md) · **验收**：[`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md)
+> **完成态目标**：[`docs/ULTIMATE_GOAL.md`](docs/ULTIMATE_GOAL.md) · **知识库写作台 v1**：[`docs/GOAL_KNOWLEDGE_WORKSPACE.md`](docs/GOAL_KNOWLEDGE_WORKSPACE.md) · **知识库 v1.1（下一 Goal）**：[`docs/GOAL_KB_V1_1_LINKS_AND_CAPTURE.md`](docs/GOAL_KB_V1_1_LINKS_AND_CAPTURE.md) · **验收**：[`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md)
 
 ## 功能矩阵（对标完成态）
 
