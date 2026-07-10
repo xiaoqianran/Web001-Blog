@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blog — Next.js 个人博客
 
-## Getting Started
+用 Next.js App Router + Markdown 搭建的简洁个人博客。
 
-First, run the development server:
+## 功能
+
+- 首页精选文章 + 最近文章 + 标签云
+- 文章列表与详情（Markdown + GFM）
+- 代码块语法高亮（highlight.js）
+- 文章目录（h2 / h3 自动生成）
+- 标签筛选页
+- 关于页
+- 阅读时长、发布日期、上一篇/下一篇
+- 手动深色 / 浅色 / 跟随系统主题
+- SEO（Metadata / Open Graph / sitemap / robots）
+- RSS 订阅（`/rss.xml`）
+- 响应式布局
+- Docker 部署（standalone + docker-compose）
+
+## 快速开始
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+打开 [http://localhost:3000](http://localhost:3000)。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+生产环境可设置站点地址（用于 sitemap / RSS / OG）：
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
 
-## Learn More
+## 写文章
 
-To learn more about Next.js, take a look at the following resources:
+在 `content/posts/` 新建 Markdown 文件：
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```md
+---
+title: "标题"
+description: "摘要"
+date: "2026-07-10"
+tags: ["Next.js", "笔记"]
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+正文……
+```
 
-## Deploy on Vercel
+文件名即 slug，例如 `hello.md` → `/blog/hello`。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+代码块可标注语言以获得高亮：
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+````md
+```ts
+const hello = "world";
+```
+````
+
+## 脚本
+
+| 命令 | 说明 |
+|------|------|
+| `npm run dev` | 开发服务器 |
+| `npm run build` | 生产构建 |
+| `npm run start` | 启动生产服务 |
+| `npm run lint` | ESLint |
+
+## Docker
+
+```bash
+docker compose up --build -d
+```
+
+需已存在外部网络 `web`（例如与 Caddy 共用）。
+
+## 技术栈
+
+- Next.js 16（App Router）
+- TypeScript
+- Tailwind CSS v4 + Typography
+- gray-matter / remark / rehype / remark-gfm
+- highlight.js（代码高亮）

@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.gitignore
+*.md
+!README.md
+.DS_Store
+npm-debug.log*
+.env*
+.worktrees
+AGENTS.md
+CLAUDE.md

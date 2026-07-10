@@ -1,8 +1,17 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Class-based dark mode (manual toggle + system) */
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #18181b;
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
 }
 
 @theme inline {
@@ -12,15 +21,105 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* Prose refinements for markdown content */
+.prose pre {
+  @apply overflow-x-auto rounded-xl border border-zinc-200 bg-zinc-950 text-zinc-100 dark:border-zinc-800;
+}
+
+.prose code {
+  @apply rounded bg-zinc-100 px-1 py-0.5 text-[0.9em] font-medium text-violet-700 dark:bg-zinc-800 dark:text-violet-300;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+
+.prose a {
+  @apply font-medium text-violet-600 no-underline underline-offset-2 hover:underline dark:text-violet-400;
+}
+
+.prose blockquote {
+  @apply border-l-violet-500 text-zinc-600 dark:text-zinc-400;
+}
+
+.prose img {
+  @apply rounded-xl;
+}
+
+.prose h2,
+.prose h3 {
+  scroll-margin-top: 5rem;
+}
+
+/* highlight.js token colors (github-dark inspired) */
+.hljs-comment,
+.hljs-quote {
+  color: #8b949e;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-addition {
+  color: #ff7b72;
+}
+
+.hljs-number,
+.hljs-string,
+.hljs-meta .hljs-meta-string,
+.hljs-literal,
+.hljs-doctag,
+.hljs-regexp {
+  color: #a5d6ff;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #d2a8ff;
+}
+
+.hljs-attribute,
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-class .hljs-title,
+.hljs-type {
+  color: #79c0ff;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-subst,
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-link {
+  color: #ffa657;
+}
+
+.hljs-built_in,
+.hljs-deletion {
+  color: #ffa198;
+}
+
+.hljs-formula {
+  background: #1f2428;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 700;
 }

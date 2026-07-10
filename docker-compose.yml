@@ -1,0 +1,35 @@
+# Blog — Next.js, reverse-proxied by Caddy on the `web` network
+#
+#   docker compose up --build -d
+#   open http://146.190.139.118/
+
+services:
+  blog:
+    build: .
+    container_name: blog
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      HOSTNAME: "0.0.0.0"
+    # Optional direct access for debugging (not required via Caddy):
+    # ports:
+    #   - "3000:3000"
+    networks:
+      - web
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 25s
+
+networks:
+  web:
+    external: true
