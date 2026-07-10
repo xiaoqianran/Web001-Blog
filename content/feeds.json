@@ -1,0 +1,29 @@
+{
+  "description": "RSS/Atom sources for /lab/feeds (metadata + links only, no full-text mirror).",
+  "feeds": [
+    {
+      "id": "hacker-news",
+      "title": "Hacker News",
+      "url": "https://hnrss.org/frontpage",
+      "home": "https://news.ycombinator.com/",
+      "limit": 25,
+      "group": "community"
+    },
+    {
+      "id": "arxiv-cs-ai",
+      "title": "arXiv cs.AI",
+      "url": "https://rss.arxiv.org/rss/cs.AI",
+      "home": "https://arxiv.org/list/cs.AI/recent",
+      "limit": 15,
+      "group": "arxiv"
+    },
+    {
+      "id": "arxiv-cs-lg",
+      "title": "arXiv cs.LG",
+      "url": "https://rss.arxiv.org/rss/cs.LG",
+      "home": "https://arxiv.org/list/cs.LG/recent",
+      "limit": 15,
+      "group": "arxiv"
+    }
+  ]
+}
