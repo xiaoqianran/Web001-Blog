@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PostForm } from "@/components/PostForm";
+import { ContentSourceBadge } from "@/components/admin/ContentSourceBadge";
+import { GitHistory } from "@/components/admin/GitHistory";
 import { WikiLinksPanel } from "@/components/admin/WikiLinksPanel";
 import {
   getGitHubRepoInfo,
@@ -9,6 +11,7 @@ import {
   githubReadPost,
   isGitHubContentEnabled,
 } from "@/lib/github-content";
+import { fetchFileCommits } from "@/lib/github-history";
 import {
   getAllPosts,
   getPostBySlug,
@@ -95,6 +98,25 @@ export default async function EditPostPage({ params, searchParams }: Props) {
     includeDrafts: true,
   });
 
+  const gitEnabled = isGitHubContentEnabled();
+  let historyUrl: string | null = null;
+  let repoPath = "";
+  if (gitEnabled) {
+    try {
+      const { owner, repo } = getGitHubRepoInfo();
+      const rel =
+        post.relPath ??
+        (post.folder ? `${post.folder}/${post.slug}.md` : `${post.slug}.md`);
+      repoPath = `content/posts/${rel}`;
+      historyUrl = githubHistoryUrl(owner, repo, repoPath);
+    } catch {
+      historyUrl = null;
+    }
+  }
+  const commits = repoPath
+    ? await fetchFileCommits(repoPath, 5)
+    : [];
+
   let initialNotice: string | null = null;
   if (sp.saved === "1") {
     const viaGh = sp.via === "github";
@@ -129,8 +151,16 @@ export default async function EditPostPage({ params, searchParams }: Props) {
           >
             {post.title}
           </Link>
-          。内容以 GitHub 最新版为准；可反复保存。
+          。
+          {gitEnabled
+            ? "内容优先读 GitHub 最新版；可反复保存。"
+            : "当前为本地磁盘模式（未配置 GITHUB_TOKEN）。"}
         </p>
+        <ContentSourceBadge
+          githubEnabled={gitEnabled}
+          listSource={gitEnabled ? "github" : "local"}
+          onVercel={Boolean(process.env.VERCEL)}
+        />
       </header>
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_16rem]">
@@ -140,27 +170,7 @@ export default async function EditPostPage({ params, searchParams }: Props) {
             originalSlug={post.slug}
             initialNotice={initialNotice}
             stripSavedQuery={sp.saved === "1"}
-            githubHistoryUrl={
-              isGitHubContentEnabled()
-                ? (() => {
-                    try {
-                      const { owner, repo } = getGitHubRepoInfo();
-                      const rel =
-                        post.relPath ??
-                        (post.folder
-                          ? `${post.folder}/${post.slug}.md`
-                          : `${post.slug}.md`);
-                      return githubHistoryUrl(
-                        owner,
-                        repo,
-                        `content/posts/${rel}`,
-                      );
-                    } catch {
-                      return null;
-                    }
-                  })()
-                : null
-            }
+            githubHistoryUrl={historyUrl}
             initial={{
               slug: post.slug,
               title: post.title,
@@ -176,7 +186,14 @@ export default async function EditPostPage({ params, searchParams }: Props) {
             }}
           />
         </div>
-        <WikiLinksPanel outgoing={outgoing} backlinks={backlinks} />
+        <div className="space-y-4">
+          <WikiLinksPanel outgoing={outgoing} backlinks={backlinks} />
+          <GitHistory
+            commits={commits}
+            historyUrl={historyUrl}
+            githubEnabled={gitEnabled}
+          />
+        </div>
       </div>
     </div>
   );

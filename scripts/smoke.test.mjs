@@ -1187,3 +1187,43 @@ test("lab-capture: build draft PostInput with folder and source URL", async () =
   );
   assert.match(feeds, /captureFolders|CaptureNote/);
 });
+
+test("content source badge + git history UI wiring", () => {
+  const badge = fs.readFileSync(
+    path.join(root, "src/components/admin/ContentSourceBadge.tsx"),
+    "utf8",
+  );
+  assert.match(badge, /content-source-badge/);
+  assert.match(badge, /内容源：GitHub|githubEnabled/);
+  assert.match(badge, /GITHUB_TOKEN|本地磁盘/);
+  // branches for github vs local based on token flag
+  assert.match(badge, /source === "github"|githubEnabled/);
+  assert.match(badge, /内容源：本地/);
+
+  const hist = fs.readFileSync(
+    path.join(root, "src/components/admin/GitHistory.tsx"),
+    "utf8",
+  );
+  assert.match(hist, /git-history/);
+  assert.match(hist, /最近提交/);
+
+  const ghHist = fs.readFileSync(
+    path.join(root, "src/lib/github-history.ts"),
+    "utf8",
+  );
+  assert.match(ghHist, /fetchFileCommits/);
+  assert.match(ghHist, /per_page|commits\?/);
+
+  const admin = fs.readFileSync(
+    path.join(root, "src/app/admin/page.tsx"),
+    "utf8",
+  );
+  assert.match(admin, /ContentSourceBadge/);
+
+  const edit = fs.readFileSync(
+    path.join(root, "src/app/admin/posts/[slug]/edit/page.tsx"),
+    "utf8",
+  );
+  assert.match(edit, /GitHistory|fetchFileCommits/);
+  assert.match(edit, /ContentSourceBadge/);
+});
