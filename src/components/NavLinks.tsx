@@ -34,12 +34,7 @@ export function NavLinks() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
 
-  // Close drawer on route change
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  // Escape + body scroll lock while open
+  // Escape + body scroll lock while open (links already close the sheet on navigate)
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
