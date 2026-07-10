@@ -3,16 +3,19 @@
 import { revalidatePath } from "next/cache";
 import { isGitHubContentEnabled } from "@/lib/github-content";
 import {
+  bestEffortMkdir,
+  loadPostForAdmin,
+  persistTreeBestEffort,
+} from "@/lib/content-persist";
+import {
   addFolderToTree,
   deleteFolderFromTree,
   loadTreeFromDisk,
   moveDocInTree,
   renameFolderInTree,
   reorderDoc,
-  saveTreeToDisk,
-  type ContentTree,
 } from "@/lib/content-tree";
-import { findPostFile, getPostBySlug, writePost } from "@/lib/posts";
+import { findPostFile, writePost } from "@/lib/posts";
 import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import fs from "fs";
@@ -30,14 +33,6 @@ function revalidateTree() {
   revalidatePath("/kb");
 }
 
-async function persistTree(tree: ContentTree) {
-  saveTreeToDisk(tree);
-  if (isGitHubContentEnabled()) {
-    const { putTreeJson } = await import("@/lib/github-tree");
-    await putTreeJson(tree);
-  }
-}
-
 export async function createFolderAction(formData: FormData) {
   await requireAdmin();
   const name = String(formData.get("name") ?? "").trim();
@@ -46,15 +41,15 @@ export async function createFolderAction(formData: FormData) {
   if (!name) return;
   let tree = loadTreeFromDisk();
   tree = addFolderToTree(tree, name, parentId);
-  // create physical dir locally
+  // physical dir is local-only best-effort; tree.json goes to GitHub
   const id = tree.folders.find(
     (f) => f.name === name && f.parentId === parentId,
   )?.id;
   if (id) {
     const dir = path.join(process.cwd(), "content/posts", ...id.split("/"));
-    fs.mkdirSync(dir, { recursive: true });
+    bestEffortMkdir(dir);
   }
-  await persistTree(tree);
+  await persistTreeBestEffort(tree);
   revalidateTree();
 }
 
@@ -65,7 +60,7 @@ export async function renameFolderAction(formData: FormData) {
   if (!folderId || !name) return;
   let tree = loadTreeFromDisk();
   tree = renameFolderInTree(tree, folderId, name);
-  await persistTree(tree);
+  await persistTreeBestEffort(tree);
   revalidateTree();
 }
 
@@ -75,7 +70,7 @@ export async function deleteFolderAction(formData: FormData) {
   if (!folderId) return;
   let tree = loadTreeFromDisk();
   tree = deleteFolderFromTree(tree, folderId);
-  await persistTree(tree);
+  await persistTreeBestEffort(tree);
   revalidateTree();
 }
 
@@ -83,12 +78,14 @@ export async function movePostAction(formData: FormData) {
   await requireAdmin();
   const slug = String(formData.get("slug") ?? "").trim();
   const folderIdRaw = String(formData.get("folderId") ?? "").trim();
-  const folderId = folderIdRaw === "" || folderIdRaw === "__root__" ? null : folderIdRaw;
+  const folderId =
+    folderIdRaw === "" || folderIdRaw === "__root__" ? null : folderIdRaw;
   if (!slug) return;
 
-  const post = getPostBySlug(slug);
+  const post = await loadPostForAdmin(slug);
+  if (!post) return;
+
   const folder = folderId ?? "";
-  // rewrite file path
   const input = {
     slug: post.slug,
     title: post.title,
@@ -103,6 +100,7 @@ export async function movePostAction(formData: FormData) {
     folder: folder || undefined,
   };
 
+  // Content move first (GitHub source of truth), then tree index
   if (isGitHubContentEnabled()) {
     const { githubRenamePost } = await import("@/lib/github-content");
     await githubRenamePost(slug, input);
@@ -116,15 +114,22 @@ export async function movePostAction(formData: FormData) {
         ...(folder ? folder.split("/") : []),
         `${slug}.md`,
       );
-      if (path.resolve(oldPath) !== path.resolve(newPath) && fs.existsSync(oldPath)) {
-        fs.unlinkSync(oldPath);
+      if (
+        path.resolve(oldPath) !== path.resolve(newPath) &&
+        fs.existsSync(oldPath)
+      ) {
+        try {
+          fs.unlinkSync(oldPath);
+        } catch {
+          /* ignore */
+        }
       }
     }
   }
 
   let tree = loadTreeFromDisk();
   tree = moveDocInTree(tree, slug, folderId);
-  await persistTree(tree);
+  await persistTreeBestEffort(tree);
   revalidateTree();
   revalidatePath(`/blog/${slug}`);
   revalidatePath(`/admin/posts/${slug}/edit`);
@@ -137,7 +142,7 @@ export async function reorderPostAction(formData: FormData) {
   if (!slug || (direction !== "up" && direction !== "down")) return;
   let tree = loadTreeFromDisk();
   tree = reorderDoc(tree, slug, direction);
-  await persistTree(tree);
+  await persistTreeBestEffort(tree);
   revalidateTree();
 }
 
@@ -146,7 +151,6 @@ export async function syncTreeFromPostsAction() {
   const { listPostRelPaths } = await import("@/lib/posts");
   const { buildTreeFromRelPaths } = await import("@/lib/content-tree");
   const tree = buildTreeFromRelPaths(listPostRelPaths());
-  await persistTree(tree);
+  await persistTreeBestEffort(tree);
   revalidateTree();
 }
-

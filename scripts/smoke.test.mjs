@@ -813,6 +813,85 @@ body
   } catch {}
 });
 
+test("content-persist shared module: actions must not bare saveTreeToDisk", async () => {
+  const persistPath = path.join(root, "src/lib/content-persist.ts");
+  assert.ok(fs.existsSync(persistPath), "content-persist.ts must exist");
+  const persistSrc = fs.readFileSync(persistPath, "utf8");
+  assert.match(persistSrc, /export async function persistTreeBestEffort/);
+  assert.match(persistSrc, /export function bestEffortMkdir/);
+  assert.match(persistSrc, /export async function loadPostForAdmin/);
+  assert.match(persistSrc, /githubReadPost|isGitHubContentEnabled/);
+  assert.match(persistSrc, /putTreeJson/);
+  // local save is inside try/catch
+  assert.match(
+    persistSrc,
+    /try\s*\{[\s\S]*saveTreeToDisk[\s\S]*\}\s*catch/,
+  );
+
+  const actionsDir = path.join(root, "src/app/actions");
+  const actionFiles = fs
+    .readdirSync(actionsDir)
+    .filter((f) => f.endsWith(".ts"));
+  assert.ok(actionFiles.length >= 3, "expected multiple action modules");
+
+  for (const file of actionFiles) {
+    const src = fs.readFileSync(path.join(actionsDir, file), "utf8");
+    // Actions must not call saveTreeToDisk directly — only via content-persist
+    assert.ok(
+      !/\bsaveTreeToDisk\s*\(/.test(src),
+      `${file} must not call saveTreeToDisk() directly; use persistTreeBestEffort`,
+    );
+    // Must not bare mkdirSync for content paths without bestEffort
+    if (file === "tree.ts") {
+      assert.ok(
+        !/fs\.mkdirSync\s*\(/.test(src),
+        "tree.ts must use bestEffortMkdir, not fs.mkdirSync",
+      );
+    }
+  }
+
+  const treeSrc = fs.readFileSync(
+    path.join(actionsDir, "tree.ts"),
+    "utf8",
+  );
+  assert.match(treeSrc, /persistTreeBestEffort/);
+  assert.match(treeSrc, /bestEffortMkdir/);
+  assert.match(treeSrc, /loadPostForAdmin/);
+
+  // movePostAction must load via loadPostForAdmin, not bare getPostBySlug
+  const moveSlice = treeSrc.slice(
+    treeSrc.indexOf("export async function movePostAction"),
+    treeSrc.indexOf("export async function reorderPostAction"),
+  );
+  assert.match(moveSlice, /loadPostForAdmin/);
+  assert.ok(
+    !/\bgetPostBySlug\s*\(/.test(moveSlice),
+    "movePostAction must not call getPostBySlug; use loadPostForAdmin (GitHub-first)",
+  );
+
+  const trashSrc = fs.readFileSync(
+    path.join(actionsDir, "trash.ts"),
+    "utf8",
+  );
+  assert.match(trashSrc, /from ["']@\/lib\/content-persist["']/);
+  assert.match(trashSrc, /persistTreeBestEffort/);
+  // no local private reimplementation of persist
+  assert.ok(
+    !/async function persistTreeBestEffort/.test(trashSrc),
+    "trash.ts must import persistTreeBestEffort, not redefine it",
+  );
+
+  const postsSrc = fs.readFileSync(
+    path.join(actionsDir, "posts.ts"),
+    "utf8",
+  );
+  assert.match(postsSrc, /registerDocInTreeBestEffort/);
+  assert.ok(
+    !/\bregisterDocInTree\s*\(/.test(postsSrc),
+    "posts.ts must use registerDocInTreeBestEffort (not bare registerDocInTree)",
+  );
+});
+
 test("trash GitHub list + soft-delete order (Vercel RO FS safe)", async () => {
   // Pure parser shared by local listTrash and githubListTrash
   const { parseTrashMarkdown } = await loadTs("src/lib/trash.ts");
@@ -850,18 +929,12 @@ body
   assert.match(gh, /export async function githubListTrash\b/);
   assert.match(gh, /parseTrashMarkdown/);
 
-  // softDelete: content delete BEFORE tree disk write; tree is best-effort
+  // softDelete: content delete BEFORE tree persist (via shared content-persist)
   const actions = fs.readFileSync(
     path.join(root, "src/app/actions/trash.ts"),
     "utf8",
   );
-  assert.match(actions, /persistTreeBestEffort|saveTreeToDisk/);
-  const ghSoftIdx = actions.indexOf("githubSoftDeletePost");
-  const saveTreeIdx = actions.indexOf("saveTreeToDisk");
-  assert.ok(ghSoftIdx > 0, "githubSoftDeletePost must appear in soft-delete action");
-  assert.ok(saveTreeIdx > 0, "saveTreeToDisk still used for local best-effort");
-  // softDeletePostAction body: first github soft-delete call must precede first saveTreeToDisk
-  // (persistTreeBestEffort wraps saveTree after content delete)
+  assert.match(actions, /persistTreeBestEffort/);
   const softFn = actions.slice(
     actions.indexOf("export async function softDeletePostAction"),
     actions.indexOf("export async function restoreTrashAction"),
@@ -870,7 +943,11 @@ body
   const softSave = softFn.indexOf("persistTreeBestEffort");
   assert.ok(softGh >= 0 && softSave >= 0 && softGh < softSave,
     "github soft-delete must run before tree persist in softDeletePostAction");
-  // tree persist must catch RO FS errors (try/catch around saveTreeToDisk)
-  assert.match(actions, /persistTreeBestEffort[\s\S]*saveTreeToDisk[\s\S]*catch/);
-  assert.match(actions, /putTreeJson/);
+  // RO FS catch lives in content-persist (single place)
+  const persist = fs.readFileSync(
+    path.join(root, "src/lib/content-persist.ts"),
+    "utf8",
+  );
+  assert.match(persist, /putTreeJson/);
+  assert.match(persist, /try\s*\{[\s\S]*saveTreeToDisk[\s\S]*\}\s*catch/);
 });

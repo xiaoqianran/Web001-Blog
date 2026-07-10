@@ -231,12 +231,10 @@ export async function createPost(
   }
 
   revalidatePostPaths(input.slug);
-  try {
-    const { registerDocInTree } = await import("@/lib/content-tree");
-    registerDocInTree(input.slug, input.folder);
-  } catch {
-    /* tree optional */
-  }
+  const { registerDocInTreeBestEffort } = await import(
+    "@/lib/content-persist"
+  );
+  await registerDocInTreeBestEffort(input.slug, input.folder);
   // Land on edit page so subsequent Ctrl+S are normal updates
   redirect(
     editUrl(input.slug, {
@@ -303,12 +301,10 @@ export async function updatePost(
   }
 
   revalidatePostPaths(input.slug, originalSlug);
-  try {
-    const { registerDocInTree } = await import("@/lib/content-tree");
-    registerDocInTree(input.slug, input.folder);
-  } catch {
-    /* tree optional */
-  }
+  const { registerDocInTreeBestEffort } = await import(
+    "@/lib/content-persist"
+  );
+  await registerDocInTreeBestEffort(input.slug, input.folder);
 
   // If slug changed, move browser to the new edit URL once
   if (input.slug !== originalSlug) {
