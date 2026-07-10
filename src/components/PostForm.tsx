@@ -16,6 +16,10 @@ import {
 import { uploadImage } from "@/app/actions/upload";
 import { MarkdownEditor } from "@/components/MarkdownEditor";
 import { appendMarkdown } from "@/lib/markdown-form";
+import {
+  isMarkdownFile,
+  parseMarkdownImport,
+} from "@/lib/import-markdown";
 import { slugifyTitle } from "@/lib/slugify";
 
 export type PostFormValues = {
@@ -50,17 +54,29 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
     undefined,
   );
   const formRef = useRef<HTMLFormElement>(null);
-  const fileRef = useRef<HTMLInputElement>(null);
+  const imageRef = useRef<HTMLInputElement>(null);
+  const mdRef = useRef<HTMLInputElement>(null);
 
   const [title, setTitle] = useState(initial.title);
   const [content, setContent] = useState(initial.content);
+  const [description, setDescription] = useState(initial.description);
+  const [date, setDate] = useState(initial.date);
+  const [tags, setTags] = useState(initial.tags);
+  const [cover, setCover] = useState(initial.cover ?? "");
+  const [series, setSeries] = useState(initial.series ?? "");
+  const [draft, setDraft] = useState(Boolean(initial.draft));
+  const [pinned, setPinned] = useState(Boolean(initial.pinned));
   const [uploadMsg, setUploadMsg] = useState<string | null>(null);
+  const [importMsg, setImportMsg] = useState<string | null>(null);
   const [uploading, startUpload] = useTransition();
 
   const [slugOverride, setSlugOverride] = useState<string | null>(
-    mode === "edit" ? initial.slug : null,
+    mode === "edit" ? initial.slug : initial.slug || null,
   );
-  const slug = slugOverride !== null ? slugOverride : slugifyTitle(title);
+  const slug =
+    slugOverride !== null && slugOverride !== ""
+      ? slugOverride
+      : slugifyTitle(title);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -73,7 +89,7 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const onPickFile = (file: File | null) => {
+  const onPickImage = (file: File | null) => {
     if (!file) return;
     setUploadMsg(null);
     const fd = new FormData();
@@ -84,11 +100,57 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
         setUploadMsg(res.error);
         return;
       }
-      setContent((c) =>
-        appendMarkdown(c, `![${file.name}](${res.path})`),
-      );
+      setContent((c) => appendMarkdown(c, `![${file.name}](${res.path})`));
       setUploadMsg(`已插入：${res.path}`);
     });
+  };
+
+  const onImportMarkdown = async (file: File | null) => {
+    if (!file) return;
+    setImportMsg(null);
+    if (!isMarkdownFile(file)) {
+      setImportMsg("请选择 .md / .markdown 文件");
+      return;
+    }
+    if (file.size > 2 * 1024 * 1024) {
+      setImportMsg("Markdown 文件需小于 2MB");
+      return;
+    }
+    try {
+      const raw = await file.text();
+      const imported = parseMarkdownImport(raw, file.name);
+
+      // Edit mode: keep original slug unless empty (avoid accidental rename)
+      if (mode === "create") {
+        setSlugOverride(imported.slug);
+      } else if (!slugOverride) {
+        setSlugOverride(imported.slug);
+      }
+
+      setTitle(imported.title);
+      setDescription(imported.description);
+      setDate(imported.date);
+      setTags(imported.tags);
+      setCover(imported.cover);
+      setSeries(imported.series);
+      setDraft(imported.draft);
+      setPinned(imported.pinned);
+      setContent(imported.content);
+
+      const note =
+        imported.notes.length > 0
+          ? `（${imported.notes.join("；")}）`
+          : "";
+      setImportMsg(
+        mode === "edit"
+          ? `已导入 ${file.name}，请检查后保存${note}`
+          : `已导入 ${file.name}，请检查 slug 后保存${note}`,
+      );
+    } catch (e) {
+      setImportMsg(e instanceof Error ? e.message : "导入失败");
+    } finally {
+      if (mdRef.current) mdRef.current.value = "";
+    }
   };
 
   return (
@@ -108,6 +170,43 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
           className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-300"
         >
           {state.error}
+        </p>
+      )}
+
+      <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-dashed border-violet-200 bg-violet-50/60 px-4 py-3 dark:border-violet-900/50 dark:bg-violet-950/30">
+        <div className="min-w-0">
+          <p className="text-sm font-medium text-zinc-800 dark:text-zinc-100">
+            导入 Markdown 文件
+          </p>
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            支持带 YAML frontmatter 的 .md；会填充标题、slug、标签、正文等
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => mdRef.current?.click()}
+            className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-violet-500"
+            data-testid="import-md-button"
+          >
+            选择 .md 文件
+          </button>
+          <input
+            ref={mdRef}
+            type="file"
+            accept=".md,.markdown,.mdx,text/markdown,text/plain"
+            className="hidden"
+            data-testid="import-md-input"
+            onChange={(e) => onImportMarkdown(e.target.files?.[0] ?? null)}
+          />
+        </div>
+      </div>
+      {importMsg && (
+        <p
+          className="text-xs text-violet-700 dark:text-violet-300"
+          data-testid="import-md-msg"
+        >
+          {importMsg}
         </p>
       )}
 
@@ -152,7 +251,8 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
             name="date"
             type="date"
             required
-            defaultValue={initial.date}
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
             className={inputClass}
           />
         </div>
@@ -164,7 +264,8 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
           <input
             id="description"
             name="description"
-            defaultValue={initial.description}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             className={inputClass}
           />
         </div>
@@ -176,7 +277,8 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
           <input
             id="tags"
             name="tags"
-            defaultValue={initial.tags}
+            value={tags}
+            onChange={(e) => setTags(e.target.value)}
             className={inputClass}
             placeholder="Next.js, 笔记"
           />
@@ -189,7 +291,8 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
           <input
             id="cover"
             name="cover"
-            defaultValue={initial.cover ?? ""}
+            value={cover}
+            onChange={(e) => setCover(e.target.value)}
             className={inputClass}
             placeholder="https://… 或 /uploads/…"
           />
@@ -202,7 +305,8 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
           <input
             id="series"
             name="series"
-            defaultValue={initial.series ?? ""}
+            value={series}
+            onChange={(e) => setSeries(e.target.value)}
             className={inputClass}
           />
         </div>
@@ -213,7 +317,8 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
               type="checkbox"
               name="draft"
               value="true"
-              defaultChecked={Boolean(initial.draft)}
+              checked={draft}
+              onChange={(e) => setDraft(e.target.checked)}
               className="mt-1 h-4 w-4 rounded border-zinc-300 text-violet-600"
             />
             <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
@@ -225,7 +330,8 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
               type="checkbox"
               name="pinned"
               value="true"
-              defaultChecked={Boolean(initial.pinned)}
+              checked={pinned}
+              onChange={(e) => setPinned(e.target.checked)}
               className="mt-1 h-4 w-4 rounded border-zinc-300 text-violet-600"
             />
             <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
@@ -242,24 +348,31 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
               正文（Markdown）
             </label>
             <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">
-              工具栏支持标题 / 列表 / 代码 / 链接 / 图片；可切换 编辑 · 分栏 · 预览
+              可导入 .md，或工具栏编辑；支持 编辑 · 分栏 · 预览
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
+              onClick={() => mdRef.current?.click()}
+              className="rounded-lg border border-zinc-200 px-2.5 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:text-zinc-300"
+            >
+              导入 .md
+            </button>
+            <button
+              type="button"
               disabled={uploading}
-              onClick={() => fileRef.current?.click()}
+              onClick={() => imageRef.current?.click()}
               className="rounded-lg border border-zinc-200 px-2.5 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:text-zinc-300"
             >
               {uploading ? "上传中…" : "插入图片"}
             </button>
             <input
-              ref={fileRef}
+              ref={imageRef}
               type="file"
               accept="image/png,image/jpeg,image/gif,image/webp"
               className="hidden"
-              onChange={(e) => onPickFile(e.target.files?.[0] ?? null)}
+              onChange={(e) => onPickImage(e.target.files?.[0] ?? null)}
             />
           </div>
         </div>
