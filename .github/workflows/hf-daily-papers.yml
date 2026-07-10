@@ -17,7 +17,8 @@ jobs:
   fetch:
     name: Fetch & commit
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    # Translate 15 abstracts needs extra headroom beyond the HF fetch
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v5
         with:
@@ -27,9 +28,10 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Fetch daily papers
+      - name: Fetch daily papers (+ zh translation)
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
         run: node scripts/fetch-hf-daily.mjs --limit=15 --sort=trending
 
       - name: Commit if changed

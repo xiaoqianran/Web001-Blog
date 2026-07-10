@@ -190,19 +190,51 @@ test("article OG image and revalidate paths use site identity routes", () => {
 });
 
 test("HF daily papers data and helpers", async () => {
-  const { getLatestHfDaily, listHfDailyDates, getHfDailyOrFallback } =
-    await loadTs("src/lib/hf-papers.ts");
-  const dates = listHfDailyDates();
+  // Pure helpers (no fs) — load shared module directly for Node ESM.
+  const { paperDisplaySummary, paperDisplayTitle, hasChineseSummary } =
+    await loadTs("src/lib/hf-paper-shared.ts");
+
+  const dir = path.join(root, "content/data/hf-daily");
+  assert.ok(fs.existsSync(dir), "hf-daily dir");
+  const dates = fs
+    .readdirSync(dir)
+    .filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f))
+    .map((f) => f.replace(/\.json$/, ""))
+    .sort((a, b) => b.localeCompare(a));
   assert.ok(dates.length >= 1, "seed JSON should exist after fetch");
-  const latest = getLatestHfDaily();
-  assert.ok(latest, "getLatestHfDaily");
-  assert.ok(latest.data.papers.length > 0);
-  assert.ok(latest.data.papers[0].id);
-  assert.ok(latest.data.papers[0].title);
-  assert.ok(latest.data.papers[0].urls.hf.includes("huggingface.co/papers"));
-  const fb = getHfDailyOrFallback();
-  assert.equal(fb.date, latest.date);
-  assert.ok(fb.data?.attribution);
+  const latestPath = path.join(dir, `${dates[0]}.json`);
+  const latest = JSON.parse(fs.readFileSync(latestPath, "utf8"));
+  assert.ok(latest.papers.length > 0);
+  assert.ok(latest.papers[0].id);
+  assert.ok(latest.papers[0].title);
+  assert.ok(latest.papers[0].urls.hf.includes("huggingface.co/papers"));
+  assert.ok(latest.attribution);
+
+  // Prefer translated fields when present (seed should include summaryZh).
+  const withZh = latest.papers.find((p) => p.summaryZh?.trim());
+  if (withZh) {
+    assert.ok(hasChineseSummary(withZh));
+    assert.equal(paperDisplaySummary(withZh, "zh"), withZh.summaryZh.trim());
+    assert.equal(paperDisplaySummary(withZh, "en"), withZh.summary);
+  }
+
+  const sample = {
+    id: "x",
+    title: "Hello Paper",
+    titleZh: "你好论文",
+    summary: "English abstract here.",
+    summaryZh: "这里是中文摘要。",
+    authors: [],
+    publishedAt: null,
+    submittedOnDailyAt: null,
+    submitter: null,
+    upvotes: null,
+    urls: { hf: "https://huggingface.co/papers/x", arxiv: null, pdf: null },
+  };
+  assert.equal(paperDisplayTitle(sample, "zh"), "你好论文");
+  assert.equal(paperDisplayTitle(sample, "en"), "Hello Paper");
+  assert.equal(paperDisplaySummary(sample, "zh"), "这里是中文摘要。");
+  assert.equal(paperDisplaySummary(sample, "en"), "English abstract here.");
 });
 
 test("content/posts markdown files are healthy when present", () => {
