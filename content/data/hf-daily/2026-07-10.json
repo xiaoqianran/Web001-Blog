@@ -1,7 +1,7 @@
 {
   "source": "huggingface.co/api/daily_papers",
   "attribution": "Data from Hugging Face Daily Papers (community curation). All rights belong to the original authors.",
-  "fetchedAt": "2026-07-10T18:36:49.469Z",
+  "fetchedAt": "2026-07-10T18:37:15.405Z",
   "date": "2026-07-10",
   "sort": "trending",
   "count": 15,
