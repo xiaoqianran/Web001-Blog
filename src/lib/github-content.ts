@@ -51,8 +51,14 @@ function getConfig(): GhConfig {
   return { token, owner, repo, branch };
 }
 
-function postPath(slug: string): string {
-  return `content/posts/${slug}.md`;
+function postPath(slug: string, folder = ""): string {
+  const parts = ["content", "posts", ...folder.split("/").filter(Boolean), `${slug}.md`];
+  return parts.join("/");
+}
+
+export function getGitHubRepoInfo(): { owner: string; repo: string; branch: string } {
+  const { owner, repo, branch } = getConfig();
+  return { owner, repo, branch };
 }
 
 async function ghFetch(path: string, init?: RequestInit) {
@@ -126,36 +132,97 @@ async function deleteFile(
   }
 }
 
+/** List markdown paths under content/posts on GitHub (posix, relative to repo root). */
+export async function githubListPostRepoPaths(): Promise<string[]> {
+  const { owner, repo, branch } = getConfig();
+  const res = await ghFetch(
+    `/repos/${owner}/${repo}/git/trees/${encodeURIComponent(branch)}?recursive=1`,
+  );
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`GitHub tree failed (${res.status}): ${text.slice(0, 200)}`);
+  }
+  const data = (await res.json()) as {
+    tree?: { path?: string; type?: string }[];
+  };
+  return (data.tree ?? [])
+    .filter(
+      (n) =>
+        n.type === "blob" &&
+        typeof n.path === "string" &&
+        n.path.startsWith("content/posts/") &&
+        n.path.endsWith(".md") &&
+        !n.path.includes("/trash/"),
+    )
+    .map((n) => n.path as string);
+}
+
 export async function githubWritePost(input: PostInput): Promise<void> {
-  const path = postPath(input.slug);
+  const folder = (input.folder ?? "").replace(/^\/+|\/+$/g, "");
+  const path = postPath(input.slug, folder);
   const sha = await getFileSha(path);
-  const content = serializePost(input);
-  const message = sha
+  // If path unknown, try locate existing slug path for update
+  let usePath = path;
+  let useSha = sha;
+  if (!useSha) {
+    const found = await githubFindPostRepoPath(input.slug);
+    if (found) {
+      usePath = found;
+      useSha = await getFileSha(found);
+    }
+  }
+  const payload: PostInput = {
+    ...input,
+    updatedAt: input.updatedAt || new Date().toISOString(),
+    folder: folder || undefined,
+  };
+  const content = serializePost(payload);
+  const message = useSha
     ? `content: update post ${input.slug}`
     : `content: add post ${input.slug}`;
-  await putFile(path, content, message, sha);
+  await putFile(usePath, content, message, useSha);
+}
+
+async function githubFindPostRepoPath(slug: string): Promise<string | null> {
+  const paths = await githubListPostRepoPaths();
+  const needle = `${slug}.md`;
+  return (
+    paths.find((p) => p === `content/posts/${needle}` || p.endsWith(`/${needle}`)) ??
+    null
+  );
 }
 
 export async function githubDeletePost(slug: string): Promise<void> {
-  const path = postPath(slug);
-  const sha = await getFileSha(path);
+  const found = (await githubFindPostRepoPath(slug)) ?? postPath(slug);
+  const sha = await getFileSha(found);
   if (!sha) {
     throw new Error("Post not found on GitHub");
   }
-  await deleteFile(path, `content: delete post ${slug}`, sha);
+  await deleteFile(found, `content: delete post ${slug}`, sha);
 }
 
 export async function githubRenamePost(
   oldSlug: string,
   input: PostInput,
 ): Promise<void> {
+  const folder = (input.folder ?? "").replace(/^\/+|\/+$/g, "");
+  const newPath = postPath(input.slug, folder);
   if (oldSlug === input.slug) {
+    // same slug — may still move folder
+    const oldPath = await githubFindPostRepoPath(oldSlug);
+    if (oldPath && oldPath !== newPath) {
+      await githubWritePost(input);
+      const oldSha = await getFileSha(oldPath);
+      if (oldSha) {
+        await deleteFile(oldPath, `content: move ${oldSlug}`, oldSha);
+      }
+      return;
+    }
     await githubWritePost(input);
     return;
   }
-  // Create/update new path, then remove old path
   await githubWritePost(input);
-  const oldPath = postPath(oldSlug);
+  const oldPath = (await githubFindPostRepoPath(oldSlug)) ?? postPath(oldSlug);
   const oldSha = await getFileSha(oldPath);
   if (oldSha) {
     await deleteFile(oldPath, `content: rename ${oldSlug} → ${input.slug}`, oldSha);
@@ -163,16 +230,18 @@ export async function githubRenamePost(
 }
 
 export async function githubPostExists(slug: string): Promise<boolean> {
+  const found = await githubFindPostRepoPath(slug);
+  if (found) return true;
   const sha = await getFileSha(postPath(slug));
   return Boolean(sha);
 }
 
 /**
  * Read latest post markdown from GitHub (source of truth on Vercel).
- * Avoids serving stale deploy FS after Contents API writes.
  */
 export async function githubReadPost(slug: string): Promise<Post | null> {
-  const filePath = postPath(slug);
+  const filePath =
+    (await githubFindPostRepoPath(slug).catch(() => null)) ?? postPath(slug);
   const { owner, repo, branch } = getConfig();
   const res = await ghFetch(
     `/repos/${owner}/${repo}/contents/${encodeURI(filePath)}?ref=${encodeURIComponent(branch)}`,
@@ -188,7 +257,44 @@ export async function githubReadPost(slug: string): Promise<Post | null> {
     data.content.replace(/\n/g, ""),
     "base64",
   ).toString("utf8");
-  return parsePostMarkdown(slug, raw);
+  const under = filePath.replace(/^content\/posts\//, "");
+  const folder =
+    under.includes("/") ? under.split("/").slice(0, -1).join("/") : "";
+  return parsePostMarkdown(slug, raw, {
+    folder: folder || undefined,
+    relPath: under,
+  });
+}
+
+/** Admin list: all posts with meta from GitHub (parallel reads). */
+export async function githubListPostsMeta(): Promise<
+  (Post & { content: string })[]
+> {
+  const paths = await githubListPostRepoPaths();
+  const { owner, repo, branch } = getConfig();
+  const posts = await Promise.all(
+    paths.map(async (filePath) => {
+      const res = await ghFetch(
+        `/repos/${owner}/${repo}/contents/${encodeURI(filePath)}?ref=${encodeURIComponent(branch)}`,
+      );
+      if (!res.ok) return null;
+      const data = (await res.json()) as { content?: string };
+      if (!data.content) return null;
+      const raw = Buffer.from(
+        data.content.replace(/\n/g, ""),
+        "base64",
+      ).toString("utf8");
+      const under = filePath.replace(/^content\/posts\//, "");
+      const slug = under.split("/").pop()!.replace(/\.md$/, "");
+      const folder =
+        under.includes("/") ? under.split("/").slice(0, -1).join("/") : "";
+      return parsePostMarkdown(slug, raw, {
+        folder: folder || undefined,
+        relPath: under,
+      });
+    }),
+  );
+  return posts.filter(Boolean) as Post[];
 }
 
 /**
