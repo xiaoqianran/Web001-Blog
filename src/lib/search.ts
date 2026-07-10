@@ -1,4 +1,4 @@
-import { getPostBySlug, getPostSlugs, type PostMeta } from "./posts";
+import { getAllPosts, getPostBySlug, type PostMeta } from "./posts";
 
 export type SearchDocument = PostMeta & {
   body: string;
@@ -10,16 +10,11 @@ export type SearchHit = PostMeta & {
 };
 
 export function getSearchIndex(): SearchDocument[] {
-  return getPostSlugs().map((slug) => {
-    const post = getPostBySlug(slug);
+  // Published posts only
+  return getAllPosts().map((meta) => {
+    const post = getPostBySlug(meta.slug);
     return {
-      slug: post.slug,
-      title: post.title,
-      description: post.description,
-      date: post.date,
-      tags: post.tags,
-      cover: post.cover,
-      readingTime: post.readingTime,
+      ...meta,
       body: post.content,
     };
   });
@@ -87,6 +82,7 @@ export function searchPosts(query: string, limit = 50): SearchHit[] {
       date: doc.date,
       tags: doc.tags,
       cover: doc.cover,
+      draft: doc.draft,
       readingTime: doc.readingTime,
       score,
       snippet: extractSnippet(snippetSource, terms[0] ?? q),
