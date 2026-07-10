@@ -161,3 +161,57 @@ export async function githubPostExists(slug: string): Promise<boolean> {
   const sha = await getFileSha(postPath(slug));
   return Boolean(sha);
 }
+
+/**
+ * Upload binary asset to public/uploads/ via GitHub Contents API.
+ * Returns site-relative path e.g. /uploads/foo.png
+ */
+export async function githubUploadAsset(
+  filename: string,
+  bytes: Buffer,
+): Promise<string> {
+  const safe = filename
+    .toLowerCase()
+    .replace(/[^a-z0-9._-]+/g, "-")
+    .replace(/-+/g, "-")
+    .slice(0, 80);
+  const stamp = Date.now();
+  const path = `public/uploads/${stamp}-${safe}`;
+  const publicPath = `/uploads/${stamp}-${safe}`;
+  const { owner, repo, branch } = getConfig();
+  const body = {
+    message: `content: upload ${safe}`,
+    content: bytes.toString("base64"),
+    branch,
+  };
+  const res = await ghFetch(
+    `/repos/${owner}/${repo}/contents/${encodeURI(path)}`,
+    { method: "PUT", body: JSON.stringify(body) },
+  );
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`GitHub upload failed (${res.status}): ${text}`);
+  }
+  return publicPath;
+}
+
+/** Local filesystem upload (dev / Docker). */
+export async function localUploadAsset(
+  filename: string,
+  bytes: Buffer,
+): Promise<string> {
+  const fs = await import("fs");
+  const pathMod = await import("path");
+  const safe = filename
+    .toLowerCase()
+    .replace(/[^a-z0-9._-]+/g, "-")
+    .replace(/-+/g, "-")
+    .slice(0, 80);
+  const stamp = Date.now();
+  const dir = pathMod.join(process.cwd(), "public/uploads");
+  fs.mkdirSync(dir, { recursive: true });
+  const name = `${stamp}-${safe}`;
+  fs.writeFileSync(pathMod.join(dir, name), bytes);
+  return `/uploads/${name}`;
+}
+
