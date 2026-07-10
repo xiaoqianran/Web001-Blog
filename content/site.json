@@ -4,8 +4,10 @@
   "description": "个人实验室：HF 论文热点、RSS 信息流自动更新；偶尔写 Markdown 博文。",
   "author": "作者",
   "about": "这里以 Hugging Face Daily Papers 与 RSS 聚合为主，自动日更。博客文章只在有想法时写，不硬凑更新。源码与内容在 GitHub，部署在 Vercel。",
+  "showKnowledgeNav": true,
   "social": [
     { "label": "GitHub", "href": "https://github.com/xiaoqianran/Web001-Blog" },
-    { "label": "RSS", "href": "/rss.xml" }
+    { "label": "RSS", "href": "/rss.xml" },
+    { "label": "知识库", "href": "/kb" }
   ]
 }

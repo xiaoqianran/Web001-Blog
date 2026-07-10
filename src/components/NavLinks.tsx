@@ -7,6 +7,7 @@ import { useEffect, useId, useState } from "react";
 const nav = [
   { href: "/", label: "首页" },
   { href: "/blog", label: "文章" },
+  { href: "/kb", label: "知识库" },
   { href: "/lab/papers", label: "论文" },
   { href: "/lab/feeds", label: "信息流" },
   { href: "/archive", label: "归档" },

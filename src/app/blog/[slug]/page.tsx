@@ -17,6 +17,7 @@ import { ShareButtons } from "@/components/ShareButtons";
 import { Tag } from "@/components/Tag";
 import { TableOfContents } from "@/components/TableOfContents";
 import {
+  flattenDocOrder,
   folderBreadcrumb,
   getDocFolderId,
   loadTreeFromDisk,
@@ -83,16 +84,29 @@ export default async function PostPage({ params }: Props) {
   }
 
   const allPosts = getAllPosts();
-  const index = allPosts.findIndex((p) => p.slug === slug);
-  const prev = index < allPosts.length - 1 ? allPosts[index + 1] : null;
-  const next = index > 0 ? allPosts[index - 1] : null;
+  const tree = loadTreeFromDisk();
+  const treeOrder = flattenDocOrder(tree).filter((s) =>
+    allPosts.some((p) => p.slug === s && !p.draft),
+  );
+  // Prefer knowledge-tree order for prev/next when available
+  const order =
+    treeOrder.length > 0 ? treeOrder : allPosts.map((p) => p.slug);
+  const index = order.indexOf(slug);
+  const prevSlug = index > 0 ? order[index - 1] : null;
+  const nextSlug =
+    index >= 0 && index < order.length - 1 ? order[index + 1] : null;
+  const prev = prevSlug
+    ? allPosts.find((p) => p.slug === prevSlug) ?? null
+    : null;
+  const next = nextSlug
+    ? allPosts.find((p) => p.slug === nextSlug) ?? null
+    : null;
   const related = getRelatedPosts(slug, 3);
   const site = getSiteConfig();
   const siteUrl = (
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
   ).replace(/\/$/, "");
   const pageUrl = `${siteUrl}/blog/${slug}`;
-  const tree = loadTreeFromDisk();
   const folderId = getDocFolderId(tree, slug) ?? post.folder ?? null;
   const crumbs = folderBreadcrumb(tree, folderId);
 
