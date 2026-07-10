@@ -1,0 +1,11 @@
+{
+  "name": "Blog",
+  "tagline": "写一点，记一点",
+  "description": "一个用 Next.js 构建的简洁个人博客，支持 Markdown 文章与标签。",
+  "author": "作者",
+  "about": "这里用来记录技术笔记、产品思考与生活碎片。文章以 Markdown 撰写，放在 content/posts/ 目录，经 Git / 后台发布到 Vercel。",
+  "social": [
+    { "label": "GitHub", "href": "https://github.com/xiaoqianran/Web001-Blog" },
+    { "label": "RSS", "href": "/rss.xml" }
+  ]
+}

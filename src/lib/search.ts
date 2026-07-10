@@ -83,6 +83,8 @@ export function searchPosts(query: string, limit = 50): SearchHit[] {
       tags: doc.tags,
       cover: doc.cover,
       draft: doc.draft,
+      pinned: doc.pinned,
+      series: doc.series,
       readingTime: doc.readingTime,
       score,
       snippet: extractSnippet(snippetSource, terms[0] ?? q),

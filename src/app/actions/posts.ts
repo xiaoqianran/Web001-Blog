@@ -57,7 +57,10 @@ function parsePostForm(formData: FormData): {
   const tags = parseTags(String(formData.get("tags") ?? ""));
   const content = String(formData.get("content") ?? "");
   const cover = String(formData.get("cover") ?? "").trim();
+  const series = String(formData.get("series") ?? "").trim();
   const draft = formData.get("draft") === "on" || formData.get("draft") === "true";
+  const pinned =
+    formData.get("pinned") === "on" || formData.get("pinned") === "true";
 
   const fieldErrors: FieldErrors = {};
 
@@ -84,7 +87,9 @@ function parsePostForm(formData: FormData): {
       tags,
       content,
       draft,
+      pinned,
       cover: cover || undefined,
+      series: series || undefined,
     },
   };
 }

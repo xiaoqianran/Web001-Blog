@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getSiteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "关于",
-  description: "关于这个博客与作者。",
-};
+export function generateMetadata(): Metadata {
+  const site = getSiteConfig();
+  return {
+    title: "关于",
+    description: `关于 ${site.name} 与 ${site.author}`,
+  };
+}
 
 export default function AboutPage() {
+  const site = getSiteConfig();
+
   return (
     <div className="space-y-8">
       <header className="space-y-3">
@@ -14,49 +20,36 @@ export default function AboutPage() {
           关于
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-400">
-          你好，欢迎来到这个用 Next.js 搭建的个人博客。
+          {site.author} · {site.name}
         </p>
       </header>
 
       <div className="prose prose-zinc max-w-none dark:prose-invert">
+        <p>{site.about}</p>
         <p>
-          这里用来记录技术笔记、产品思考与生活碎片。文章以 Markdown
-          撰写，放在项目的 <code>content/posts/</code> 目录下，构建时静态生成。
+          站点标语：{site.tagline}。欢迎从{" "}
+          <Link href="/blog">文章列表</Link>、<Link href="/archive">归档</Link>{" "}
+          或 <Link href="/search">搜索</Link> 开始阅读。
         </p>
-        <h2>技术栈</h2>
-        <ul>
-          <li>
-            <strong>Next.js</strong> — App Router、静态生成
-          </li>
-          <li>
-            <strong>TypeScript</strong> — 类型安全
-          </li>
-          <li>
-            <strong>Tailwind CSS</strong> — 样式与排版
-          </li>
-          <li>
-            <strong>Markdown + gray-matter</strong> — 文章内容与 frontmatter
-          </li>
-        </ul>
-        <h2>如何写文章</h2>
-        <p>
-          在 <code>content/posts/</code> 新建 <code>.md</code> 文件，例如{" "}
-          <code>my-first-post.md</code>：
-        </p>
-        <pre>
-          <code>{`---
-title: "文章标题"
-description: "一句话摘要"
-date: "2026-07-10"
-tags: ["Next.js", "笔记"]
----
-
-正文从这里开始……`}</code>
-        </pre>
-        <p>
-          保存后刷新本地开发服务器，文章就会出现在{" "}
-          <Link href="/blog">文章列表</Link> 中。
-        </p>
+        {site.social.length > 0 && (
+          <>
+            <h2>链接</h2>
+            <ul>
+              {site.social.map((s) => (
+                <li key={s.href + s.label}>
+                  <a
+                    href={s.href}
+                    {...(s.href.startsWith("http")
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </div>
     </div>
   );

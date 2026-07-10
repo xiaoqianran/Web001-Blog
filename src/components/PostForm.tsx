@@ -18,6 +18,8 @@ export type PostFormValues = {
   content: string;
   draft?: boolean;
   cover?: string;
+  pinned?: boolean;
+  series?: string;
 };
 
 type Props = {
@@ -167,7 +169,20 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
           />
         </div>
 
-        <div className="sm:col-span-2">
+        <div className="space-y-2 sm:col-span-2">
+          <label htmlFor="series" className={labelClass}>
+            系列（可选）
+          </label>
+          <input
+            id="series"
+            name="series"
+            defaultValue={initial.series ?? ""}
+            className={inputClass}
+            placeholder="例如：Next.js 入门"
+          />
+        </div>
+
+        <div className="space-y-3 sm:col-span-2">
           <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-zinc-200 px-4 py-3 dark:border-zinc-700">
             <input
               type="checkbox"
@@ -182,6 +197,23 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
               </span>
               <span className="mt-0.5 block text-xs text-zinc-500 dark:text-zinc-400">
                 草稿不会出现在首页、列表、搜索、RSS 与 sitemap
+              </span>
+            </span>
+          </label>
+          <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-zinc-200 px-4 py-3 dark:border-zinc-700">
+            <input
+              type="checkbox"
+              name="pinned"
+              value="true"
+              defaultChecked={Boolean(initial.pinned)}
+              className="mt-1 h-4 w-4 rounded border-zinc-300 text-violet-600 focus:ring-violet-500"
+            />
+            <span>
+              <span className="block text-sm font-medium text-zinc-800 dark:text-zinc-200">
+                首页置顶
+              </span>
+              <span className="mt-0.5 block text-xs text-zinc-500 dark:text-zinc-400">
+                在首页「置顶」区域展示（仅已发布文章）
               </span>
             </span>
           </label>

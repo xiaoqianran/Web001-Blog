@@ -124,6 +124,30 @@ UniqueDraftTokenXYZ body
   }
 });
 
+test("getArchiveTree groups published posts", async () => {
+  const { getArchiveTree, getAllPosts } = await loadTs("src/lib/posts.ts");
+  const tree = getArchiveTree();
+  const total = getAllPosts().length;
+  const counted = tree.reduce(
+    (n, y) => n + y.months.reduce((m, mo) => m + mo.posts.length, 0),
+    0,
+  );
+  assert.equal(counted, total);
+  if (total > 0) {
+    assert.ok(tree.length >= 1);
+    assert.ok(tree[0].year);
+    assert.ok(tree[0].months.length >= 1);
+  }
+});
+
+test("getSiteConfig loads content/site.json", async () => {
+  const { getSiteConfig } = await loadTs("src/lib/site.ts");
+  const site = getSiteConfig();
+  assert.ok(site.name);
+  assert.ok(site.tagline);
+  assert.ok(Array.isArray(site.social));
+});
+
 test("content/posts sample files are healthy", () => {
   const dir = path.join(root, "content/posts");
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));

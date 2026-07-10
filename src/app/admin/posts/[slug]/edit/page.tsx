@@ -71,6 +71,8 @@ export default async function EditPostPage({ params }: Props) {
             content: post.content,
             draft: post.draft,
             cover: post.cover ?? "",
+            pinned: post.pinned,
+            series: post.series ?? "",
           }}
         />
       </div>
