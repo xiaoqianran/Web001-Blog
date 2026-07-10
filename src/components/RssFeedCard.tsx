@@ -2,6 +2,10 @@
 
 import type { RssFeedItem } from "@/lib/rss-feeds-display";
 import { formatFeedTime } from "@/lib/rss-feeds-display";
+import {
+  CaptureNoteButton,
+  type CaptureFolderOption,
+} from "@/components/CaptureNoteButton";
 import { useLabLang } from "@/components/LabLangProvider";
 import { LabLangToggle } from "@/components/LabLangToggle";
 import { pickLocalized } from "@/lib/lab-lang";
@@ -9,9 +13,18 @@ import { pickLocalized } from "@/lib/lab-lang";
 type Props = {
   item: RssFeedItem;
   index: number;
+  captureFolders?: CaptureFolderOption[];
+  captureLoggedIn?: boolean;
+  returnTo?: string;
 };
 
-export function RssFeedCard({ item, index }: Props) {
+export function RssFeedCard({
+  item,
+  index,
+  captureFolders = [],
+  captureLoggedIn = false,
+  returnTo = "/lab/feeds",
+}: Props) {
   const { lang } = useLabLang();
   const title = pickLocalized(lang, item.title, item.titleZh);
   const summary = pickLocalized(lang, item.summary, item.summaryZh);
@@ -85,6 +98,18 @@ export function RssFeedCard({ item, index }: Props) {
           >
             讨论
           </a>
+        )}
+        {item.link && (
+          <CaptureNoteButton
+            kind="feed"
+            title={item.title}
+            summary={summary || item.summary || ""}
+            sourceUrl={item.link}
+            idHint={item.id || item.link}
+            returnTo={returnTo}
+            folders={captureFolders}
+            loggedIn={captureLoggedIn}
+          />
         )}
       </div>
     </article>

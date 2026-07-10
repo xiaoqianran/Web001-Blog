@@ -1119,3 +1119,71 @@ Inline \`[[also-not]]\` stays raw.
   );
   assert.match(blogPage, /Backlinks|collectBacklinks/);
 });
+
+test("lab-capture: build draft PostInput with folder and source URL", async () => {
+  const { buildLabCapturePost, uniquifySlug } = await loadTs(
+    "src/lib/lab-capture.ts",
+  );
+  const paper = buildLabCapturePost({
+    kind: "paper",
+    title: "Attention Is All You Need",
+    summary: "Transformers abstract",
+    sourceUrl: "https://huggingface.co/papers/1706.03762",
+    idHint: "1706.03762",
+    folder: "notes/papers",
+    extraLinks: [{ label: "arXiv", url: "https://arxiv.org/abs/1706.03762" }],
+  });
+  assert.equal(paper.draft, true);
+  assert.ok(paper.tags.includes("from-lab") || paper.tags.includes("lab"));
+  assert.equal(paper.folder, "notes/papers");
+  assert.match(paper.content, /huggingface\.co\/papers/);
+  assert.match(paper.content, /arxiv\.org/);
+  assert.match(paper.slug, /^lab-/);
+  assert.ok(paper.title.includes("Attention") || paper.title.includes("论文"));
+
+  const feed = buildLabCapturePost({
+    kind: "feed",
+    title: "HN Story",
+    summary: "hello",
+    sourceUrl: "https://news.ycombinator.com/item?id=1",
+    idHint: "hn-1",
+  });
+  assert.equal(feed.draft, true);
+  assert.ok(feed.tags.includes("from-lab") || feed.tags.includes("lab"));
+  assert.match(feed.content, /news\.ycombinator\.com/);
+  assert.equal(feed.folder, undefined);
+
+  const taken = new Set(["lab-foo"]);
+  assert.equal(uniquifySlug("lab-foo", (s) => taken.has(s)), "lab-foo-2");
+  assert.equal(uniquifySlug("lab-bar", (s) => taken.has(s)), "lab-bar");
+
+  // action wiring
+  const cap = fs.readFileSync(
+    path.join(root, "src/app/actions/capture.ts"),
+    "utf8",
+  );
+  assert.match(cap, /captureLabNoteAction/);
+  assert.match(cap, /registerDocInTreeBestEffort/);
+  assert.match(cap, /githubWritePost|writePost/);
+  assert.match(cap, /login\?from=/);
+  assert.ok(!/\bsaveTreeToDisk\s*\(/.test(cap));
+  assert.ok(!/\bloadTreeFromDisk\s*\(/.test(cap));
+
+  const btn = fs.readFileSync(
+    path.join(root, "src/components/CaptureNoteButton.tsx"),
+    "utf8",
+  );
+  assert.match(btn, /capture-note-button|存为笔记/);
+  assert.match(btn, /folder/);
+
+  const papers = fs.readFileSync(
+    path.join(root, "src/app/lab/papers/page.tsx"),
+    "utf8",
+  );
+  assert.match(papers, /CaptureNote|captureFolders|captureLoggedIn/);
+  const feeds = fs.readFileSync(
+    path.join(root, "src/app/lab/feeds/page.tsx"),
+    "utf8",
+  );
+  assert.match(feeds, /captureFolders|CaptureNote/);
+});

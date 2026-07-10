@@ -6,15 +6,28 @@ import {
   paperDisplaySummary,
   paperDisplayTitle,
 } from "@/lib/hf-paper-shared";
+import {
+  CaptureNoteButton,
+  type CaptureFolderOption,
+} from "@/components/CaptureNoteButton";
 import { LabLangToggle } from "@/components/LabLangToggle";
 import { useLabLang } from "@/components/LabLangProvider";
 
 type Props = {
   paper: HfPaperItem;
   index: number;
+  captureFolders?: CaptureFolderOption[];
+  captureLoggedIn?: boolean;
+  returnTo?: string;
 };
 
-export function HfPaperCard({ paper, index }: Props) {
+export function HfPaperCard({
+  paper,
+  index,
+  captureFolders = [],
+  captureLoggedIn = false,
+  returnTo = "/lab/papers",
+}: Props) {
   const { lang } = useLabLang();
   const canZh = hasChineseSummary(paper);
   // Global lab lang; fall back to EN display when this card has no zh fields
@@ -94,6 +107,19 @@ export function HfPaperCard({ paper, index }: Props) {
             PDF
           </a>
         )}
+        <CaptureNoteButton
+          kind="paper"
+          title={paper.title}
+          summary={summary || paper.summary}
+          sourceUrl={paper.urls.hf}
+          idHint={paper.id}
+          authors={paper.authors.slice(0, 12).join(", ")}
+          extraArxiv={paper.urls.arxiv ?? ""}
+          extraPdf={paper.urls.pdf ?? ""}
+          returnTo={returnTo}
+          folders={captureFolders}
+          loggedIn={captureLoggedIn}
+        />
       </div>
     </article>
   );
