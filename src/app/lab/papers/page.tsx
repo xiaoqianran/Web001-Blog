@@ -119,10 +119,8 @@ export default async function HfPapersPage({ searchParams }: Props) {
                     </p>
                   )}
                   {paper.summary && (
-                    <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                      {paper.summary.length > 420
-                        ? `${paper.summary.slice(0, 420)}…`
-                        : paper.summary}
+                    <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                      {paper.summary}
                     </p>
                   )}
                   <div className="mt-4 flex flex-wrap gap-3 text-sm">

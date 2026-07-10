@@ -50,7 +50,8 @@ function normalizeItem(raw, index) {
   return {
     id: String(id),
     title: String(title),
-    summary: String(summary).slice(0, 2000),
+    // Keep full abstract from HF/arXiv (no UI-style ellipsis truncation).
+    summary: String(summary).trim(),
     authors,
     publishedAt,
     submittedOnDailyAt,
