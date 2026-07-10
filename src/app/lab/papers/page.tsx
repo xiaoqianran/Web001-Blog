@@ -13,12 +13,13 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-  searchParams: Promise<{ date?: string }>;
+  searchParams: Promise<{ date?: string; captureError?: string }>;
 };
 
 export default async function HfPapersPage({ searchParams }: Props) {
   const sp = await searchParams;
   const preferred = typeof sp.date === "string" ? sp.date : undefined;
+  const captureError = typeof sp.captureError === "string" ? sp.captureError : "";
   const { date, data, availableDates } = getHfDailyOrFallback(preferred);
   const dates = availableDates.length ? availableDates : listHfDailyDates();
   const session = await getSession();
@@ -64,6 +65,19 @@ export default async function HfPapersPage({ searchParams }: Props) {
           全局同步。不进入主文章流——深度解读仍人工筛选发博。
         </p>
       </header>
+
+      {captureError && (
+        <p
+          className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-200"
+          data-testid="capture-error"
+        >
+          {captureError === "no-github"
+            ? "Vercel 未配置 GITHUB_TOKEN，无法保存笔记。"
+            : captureError === "missing"
+              ? "缺少标题或来源链接，无法存为笔记。"
+              : "保存笔记失败，请稍后重试。"}
+        </p>
+      )}
 
       {dates.length > 0 && (
         <div className="flex flex-wrap gap-2">

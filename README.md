@@ -27,6 +27,9 @@
 | 文件夹知识树 | ✅ | `content/tree.json` + 子目录 |
 | 模板 / 导入导出 md / ⌘K | ✅ | |
 | 回收站软删除 | ✅ | `/admin/trash` |
+| 双链 `[[slug]]` + 反链 | ✅ | 正文 + 文章页/编辑侧栏 |
+| Lab 存为笔记 | ✅ | `/lab/papers` · `/lab/feeds` → 草稿 |
+| 内容源徽章 / Git 历史 | ✅ | Admin 与编辑页 |
 | MD 预览 / 筛选 / 上传 | ✅ | |
 | GitHub 写文 | ✅ | `GITHUB_TOKEN` |
 | site.json 品牌配置 | ✅ | |
