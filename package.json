@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "node --experimental-strip-types --test scripts/smoke.test.mjs",
-    "ci": "npm run lint && npm test && npm run build"
+    "ci": "npm run lint && npm test && npm run build",
+    "fetch:hf-daily": "node scripts/fetch-hf-daily.mjs"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
