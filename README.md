@@ -60,12 +60,15 @@ node -e "require('bcryptjs').hash('your-password',10).then(console.log)"
 
 ### Vercel
 
-Vercel 的 Serverless 文件系统**只读**，在线后台**不能持久保存**文章。请：
+Vercel 磁盘只读。配置 **`GITHUB_TOKEN`** 后，后台保存/删除会通过 **GitHub Contents API** 写入 `content/posts/`，并触发自动重新部署（约 1 分钟后前台更新）。
 
-1. 在本地编辑 `content/posts/*.md` 后 `git push`，或  
-2. 使用 Docker 自托管以获得可写后台。
+| 变量 | 说明 |
+|------|------|
+| `GITHUB_TOKEN` | 有该仓库写权限的 PAT（contents:write / classic `repo`） |
+| `GITHUB_REPO` | 可选，默认 `VERCEL_GIT_REPO_OWNER/SLUG` 或 `xiaoqianran/Web001-Blog` |
+| `GITHUB_BRANCH` | 可选，默认 `main` |
 
-登录、前台阅读在 Vercel 上均可用。
+未配置 Token 时仍可用登录与阅读；写文章会提示配置 Token。
 
 ## 脚本
 

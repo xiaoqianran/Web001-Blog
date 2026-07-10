@@ -3,6 +3,7 @@ import Link from "next/link";
 import { logout } from "@/app/actions/auth";
 import { DeletePostButton } from "@/components/DeletePostButton";
 import { isStaticExport } from "@/lib/deploy";
+import { isGitHubContentEnabled } from "@/lib/github-content";
 import { getAllPosts, getAllTags, formatDate } from "@/lib/posts";
 import { requireSession } from "@/lib/session";
 
@@ -17,6 +18,7 @@ type Props = {
     updated?: string;
     deleted?: string;
     error?: string;
+    via?: string;
   }>;
 };
 
@@ -30,22 +32,38 @@ export default async function AdminPage({ searchParams }: Props) {
   const posts = getAllPosts();
   const tags = getAllTags();
   const params = await searchParams;
+  const viaGithub = params.via === "github";
+  const gitEnabled = isGitHubContentEnabled();
+  const onVercel = Boolean(process.env.VERCEL);
+
+  const githubHint = viaGithub
+    ? " 已提交到 GitHub，Vercel 重新部署后前台会更新（通常约 1 分钟）。"
+    : "";
 
   const flash =
     params.created
-      ? { type: "ok" as const, text: `已发布文章：${params.created}` }
+      ? {
+          type: "ok" as const,
+          text: `已发布文章：${params.created}${githubHint}`,
+        }
       : params.updated
-        ? { type: "ok" as const, text: `已更新文章：${params.updated}` }
+        ? {
+            type: "ok" as const,
+            text: `已更新文章：${params.updated}${githubHint}`,
+          }
         : params.deleted
-          ? { type: "ok" as const, text: `已删除文章：${params.deleted}` }
+          ? {
+              type: "ok" as const,
+              text: `已删除文章：${params.deleted}${githubHint}`,
+            }
           : params.error === "notfound"
             ? { type: "err" as const, text: "文章不存在或已被删除" }
             : params.error === "delete"
-              ? { type: "err" as const, text: "删除失败，请检查写入权限" }
+              ? { type: "err" as const, text: "删除失败，请检查 GitHub Token 权限" }
               : params.error === "readonly"
                 ? {
                     type: "err" as const,
-                    text: "Vercel 环境为只读文件系统，无法在线增删文章，请用 Git 更新 content/posts",
+                    text: "未配置 GITHUB_TOKEN：Vercel 无法写盘。请在环境变量中添加有 contents:write 权限的 Token。",
                   }
                 : null;
 
@@ -96,6 +114,39 @@ export default async function AdminPage({ searchParams }: Props) {
           {flash.text}
         </p>
       )}
+
+      <div
+        className={`rounded-xl border px-4 py-3 text-sm ${
+          gitEnabled
+            ? "border-violet-200 bg-violet-50 text-violet-900 dark:border-violet-900/50 dark:bg-violet-950/30 dark:text-violet-200"
+            : onVercel
+              ? "border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-200"
+              : "border-zinc-200 bg-zinc-50 text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-400"
+        }`}
+      >
+        {gitEnabled ? (
+          <>
+            <span className="font-medium">存储：GitHub</span>
+            <span className="mx-1.5">·</span>
+            保存文章会提交到仓库并触发 Vercel 重新部署。
+          </>
+        ) : onVercel ? (
+          <>
+            <span className="font-medium">存储未就绪</span>
+            <span className="mx-1.5">·</span>
+            请配置环境变量 <code className="text-xs">GITHUB_TOKEN</code>{" "}
+            才能在线写文章。
+          </>
+        ) : (
+          <>
+            <span className="font-medium">存储：本地磁盘</span>
+            <span className="mx-1.5">·</span>
+            写入 <code className="text-xs">content/posts/</code>
+            。配置 <code className="text-xs">GITHUB_TOKEN</code> 可改为提交到
+            GitHub。
+          </>
+        )}
+      </div>
 
       <section className="grid gap-4 sm:grid-cols-3">
         <StatCard label="文章" value={posts.length} />

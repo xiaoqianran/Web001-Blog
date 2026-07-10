@@ -2,6 +2,13 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import {
+  githubDeletePost,
+  githubPostExists,
+  githubRenamePost,
+  githubWritePost,
+  isGitHubContentEnabled,
+} from "@/lib/github-content";
 import { getSession } from "@/lib/session";
 import {
   deletePostFile,
@@ -16,6 +23,7 @@ import {
 export type PostFormState = {
   error?: string;
   fieldErrors?: Partial<Record<keyof PostInput | "form", string>>;
+  notice?: string;
 } | undefined;
 
 async function requireAdmin() {
@@ -85,19 +93,37 @@ function revalidatePostPaths(slug: string, previousSlug?: string) {
   revalidatePath("/tags", "layout");
   revalidatePath("/rss.xml");
   revalidatePath("/sitemap.xml");
+  revalidatePath("/search");
   if (previousSlug && previousSlug !== slug) {
     revalidatePath(`/blog/${previousSlug}`);
   }
 }
 
-function serverlessWriteBlocked(): PostFormState {
-  if (process.env.VERCEL) {
+/** Prefer GitHub API whenever GITHUB_TOKEN is set. */
+function shouldUseGitBackend(): boolean {
+  return isGitHubContentEnabled();
+}
+
+function missingGitHubTokenOnVercel(): PostFormState {
+  if (process.env.VERCEL && !isGitHubContentEnabled()) {
     return {
       error:
-        "当前部署在 Vercel Serverless，文件系统只读，无法在线保存文章。请通过 Git 提交 content/posts，或使用 Docker 自托管。",
+        "Vercel 文件系统只读。请在 Vercel 环境变量中配置 GITHUB_TOKEN（需 repo 写权限），保存文章将提交到 GitHub 并自动重新部署。",
     };
   }
   return undefined;
+}
+
+async function slugTaken(slug: string): Promise<boolean> {
+  if (shouldUseGitBackend()) {
+    // Prefer live GitHub state when available
+    try {
+      return await githubPostExists(slug);
+    } catch {
+      return postExists(slug);
+    }
+  }
+  return postExists(slug);
 }
 
 export async function createPost(
@@ -105,7 +131,7 @@ export async function createPost(
   formData: FormData,
 ): Promise<PostFormState> {
   await requireAdmin();
-  const blocked = serverlessWriteBlocked();
+  const blocked = missingGitHubTokenOnVercel();
   if (blocked) return blocked;
 
   const { input, fieldErrors } = parsePostForm(formData);
@@ -113,7 +139,7 @@ export async function createPost(
     return { fieldErrors, error: "请检查表单后重试" };
   }
 
-  if (postExists(input.slug)) {
+  if (await slugTaken(input.slug)) {
     return {
       error: "该 slug 已存在",
       fieldErrors: { slug: "该 slug 已被使用，请换一个" },
@@ -121,10 +147,22 @@ export async function createPost(
   }
 
   try {
+    if (shouldUseGitBackend()) {
+      await githubWritePost(input);
+      revalidatePostPaths(input.slug);
+      redirect(
+        `/admin?created=${encodeURIComponent(input.slug)}&via=github`,
+      );
+    }
     writePost(input);
   } catch (err) {
     console.error("createPost failed:", err);
-    return { error: "保存失败，请检查服务器写入权限" };
+    return {
+      error:
+        err instanceof Error
+          ? `保存失败：${err.message}`
+          : "保存失败，请检查权限配置",
+    };
   }
 
   revalidatePostPaths(input.slug);
@@ -136,12 +174,25 @@ export async function updatePost(
   formData: FormData,
 ): Promise<PostFormState> {
   await requireAdmin();
-  const blocked = serverlessWriteBlocked();
+  const blocked = missingGitHubTokenOnVercel();
   if (blocked) return blocked;
 
-  const originalSlug = String(formData.get("originalSlug") ?? "").trim().toLowerCase();
-  if (!originalSlug || !isValidSlug(originalSlug) || !postExists(originalSlug)) {
+  const originalSlug = String(formData.get("originalSlug") ?? "")
+    .trim()
+    .toLowerCase();
+  if (!originalSlug || !isValidSlug(originalSlug)) {
     return { error: "原文章不存在" };
+  }
+
+  // On GitHub backend, existence may lag local fs after a prior commit
+  if (!shouldUseGitBackend() && !postExists(originalSlug)) {
+    return { error: "原文章不存在" };
+  }
+  if (shouldUseGitBackend()) {
+    const exists =
+      (await githubPostExists(originalSlug).catch(() => false)) ||
+      postExists(originalSlug);
+    if (!exists) return { error: "原文章不存在" };
   }
 
   const { input, fieldErrors } = parsePostForm(formData);
@@ -149,7 +200,7 @@ export async function updatePost(
     return { fieldErrors, error: "请检查表单后重试" };
   }
 
-  if (input.slug !== originalSlug && postExists(input.slug)) {
+  if (input.slug !== originalSlug && (await slugTaken(input.slug))) {
     return {
       error: "该 slug 已存在",
       fieldErrors: { slug: "该 slug 已被使用，请换一个" },
@@ -157,10 +208,22 @@ export async function updatePost(
   }
 
   try {
+    if (shouldUseGitBackend()) {
+      await githubRenamePost(originalSlug, input);
+      revalidatePostPaths(input.slug, originalSlug);
+      redirect(
+        `/admin?updated=${encodeURIComponent(input.slug)}&via=github`,
+      );
+    }
     renamePost(originalSlug, input);
   } catch (err) {
     console.error("updatePost failed:", err);
-    return { error: "保存失败，请检查服务器写入权限" };
+    return {
+      error:
+        err instanceof Error
+          ? `保存失败：${err.message}`
+          : "保存失败，请检查权限配置",
+    };
   }
 
   revalidatePostPaths(input.slug, originalSlug);
@@ -169,17 +232,22 @@ export async function updatePost(
 
 export async function deletePost(formData: FormData) {
   await requireAdmin();
-  if (process.env.VERCEL) {
+
+  if (process.env.VERCEL && !isGitHubContentEnabled()) {
     redirect("/admin?error=readonly");
   }
 
   const slug = String(formData.get("slug") ?? "").trim().toLowerCase();
-  if (!slug || !isValidSlug(slug) || !postExists(slug)) {
+  if (!slug || !isValidSlug(slug)) {
     redirect("/admin?error=notfound");
   }
 
   try {
-    // Touch file once so missing posts fail clearly
+    if (shouldUseGitBackend()) {
+      await githubDeletePost(slug);
+      revalidatePostPaths(slug);
+      redirect(`/admin?deleted=${encodeURIComponent(slug)}&via=github`);
+    }
     getPostBySlug(slug);
     deletePostFile(slug);
   } catch (err) {
