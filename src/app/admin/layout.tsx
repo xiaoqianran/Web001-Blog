@@ -2,6 +2,10 @@ import Link from "next/link";
 import { isStaticExport } from "@/lib/deploy";
 import { requireSession } from "@/lib/session";
 
+/**
+ * Admin shell breaks out of the public reading column (`main.max-w-3xl`)
+ * so write tools (Markdown editor + live preview) have room to breathe.
+ */
 export default async function AdminLayout({
   children,
 }: {
@@ -28,5 +32,13 @@ export default async function AdminLayout({
   }
 
   await requireSession();
-  return children;
+
+  return (
+    <div
+      className="admin-wide-shell relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 px-4 sm:px-6 lg:px-10"
+      data-testid="admin-wide-shell"
+    >
+      <div className="mx-auto w-full max-w-6xl xl:max-w-7xl">{children}</div>
+    </div>
+  );
 }

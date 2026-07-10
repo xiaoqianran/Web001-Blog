@@ -3,7 +3,6 @@
 import Link from "next/link";
 import {
   useActionState,
-  useCallback,
   useEffect,
   useRef,
   useState,
@@ -15,6 +14,8 @@ import {
   type PostFormState,
 } from "@/app/actions/posts";
 import { uploadImage } from "@/app/actions/upload";
+import { MarkdownEditor } from "@/components/MarkdownEditor";
+import { appendMarkdown } from "@/lib/markdown-form";
 import { slugifyTitle } from "@/lib/slugify";
 
 export type PostFormValues = {
@@ -53,37 +54,13 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
 
   const [title, setTitle] = useState(initial.title);
   const [content, setContent] = useState(initial.content);
-  const [previewHtml, setPreviewHtml] = useState("");
-  const [showPreview, setShowPreview] = useState(true);
   const [uploadMsg, setUploadMsg] = useState<string | null>(null);
   const [uploading, startUpload] = useTransition();
 
   const [slugOverride, setSlugOverride] = useState<string | null>(
     mode === "edit" ? initial.slug : null,
   );
-  const slug =
-    slugOverride !== null ? slugOverride : slugifyTitle(title);
-
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const { remark } = await import("remark");
-        const remarkGfm = (await import("remark-gfm")).default;
-        const remarkHtml = (await import("remark-html")).default;
-        const file = await remark()
-          .use(remarkGfm)
-          .use(remarkHtml)
-          .process(content || " ");
-        if (!cancelled) setPreviewHtml(String(file));
-      } catch {
-        if (!cancelled) setPreviewHtml("<p>（预览失败）</p>");
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [content]);
+  const slug = slugOverride !== null ? slugOverride : slugifyTitle(title);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -96,24 +73,6 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const insertAtCursor = useCallback((snippet: string) => {
-    const el = document.getElementById("content") as HTMLTextAreaElement | null;
-    if (!el) {
-      setContent((c) => `${c}\n${snippet}\n`);
-      return;
-    }
-    const start = el.selectionStart;
-    const end = el.selectionEnd;
-    const next =
-      content.slice(0, start) + snippet + content.slice(end);
-    setContent(next);
-    requestAnimationFrame(() => {
-      el.focus();
-      const pos = start + snippet.length;
-      el.setSelectionRange(pos, pos);
-    });
-  }, [content]);
-
   const onPickFile = (file: File | null) => {
     if (!file) return;
     setUploadMsg(null);
@@ -125,13 +84,20 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
         setUploadMsg(res.error);
         return;
       }
-      insertAtCursor(`\n![${file.name}](${res.path})\n`);
+      setContent((c) =>
+        appendMarkdown(c, `![${file.name}](${res.path})`),
+      );
       setUploadMsg(`已插入：${res.path}`);
     });
   };
 
   return (
-    <form ref={formRef} action={formAction} className="space-y-6">
+    <form
+      ref={formRef}
+      action={formAction}
+      className="space-y-6"
+      data-testid="post-form"
+    >
       {mode === "edit" && originalSlug && (
         <input type="hidden" name="originalSlug" value={originalSlug} />
       )}
@@ -269,19 +235,17 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
         </div>
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <label htmlFor="content" className={labelClass}>
-            正文（Markdown）
-          </label>
+          <div>
+            <label htmlFor="content" className={labelClass}>
+              正文（Markdown）
+            </label>
+            <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">
+              工具栏支持标题 / 列表 / 代码 / 链接 / 图片；可切换 编辑 · 分栏 · 预览
+            </p>
+          </div>
           <div className="flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setShowPreview((v) => !v)}
-              className="rounded-lg border border-zinc-200 px-2.5 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:text-zinc-300"
-            >
-              {showPreview ? "隐藏预览" : "显示预览"}
-            </button>
             <button
               type="button"
               disabled={uploading}
@@ -300,27 +264,15 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
           </div>
         </div>
 
-        <div
-          className={`grid gap-3 ${showPreview ? "lg:grid-cols-2" : ""}`}
-        >
-          <textarea
-            id="content"
-            name="content"
-            required
-            rows={18}
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className={`${inputClass} font-mono text-[13px] leading-relaxed`}
-            placeholder={"## 小节\n\n正文…"}
-            spellCheck={false}
-          />
-          {showPreview && (
-            <div
-              className="prose prose-zinc max-h-[28rem] max-w-none overflow-y-auto rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm dark:prose-invert dark:border-zinc-700 dark:bg-zinc-900/50"
-              dangerouslySetInnerHTML={{ __html: previewHtml }}
-            />
-          )}
-        </div>
+        <MarkdownEditor
+          id="content"
+          name="content"
+          value={content}
+          onChange={setContent}
+          height={560}
+          required
+        />
+
         {uploadMsg && (
           <p className="text-xs text-zinc-500 dark:text-zinc-400">{uploadMsg}</p>
         )}

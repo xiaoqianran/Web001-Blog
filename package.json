@@ -13,6 +13,7 @@
     "fetch:rss": "node scripts/fetch-rss-feeds.mjs"
   },
   "dependencies": {
+    "@uiw/react-md-editor": "^4.1.1",
     "bcryptjs": "^3.0.3",
     "date-fns": "^4.4.0",
     "github-slugger": "^2.0.0",
