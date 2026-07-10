@@ -46,6 +46,7 @@ type Props = {
   initialNotice?: string | null;
   /** Drop ?saved=… from the address bar so refresh reloads latest content without replaying "创建成功" */
   stripSavedQuery?: boolean;
+  githubHistoryUrl?: string | null;
 };
 
 const inputClass =
@@ -60,6 +61,7 @@ export function PostForm({
   originalSlug,
   initialNotice = null,
   stripSavedQuery = false,
+  githubHistoryUrl = null,
 }: Props) {
   const action = mode === "create" ? createPost : updatePost;
   const [state, formAction, pending] = useActionState<PostFormState, FormData>(
@@ -265,6 +267,7 @@ export function PostForm({
         onTitleChange={setTitle}
         slug={slug}
         draft={draft}
+        githubHistoryUrl={githubHistoryUrl}
       />
       {/* Keep named title field for form submit */}
       <input type="hidden" name="title" value={title} required />

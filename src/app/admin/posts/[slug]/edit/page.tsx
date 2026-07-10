@@ -3,12 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PostForm } from "@/components/PostForm";
 import {
+  getGitHubRepoInfo,
   githubPostExists,
   githubReadPost,
   isGitHubContentEnabled,
 } from "@/lib/github-content";
 import { getPostBySlug, getPostSlugs, postExists } from "@/lib/posts";
 import { requireSession } from "@/lib/session";
+import { githubHistoryUrl } from "@/lib/trash";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -104,6 +106,27 @@ export default async function EditPostPage({ params, searchParams }: Props) {
           originalSlug={post.slug}
           initialNotice={initialNotice}
           stripSavedQuery={sp.saved === "1"}
+          githubHistoryUrl={
+            isGitHubContentEnabled()
+              ? (() => {
+                  try {
+                    const { owner, repo } = getGitHubRepoInfo();
+                    const rel =
+                      post.relPath ??
+                      (post.folder
+                        ? `${post.folder}/${post.slug}.md`
+                        : `${post.slug}.md`);
+                    return githubHistoryUrl(
+                      owner,
+                      repo,
+                      `content/posts/${rel}`,
+                    );
+                  } catch {
+                    return null;
+                  }
+                })()
+              : null
+          }
           initial={{
             slug: post.slug,
             title: post.title,

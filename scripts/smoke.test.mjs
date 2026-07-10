@@ -666,3 +666,40 @@ test("content/posts markdown files are healthy when present", () => {
     assert.ok(content.trim().length > 0, `${file} empty body`);
   }
 });
+
+test("trash soft-delete helpers round-trip metadata", async () => {
+  const dir = path.join(root, "content/posts");
+  const trashDir = path.join(dir, "trash");
+  fs.mkdirSync(trashDir, { recursive: true });
+  const src = path.join(dir, "_smoke-trash-me.md");
+  fs.writeFileSync(
+    src,
+    `---
+title: TrashMe
+date: "2026-01-01"
+tags: []
+---
+
+body
+`,
+  );
+  const { softDeleteLocal, listTrash, restoreFromTrashLocal, permanentDeleteLocal } =
+    await loadTs("src/lib/trash.ts");
+  const fn = softDeleteLocal(src, "smoke-trash-me", "notes");
+  assert.ok(!fs.existsSync(src));
+  const listed = listTrash();
+  assert.ok(listed.some((t) => t.filename === fn));
+  const restored = restoreFromTrashLocal(fn);
+  assert.equal(restored.slug, "smoke-trash-me");
+  assert.ok(fs.existsSync(path.join(dir, "notes", "smoke-trash-me.md")));
+  // cleanup
+  const again = softDeleteLocal(
+    path.join(dir, "notes", "smoke-trash-me.md"),
+    "smoke-trash-me",
+    "notes",
+  );
+  permanentDeleteLocal(again);
+  try {
+    fs.rmdirSync(path.join(dir, "notes"));
+  } catch {}
+});

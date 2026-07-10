@@ -1,7 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
-import { deletePost } from "@/app/actions/posts";
+import { softDeletePostAction } from "@/app/actions/trash";
 
 type Props = {
   slug: string;
@@ -15,11 +15,11 @@ export function DeletePostButton({ slug, title }: Props) {
     <form
       action={(formData) => {
         const ok = window.confirm(
-          `确定删除「${title}」？\n\n此操作不可撤销。`,
+          `将「${title}」移入回收站？\n可稍后在回收站恢复。`,
         );
         if (!ok) return;
         startTransition(() => {
-          void deletePost(formData);
+          void softDeletePostAction(formData);
         });
       }}
     >
