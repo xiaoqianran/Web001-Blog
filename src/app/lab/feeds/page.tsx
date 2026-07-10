@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LabLangToggle } from "@/components/LabLangToggle";
+import { RssFeedCard } from "@/components/RssFeedCard";
 import {
-  formatFeedTime,
   getRssFeedsOrFallback,
   listRssFeedDates,
 } from "@/lib/rss-feeds";
 
 export const metadata: Metadata = {
   title: "RSS 信息流",
-  description: "聚合 Hacker News、arXiv 等 RSS/Atom 源的标题与摘要（仅外链）。",
+  description:
+    "聚合 Hacker News、arXiv 等 RSS/Atom 源；标题与摘要支持中文机翻，与论文页语言同步。",
 };
 
 type Props = {
@@ -34,29 +36,25 @@ export default async function RssFeedsPage({ searchParams }: Props) {
         <p className="text-sm font-medium uppercase tracking-widest text-violet-600 dark:text-violet-400">
           Lab
         </p>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-          RSS 信息流
-        </h1>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+            RSS 信息流
+          </h1>
+          <LabLangToggle size="md" />
+        </div>
         <p className="max-w-2xl text-zinc-600 dark:text-zinc-400">
           定时聚合第三方 RSS/Atom（默认 Hacker News + arXiv），只保存标题、摘要与外链，
           <strong className="font-medium text-zinc-800 dark:text-zinc-200">
             不镜像全文
           </strong>
-          ，不进入主文章流。源列表见{" "}
-          <code className="text-violet-600 dark:text-violet-400">
-            content/feeds.json
-          </code>
-          。
-        </p>
-        <p className="text-sm text-zinc-500">
-          也看{" "}
+          。摘要默认中文机翻；语言与{" "}
           <Link
             href="/lab/papers"
             className="font-medium text-violet-600 hover:underline dark:text-violet-400"
           >
             HF 论文热点
-          </Link>
-          。
+          </Link>{" "}
+          全局同步。
         </p>
       </header>
 
@@ -113,6 +111,12 @@ export default async function RssFeedsPage({ searchParams }: Props) {
                 hour12: false,
               })}
             </span>
+            {data.locale?.translated !== false && (
+              <>
+                <span>·</span>
+                <span>含中文机翻</span>
+              </>
+            )}
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -186,60 +190,7 @@ export default async function RssFeedsPage({ searchParams }: Props) {
                   <ul className="space-y-3">
                     {feed.items.map((item, i) => (
                       <li key={`${feed.id}-${item.id}-${i}`}>
-                        <article className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950 sm:p-5">
-                          <div className="mb-1 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
-                            <span className="font-mono text-zinc-400">
-                              #{i + 1}
-                            </span>
-                            {item.publishedAt && (
-                              <time dateTime={item.publishedAt}>
-                                {formatFeedTime(item.publishedAt)}
-                              </time>
-                            )}
-                            {item.author && <span>· {item.author}</span>}
-                          </div>
-                          <h3 className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-                            {item.link ? (
-                              <a
-                                href={item.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:text-violet-600 dark:hover:text-violet-400"
-                              >
-                                {item.title}
-                              </a>
-                            ) : (
-                              item.title
-                            )}
-                          </h3>
-                          {item.summary && (
-                            <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                              {item.summary}
-                            </p>
-                          )}
-                          <div className="mt-3 flex flex-wrap gap-3 text-sm">
-                            {item.link && (
-                              <a
-                                href={item.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="font-medium text-violet-600 hover:underline dark:text-violet-400"
-                              >
-                                原文
-                              </a>
-                            )}
-                            {item.comments && (
-                              <a
-                                href={item.comments}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="font-medium text-zinc-600 hover:underline dark:text-zinc-300"
-                              >
-                                讨论
-                              </a>
-                            )}
-                          </div>
-                        </article>
+                        <RssFeedCard item={item} index={i} />
                       </li>
                     ))}
                   </ul>

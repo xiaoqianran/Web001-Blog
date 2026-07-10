@@ -1,15 +1,9 @@
 import fs from "fs";
 import path from "path";
+import type { RssFeedItem } from "./rss-feeds-display";
 
-export type RssFeedItem = {
-  id: string;
-  title: string;
-  link: string;
-  summary: string;
-  publishedAt: string | null;
-  comments: string | null;
-  author: string | null;
-};
+export type { RssFeedItem };
+export { formatFeedTime } from "./rss-feeds-display";
 
 export type RssFeedSnapshot = {
   id: string;
@@ -30,6 +24,10 @@ export type RssFeedsFile = {
   date: string;
   feedCount: number;
   itemCount: number;
+  locale?: {
+    summaryDefault?: "zh" | "en";
+    translated?: boolean;
+  };
   errors?: { id: string; error: string }[];
   feeds: RssFeedSnapshot[];
 };
@@ -94,11 +92,4 @@ export function getRssFeedsOrFallback(preferredDate?: string): {
     return { date: latest.date, data: latest.data, availableDates };
   }
   return { date: null, data: null, availableDates };
-}
-
-export function formatFeedTime(iso: string | null): string {
-  if (!iso) return "";
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleString("zh-CN", { hour12: false });
 }

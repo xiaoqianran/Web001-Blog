@@ -58,8 +58,10 @@ npm run fetch:rss
 ```
 
 - 源配置：`content/feeds.json`（默认 Hacker News Frontpage、arXiv cs.AI / cs.LG）
-- 页面：`/lab/feeds`（导航「信息流」）
-- 定时：`.github/workflows/rss-feeds.yml`（每 6 小时，可手动 workflow_dispatch）
+- 页面：`/lab/feeds`（导航「信息流」）；标题/摘要支持中文机翻
+- 语言：与 `/lab/papers` **全局同步**（顶栏与卡片上的 中文/EN 任一处切换，全部跟着变）
+- 定时：`.github/workflows/rss-feeds.yml`（每 6 小时，含机翻；可手动 workflow_dispatch）
+- 跳过翻译：`node scripts/fetch-rss-feeds.mjs --no-translate`
 - 加源：编辑 `feeds.json` 后重新 fetch 即可
 
 ## 快速开始

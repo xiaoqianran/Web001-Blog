@@ -1,26 +1,27 @@
 "use client";
 
-import { useState } from "react";
 import type { HfPaperItem } from "@/lib/hf-paper-shared";
 import {
   hasChineseSummary,
   paperDisplaySummary,
   paperDisplayTitle,
 } from "@/lib/hf-paper-shared";
-
-type Lang = "zh" | "en";
+import { LabLangToggle } from "@/components/LabLangToggle";
+import { useLabLang } from "@/components/LabLangProvider";
 
 type Props = {
   paper: HfPaperItem;
   index: number;
-  defaultLang?: Lang;
 };
 
-export function HfPaperCard({ paper, index, defaultLang = "zh" }: Props) {
+export function HfPaperCard({ paper, index }: Props) {
+  const { lang } = useLabLang();
   const canZh = hasChineseSummary(paper);
-  const [lang, setLang] = useState<Lang>(canZh ? defaultLang : "en");
-  const title = paperDisplayTitle(paper, lang);
-  const summary = paperDisplaySummary(paper, lang);
+  // Global lab lang; fall back to EN display when this card has no zh fields
+  const effective = lang === "zh" && canZh ? "zh" : lang === "zh" && !canZh ? "en" : lang;
+  const title = paperDisplayTitle(paper, effective === "zh" ? "zh" : "en");
+  const summary = paperDisplaySummary(paper, effective === "zh" ? "zh" : "en");
+  const showingZh = effective === "zh" && canZh;
 
   return (
     <article className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950 sm:p-6">
@@ -29,32 +30,9 @@ export function HfPaperCard({ paper, index, defaultLang = "zh" }: Props) {
         <span className="font-mono">{paper.id}</span>
         {paper.submitter && <span>· by {paper.submitter}</span>}
         {typeof paper.upvotes === "number" && <span>· ▲ {paper.upvotes}</span>}
-        {canZh && (
-          <span className="ml-auto inline-flex overflow-hidden rounded-full border border-zinc-200 dark:border-zinc-700">
-            <button
-              type="button"
-              onClick={() => setLang("zh")}
-              className={`px-2.5 py-0.5 text-xs font-medium transition ${
-                lang === "zh"
-                  ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                  : "bg-white text-zinc-600 hover:bg-zinc-50 dark:bg-zinc-950 dark:text-zinc-400"
-              }`}
-            >
-              中文
-            </button>
-            <button
-              type="button"
-              onClick={() => setLang("en")}
-              className={`px-2.5 py-0.5 text-xs font-medium transition ${
-                lang === "en"
-                  ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                  : "bg-white text-zinc-600 hover:bg-zinc-50 dark:bg-zinc-950 dark:text-zinc-400"
-              }`}
-            >
-              EN
-            </button>
-          </span>
-        )}
+        <span className="ml-auto">
+          <LabLangToggle />
+        </span>
       </div>
       <h2 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
         <a
@@ -66,7 +44,7 @@ export function HfPaperCard({ paper, index, defaultLang = "zh" }: Props) {
           {title}
         </a>
       </h2>
-      {lang === "zh" && paper.titleZh?.trim() && paper.titleZh !== paper.title && (
+      {showingZh && paper.titleZh?.trim() && paper.titleZh !== paper.title && (
         <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
           {paper.title}
         </p>
@@ -82,9 +60,9 @@ export function HfPaperCard({ paper, index, defaultLang = "zh" }: Props) {
           {summary}
         </p>
       )}
-      {lang === "zh" && canZh && (
+      {showingZh && (
         <p className="mt-2 text-[11px] text-zinc-400 dark:text-zinc-500">
-          机翻摘要，仅供速览；以英文原文与 PDF 为准。
+          机翻摘要，仅供速览；以英文原文与 PDF 为准。切换语言会同步论文与信息流。
         </p>
       )}
       <div className="mt-4 flex flex-wrap gap-3 text-sm">

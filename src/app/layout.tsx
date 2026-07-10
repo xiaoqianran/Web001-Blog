@@ -4,6 +4,7 @@ import { Analytics } from "@/components/Analytics";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { LabLangProvider } from "@/components/LabLangProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { getSiteConfig } from "@/lib/site";
 import "./globals.css";
@@ -96,15 +97,17 @@ export default function RootLayout({
           跳到正文
         </a>
         <ThemeProvider>
-          <Header />
-          <main
-            id="main-content"
-            className="mx-auto w-full max-w-3xl flex-1 px-5 py-10 sm:px-6 sm:py-14"
-          >
-            {children}
-          </main>
-          <Footer />
-          <Analytics />
+          <LabLangProvider>
+            <Header />
+            <main
+              id="main-content"
+              className="mx-auto w-full max-w-3xl flex-1 px-5 py-10 sm:px-6 sm:py-14"
+            >
+              {children}
+            </main>
+            <Footer />
+            <Analytics />
+          </LabLangProvider>
         </ThemeProvider>
       </body>
     </html>

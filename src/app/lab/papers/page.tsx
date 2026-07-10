@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { HfPaperCard } from "@/components/HfPaperCard";
+import { LabLangToggle } from "@/components/LabLangToggle";
 import { getHfDailyOrFallback, listHfDailyDates } from "@/lib/hf-papers";
 
 export const metadata: Metadata = {
   title: "HF 论文热点",
-  description: "Hugging Face Daily Papers 热点速览（自动日更，中文机翻摘要）。",
+  description:
+    "Hugging Face Daily Papers 热点速览（中文机翻摘要，与信息流语言同步）。",
 };
 
 type Props = {
@@ -24,9 +26,12 @@ export default async function HfPapersPage({ searchParams }: Props) {
         <p className="text-sm font-medium uppercase tracking-widest text-violet-600 dark:text-violet-400">
           Lab
         </p>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-          Hugging Face 论文热点
-        </h1>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+            Hugging Face 论文热点
+          </h1>
+          <LabLangToggle size="md" />
+        </div>
         <p className="max-w-2xl text-zinc-600 dark:text-zinc-400">
           自动拉取{" "}
           <a
@@ -37,7 +42,14 @@ export default async function HfPapersPage({ searchParams }: Props) {
           >
             HF Daily Papers
           </a>
-          ，写入仓库后展示；摘要默认中文机翻，可切换英文原文。不进入主文章流——深度解读仍人工筛选发博。
+          ，写入仓库后展示；摘要默认中文机翻。语言与{" "}
+          <Link
+            href="/lab/feeds"
+            className="font-medium text-violet-600 hover:underline dark:text-violet-400"
+          >
+            RSS 信息流
+          </Link>{" "}
+          全局同步。不进入主文章流——深度解读仍人工筛选发博。
         </p>
       </header>
 
@@ -100,7 +112,7 @@ export default async function HfPapersPage({ searchParams }: Props) {
           <ul className="space-y-4">
             {data.papers.map((paper, i) => (
               <li key={paper.id}>
-                <HfPaperCard paper={paper} index={i} defaultLang="zh" />
+                <HfPaperCard paper={paper} index={i} />
               </li>
             ))}
           </ul>
