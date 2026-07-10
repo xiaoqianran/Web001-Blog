@@ -8,9 +8,17 @@ type Props = {
   onTitleChange: (v: string) => void;
   slug: string;
   draft: boolean;
+  /** e.g. content/posts/foo.md for GitHub history */
+  githubHistoryUrl?: string | null;
 };
 
-export function EditorChrome({ title, onTitleChange, slug, draft }: Props) {
+export function EditorChrome({
+  title,
+  onTitleChange,
+  slug,
+  draft,
+  githubHistoryUrl,
+}: Props) {
   const [copied, setCopied] = useState(false);
   const frontPath = draft ? null : `/blog/${slug}`;
 
@@ -64,6 +72,16 @@ export function EditorChrome({ title, onTitleChange, slug, draft }: Props) {
               打开前台 ↗
             </Link>
           </>
+        )}
+        {githubHistoryUrl && (
+          <a
+            href={githubHistoryUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg border border-zinc-200 px-2.5 py-1 font-medium text-zinc-600 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300"
+          >
+            GitHub 历史
+          </a>
         )}
       </div>
     </div>
