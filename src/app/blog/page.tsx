@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { getAllPosts, getAllTags } from "@/lib/posts";
+import { paginate, parsePageParam } from "@/lib/pagination";
+import { Pagination } from "@/components/Pagination";
 import { PostCard } from "@/components/PostCard";
 import { Tag } from "@/components/Tag";
 
@@ -8,9 +10,18 @@ export const metadata: Metadata = {
   description: "浏览博客中的全部文章。",
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+type Props = {
+  searchParams: Promise<{ page?: string }>;
+};
+
+export default async function BlogPage({ searchParams }: Props) {
+  const params = await searchParams;
+  const allPosts = getAllPosts();
   const tags = getAllTags();
+  const { items, page, totalPages, total } = paginate(
+    allPosts,
+    parsePageParam(params.page),
+  );
 
   return (
     <div className="space-y-10">
@@ -19,7 +30,7 @@ export default function BlogPage() {
           全部文章
         </h1>
         <p className="text-zinc-600 dark:text-zinc-400">
-          共 {posts.length} 篇 · 按发布时间倒序排列
+          共 {total} 篇 · 第 {page} / {totalPages} 页 · 按发布时间倒序
         </p>
       </header>
 
@@ -32,14 +43,16 @@ export default function BlogPage() {
       )}
 
       <div className="grid gap-4">
-        {posts.map((post) => (
+        {items.map((post) => (
           <PostCard key={post.slug} post={post} />
         ))}
       </div>
 
-      {posts.length === 0 && (
+      {total === 0 && (
         <p className="text-center text-zinc-500 dark:text-zinc-400">暂无文章</p>
       )}
+
+      <Pagination page={page} totalPages={totalPages} />
     </div>
   );
 }
