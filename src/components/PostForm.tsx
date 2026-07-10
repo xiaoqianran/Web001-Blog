@@ -39,6 +39,8 @@ type Props = {
   mode: "create" | "edit";
   initial: PostFormValues;
   originalSlug?: string;
+  /** From URL ?saved=1 after first create redirect */
+  initialNotice?: string | null;
 };
 
 const inputClass =
@@ -47,7 +49,12 @@ const inputClass =
 const labelClass =
   "block text-sm font-medium text-zinc-700 dark:text-zinc-300";
 
-export function PostForm({ mode, initial, originalSlug }: Props) {
+export function PostForm({
+  mode,
+  initial,
+  originalSlug,
+  initialNotice = null,
+}: Props) {
   const action = mode === "create" ? createPost : updatePost;
   const [state, formAction, pending] = useActionState<PostFormState, FormData>(
     action,
@@ -56,6 +63,7 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
   const imageRef = useRef<HTMLInputElement>(null);
   const mdRef = useRef<HTMLInputElement>(null);
+  const statusRef = useRef<HTMLDivElement>(null);
 
   const [title, setTitle] = useState(initial.title);
   const [content, setContent] = useState(initial.content);
@@ -69,14 +77,36 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
   const [uploadMsg, setUploadMsg] = useState<string | null>(null);
   const [importMsg, setImportMsg] = useState<string | null>(null);
   const [uploading, startUpload] = useTransition();
+  const [bannerNotice, setBannerNotice] = useState<string | null>(
+    initialNotice,
+  );
 
   const [slugOverride, setSlugOverride] = useState<string | null>(
     mode === "edit" ? initial.slug : initial.slug || null,
   );
+  // Hidden field for updatePost: prefer prop, else initial slug
+  const boundOriginalSlug = originalSlug ?? initial.slug;
   const slug =
     slugOverride !== null && slugOverride !== ""
       ? slugOverride
       : slugifyTitle(title);
+
+  const statusError = state?.error;
+  const statusNotice = state?.notice ?? bannerNotice;
+
+  // Scroll status into view near save buttons when it changes
+  useEffect(() => {
+    if ((statusError || statusNotice) && statusRef.current) {
+      statusRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }, [statusError, statusNotice]);
+
+  // Clear URL flash after first paint so refresh doesn't re-show forever
+  useEffect(() => {
+    if (!initialNotice) return;
+    const t = window.setTimeout(() => setBannerNotice(null), 8000);
+    return () => window.clearTimeout(t);
+  }, [initialNotice]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -120,10 +150,7 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
       const raw = await file.text();
       const imported = parseMarkdownImport(raw, file.name);
 
-      // Edit mode: keep original slug unless empty (avoid accidental rename)
       if (mode === "create") {
-        setSlugOverride(imported.slug);
-      } else if (!slugOverride) {
         setSlugOverride(imported.slug);
       }
 
@@ -160,17 +187,8 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
       className="space-y-6"
       data-testid="post-form"
     >
-      {mode === "edit" && originalSlug && (
-        <input type="hidden" name="originalSlug" value={originalSlug} />
-      )}
-
-      {state?.error && (
-        <p
-          role="alert"
-          className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-300"
-        >
-          {state.error}
-        </p>
+      {mode === "edit" && (
+        <input type="hidden" name="originalSlug" value={boundOriginalSlug} />
       )}
 
       <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-dashed border-violet-200 bg-violet-50/60 px-4 py-3 dark:border-violet-900/50 dark:bg-violet-950/30">
@@ -240,6 +258,11 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
             placeholder="my-first-post"
             pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
           />
+          {state?.fieldErrors?.slug && (
+            <p className="text-xs text-red-600 dark:text-red-400">
+              {state.fieldErrors.slug}
+            </p>
+          )}
         </div>
 
         <div className="space-y-2">
@@ -348,7 +371,7 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
               正文（Markdown）
             </label>
             <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">
-              可导入 .md，或工具栏编辑；支持 编辑 · 分栏 · 预览
+              可导入 .md；⌘/Ctrl + S 可多次保存
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
@@ -389,16 +412,24 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
         {uploadMsg && (
           <p className="text-xs text-zinc-500 dark:text-zinc-400">{uploadMsg}</p>
         )}
-        <p className="text-xs text-zinc-400">快捷键 ⌘/Ctrl + S 保存</p>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 border-t border-zinc-200 pt-6 dark:border-zinc-800">
+      {/* Status + actions on the same row (near the save button) */}
+      <div
+        ref={statusRef}
+        className="sticky bottom-0 z-20 -mx-1 flex flex-wrap items-center gap-3 border-t border-zinc-200 bg-white/95 px-1 py-4 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/95"
+        data-testid="post-form-actions"
+      >
         <button
           type="submit"
           disabled={pending}
           className="rounded-xl bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-700 disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900"
         >
-          {pending ? "保存中…" : mode === "create" ? "保存文章" : "保存修改"}
+          {pending
+            ? "保存中…"
+            : mode === "create"
+              ? "保存文章"
+              : "保存修改"}
         </button>
         <Link
           href="/admin"
@@ -406,6 +437,31 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
         >
           取消
         </Link>
+
+        <div className="min-w-0 flex-1 basis-full sm:basis-auto sm:flex-1">
+          {statusError && (
+            <p
+              role="alert"
+              className="text-sm font-medium text-red-600 dark:text-red-400"
+              data-testid="post-form-error"
+            >
+              {statusError}
+            </p>
+          )}
+          {!statusError && statusNotice && (
+            <p
+              className="text-sm font-medium text-emerald-600 dark:text-emerald-400"
+              data-testid="post-form-notice"
+            >
+              {statusNotice}
+            </p>
+          )}
+          {!statusError && !statusNotice && (
+            <p className="text-xs text-zinc-400">
+              ⌘/Ctrl + S 保存 · 可反复保存同一 slug
+            </p>
+          )}
+        </div>
       </div>
     </form>
   );

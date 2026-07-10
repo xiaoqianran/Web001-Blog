@@ -100,6 +100,7 @@ function revalidatePostPaths(slug: string, previousSlug?: string) {
   revalidatePath("/blog");
   revalidatePath("/admin");
   revalidatePath(`/blog/${slug}`);
+  revalidatePath(`/admin/posts/${slug}/edit`);
   revalidatePath("/tags", "layout");
   revalidatePath("/series", "layout");
   revalidatePath("/archive");
@@ -109,10 +110,10 @@ function revalidatePostPaths(slug: string, previousSlug?: string) {
   revalidatePath("/search");
   if (previousSlug && previousSlug !== slug) {
     revalidatePath(`/blog/${previousSlug}`);
+    revalidatePath(`/admin/posts/${previousSlug}/edit`);
   }
 }
 
-/** Prefer GitHub API whenever GITHUB_TOKEN is set. */
 function shouldUseGitBackend(): boolean {
   return isGitHubContentEnabled();
 }
@@ -138,10 +139,8 @@ async function slugTaken(slug: string): Promise<boolean> {
   return postExists(slug);
 }
 
-/** Never swallow Next.js redirect()/notFound() control flow. */
 function rethrowNextControlFlow(err: unknown): void {
   if (isRedirectError(err)) throw err;
-  // digest-based fallback for older runtimes
   if (
     typeof err === "object" &&
     err !== null &&
@@ -156,6 +155,39 @@ function rethrowNextControlFlow(err: unknown): void {
   }
 }
 
+function editUrl(slug: string, opts?: { viaGithub?: boolean; created?: boolean }) {
+  const q = new URLSearchParams();
+  q.set("saved", "1");
+  if (opts?.viaGithub) q.set("via", "github");
+  if (opts?.created) q.set("created", "1");
+  return `/admin/posts/${encodeURIComponent(slug)}/edit?${q.toString()}`;
+}
+
+async function writeOrOverwrite(input: PostInput, existingSlug?: string) {
+  if (shouldUseGitBackend()) {
+    if (existingSlug && existingSlug !== input.slug) {
+      await githubRenamePost(existingSlug, input);
+    } else if (existingSlug) {
+      // Same slug update
+      await githubRenamePost(existingSlug, input);
+    } else {
+      await githubWritePost(input);
+    }
+    return true;
+  }
+  if (existingSlug && existingSlug !== input.slug) {
+    renamePost(existingSlug, input);
+  } else {
+    writePost(input);
+  }
+  return false;
+}
+
+/**
+ * Create or re-save. If the slug already exists (e.g. Ctrl+S again on 新建),
+ * overwrite instead of failing with "slug 已存在".
+ * After first create, jump to edit page so further saves use updatePost.
+ */
 export async function createPost(
   _prev: PostFormState,
   formData: FormData,
@@ -169,20 +201,15 @@ export async function createPost(
     return { fieldErrors, error: "请检查表单后重试" };
   }
 
-  if (await slugTaken(input.slug)) {
-    return {
-      error: "该 slug 已存在",
-      fieldErrors: { slug: "该 slug 已被使用，请换一个" },
-    };
-  }
-
+  const exists = await slugTaken(input.slug);
   let viaGithub = false;
+
   try {
-    if (shouldUseGitBackend()) {
-      await githubWritePost(input);
-      viaGithub = true;
+    if (exists) {
+      // Re-save: treat as update of the same slug (multi Ctrl+S while still on 新建)
+      viaGithub = await writeOrOverwrite(input, input.slug);
     } else {
-      writePost(input);
+      viaGithub = await writeOrOverwrite(input);
     }
   } catch (err) {
     rethrowNextControlFlow(err);
@@ -196,13 +223,19 @@ export async function createPost(
   }
 
   revalidatePostPaths(input.slug);
+  // Land on edit page so subsequent Ctrl+S are normal updates
   redirect(
-    viaGithub
-      ? `/admin?created=${encodeURIComponent(input.slug)}&via=github`
-      : `/admin?created=${encodeURIComponent(input.slug)}`,
+    editUrl(input.slug, {
+      viaGithub,
+      created: !exists,
+    }),
   );
 }
 
+/**
+ * Update stays on the edit page and returns a notice (no redirect),
+ * so authors can Ctrl+S repeatedly while drafting.
+ */
 export async function updatePost(
   _prev: PostFormState,
   formData: FormData,
@@ -233,6 +266,7 @@ export async function updatePost(
     return { fieldErrors, error: "请检查表单后重试" };
   }
 
+  // Renaming to a *different* slug that already exists is still an error
   if (input.slug !== originalSlug && (await slugTaken(input.slug))) {
     return {
       error: "该 slug 已存在",
@@ -242,12 +276,7 @@ export async function updatePost(
 
   let viaGithub = false;
   try {
-    if (shouldUseGitBackend()) {
-      await githubRenamePost(originalSlug, input);
-      viaGithub = true;
-    } else {
-      renamePost(originalSlug, input);
-    }
+    viaGithub = await writeOrOverwrite(input, originalSlug);
   } catch (err) {
     rethrowNextControlFlow(err);
     console.error("updatePost failed:", err);
@@ -260,11 +289,20 @@ export async function updatePost(
   }
 
   revalidatePostPaths(input.slug, originalSlug);
-  redirect(
-    viaGithub
-      ? `/admin?updated=${encodeURIComponent(input.slug)}&via=github`
-      : `/admin?updated=${encodeURIComponent(input.slug)}`,
-  );
+
+  // If slug changed, move browser to the new edit URL once
+  if (input.slug !== originalSlug) {
+    redirect(
+      editUrl(input.slug, { viaGithub }),
+    );
+  }
+
+  const when = new Date().toLocaleTimeString("zh-CN", { hour12: false });
+  return {
+    notice: viaGithub
+      ? `已保存 ${when}（已提交 GitHub，部署约 1 分钟后前台更新）`
+      : `已保存 ${when}`,
+  };
 }
 
 export async function deletePost(formData: FormData) {

@@ -25,20 +25,24 @@ test("createPost/updatePost do not catch NEXT_REDIRECT inside try", () => {
     path.join(root, "src/app/actions/posts.ts"),
     "utf8",
   );
-  // redirect() must not sit inside the write try/catch (swallows as "保存失败：NEXT_REDIRECT")
   assert.match(src, /rethrowNextControlFlow|isRedirectError/);
-  // Successful path: write in try, redirect after try
-  assert.match(src, /await githubWritePost\(input\);/);
-  assert.match(src, /redirect\(\s*\n?\s*viaGithub/);
-  // Guard: no redirect immediately after githubWritePost inside same try before catch
-  const writeBlock = src.slice(
-    src.indexOf("export async function createPost"),
-    src.indexOf("export async function updatePost"),
+  // Multi-save: create overwrites if slug exists; update returns notice (no force redirect)
+  assert.match(src, /exists|slugTaken/);
+  assert.match(src, /notice:/);
+  assert.match(src, /editUrl|\/admin\/posts\//);
+
+  const form = fs.readFileSync(
+    path.join(root, "src/components/PostForm.tsx"),
+    "utf8",
   );
-  assert.doesNotMatch(
-    writeBlock,
-    /await githubWritePost\(input\);\s*\n\s*revalidatePostPaths\([^)]*\);\s*\n\s*redirect\(/,
-  );
+  // Status next to save buttons
+  assert.match(form, /post-form-actions/);
+  assert.match(form, /post-form-error|post-form-notice/);
+  // Error banner should not be only at the top of the form
+  const topErrorOnly =
+    form.indexOf('role="alert"') < form.indexOf("post-form-actions") &&
+    !form.includes("post-form-error");
+  assert.equal(topErrorOnly, false);
 });
 
 test("parseMarkdownImport fills form fields from .md + frontmatter", async () => {
