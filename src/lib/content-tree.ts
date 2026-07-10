@@ -266,3 +266,10 @@ export function reorderDoc(
     }),
   };
 }
+
+/** Register slug in tree.json after save (local disk). */
+export function registerDocInTree(slug: string, folder?: string) {
+  let tree = loadTreeFromDisk();
+  tree = ensureDocInTree(tree, slug, folder || null);
+  saveTreeToDisk(tree);
+}

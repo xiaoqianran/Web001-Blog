@@ -224,7 +224,7 @@ export async function createPost(
 
   revalidatePostPaths(input.slug);
   try {
-    const { registerDocInTree } = await import("@/app/actions/tree");
+    const { registerDocInTree } = await import("@/lib/content-tree");
     registerDocInTree(input.slug, input.folder);
   } catch {
     /* tree optional */
@@ -296,7 +296,7 @@ export async function updatePost(
 
   revalidatePostPaths(input.slug, originalSlug);
   try {
-    const { registerDocInTree } = await import("@/app/actions/tree");
+    const { registerDocInTree } = await import("@/lib/content-tree");
     registerDocInTree(input.slug, input.folder);
   } catch {
     /* tree optional */

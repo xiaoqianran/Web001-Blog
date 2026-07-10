@@ -5,7 +5,6 @@ import { isGitHubContentEnabled } from "@/lib/github-content";
 import {
   addFolderToTree,
   deleteFolderFromTree,
-  ensureDocInTree,
   loadTreeFromDisk,
   moveDocInTree,
   renameFolderInTree,
@@ -151,9 +150,3 @@ export async function syncTreeFromPostsAction() {
   revalidateTree();
 }
 
-// ensure doc registered when saving posts
-export function registerDocInTree(slug: string, folder?: string) {
-  let tree = loadTreeFromDisk();
-  tree = ensureDocInTree(tree, slug, folder || null);
-  saveTreeToDisk(tree);
-}
