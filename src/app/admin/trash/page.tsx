@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  permanentTrashAction,
-  restoreTrashAction,
-} from "@/app/actions/trash";
+import { restoreTrashAction } from "@/app/actions/trash";
+import { PermanentDeleteButton } from "@/components/admin/PermanentDeleteButton";
 import { listTrash } from "@/lib/trash";
 import { requireSession } from "@/lib/session";
 
@@ -78,16 +76,10 @@ export default async function TrashPage({ searchParams }: Props) {
                 恢复
               </button>
             </form>
-            <form action={permanentTrashAction}>
-              <input type="hidden" name="filename" value={it.filename} />
-              <button
-                type="submit"
-                className="text-sm font-medium text-red-600"
-                formAction={permanentTrashAction}
-              >
-                永久删除
-              </button>
-            </form>
+            <PermanentDeleteButton
+              filename={it.filename}
+              title={it.title}
+            />
           </li>
         ))}
         {items.length === 0 && (

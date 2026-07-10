@@ -36,6 +36,8 @@ export type PostFormValues = {
   cover?: string;
   pinned?: boolean;
   series?: string;
+  /** Relative folder under content/posts; "" = root */
+  folder?: string;
 };
 
 type Props = {
@@ -82,6 +84,9 @@ export function PostForm({
   const [series, setSeries] = useState(initial.series ?? "");
   const [draft, setDraft] = useState(Boolean(initial.draft));
   const [pinned, setPinned] = useState(Boolean(initial.pinned));
+  const [folder, setFolder] = useState(
+    (initial.folder ?? "").replace(/^\/+|\/+$/g, ""),
+  );
   const [uploadMsg, setUploadMsg] = useState<string | null>(null);
   const [importMsg, setImportMsg] = useState<string | null>(null);
   const [uploading, startUpload] = useTransition();
@@ -197,15 +202,17 @@ export function PostForm({
       setDraft(imported.draft);
       setPinned(imported.pinned);
       setContent(imported.content);
+      // Keep current folder target for import (create-under-folder / edit path)
 
       const note =
         imported.notes.length > 0
           ? `（${imported.notes.join("；")}）`
           : "";
+      const folderHint = folder ? ` → ${folder}/` : " → 根目录";
       setImportMsg(
         mode === "edit"
-          ? `已导入 ${file.name}，请检查后保存${note}`
-          : `已导入 ${file.name}，请检查 slug 后保存${note}`,
+          ? `已导入 ${file.name}${folderHint}，请检查后保存${note}`
+          : `已导入 ${file.name}${folderHint}，请检查 slug 后保存${note}`,
       );
     } catch (e) {
       setImportMsg(e instanceof Error ? e.message : "导入失败");
@@ -224,6 +231,8 @@ export function PostForm({
       {mode === "edit" && (
         <input type="hidden" name="originalSlug" value={boundOriginalSlug} />
       )}
+      {/* Always send folder so nested posts never silently move to root */}
+      <input type="hidden" name="folder" value={folder} data-testid="post-folder" />
 
       <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-dashed border-violet-200 bg-violet-50/60 px-4 py-3 dark:border-violet-900/50 dark:bg-violet-950/30">
         <div className="min-w-0">
@@ -231,7 +240,8 @@ export function PostForm({
             导入 Markdown 文件
           </p>
           <p className="text-xs text-zinc-500 dark:text-zinc-400">
-            支持带 YAML frontmatter 的 .md；会填充标题、slug、标签、正文等
+            支持 frontmatter；导入到当前文件夹
+            {folder ? `（${folder}/）` : "（根目录）"}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -360,6 +370,22 @@ export function PostForm({
             value={series}
             onChange={(e) => setSeries(e.target.value)}
             className={inputClass}
+          />
+        </div>
+
+        <div className="space-y-2 sm:col-span-2">
+          <label htmlFor="folder-input" className={labelClass}>
+            文件夹路径（相对 content/posts，空=根目录）
+          </label>
+          <input
+            id="folder-input"
+            value={folder}
+            onChange={(e) =>
+              setFolder(e.target.value.replace(/^\/+|\/+$/g, ""))
+            }
+            className={inputClass}
+            placeholder="notes/deep"
+            data-testid="folder-input"
           />
         </div>
 

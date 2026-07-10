@@ -157,20 +157,55 @@ export async function githubListPostRepoPaths(): Promise<string[]> {
     .map((n) => n.path as string);
 }
 
+/** Resolve folder from existing repo path when form omits folder (undefined). */
+function folderFromRepoPath(repoPath: string): string {
+  const under = repoPath.replace(/^content\/posts\//, "");
+  if (!under.includes("/")) return "";
+  return under.split("/").slice(0, -1).join("/");
+}
+
+export async function githubFindPostRepoPath(
+  slug: string,
+): Promise<string | null> {
+  const paths = await githubListPostRepoPaths();
+  const needle = `${slug}.md`;
+  return (
+    paths.find(
+      (p) =>
+        p === `content/posts/${needle}` ||
+        (p.endsWith(`/${needle}`) && !p.includes("/trash/")),
+    ) ?? null
+  );
+}
+
+/**
+ * Write post to GitHub. When input.folder is undefined, keep existing path
+ * (never silently rewrite nested posts to root).
+ */
 export async function githubWritePost(input: PostInput): Promise<void> {
-  const folder = (input.folder ?? "").replace(/^\/+|\/+$/g, "");
-  const path = postPath(input.slug, folder);
-  const sha = await getFileSha(path);
-  // If path unknown, try locate existing slug path for update
-  let usePath = path;
-  let useSha = sha;
-  if (!useSha) {
-    const found = await githubFindPostRepoPath(input.slug);
-    if (found) {
-      usePath = found;
-      useSha = await getFileSha(found);
-    }
+  const found = await githubFindPostRepoPath(input.slug);
+  let folder: string;
+  if (input.folder !== undefined) {
+    folder = String(input.folder).replace(/^\/+|\/+$/g, "");
+  } else if (found) {
+    folder = folderFromRepoPath(found);
+  } else {
+    folder = "";
   }
+
+  const targetPath = postPath(input.slug, folder);
+  let usePath = targetPath;
+  let useSha = await getFileSha(targetPath);
+  // Prefer existing blob path when still same location
+  if (found && found === targetPath) {
+    usePath = found;
+    useSha = (await getFileSha(found)) ?? useSha;
+  } else if (!useSha && found && found !== targetPath) {
+    // Will write new path; old path deleted by rename/move caller
+    usePath = targetPath;
+    useSha = null;
+  }
+
   const payload: PostInput = {
     ...input,
     updatedAt: input.updatedAt || new Date().toISOString(),
@@ -183,15 +218,6 @@ export async function githubWritePost(input: PostInput): Promise<void> {
   await putFile(usePath, content, message, useSha);
 }
 
-async function githubFindPostRepoPath(slug: string): Promise<string | null> {
-  const paths = await githubListPostRepoPaths();
-  const needle = `${slug}.md`;
-  return (
-    paths.find((p) => p === `content/posts/${needle}` || p.endsWith(`/${needle}`)) ??
-    null
-  );
-}
-
 export async function githubDeletePost(slug: string): Promise<void> {
   const found = (await githubFindPostRepoPath(slug)) ?? postPath(slug);
   const sha = await getFileSha(found);
@@ -201,31 +227,152 @@ export async function githubDeletePost(slug: string): Promise<void> {
   await deleteFile(found, `content: delete post ${slug}`, sha);
 }
 
+/**
+ * Soft-delete on GitHub: move to content/posts/trash/{slug}__ts.md
+ * Returns trash filename.
+ */
+export async function githubSoftDeletePost(
+  slug: string,
+): Promise<{ filename: string; folder: string }> {
+  const found = await githubFindPostRepoPath(slug);
+  if (!found) throw new Error("Post not found on GitHub");
+  const post = await githubReadPost(slug);
+  if (!post) throw new Error("Post not found on GitHub");
+  const folder = folderFromRepoPath(found);
+  const filename = `${slug}__${Date.now()}.md`;
+  const trashPath = `content/posts/trash/${filename}`;
+  const body = serializePost({
+    slug: post.slug,
+    title: post.title,
+    description: post.description,
+    date: String(post.date).slice(0, 10),
+    tags: post.tags,
+    content: post.content,
+    draft: post.draft,
+    cover: post.cover,
+    pinned: post.pinned,
+    series: post.series,
+    folder: folder || undefined,
+  });
+  // Embed trash metadata via gray-matter fields in a wrapper
+  const { default: matter } = await import("gray-matter");
+  const parsed = matter(body);
+  const withTrash = matter.stringify(parsed.content, {
+    ...parsed.data,
+    slug,
+    deletedAt: new Date().toISOString(),
+    originalFolder: folder,
+  });
+  await putFile(trashPath, withTrash, `content: trash post ${slug}`, null);
+  const sha = await getFileSha(found);
+  if (sha) {
+    await deleteFile(found, `content: soft-delete ${slug}`, sha);
+  }
+  return { filename, folder };
+}
+
+export async function githubRestoreTrash(filename: string): Promise<{
+  slug: string;
+  folder: string;
+}> {
+  const trashPath = `content/posts/trash/${filename}`;
+  const sha = await getFileSha(trashPath);
+  if (!sha) throw new Error("回收站文件不存在");
+  const { owner, repo, branch } = getConfig();
+  const res = await ghFetch(
+    `/repos/${owner}/${repo}/contents/${encodeURI(trashPath)}?ref=${encodeURIComponent(branch)}`,
+  );
+  if (!res.ok) throw new Error("读取回收站失败");
+  const data = (await res.json()) as { content?: string };
+  if (!data.content) throw new Error("回收站文件为空");
+  const raw = Buffer.from(data.content.replace(/\n/g, ""), "base64").toString(
+    "utf8",
+  );
+  const { default: matter } = await import("gray-matter");
+  const { data: fm, content } = matter(raw);
+  const slug =
+    typeof fm.slug === "string"
+      ? fm.slug
+      : filename.replace(/\.md$/, "").replace(/__\d+$/, "");
+  const folder =
+    typeof fm.originalFolder === "string" ? fm.originalFolder : "";
+  delete fm.deletedAt;
+  delete fm.originalFolder;
+  delete fm.slug;
+  const restored = matter.stringify(content, fm);
+  const dest = postPath(slug, folder);
+  await putFile(dest, restored, `content: restore post ${slug}`, null);
+  await deleteFile(trashPath, `content: remove trash ${filename}`, sha);
+  return { slug, folder };
+}
+
+export async function githubPermanentDeleteTrash(
+  filename: string,
+): Promise<void> {
+  const trashPath = `content/posts/trash/${filename}`;
+  const sha = await getFileSha(trashPath);
+  if (!sha) return;
+  await deleteFile(trashPath, `content: purge trash ${filename}`, sha);
+}
+
+export async function githubListTrashFilenames(): Promise<string[]> {
+  // listPostRepoPaths excludes trash — list contents of trash dir
+  const { owner, repo, branch } = getConfig();
+  const res = await ghFetch(
+    `/repos/${owner}/${repo}/contents/${encodeURI("content/posts/trash")}?ref=${encodeURIComponent(branch)}`,
+  );
+  if (res.status === 404) return [];
+  if (!res.ok) return [];
+  const data = (await res.json()) as { name?: string; type?: string }[] | { message?: string };
+  if (!Array.isArray(data)) return [];
+  return data
+    .filter((n) => n.type === "file" && n.name?.endsWith(".md"))
+    .map((n) => n.name as string);
+}
+
 export async function githubRenamePost(
   oldSlug: string,
   input: PostInput,
 ): Promise<void> {
-  const folder = (input.folder ?? "").replace(/^\/+|\/+$/g, "");
+  const oldPath = await githubFindPostRepoPath(oldSlug);
+  // Resolve destination folder without defaulting nested → root
+  let folder: string;
+  if (input.folder !== undefined) {
+    folder = String(input.folder).replace(/^\/+|\/+$/g, "");
+  } else if (oldPath) {
+    folder = folderFromRepoPath(oldPath);
+  } else {
+    folder = "";
+  }
+  const resolved: PostInput = { ...input, folder: folder || undefined };
   const newPath = postPath(input.slug, folder);
+
   if (oldSlug === input.slug) {
-    // same slug — may still move folder
-    const oldPath = await githubFindPostRepoPath(oldSlug);
     if (oldPath && oldPath !== newPath) {
-      await githubWritePost(input);
+      // explicit move: write new, delete old
+      await githubWritePost(resolved);
       const oldSha = await getFileSha(oldPath);
       if (oldSha) {
         await deleteFile(oldPath, `content: move ${oldSlug}`, oldSha);
       }
       return;
     }
-    await githubWritePost(input);
+    // in-place update — preserve path
+    await githubWritePost(resolved);
     return;
   }
-  await githubWritePost(input);
-  const oldPath = (await githubFindPostRepoPath(oldSlug)) ?? postPath(oldSlug);
-  const oldSha = await getFileSha(oldPath);
-  if (oldSha) {
-    await deleteFile(oldPath, `content: rename ${oldSlug} → ${input.slug}`, oldSha);
+
+  await githubWritePost(resolved);
+  const removePath = oldPath ?? postPath(oldSlug);
+  if (removePath !== newPath) {
+    const oldSha = await getFileSha(removePath);
+    if (oldSha) {
+      await deleteFile(
+        removePath,
+        `content: rename ${oldSlug} → ${input.slug}`,
+        oldSha,
+      );
+    }
   }
 }
 

@@ -145,6 +145,13 @@ function TreeLevel({
           <div className="flex items-center gap-1 rounded-lg bg-zinc-50 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-900 dark:text-zinc-200">
             <span className="truncate">📁 {f.name}</span>
             <span className="flex-1" />
+            <Link
+              href={`/admin/posts/new?folder=${encodeURIComponent(f.id)}`}
+              className="text-[10px] text-violet-600"
+              title="在此文件夹新建"
+            >
+              新文
+            </Link>
             <form action={createFolderAction} className="flex gap-1">
               <input type="hidden" name="parentId" value={f.id} />
               <input

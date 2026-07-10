@@ -667,6 +667,115 @@ test("content/posts markdown files are healthy when present", () => {
   }
 });
 
+test("folder wire-through: nested write/read and form field", async () => {
+  const {
+    writePost,
+    getPostBySlug,
+    deletePostFile,
+    getPostRelPath,
+    findPostFile,
+  } = await loadTs("src/lib/posts.ts");
+  const slug = "kb-nested-smoke";
+  const folder = "notes/deep";
+  try {
+    writePost({
+      slug,
+      title: "Nested",
+      description: "d",
+      date: "2026-07-01",
+      tags: ["kb"],
+      content: "nested body",
+      folder,
+    });
+    assert.equal(getPostRelPath(slug, folder), "notes/deep/kb-nested-smoke.md");
+    const found = findPostFile(slug);
+    assert.ok(found && found.replace(/\\/g, "/").endsWith("notes/deep/kb-nested-smoke.md"));
+    const post = getPostBySlug(slug);
+    assert.equal(post.folder, "notes/deep");
+    assert.match(post.content, /nested body/);
+    // re-save without wiping folder (simulate update that keeps folder)
+    writePost({
+      slug,
+      title: "Nested 2",
+      description: "d",
+      date: "2026-07-01",
+      tags: ["kb"],
+      content: "nested body v2",
+      folder: post.folder,
+    });
+    assert.equal(getPostBySlug(slug).title, "Nested 2");
+    assert.equal(getPostBySlug(slug).folder, "notes/deep");
+  } finally {
+    try {
+      deletePostFile(slug);
+    } catch {}
+  }
+
+  const form = fs.readFileSync(
+    path.join(root, "src/components/PostForm.tsx"),
+    "utf8",
+  );
+  assert.match(form, /name="folder"|data-testid="post-folder"/);
+  assert.match(form, /folder-input|setFolder/);
+
+  const newPage = fs.readFileSync(
+    path.join(root, "src/app/admin/posts/new/page.tsx"),
+    "utf8",
+  );
+  // folder passed into PostForm initial (shorthand property ok)
+  assert.match(newPage, /folder[,}]/);
+  assert.match(newPage, /searchParams.*folder|folder\?:/);
+
+  const actions = fs.readFileSync(
+    path.join(root, "src/app/actions/posts.ts"),
+    "utf8",
+  );
+  assert.match(actions, /folderRaw|folder:/);
+
+  // soft-delete embeds originalFolder (local path used by restore)
+  const { softDeleteLocal, listTrash, permanentDeleteLocal } = await loadTs(
+    "src/lib/trash.ts",
+  );
+  const dir = path.join(root, "content/posts", "tmpfold");
+  fs.mkdirSync(dir, { recursive: true });
+  const src = path.join(dir, "soft-me.md");
+  fs.writeFileSync(
+    src,
+    `---\ntitle: Soft\ndate: "2026-01-01"\ntags: []\n---\n\nbody\n`,
+  );
+  const fn = softDeleteLocal(src, "soft-me", "tmpfold");
+  const item = listTrash().find((t) => t.filename === fn);
+  assert.ok(item);
+  assert.equal(item.originalFolder, "tmpfold");
+  permanentDeleteLocal(fn);
+  try {
+    fs.rmdirSync(dir);
+  } catch {}
+
+  // permanent delete has confirm button component
+  assert.ok(
+    fs.existsSync(
+      path.join(root, "src/components/admin/PermanentDeleteButton.tsx"),
+    ),
+  );
+  const perm = fs.readFileSync(
+    path.join(root, "src/components/admin/PermanentDeleteButton.tsx"),
+    "utf8",
+  );
+  assert.match(perm, /confirm/);
+
+  // GitHub soft-delete must not only hard-delete
+  const gh = fs.readFileSync(
+    path.join(root, "src/lib/github-content.ts"),
+    "utf8",
+  );
+  assert.match(gh, /githubSoftDeletePost/);
+  assert.match(gh, /githubRestoreTrash/);
+  assert.match(gh, /content\/posts\/trash\//);
+  // rename must preserve path when folder undefined
+  assert.match(gh, /folderFromRepoPath|input\.folder !== undefined/);
+});
+
 test("trash soft-delete helpers round-trip metadata", async () => {
   const dir = path.join(root, "content/posts");
   const trashDir = path.join(dir, "trash");
