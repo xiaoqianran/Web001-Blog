@@ -4,7 +4,8 @@ import { requireSession } from "@/lib/session";
 
 /**
  * Admin shell breaks out of the public reading column (`main.max-w-3xl`)
- * so write tools (Markdown editor + live preview) have room to breathe.
+ * without CSS transforms (transform breaks textarea caret alignment in
+ * overlay editors like @uiw/react-md-editor).
  */
 export default async function AdminLayout({
   children,
@@ -35,8 +36,13 @@ export default async function AdminLayout({
 
   return (
     <div
-      className="admin-wide-shell relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 px-4 sm:px-6 lg:px-10"
+      className="admin-wide-shell w-screen max-w-[100vw] px-4 sm:px-6 lg:px-10"
       data-testid="admin-wide-shell"
+      style={{
+        // Break out of main.max-w-3xl using margins only — no transform
+        marginLeft: "calc(50% - 50vw)",
+        marginRight: "calc(50% - 50vw)",
+      }}
     >
       <div className="mx-auto w-full max-w-6xl xl:max-w-7xl">{children}</div>
     </div>

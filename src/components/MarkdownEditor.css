@@ -1,7 +1,16 @@
-/* Spacious admin Markdown surface — pairs with @uiw/react-md-editor */
+/*
+ * Admin Markdown surface — DO NOT override font-size / line-height on the
+ * textarea ↔ syntax-pre pair. @uiw/react-md-editor aligns the caret by
+ * stacking them with identical metrics (14px / 18px). Changing line-height
+ * to unitless values causes mouse/caret position drift.
+ */
+
 .md-editor-shell {
   --md-editor-min-height: min(70vh, 40rem);
   width: 100%;
+  /* Isolate stacking; avoid transform on ancestors */
+  position: relative;
+  transform: none;
 }
 
 .md-editor-shell .w-md-editor {
@@ -10,8 +19,10 @@
   border-color: rgb(228 228 231);
   box-shadow: none !important;
   min-height: var(--md-editor-min-height);
-  font-size: 14px;
   background: transparent;
+  /* Keep library font metrics for caret alignment */
+  font-size: 14px;
+  line-height: 18px;
 }
 
 .dark .md-editor-shell .w-md-editor,
@@ -24,6 +35,7 @@
   padding: 0.35rem 0.5rem;
   background: rgb(250 250 250);
   border-bottom-color: rgb(228 228 231);
+  flex-wrap: wrap;
 }
 
 .dark .md-editor-shell .w-md-editor-toolbar,
@@ -36,14 +48,27 @@
   min-height: calc(var(--md-editor-min-height) - 2.75rem);
 }
 
+/* Explicitly restore library caret-critical metrics if any global CSS leaks in */
+.md-editor-shell .w-md-editor-text,
 .md-editor-shell .w-md-editor-text-pre,
-.md-editor-shell .w-md-editor-text-input,
-.md-editor-shell .w-md-editor-text {
+.md-editor-shell .w-md-editor-text-pre > code,
+.md-editor-shell .w-md-editor-text-input {
   font-size: 14px !important;
-  line-height: 1.65 !important;
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace !important;
+  line-height: 18px !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  font-variant-ligatures: none;
+  font-feature-settings: normal;
+  tab-size: 2;
+  -moz-tab-size: 2;
+}
+
+/* Title tokens must NOT unset line-height inside the overlay (library default
+   does this for visual markdown headings and breaks caret alignment). */
+.md-editor-shell .w-md-editor-text-pre .token.title {
+  line-height: 18px !important;
+  font-size: 14px !important;
+  font-weight: 700;
 }
 
 .md-editor-shell .w-md-editor-preview {
@@ -56,7 +81,6 @@
   min-height: var(--md-editor-min-height);
 }
 
-/* Equal-ish split breathing room on wide admin shells */
 .md-editor-shell .w-md-editor-show-live .w-md-editor-input,
 .md-editor-shell .w-md-editor-show-live .w-md-editor-preview {
   min-width: 0;
@@ -65,4 +89,18 @@
 .md-editor-shell .wmde-markdown {
   font-size: 0.95rem;
   background: transparent !important;
+}
+
+/* Form bridge field must not affect layout */
+.md-editor-shell textarea[data-testid="markdown-form-field"] {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  pointer-events: none !important;
 }

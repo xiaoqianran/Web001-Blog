@@ -340,14 +340,40 @@ test("admin Markdown editor form bridge and wide shell", async () => {
   );
   assert.match(adminLayout, /admin-wide-shell/);
   assert.match(adminLayout, /max-w-6xl|max-w-7xl/);
-  // Must break out of public reading column
-  assert.match(adminLayout, /w-screen|left-1\/2|-translate-x-1\/2/);
+  // Break out without CSS transform (transform desyncs textarea caret)
+  assert.match(adminLayout, /50% - 50vw|calc\(50% - 50vw\)/);
+  assert.doesNotMatch(adminLayout, /-translate-x-1\/2|transform:/);
 
   const publicLayout = fs.readFileSync(
     path.join(root, "src/app/layout.tsx"),
     "utf8",
   );
   assert.match(publicLayout, /max-w-3xl/);
+
+  const header = fs.readFileSync(
+    path.join(root, "src/components/Header.tsx"),
+    "utf8",
+  );
+  // Header must be wider than the reading column so desktop nav stays one row
+  assert.match(header, /max-w-6xl|max-w-7xl/);
+  assert.doesNotMatch(header, /max-w-3xl/);
+
+  const nav = fs.readFileSync(
+    path.join(root, "src/components/NavLinks.tsx"),
+    "utf8",
+  );
+  assert.match(nav, /flex-nowrap|md:flex-nowrap|md:flex/);
+  assert.match(nav, /md:hidden|hamburger|aria-expanded/);
+  // Desktop nav must not wrap
+  assert.doesNotMatch(nav, /className="flex flex-wrap/);
+
+  const editorCss = fs.readFileSync(
+    path.join(root, "src/components/MarkdownEditor.css"),
+    "utf8",
+  );
+  // Caret-critical: fixed 14px/18px, not unitless line-height on text layers
+  assert.match(editorCss, /line-height:\s*18px/);
+  assert.doesNotMatch(editorCss, /line-height:\s*1\.65/);
 
   const pkg = JSON.parse(
     fs.readFileSync(path.join(root, "package.json"), "utf8"),
