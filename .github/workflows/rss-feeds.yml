@@ -17,7 +17,8 @@ jobs:
   fetch:
     name: Fetch & commit
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    # Translate titles/summaries needs headroom beyond raw fetch
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
         with:
@@ -27,7 +28,9 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Fetch RSS feeds
+      - name: Fetch RSS feeds (+ zh translation)
+        env:
+          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
         run: node scripts/fetch-rss-feeds.mjs
 
       - name: Commit if changed

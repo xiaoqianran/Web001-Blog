@@ -281,6 +281,59 @@ test("RSS feed parser and seed data", async () => {
   }
 });
 
+test("lab lang helpers and RSS zh fields", async () => {
+  const { pickLocalized, hasZhText, LAB_LANG_STORAGE_KEY } = await loadTs(
+    "src/lib/lab-lang.ts",
+  );
+  assert.equal(pickLocalized("zh", "Hello", "你好"), "你好");
+  assert.equal(pickLocalized("en", "Hello", "你好"), "Hello");
+  assert.equal(pickLocalized("zh", "Hello", ""), "Hello");
+  assert.equal(pickLocalized("zh", "Hello", null), "Hello");
+  assert.equal(hasZhText("中文"), true);
+  assert.equal(hasZhText("  "), false);
+  assert.equal(LAB_LANG_STORAGE_KEY, "lab-content-lang");
+
+  const providerSrc = fs.readFileSync(
+    path.join(root, "src/components/LabLangProvider.tsx"),
+    "utf8",
+  );
+  assert.match(providerSrc, /LAB_LANG_STORAGE_KEY|lab-content-lang/);
+  assert.match(providerSrc, /LAB_LANG_CHANGE_EVENT|lab-content-lang-change/);
+
+  const paperCard = fs.readFileSync(
+    path.join(root, "src/components/HfPaperCard.tsx"),
+    "utf8",
+  );
+  assert.match(paperCard, /useLabLang/);
+  assert.match(paperCard, /LabLangToggle/);
+  assert.doesNotMatch(paperCard, /useState<Lang>|useState\("zh"\)/);
+
+  const feedCard = fs.readFileSync(
+    path.join(root, "src/components/RssFeedCard.tsx"),
+    "utf8",
+  );
+  assert.match(feedCard, /useLabLang/);
+  assert.match(feedCard, /LabLangToggle|pickLocalized/);
+
+  const layout = fs.readFileSync(
+    path.join(root, "src/app/layout.tsx"),
+    "utf8",
+  );
+  assert.match(layout, /LabLangProvider/);
+
+  const latestPath = path.join(root, "content/data/rss-feeds/latest.json");
+  if (fs.existsSync(latestPath)) {
+    const latest = JSON.parse(fs.readFileSync(latestPath, "utf8"));
+    const withZh = latest.feeds
+      ?.flatMap((f) => f.items || [])
+      .find((it) => it.titleZh || it.summaryZh);
+    // After translated fetch, at least one item should carry zh fields
+    if (latest.locale?.translated) {
+      assert.ok(withZh, "translated RSS snapshot should include titleZh/summaryZh");
+    }
+  }
+});
+
 test("admin Markdown editor form bridge and wide shell", async () => {
   const { appendMarkdown, markdownBodyFormData } = await loadTs(
     "src/lib/markdown-form.ts",
