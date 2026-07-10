@@ -18,6 +18,23 @@ export type TrashItem = {
   filename: string;
 };
 
+/** Pure: parse trash markdown + filename into list row (local or GitHub). */
+export function parseTrashMarkdown(filename: string, raw: string): TrashItem {
+  const { data } = matter(raw);
+  const slugFromName = filename.replace(/\.md$/, "").replace(/__\d+$/, "");
+  return {
+    slug: typeof data.slug === "string" ? data.slug : slugFromName,
+    title: typeof data.title === "string" ? data.title : slugFromName,
+    deletedAt:
+      typeof data.deletedAt === "string"
+        ? data.deletedAt
+        : new Date().toISOString(),
+    originalFolder:
+      typeof data.originalFolder === "string" ? data.originalFolder : "",
+    filename,
+  };
+}
+
 export function listTrash(): TrashItem[] {
   if (!fs.existsSync(trashDir)) return [];
   return fs
@@ -25,19 +42,7 @@ export function listTrash(): TrashItem[] {
     .filter((f) => f.endsWith(".md"))
     .map((filename) => {
       const raw = fs.readFileSync(path.join(trashDir, filename), "utf8");
-      const { data } = matter(raw);
-      const slug = filename.replace(/\.md$/, "").replace(/__\d+$/, "");
-      return {
-        slug: typeof data.slug === "string" ? data.slug : slug,
-        title: typeof data.title === "string" ? data.title : slug,
-        deletedAt:
-          typeof data.deletedAt === "string"
-            ? data.deletedAt
-            : new Date().toISOString(),
-        originalFolder:
-          typeof data.originalFolder === "string" ? data.originalFolder : "",
-        filename,
-      };
+      return parseTrashMarkdown(filename, raw);
     })
     .sort((a, b) => b.deletedAt.localeCompare(a.deletedAt));
 }

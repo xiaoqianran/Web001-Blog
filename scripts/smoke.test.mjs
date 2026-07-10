@@ -812,3 +812,65 @@ body
     fs.rmdirSync(path.join(dir, "notes"));
   } catch {}
 });
+
+test("trash GitHub list + soft-delete order (Vercel RO FS safe)", async () => {
+  // Pure parser shared by local listTrash and githubListTrash
+  const { parseTrashMarkdown } = await loadTs("src/lib/trash.ts");
+  const raw = `---
+title: FromGitHub
+slug: gh-trash-item
+deletedAt: "2026-07-10T12:00:00.000Z"
+originalFolder: notes/deep
+---
+
+body
+`;
+  const item = parseTrashMarkdown("gh-trash-item__171000.md", raw);
+  assert.equal(item.slug, "gh-trash-item");
+  assert.equal(item.title, "FromGitHub");
+  assert.equal(item.originalFolder, "notes/deep");
+  assert.equal(item.filename, "gh-trash-item__171000.md");
+  assert.match(item.deletedAt, /^2026-07-10/);
+
+  // Admin trash page must load GitHub list when token path is enabled
+  const trashPage = fs.readFileSync(
+    path.join(root, "src/app/admin/trash/page.tsx"),
+    "utf8",
+  );
+  assert.match(trashPage, /githubListTrash/);
+  assert.match(trashPage, /isGitHubContentEnabled/);
+  // Must not only call listTrash() without GitHub branch
+  assert.match(trashPage, /loadTrashItems|await githubListTrash/);
+
+  // github-content exports list with parseTrashMarkdown (not filenames-only UI)
+  const gh = fs.readFileSync(
+    path.join(root, "src/lib/github-content.ts"),
+    "utf8",
+  );
+  assert.match(gh, /export async function githubListTrash\b/);
+  assert.match(gh, /parseTrashMarkdown/);
+
+  // softDelete: content delete BEFORE tree disk write; tree is best-effort
+  const actions = fs.readFileSync(
+    path.join(root, "src/app/actions/trash.ts"),
+    "utf8",
+  );
+  assert.match(actions, /persistTreeBestEffort|saveTreeToDisk/);
+  const ghSoftIdx = actions.indexOf("githubSoftDeletePost");
+  const saveTreeIdx = actions.indexOf("saveTreeToDisk");
+  assert.ok(ghSoftIdx > 0, "githubSoftDeletePost must appear in soft-delete action");
+  assert.ok(saveTreeIdx > 0, "saveTreeToDisk still used for local best-effort");
+  // softDeletePostAction body: first github soft-delete call must precede first saveTreeToDisk
+  // (persistTreeBestEffort wraps saveTree after content delete)
+  const softFn = actions.slice(
+    actions.indexOf("export async function softDeletePostAction"),
+    actions.indexOf("export async function restoreTrashAction"),
+  );
+  const softGh = softFn.indexOf("githubSoftDeletePost");
+  const softSave = softFn.indexOf("persistTreeBestEffort");
+  assert.ok(softGh >= 0 && softSave >= 0 && softGh < softSave,
+    "github soft-delete must run before tree persist in softDeletePostAction");
+  // tree persist must catch RO FS errors (try/catch around saveTreeToDisk)
+  assert.match(actions, /persistTreeBestEffort[\s\S]*saveTreeToDisk[\s\S]*catch/);
+  assert.match(actions, /putTreeJson/);
+});
