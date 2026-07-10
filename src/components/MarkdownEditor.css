@@ -1,0 +1,68 @@
+/* Spacious admin Markdown surface — pairs with @uiw/react-md-editor */
+.md-editor-shell {
+  --md-editor-min-height: min(70vh, 40rem);
+  width: 100%;
+}
+
+.md-editor-shell .w-md-editor {
+  width: 100% !important;
+  border-radius: 0.75rem;
+  border-color: rgb(228 228 231);
+  box-shadow: none !important;
+  min-height: var(--md-editor-min-height);
+  font-size: 14px;
+  background: transparent;
+}
+
+.dark .md-editor-shell .w-md-editor,
+.md-editor-shell[data-color-mode="dark"] .w-md-editor {
+  border-color: rgb(63 63 70);
+}
+
+.md-editor-shell .w-md-editor-toolbar {
+  border-radius: 0.75rem 0.75rem 0 0;
+  padding: 0.35rem 0.5rem;
+  background: rgb(250 250 250);
+  border-bottom-color: rgb(228 228 231);
+}
+
+.dark .md-editor-shell .w-md-editor-toolbar,
+.md-editor-shell[data-color-mode="dark"] .w-md-editor-toolbar {
+  background: rgb(24 24 27);
+  border-bottom-color: rgb(63 63 70);
+}
+
+.md-editor-shell .w-md-editor-content {
+  min-height: calc(var(--md-editor-min-height) - 2.75rem);
+}
+
+.md-editor-shell .w-md-editor-text-pre,
+.md-editor-shell .w-md-editor-text-input,
+.md-editor-shell .w-md-editor-text {
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace !important;
+}
+
+.md-editor-shell .w-md-editor-preview {
+  padding: 1rem 1.25rem !important;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.md-editor-shell .w-md-editor-show-live {
+  min-height: var(--md-editor-min-height);
+}
+
+/* Equal-ish split breathing room on wide admin shells */
+.md-editor-shell .w-md-editor-show-live .w-md-editor-input,
+.md-editor-shell .w-md-editor-show-live .w-md-editor-preview {
+  min-width: 0;
+}
+
+.md-editor-shell .wmde-markdown {
+  font-size: 0.95rem;
+  background: transparent !important;
+}

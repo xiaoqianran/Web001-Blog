@@ -281,6 +281,83 @@ test("RSS feed parser and seed data", async () => {
   }
 });
 
+test("admin Markdown editor form bridge and wide shell", async () => {
+  const { appendMarkdown, markdownBodyFormData } = await loadTs(
+    "src/lib/markdown-form.ts",
+  );
+
+  // Real shipped helper used by image-insert path
+  const gfm = [
+    "# Title",
+    "",
+    "Paragraph with **bold** and a [link](https://example.com).",
+    "",
+    "- list",
+    "",
+    "```js",
+    "const x = 1;",
+    "```",
+  ].join("\n");
+  const withImage = appendMarkdown(gfm, "![shot.png](/uploads/shot.png)");
+  assert.match(withImage, /# Title/);
+  assert.match(withImage, /!\[shot\.png\]\(\/uploads\/shot\.png\)/);
+  assert.ok(withImage.indexOf("shot.png") > withImage.indexOf("const x"));
+
+  // FormData bridge mirrors the named field server actions read
+  const fd = markdownBodyFormData(withImage, {
+    title: "Demo",
+    slug: "demo",
+  });
+  assert.equal(fd.get("content"), withImage);
+  assert.equal(fd.get("title"), "Demo");
+  assert.equal(fd.get("slug"), "demo");
+
+  // Structural: PostForm uses MarkdownEditor, not a bare primary content textarea
+  const postForm = fs.readFileSync(
+    path.join(root, "src/components/PostForm.tsx"),
+    "utf8",
+  );
+  assert.match(postForm, /MarkdownEditor/);
+  assert.match(postForm, /name="content"|name=\{name\}/);
+  assert.doesNotMatch(
+    postForm,
+    /<textarea[\s\S]*name="content"[\s\S]*rows=\{18\}/,
+  );
+  assert.match(postForm, /@?\/?components\/MarkdownEditor|MarkdownEditor/);
+
+  const editorSrc = fs.readFileSync(
+    path.join(root, "src/components/MarkdownEditor.tsx"),
+    "utf8",
+  );
+  assert.match(editorSrc, /@uiw\/react-md-editor/);
+  assert.match(editorSrc, /markdown-form-field/);
+  assert.match(editorSrc, /name=\{name\}/);
+  assert.match(editorSrc, /preview="live"/);
+
+  const adminLayout = fs.readFileSync(
+    path.join(root, "src/app/admin/layout.tsx"),
+    "utf8",
+  );
+  assert.match(adminLayout, /admin-wide-shell/);
+  assert.match(adminLayout, /max-w-6xl|max-w-7xl/);
+  // Must break out of public reading column
+  assert.match(adminLayout, /w-screen|left-1\/2|-translate-x-1\/2/);
+
+  const publicLayout = fs.readFileSync(
+    path.join(root, "src/app/layout.tsx"),
+    "utf8",
+  );
+  assert.match(publicLayout, /max-w-3xl/);
+
+  const pkg = JSON.parse(
+    fs.readFileSync(path.join(root, "package.json"), "utf8"),
+  );
+  assert.ok(
+    pkg.dependencies["@uiw/react-md-editor"],
+    "editor dependency must be installed",
+  );
+});
+
 test("content/posts markdown files are healthy when present", () => {
   const dir = path.join(root, "content/posts");
   assert.ok(fs.existsSync(dir));
