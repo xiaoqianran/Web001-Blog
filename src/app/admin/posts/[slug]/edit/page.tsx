@@ -2,11 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PostForm } from "@/components/PostForm";
-import { getPostBySlug, getPostSlugs, postExists } from "@/lib/posts";
+import {
+  getPostBySlug,
+  getPostSlugs,
+  postExists,
+} from "@/lib/posts";
+import { githubPostExists, isGitHubContentEnabled } from "@/lib/github-content";
 import { requireSession } from "@/lib/session";
 
 type Props = {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ saved?: string; via?: string; created?: string }>;
 };
 
 export function generateStaticParams() {
@@ -21,19 +27,57 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function EditPostPage({ params }: Props) {
+export default async function EditPostPage({ params, searchParams }: Props) {
   const session = await requireSession();
   if (session.userId === "static") return null;
 
   const { slug: raw } = await params;
   const slug = decodeURIComponent(raw);
+  const sp = await searchParams;
 
-  if (!postExists(slug)) {
+  // Local FS may lag behind GitHub right after first save on Vercel
+  let exists = postExists(slug);
+  if (!exists && isGitHubContentEnabled()) {
+    exists = await githubPostExists(slug).catch(() => false);
+  }
+  if (!exists) {
     notFound();
   }
 
-  const post = getPostBySlug(slug);
-  const date = post.date.slice(0, 10);
+  // Prefer local file; if missing after GH write, show empty-ish form from slug only
+  const post = postExists(slug)
+    ? getPostBySlug(slug)
+    : {
+        slug,
+        title: slug,
+        description: "",
+        date: new Date().toISOString(),
+        tags: [] as string[],
+        content: "",
+        draft: false,
+        cover: undefined as string | undefined,
+        pinned: false,
+        series: undefined as string | undefined,
+        readingTime: "",
+        contentHtml: "",
+        toc: [],
+      };
+
+  const date = String(post.date).slice(0, 10);
+
+  let initialNotice: string | null = null;
+  if (sp.saved === "1") {
+    const viaGh = sp.via === "github";
+    if (sp.created === "1") {
+      initialNotice = viaGh
+        ? "创建成功，已提交 GitHub。可继续修改并用 ⌘/Ctrl+S 多次保存。"
+        : "创建成功。可继续修改并用 ⌘/Ctrl+S 多次保存。";
+    } else {
+      initialNotice = viaGh
+        ? "已保存并提交 GitHub。可继续用 ⌘/Ctrl+S 保存。"
+        : "已保存。可继续用 ⌘/Ctrl+S 保存。";
+    }
+  }
 
   return (
     <div className="space-y-8">
@@ -55,6 +99,7 @@ export default async function EditPostPage({ params }: Props) {
           >
             {post.title}
           </Link>
+          。可反复保存，不会因 slug 已存在而失败。
         </p>
       </header>
 
@@ -62,6 +107,7 @@ export default async function EditPostPage({ params }: Props) {
         <PostForm
           mode="edit"
           originalSlug={post.slug}
+          initialNotice={initialNotice}
           initial={{
             slug: post.slug,
             title: post.title,
