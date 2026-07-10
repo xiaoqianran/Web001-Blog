@@ -8,6 +8,7 @@ import {
   getRelatedPosts,
 } from "@/lib/posts";
 import { CodeCopy } from "@/components/CodeCopy";
+import { GiscusComments } from "@/components/GiscusComments";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { RelatedPosts } from "@/components/RelatedPosts";
 import { Tag } from "@/components/Tag";
@@ -122,6 +123,8 @@ export default async function PostPage({ params }: Props) {
       <CodeCopy />
 
       <RelatedPosts posts={related} />
+
+      <GiscusComments />
 
       <nav className="mt-16 grid gap-4 border-t border-zinc-200 pt-10 sm:grid-cols-2 dark:border-zinc-800">
         {prev ? (
