@@ -6,13 +6,17 @@ import {
   getAllPosts,
   getPostWithHtml,
   getRelatedPosts,
+  seriesToSlug,
 } from "@/lib/posts";
 import { CodeCopy } from "@/components/CodeCopy";
 import { GiscusComments } from "@/components/GiscusComments";
+import { JsonLd } from "@/components/JsonLd";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { RelatedPosts } from "@/components/RelatedPosts";
+import { ShareButtons } from "@/components/ShareButtons";
 import { Tag } from "@/components/Tag";
 import { TableOfContents } from "@/components/TableOfContents";
+import { getSiteConfig } from "@/lib/site";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -30,16 +34,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (post.draft) {
       return { title: "文章未找到", robots: { index: false, follow: false } };
     }
+    const siteUrl = (
+      process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+    ).replace(/\/$/, "");
+    const canonical = `${siteUrl}/blog/${slug}`;
     return {
       title: post.title,
       description: post.description,
+      alternates: { canonical },
       openGraph: {
         title: post.title,
         description: post.description,
         type: "article",
+        url: canonical,
         publishedTime: post.date,
         tags: post.tags,
         ...(post.cover ? { images: [{ url: post.cover }] } : {}),
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.title,
+        description: post.description,
       },
     };
   } catch {
@@ -67,9 +82,27 @@ export default async function PostPage({ params }: Props) {
   const prev = index < allPosts.length - 1 ? allPosts[index + 1] : null;
   const next = index > 0 ? allPosts[index - 1] : null;
   const related = getRelatedPosts(slug, 3);
+  const site = getSiteConfig();
+  const siteUrl = (
+    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+  ).replace(/\/$/, "");
+  const pageUrl = `${siteUrl}/blog/${slug}`;
 
   return (
     <article>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.description,
+          datePublished: post.date,
+          author: { "@type": "Person", name: site.author },
+          mainEntityOfPage: pageUrl,
+          image: post.cover ? [post.cover] : undefined,
+          keywords: post.tags.join(", "),
+        }}
+      />
       <ReadingProgress />
 
       <header className="mb-10 space-y-4 border-b border-zinc-200 pb-10 dark:border-zinc-800">
@@ -84,6 +117,17 @@ export default async function PostPage({ params }: Props) {
           <time dateTime={post.date}>{formatDate(post.date)}</time>
           <span>·</span>
           <span>{post.readingTime}</span>
+          {post.series && (
+            <>
+              <span>·</span>
+              <Link
+                href={`/series/${encodeURIComponent(seriesToSlug(post.series))}`}
+                className="hover:text-violet-600"
+              >
+                {post.series}
+              </Link>
+            </>
+          )}
         </div>
 
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
@@ -112,6 +156,8 @@ export default async function PostPage({ params }: Props) {
             ))}
           </div>
         )}
+
+        <ShareButtons title={post.title} url={pageUrl} />
       </header>
 
       <TableOfContents items={post.toc} />
