@@ -46,6 +46,8 @@ export default async function NewPostPage() {
             date: today(),
             tags: "",
             content: "",
+            draft: false,
+            cover: "",
           }}
         />
       </div>

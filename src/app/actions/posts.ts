@@ -56,6 +56,8 @@ function parsePostForm(formData: FormData): {
   const date = String(formData.get("date") ?? "").trim();
   const tags = parseTags(String(formData.get("tags") ?? ""));
   const content = String(formData.get("content") ?? "");
+  const cover = String(formData.get("cover") ?? "").trim();
+  const draft = formData.get("draft") === "on" || formData.get("draft") === "true";
 
   const fieldErrors: FieldErrors = {};
 
@@ -81,6 +83,8 @@ function parsePostForm(formData: FormData): {
       date: date.slice(0, 10),
       tags,
       content,
+      draft,
+      cover: cover || undefined,
     },
   };
 }

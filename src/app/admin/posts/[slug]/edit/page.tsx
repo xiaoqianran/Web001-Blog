@@ -69,6 +69,8 @@ export default async function EditPostPage({ params }: Props) {
             date,
             tags: post.tags.join(", "),
             content: post.content,
+            draft: post.draft,
+            cover: post.cover ?? "",
           }}
         />
       </div>

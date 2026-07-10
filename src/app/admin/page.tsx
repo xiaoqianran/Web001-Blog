@@ -29,7 +29,9 @@ export default async function AdminPage({ searchParams }: Props) {
   }
 
   const session = await requireSession();
-  const posts = getAllPosts();
+  const posts = getAllPosts({ includeDrafts: true });
+  const publishedCount = posts.filter((p) => !p.draft).length;
+  const draftCount = posts.filter((p) => p.draft).length;
   const tags = getAllTags();
   const params = await searchParams;
   const viaGithub = params.via === "github";
@@ -149,9 +151,9 @@ export default async function AdminPage({ searchParams }: Props) {
       </div>
 
       <section className="grid gap-4 sm:grid-cols-3">
-        <StatCard label="文章" value={posts.length} />
+        <StatCard label="已发布" value={publishedCount} />
+        <StatCard label="草稿" value={draftCount} />
         <StatCard label="标签" value={tags.length} />
-        <StatCard label="会话" value="7 天" hint="JWT 有效期" />
       </section>
 
       <section className="space-y-4">
@@ -185,12 +187,25 @@ export default async function AdminPage({ searchParams }: Props) {
               {posts.map((post) => (
                 <tr key={post.slug} className="bg-white dark:bg-zinc-950">
                   <td className="px-4 py-3">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="font-medium text-zinc-900 hover:text-violet-600 dark:text-zinc-50 dark:hover:text-violet-400"
-                    >
-                      {post.title}
-                    </Link>
+                    <div className="flex flex-wrap items-center gap-2">
+                      {post.draft ? (
+                        <span className="font-medium text-zinc-900 dark:text-zinc-50">
+                          {post.title}
+                        </span>
+                      ) : (
+                        <Link
+                          href={`/blog/${post.slug}`}
+                          className="font-medium text-zinc-900 hover:text-violet-600 dark:text-zinc-50 dark:hover:text-violet-400"
+                        >
+                          {post.title}
+                        </Link>
+                      )}
+                      {post.draft && (
+                        <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-amber-800 uppercase dark:bg-amber-950 dark:text-amber-300">
+                          草稿
+                        </span>
+                      )}
+                    </div>
                     <p className="mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">
                       {post.slug}
                     </p>

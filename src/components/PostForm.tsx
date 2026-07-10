@@ -16,6 +16,8 @@ export type PostFormValues = {
   date: string;
   tags: string;
   content: string;
+  draft?: boolean;
+  cover?: string;
 };
 
 type Props = {
@@ -150,6 +152,40 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
             placeholder="Next.js, 笔记, 博客（逗号分隔）"
           />
         </div>
+
+        <div className="space-y-2 sm:col-span-2">
+          <label htmlFor="cover" className={labelClass}>
+            封面图 URL（可选）
+          </label>
+          <input
+            id="cover"
+            name="cover"
+            type="url"
+            defaultValue={initial.cover ?? ""}
+            className={inputClass}
+            placeholder="https://…"
+          />
+        </div>
+
+        <div className="sm:col-span-2">
+          <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-zinc-200 px-4 py-3 dark:border-zinc-700">
+            <input
+              type="checkbox"
+              name="draft"
+              value="true"
+              defaultChecked={Boolean(initial.draft)}
+              className="mt-1 h-4 w-4 rounded border-zinc-300 text-violet-600 focus:ring-violet-500"
+            />
+            <span>
+              <span className="block text-sm font-medium text-zinc-800 dark:text-zinc-200">
+                存为草稿
+              </span>
+              <span className="mt-0.5 block text-xs text-zinc-500 dark:text-zinc-400">
+                草稿不会出现在首页、列表、搜索、RSS 与 sitemap
+              </span>
+            </span>
+          </label>
+        </div>
       </div>
 
       <div className="space-y-2">
@@ -182,7 +218,7 @@ export function PostForm({ mode, initial, originalSlug }: Props) {
           {pending
             ? "保存中…"
             : mode === "create"
-              ? "发布文章"
+              ? "保存文章"
               : "保存修改"}
         </button>
         <Link

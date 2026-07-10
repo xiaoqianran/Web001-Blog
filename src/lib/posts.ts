@@ -20,6 +20,7 @@ export type PostMeta = {
   date: string;
   tags: string[];
   cover?: string;
+  draft: boolean;
   readingTime: string;
 };
 
@@ -30,6 +31,8 @@ export type PostInput = {
   date: string;
   tags: string[];
   content: string;
+  draft?: boolean;
+  cover?: string;
 };
 
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -48,12 +51,15 @@ export function getPostPath(slug: string): string {
 
 export function serializePost(input: PostInput): string {
   const body = input.content.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
-  return matter.stringify(body.endsWith("\n") ? body : `${body}\n`, {
+  const data: Record<string, unknown> = {
     title: input.title,
     description: input.description,
     date: input.date,
     tags: input.tags,
-  });
+  };
+  if (input.draft) data.draft = true;
+  if (input.cover?.trim()) data.cover = input.cover.trim();
+  return matter.stringify(body.endsWith("\n") ? body : `${body}\n`, data);
 }
 
 export function writePost(input: PostInput): void {
@@ -128,6 +134,19 @@ function rehypeCollectToc(toc: TocItem[]) {
   };
 }
 
+function toMeta(post: Post): PostMeta {
+  return {
+    slug: post.slug,
+    title: post.title,
+    description: post.description,
+    date: post.date,
+    tags: post.tags,
+    cover: post.cover,
+    draft: post.draft,
+    readingTime: post.readingTime,
+  };
+}
+
 export function getPostSlugs(): string[] {
   ensurePostsDir();
   return fs
@@ -148,7 +167,8 @@ export function getPostBySlug(slug: string): Post {
     description: data.description ?? "",
     date: data.date ?? new Date().toISOString(),
     tags: Array.isArray(data.tags) ? data.tags : [],
-    cover: data.cover,
+    cover: typeof data.cover === "string" ? data.cover : undefined,
+    draft: Boolean(data.draft),
     readingTime: stats.text,
     content,
     contentHtml: "",
@@ -176,20 +196,18 @@ export async function getPostWithHtml(slug: string): Promise<Post> {
   };
 }
 
-export function getAllPosts(): PostMeta[] {
+type ListOptions = {
+  /** When true, include draft posts (admin). Default: published only. */
+  includeDrafts?: boolean;
+};
+
+export function getAllPosts(options: ListOptions = {}): PostMeta[] {
   const slugs = getPostSlugs();
-  const posts = slugs.map((slug) => {
-    const post = getPostBySlug(slug);
-    return {
-      slug: post.slug,
-      title: post.title,
-      description: post.description,
-      date: post.date,
-      tags: post.tags,
-      cover: post.cover,
-      readingTime: post.readingTime,
-    };
-  });
+  let posts = slugs.map((slug) => toMeta(getPostBySlug(slug)));
+
+  if (!options.includeDrafts) {
+    posts = posts.filter((p) => !p.draft);
+  }
 
   return posts.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
@@ -212,6 +230,28 @@ export function getAllTags(): { tag: string; count: number }[] {
   return Array.from(counts.entries())
     .map(([tag, count]) => ({ tag, count }))
     .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
+}
+
+/** Related published posts by shared tags (score = shared tag count). */
+export function getRelatedPosts(slug: string, limit = 3): PostMeta[] {
+  const current = getPostBySlug(slug);
+  if (current.tags.length === 0) return [];
+
+  const tagSet = new Set(current.tags.map((t) => t.toLowerCase()));
+  const scored = getAllPosts()
+    .filter((p) => p.slug !== slug)
+    .map((p) => {
+      const shared = p.tags.filter((t) => tagSet.has(t.toLowerCase())).length;
+      return { post: p, shared };
+    })
+    .filter((x) => x.shared > 0)
+    .sort(
+      (a, b) =>
+        b.shared - a.shared ||
+        new Date(b.post.date).getTime() - new Date(a.post.date).getTime(),
+    );
+
+  return scored.slice(0, limit).map((x) => x.post);
 }
 
 export function formatDate(date: string): string {

@@ -20,6 +20,14 @@ export function PostCard({ post, featured }: PostCardProps) {
           <span>·</span>
           <span>{post.readingTime}</span>
         </div>
+        {post.cover && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={post.cover}
+            alt=""
+            className="mb-4 h-40 w-full rounded-xl object-cover"
+          />
+        )}
         <h2 className="mb-3 text-2xl font-bold tracking-tight text-zinc-900 transition group-hover:text-violet-700 sm:text-3xl dark:text-zinc-50 dark:group-hover:text-violet-300">
           <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0">
             {post.title}
@@ -44,6 +52,14 @@ export function PostCard({ post, featured }: PostCardProps) {
         <span>·</span>
         <span>{post.readingTime}</span>
       </div>
+      {post.cover && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={post.cover}
+          alt=""
+          className="mb-3 h-32 w-full rounded-lg object-cover"
+        />
+      )}
       <h2 className="mb-2 text-xl font-semibold tracking-tight text-zinc-900 transition group-hover:text-violet-700 dark:text-zinc-50 dark:group-hover:text-violet-300">
         <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0">
           {post.title}
