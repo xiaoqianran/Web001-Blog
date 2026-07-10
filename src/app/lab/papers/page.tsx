@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { HfPaperCard } from "@/components/HfPaperCard";
 import { LabLangToggle } from "@/components/LabLangToggle";
+import { loadTreeForAdmin } from "@/lib/content-persist";
 import { getHfDailyOrFallback, listHfDailyDates } from "@/lib/hf-papers";
+import { getSession } from "@/lib/session";
 
 export const metadata: Metadata = {
   title: "HF 论文热点",
@@ -19,6 +21,16 @@ export default async function HfPapersPage({ searchParams }: Props) {
   const preferred = typeof sp.date === "string" ? sp.date : undefined;
   const { date, data, availableDates } = getHfDailyOrFallback(preferred);
   const dates = availableDates.length ? availableDates : listHfDailyDates();
+  const session = await getSession();
+  const tree = await loadTreeForAdmin();
+  const captureFolders = tree.folders.map((f) => ({
+    id: f.id,
+    name: f.name,
+  }));
+  const returnTo =
+    preferred && preferred !== dates[0]
+      ? `/lab/papers?date=${preferred}`
+      : "/lab/papers";
 
   return (
     <div className="space-y-8">
@@ -112,7 +124,13 @@ export default async function HfPapersPage({ searchParams }: Props) {
           <ul className="space-y-4">
             {data.papers.map((paper, i) => (
               <li key={paper.id}>
-                <HfPaperCard paper={paper} index={i} />
+                <HfPaperCard
+                  paper={paper}
+                  index={i}
+                  captureFolders={captureFolders}
+                  captureLoggedIn={Boolean(session)}
+                  returnTo={returnTo}
+                />
               </li>
             ))}
           </ul>

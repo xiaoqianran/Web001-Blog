@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LabLangToggle } from "@/components/LabLangToggle";
 import { RssFeedCard } from "@/components/RssFeedCard";
+import { loadTreeForAdmin } from "@/lib/content-persist";
 import {
   getRssFeedsOrFallback,
   listRssFeedDates,
 } from "@/lib/rss-feeds";
+import { getSession } from "@/lib/session";
 
 export const metadata: Metadata = {
   title: "RSS 信息流",
@@ -29,6 +31,19 @@ export default async function RssFeedsPage({ searchParams }: Props) {
     sourceFilter === "all"
       ? feeds
       : feeds.filter((f) => f.id === sourceFilter);
+
+  const session = await getSession();
+  const tree = await loadTreeForAdmin();
+  const captureFolders = tree.folders.map((f) => ({
+    id: f.id,
+    name: f.name,
+  }));
+  const returnQs = new URLSearchParams();
+  if (preferred) returnQs.set("date", preferred);
+  if (sourceFilter !== "all") returnQs.set("source", sourceFilter);
+  const returnTo = returnQs.toString()
+    ? `/lab/feeds?${returnQs}`
+    : "/lab/feeds";
 
   return (
     <div className="space-y-8">
@@ -190,7 +205,13 @@ export default async function RssFeedsPage({ searchParams }: Props) {
                   <ul className="space-y-3">
                     {feed.items.map((item, i) => (
                       <li key={`${feed.id}-${item.id}-${i}`}>
-                        <RssFeedCard item={item} index={i} />
+                        <RssFeedCard
+                          item={item}
+                          index={i}
+                          captureFolders={captureFolders}
+                          captureLoggedIn={Boolean(session)}
+                          returnTo={returnTo}
+                        />
                       </li>
                     ))}
                   </ul>
