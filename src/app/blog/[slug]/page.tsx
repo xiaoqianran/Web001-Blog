@@ -4,10 +4,12 @@ import { notFound } from "next/navigation";
 import {
   formatDate,
   getAllPosts,
+  getPostBySlug,
   getPostWithHtml,
   getRelatedPosts,
   seriesToSlug,
 } from "@/lib/posts";
+import { Backlinks } from "@/components/Backlinks";
 import { CodeCopy } from "@/components/CodeCopy";
 import { GiscusComments } from "@/components/GiscusComments";
 import { JsonLd } from "@/components/JsonLd";
@@ -23,6 +25,7 @@ import {
   loadTreeFromDisk,
 } from "@/lib/content-tree";
 import { getSiteConfig } from "@/lib/site";
+import { collectBacklinks } from "@/lib/wiki-links";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -102,6 +105,25 @@ export default async function PostPage({ params }: Props) {
     ? allPosts.find((p) => p.slug === nextSlug) ?? null
     : null;
   const related = getRelatedPosts(slug, 3);
+  // Backlinks: published posts only on public site
+  const backlinks = collectBacklinks(
+    slug,
+    allPosts.map((p) => {
+      let content = "";
+      try {
+        content = getPostBySlug(p.slug).content;
+      } catch {
+        content = "";
+      }
+      return {
+        slug: p.slug,
+        title: p.title,
+        content,
+        draft: p.draft,
+      };
+    }),
+    { includeDrafts: false },
+  );
   const site = getSiteConfig();
   const siteUrl = (
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
@@ -208,6 +230,10 @@ export default async function PostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: post.contentHtml }}
       />
       <CodeCopy />
+
+      <div className="mt-10">
+        <Backlinks items={backlinks} showEmpty />
+      </div>
 
       <RelatedPosts posts={related} />
 

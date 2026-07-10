@@ -1017,3 +1017,105 @@ body
   assert.match(persist, /putTreeJson/);
   assert.match(persist, /try\s*\{[\s\S]*saveTreeToDisk[\s\S]*\}\s*catch/);
 });
+
+test("wiki-links: parse pipe alias, skip code fences, backlinks", async () => {
+  const {
+    extractWikiLinks,
+    extractWikiSlugs,
+    expandWikiLinks,
+    collectBacklinks,
+    knownSlugMap,
+    normalizeWikiSlug,
+  } = await loadTs("src/lib/wiki-links.ts");
+
+  assert.equal(normalizeWikiSlug("  Hello World "), "hello-world");
+
+  const md = `
+See [[kb-wiki-beta|Beta 样例]] and [[kb-wiki-alpha]].
+
+\`\`\`md
+[[should-not-extract]]
+\`\`\`
+
+Inline \`[[also-not]]\` stays raw.
+`;
+  const links = extractWikiLinks(md);
+  assert.equal(links.length, 2);
+  assert.equal(links[0].slug, "kb-wiki-beta");
+  assert.equal(links[0].label, "Beta 样例");
+  assert.equal(links[1].slug, "kb-wiki-alpha");
+  const slugs = extractWikiSlugs(md);
+  assert.ok(!slugs.includes("should-not-extract"));
+  assert.ok(!slugs.includes("also-not"));
+
+  const known = knownSlugMap([
+    { slug: "kb-wiki-beta", title: "Beta" },
+    { slug: "kb-wiki-alpha", title: "Alpha" },
+  ]);
+  const expanded = expandWikiLinks(md, known);
+  assert.match(expanded, /\[Beta 样例\]\(\/blog\/kb-wiki-beta\)/);
+  assert.match(expanded, /\[kb-wiki-alpha\]\(\/blog\/kb-wiki-alpha\)/);
+  assert.match(expanded, /```md[\s\S]*\[\[should-not-extract\]\]/);
+  assert.match(expanded, /`\[\[also-not\]\]`/);
+
+  // missing target → plain label, no href
+  const miss = expandWikiLinks("go [[missing-note|Missing]]", new Set(["other"]));
+  assert.equal(miss.includes("/blog/missing"), false);
+  assert.match(miss, /Missing/);
+
+  const posts = [
+    {
+      slug: "kb-wiki-alpha",
+      title: "Alpha",
+      content: "link to [[kb-wiki-beta]]",
+      draft: false,
+    },
+    {
+      slug: "kb-wiki-beta",
+      title: "Beta",
+      content: "no link",
+      draft: false,
+    },
+    {
+      slug: "draft-ref",
+      title: "Draft",
+      content: "also [[kb-wiki-beta]]",
+      draft: true,
+    },
+  ];
+  const pub = collectBacklinks("kb-wiki-beta", posts, { includeDrafts: false });
+  assert.equal(pub.length, 1);
+  assert.equal(pub[0].slug, "kb-wiki-alpha");
+  const all = collectBacklinks("kb-wiki-beta", posts, { includeDrafts: true });
+  assert.equal(all.length, 2);
+
+  // shipped sample files interlink
+  const alpha = fs.readFileSync(
+    path.join(root, "content/posts/notes/kb-wiki-alpha.md"),
+    "utf8",
+  );
+  const beta = fs.readFileSync(
+    path.join(root, "content/posts/notes/kb-wiki-beta.md"),
+    "utf8",
+  );
+  assert.ok(extractWikiSlugs(alpha).includes("kb-wiki-beta"));
+  assert.ok(extractWikiSlugs(beta).includes("kb-wiki-alpha"));
+
+  // render path uses expandWikiLinks
+  const postsTs = fs.readFileSync(
+    path.join(root, "src/lib/posts.ts"),
+    "utf8",
+  );
+  assert.match(postsTs, /expandWikiLinks/);
+  assert.ok(
+    fs.existsSync(path.join(root, "src/components/Backlinks.tsx")),
+  );
+  assert.ok(
+    fs.existsSync(path.join(root, "src/components/admin/WikiLinksPanel.tsx")),
+  );
+  const blogPage = fs.readFileSync(
+    path.join(root, "src/app/blog/[slug]/page.tsx"),
+    "utf8",
+  );
+  assert.match(blogPage, /Backlinks|collectBacklinks/);
+});
