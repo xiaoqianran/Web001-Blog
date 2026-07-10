@@ -14,6 +14,8 @@ import {
   type PostFormState,
 } from "@/app/actions/posts";
 import { uploadImage } from "@/app/actions/upload";
+import { DocOutline } from "@/components/admin/DocOutline";
+import { ExportMarkdownButton } from "@/components/admin/ExportMarkdownButton";
 import { EditorChrome } from "@/components/EditorChrome";
 import { MarkdownEditor } from "@/components/MarkdownEditor";
 import { appendMarkdown } from "@/lib/markdown-form";
@@ -399,6 +401,31 @@ export function PostForm({
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
+            <ExportMarkdownButton
+              filename={slug || "post"}
+              getMarkdown={() => {
+                const lines = [
+                  "---",
+                  `title: ${JSON.stringify(title)}`,
+                  `description: ${JSON.stringify(description)}`,
+                  `date: ${date}`,
+                  `tags: [${tags
+                    .split(/[,，]/)
+                    .map((t) => t.trim())
+                    .filter(Boolean)
+                    .map((t) => JSON.stringify(t))
+                    .join(", ")}]`,
+                  draft ? "draft: true" : null,
+                  pinned ? "pinned: true" : null,
+                  cover ? `cover: ${JSON.stringify(cover)}` : null,
+                  series ? `series: ${JSON.stringify(series)}` : null,
+                  "---",
+                  "",
+                  content,
+                ].filter((x) => x !== null);
+                return `${lines.join("\n")}\n`;
+              }}
+            />
             <button
               type="button"
               onClick={() => mdRef.current?.click()}
@@ -424,14 +451,19 @@ export function PostForm({
           </div>
         </div>
 
-        <MarkdownEditor
-          id="content"
-          name="content"
-          value={content}
-          onChange={setContent}
-          height={560}
-          required
-        />
+        <div className="grid gap-4 lg:grid-cols-[1fr_200px]">
+          <MarkdownEditor
+            id="content"
+            name="content"
+            value={content}
+            onChange={setContent}
+            height={560}
+            required
+          />
+          <aside className="hidden rounded-xl border border-zinc-200 p-3 lg:block dark:border-zinc-800">
+            <DocOutline content={content} />
+          </aside>
+        </div>
 
         {uploadMsg && (
           <p className="text-xs text-zinc-500 dark:text-zinc-400">{uploadMsg}</p>
