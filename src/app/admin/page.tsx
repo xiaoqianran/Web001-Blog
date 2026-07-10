@@ -2,10 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { logout } from "@/app/actions/auth";
 import { DeletePostButton } from "@/components/DeletePostButton";
+import { KnowledgeTree } from "@/components/admin/KnowledgeTree";
 import { loadAdminPosts } from "@/lib/admin-posts";
+import {
+  buildTreeFromRelPaths,
+  ensureDocInTree,
+  loadTreeFromDisk,
+  saveTreeToDisk,
+} from "@/lib/content-tree";
 import { isStaticExport } from "@/lib/deploy";
 import { isGitHubContentEnabled } from "@/lib/github-content";
-import { formatDate } from "@/lib/posts";
+import { formatDate, listPostRelPaths } from "@/lib/posts";
 import { requireSession } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
@@ -53,6 +60,20 @@ export default async function AdminPage({ searchParams }: Props) {
   const allForStats = await loadAdminPosts({ filter: "all", sort: "updated" });
   const publishedAll = allForStats.posts.filter((p) => !p.draft).length;
   const draftAll = allForStats.posts.filter((p) => p.draft).length;
+
+  // Knowledge tree: merge disk tree with current posts
+  let tree = loadTreeFromDisk();
+  if (tree.docs.length === 0 && listPostRelPaths().length > 0) {
+    tree = buildTreeFromRelPaths(listPostRelPaths());
+    saveTreeToDisk(tree);
+  }
+  for (const p of allForStats.posts) {
+    if (!tree.docs.some((d) => d.slug === p.slug)) {
+      tree = ensureDocInTree(tree, p.slug, p.folder || null);
+    }
+  }
+  const postsBySlug = new Map(allForStats.posts.map((p) => [p.slug, p]));
+  const folderOptions = tree.folders.map((f) => ({ id: f.id, name: f.name }));
 
   const viaGithub = params.via === "github";
   const gitEnabled = isGitHubContentEnabled();
@@ -190,6 +211,14 @@ export default async function AdminPage({ searchParams }: Props) {
         <StatCard label="当前筛选" value={posts.length} />
       </section>
 
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,280px)_1fr]">
+        <KnowledgeTree
+          tree={tree}
+          postsBySlug={postsBySlug}
+          folders={folderOptions}
+        />
+
+        <div className="space-y-6 min-w-0">
       {/* A2 Recent */}
       {recent.length > 0 && (
         <section className="space-y-3" data-testid="admin-recent">
@@ -397,6 +426,8 @@ export default async function AdminPage({ searchParams }: Props) {
           </table>
         </div>
       </section>
+        </div>
+      </div>
     </div>
   );
 }

@@ -16,6 +16,11 @@ import { RelatedPosts } from "@/components/RelatedPosts";
 import { ShareButtons } from "@/components/ShareButtons";
 import { Tag } from "@/components/Tag";
 import { TableOfContents } from "@/components/TableOfContents";
+import {
+  folderBreadcrumb,
+  getDocFolderId,
+  loadTreeFromDisk,
+} from "@/lib/content-tree";
 import { getSiteConfig } from "@/lib/site";
 
 type Props = {
@@ -87,9 +92,31 @@ export default async function PostPage({ params }: Props) {
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
   ).replace(/\/$/, "");
   const pageUrl = `${siteUrl}/blog/${slug}`;
+  const tree = loadTreeFromDisk();
+  const folderId = getDocFolderId(tree, slug) ?? post.folder ?? null;
+  const crumbs = folderBreadcrumb(tree, folderId);
 
   return (
     <article>
+      {(crumbs.length > 0 || true) && (
+        <nav
+          aria-label="面包屑"
+          className="mb-4 flex flex-wrap items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400"
+          data-testid="post-breadcrumb"
+        >
+          <Link href="/blog" className="hover:text-violet-600">
+            文章
+          </Link>
+          {crumbs.map((c) => (
+            <span key={c.id} className="inline-flex items-center gap-1.5">
+              <span aria-hidden>/</span>
+              <span>{c.name}</span>
+            </span>
+          ))}
+          <span aria-hidden>/</span>
+          <span className="text-zinc-700 dark:text-zinc-300">{post.title}</span>
+        </nav>
+      )}
       <JsonLd
         data={{
           "@context": "https://schema.org",
