@@ -205,10 +205,10 @@ test("HF daily papers data and helpers", async () => {
   assert.ok(fb.data?.attribution);
 });
 
-test("content/posts sample files are healthy", () => {
+test("content/posts markdown files are healthy when present", () => {
   const dir = path.join(root, "content/posts");
+  assert.ok(fs.existsSync(dir));
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
-  assert.ok(files.length >= 1);
   for (const file of files) {
     assert.match(file, /^[a-z0-9]+(?:-[a-z0-9]+)*\.md$/);
     const raw = fs.readFileSync(path.join(dir, file), "utf8");

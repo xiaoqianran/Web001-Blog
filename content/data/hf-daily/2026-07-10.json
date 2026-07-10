@@ -1,10 +1,10 @@
 {
   "source": "huggingface.co/api/daily_papers",
   "attribution": "Data from Hugging Face Daily Papers (community curation). All rights belong to the original authors.",
-  "fetchedAt": "2026-07-10T18:32:03.558Z",
+  "fetchedAt": "2026-07-10T18:36:49.469Z",
   "date": "2026-07-10",
   "sort": "trending",
-  "count": 12,
+  "count": 15,
   "papers": [
     {
       "id": "2607.07534",
@@ -314,6 +314,89 @@
         "hf": "https://huggingface.co/papers/2604.14141",
         "arxiv": "https://arxiv.org/abs/2604.14141",
         "pdf": "https://arxiv.org/pdf/2604.14141"
+      }
+    },
+    {
+      "id": "2607.06403",
+      "title": "From Foundation to Application: Improving VLA Models in Practice",
+      "summary": "Despite recent progress of VLA foundation models, the disparity between laboratory conditions and real-world applications continues to impede their practical implementation. To bridge this gap, we present LingBot-VLA 2.0, which advances LingBot-VLA through improvements in three functional domains. (1) Generalization across tasks and embodiments. Compared to the previous version, we revamp the data processing pipeline and curate around 60,000 hours of data for pretraining, including 50,000 hours of robot trajectories spanning 20 robot configurations and 10,000 hours of egocentric human videos. (2) Expanded action space in addition to dual-arm hardware platforms. In particular, our system accommodates degrees of freedom for the heads, waists, mobile bases, and dexterous hands, thereby empowering the robots to tackle more complex tasks in practical scenarios. (3) Predictive dynamics modeling for improved temporal reasoning. Specifically, we formulate future prediction as a proxy task, facilitated by a video representation model for semantic priors and a depth estimation model for geometric cues. Evaluations on the GM-100 benchmark, conducted in a generalist setting, validate the beneficial impact of these proposed modifications. Furthermore, benefiting from the expanded pretraining data that covers whole-body degrees of freedom, LingBot-VLA-2.0 demonstrates strong cross-embodiment long-horizon mobile manipulation capability across the two robotic platforms.",
+      "authors": [
+        "Wei Wu",
+        "Fangjing Wang",
+        "Fan Lu",
+        "He Sun",
+        "Shi Liu",
+        "Yunnan Wang",
+        "Yibin Yan",
+        "Yong Wang",
+        "Shuailei Ma",
+        "Xinyang Wang",
+        "Yibin Liu",
+        "Shuai Yang"
+      ],
+      "publishedAt": "2026-07-07T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-07-08T00:00:00.000Z",
+      "submitter": "Weiww99",
+      "upvotes": 14,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2607.06403",
+        "arxiv": "https://arxiv.org/abs/2607.06403",
+        "pdf": "https://arxiv.org/pdf/2607.06403"
+      }
+    },
+    {
+      "id": "2607.05352",
+      "title": "Multiplayer Interactive World Models with Representation Autoencoders",
+      "summary": "We introduce the first multiplayer world model for highly dynamic environments governed by complex physical interactions. Whereas single-player world models treat the other agents as part of the environment, ours conditions on the action streams of multiple agents, learning to attribute changes in the scene to the correct player and to stay coherent under arbitrary combinations of their actions. We study this problem in the game of Rocket League, where players compete and cooperate under fast, tightly coupled dynamics. Trained on 10,000 hours of gameplay collected with publicly available bots, our 5-billion-parameter latent diffusion model generates four-player matches in real time, producing 20 frames per second on a single Nvidia B200 GPU. Although trained only on short clips, its rollouts stay stable far beyond the training horizon: distributional quality holds steady out to five minutes, the longest horizon we measure, and in practice we observe rollouts continuing for hours with no sign of collapse. We systematically investigate the central design choices: the video codec, the generative objective, and the multiplayer conditioning scheme. In addition, we characterize how behavior changes with model and data scale, including the capabilities that emerge and the failure modes that persist. We further develop targeted evaluations that probe the model's physical understanding rather than visual appearance alone. To support continued research on multiplayer world models, we release our dataset, our full training and inference codebase, and a live demo.",
+      "authors": [
+        "Anthony Hu",
+        "Václav Volhejn",
+        "Adrien Ramanana Rahary",
+        "Chris Mulder",
+        "Aditya Makkar",
+        "Amélie Royer",
+        "Manu Orsini",
+        "Alyx Liao",
+        "Adam Jelley",
+        "Eloi Alonso",
+        "Florian Laurent",
+        "Fredrik Norén"
+      ],
+      "publishedAt": "2026-07-06T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-07-07T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 18,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2607.05352",
+        "arxiv": "https://arxiv.org/abs/2607.05352",
+        "pdf": "https://arxiv.org/pdf/2607.05352"
+      }
+    },
+    {
+      "id": "2607.04439",
+      "title": "ResearchStudio-Idea: An Evidence-Grounded Research-Ideation Skill Suite from ML Conference Outcomes",
+      "summary": "Large language models have made research ideation increasingly accessible, yet effective idea development requires more than generating candidate directions. Researchers must ground a problem in current literature, identify meaningful bottlenecks, differentiate from existing solutions, and evaluate risks before committing to implementation. We present ResearchStudio-Idea as a reusable skill suite for this first mile of research ideation. The suite includes Paper-Search, a standalone multi-source literature search skill; Scoop-Check, a standalone prior-art collision checker for novelty claims; and IdeaSpark, the end-to-end skill that composes evidence grounding, pattern-guided generation, collision retrieval, audit, and idea-card rendering into one workflow. IdeaSpark is constructed from a corpus of 1,947 machine learning conference papers collected from ICLR, ICML, and NeurIPS between 2021 and 2025, including Oral papers, a separately tracked high-citation subset, and rejected submissions. Analysis of these outcomes reveals 31 recurring ideation sub-patterns, consolidated into 15 reusable ideation patterns. Each pattern is operationalized as a structured card containing research contexts, bottleneck types, differentiation strategies, supporting precedents, and common failure modes. Given a research problem and an evidence bundle, IdeaSpark evaluates evidence readiness, reconstructs the surrounding research context, identifies unresolved bottlenecks, selects relevant patterns, instantiates one candidate direction, retrieves potentially conflicting prior work, and performs outcome-informed auditing. This workflow transforms reusable ideation patterns into traceable research proposals. Blind automated-judge evaluations show that IdeaSpark consistently produces stronger research proposals than no-skill and generic-skill baselines while maintaining competitive novelty.",
+      "authors": [
+        "Qihao Zhao",
+        "Yangyu Huang",
+        "Yalun Dai",
+        "Lingao Xiao",
+        "Jianjun Gao",
+        "Xin Zhang",
+        "Wenshan Wu",
+        "Scarlett Li",
+        "Yang He",
+        "Yan Lu",
+        "Yap Kim Hui"
+      ],
+      "publishedAt": "2026-07-05T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-07-07T00:00:00.000Z",
+      "submitter": "fistyyyy",
+      "upvotes": 48,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2607.04439",
+        "arxiv": "https://arxiv.org/abs/2607.04439",
+        "pdf": "https://arxiv.org/pdf/2607.04439"
       }
     }
   ]
