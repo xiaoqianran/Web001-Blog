@@ -13,9 +13,69 @@ async function loadTs(rel) {
 }
 
 test("slugifyTitle from shipped module", async () => {
-  const { slugifyTitle } = await loadTs("src/lib/slugify.ts");
+  const { slugifyTitle, isValidSlug } = await loadTs("src/lib/slugify.ts");
   assert.equal(slugifyTitle("Hello World"), "hello-world");
   assert.equal(slugifyTitle("  Foo   Bar__Baz "), "foo-bar-baz");
+  assert.equal(isValidSlug("hello-world"), true);
+  assert.equal(isValidSlug("Bad Slug"), false);
+});
+
+test("parseMarkdownImport fills form fields from .md + frontmatter", async () => {
+  const { parseMarkdownImport, isMarkdownFile } = await loadTs(
+    "src/lib/import-markdown.ts",
+  );
+  const raw = `---
+title: Imported Note
+description: From disk
+date: 2026-07-01
+tags:
+  - Next.js
+  - 笔记
+draft: true
+pinned: false
+series: Lab
+cover: /uploads/a.png
+slug: imported-note
+---
+
+# Body heading
+
+Hello **world**.
+`;
+  const got = parseMarkdownImport(raw, "ignored.md");
+  assert.equal(got.title, "Imported Note");
+  assert.equal(got.slug, "imported-note");
+  assert.equal(got.description, "From disk");
+  assert.equal(got.date, "2026-07-01");
+  assert.equal(got.tags, "Next.js, 笔记");
+  assert.equal(got.draft, true);
+  assert.equal(got.pinned, false);
+  assert.equal(got.series, "Lab");
+  assert.equal(got.cover, "/uploads/a.png");
+  assert.match(got.content, /Hello \*\*world\*\*/);
+  assert.doesNotMatch(got.content, /^---/);
+
+  const plain = parseMarkdownImport("# Only Title\n\nbody", "my cool post.md");
+  assert.equal(plain.title, "Only Title");
+  assert.equal(plain.slug, "my-cool-post");
+  assert.match(plain.content, /body/);
+
+  // File type helper (browser File shape)
+  assert.equal(
+    isMarkdownFile({ name: "a.md", type: "" }),
+    true,
+  );
+  assert.equal(
+    isMarkdownFile({ name: "a.png", type: "image/png" }),
+    false,
+  );
+
+  const formSrc = fs.readFileSync(
+    path.join(root, "src/components/PostForm.tsx"),
+    "utf8",
+  );
+  assert.match(formSrc, /parseMarkdownImport|import-markdown/);
+  assert.match(formSrc, /import-md-button|选择 \.md|导入 \.md/);
 });
 
 test("paginate slices pages correctly", async () => {

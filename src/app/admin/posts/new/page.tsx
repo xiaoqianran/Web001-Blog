@@ -29,7 +29,9 @@ export default async function NewPostPage() {
           新建文章
         </h1>
         <p className="text-zinc-600 dark:text-zinc-400">
-          填写 frontmatter 与 Markdown 正文。本地默认写入{" "}
+          可直接填写，或导入本地{" "}
+          <code className="text-violet-600 dark:text-violet-400">.md</code>{" "}
+          文件（支持 YAML frontmatter）。本地默认写入{" "}
           <code className="text-violet-600 dark:text-violet-400">content/posts/</code>
           ；Vercel 上配置 <code className="text-violet-600 dark:text-violet-400">GITHUB_TOKEN</code>{" "}
           后会提交到 GitHub 并自动重新部署。
