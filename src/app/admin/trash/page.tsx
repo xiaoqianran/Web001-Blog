@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { restoreTrashAction } from "@/app/actions/trash";
 import { PermanentDeleteButton } from "@/components/admin/PermanentDeleteButton";
-import { listTrash } from "@/lib/trash";
+import {
+  githubListTrash,
+  isGitHubContentEnabled,
+} from "@/lib/github-content";
+import { listTrash, type TrashItem } from "@/lib/trash";
 import { requireSession } from "@/lib/session";
 
 export const metadata: Metadata = {
@@ -16,10 +20,22 @@ type Props = {
   searchParams: Promise<{ deleted?: string; purged?: string }>;
 };
 
+/** Prefer GitHub trash (Vercel source of truth); fall back to local disk. */
+async function loadTrashItems(): Promise<TrashItem[]> {
+  if (isGitHubContentEnabled()) {
+    try {
+      return await githubListTrash();
+    } catch {
+      return listTrash();
+    }
+  }
+  return listTrash();
+}
+
 export default async function TrashPage({ searchParams }: Props) {
   await requireSession();
   const sp = await searchParams;
-  const items = listTrash();
+  const items = await loadTrashItems();
 
   return (
     <div className="space-y-8">

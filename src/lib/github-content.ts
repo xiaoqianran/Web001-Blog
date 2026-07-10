@@ -323,11 +323,46 @@ export async function githubListTrashFilenames(): Promise<string[]> {
   );
   if (res.status === 404) return [];
   if (!res.ok) return [];
-  const data = (await res.json()) as { name?: string; type?: string }[] | { message?: string };
+  const data = (await res.json()) as
+    | { name?: string; type?: string }[]
+    | { message?: string };
   if (!Array.isArray(data)) return [];
   return data
     .filter((n) => n.type === "file" && n.name?.endsWith(".md"))
     .map((n) => n.name as string);
+}
+
+/**
+ * List trash items from GitHub (source of truth on Vercel).
+ * Uses parseTrashMarkdown so local/GitHub rows share the same shape.
+ */
+export async function githubListTrash(): Promise<
+  import("./trash").TrashItem[]
+> {
+  const { parseTrashMarkdown } = await import("./trash");
+  const names = await githubListTrashFilenames();
+  if (names.length === 0) return [];
+  const { owner, repo, branch } = getConfig();
+  const items = await Promise.all(
+    names.map(async (filename) => {
+      const trashPath = `content/posts/trash/${filename}`;
+      const res = await ghFetch(
+        `/repos/${owner}/${repo}/contents/${encodeURI(trashPath)}?ref=${encodeURIComponent(branch)}`,
+      );
+      if (!res.ok) {
+        return parseTrashMarkdown(filename, "---\ntitle: ?\n---\n");
+      }
+      const data = (await res.json()) as { content?: string };
+      if (!data.content) {
+        return parseTrashMarkdown(filename, "---\ntitle: ?\n---\n");
+      }
+      const raw = Buffer.from(data.content.replace(/\n/g, ""), "base64").toString(
+        "utf8",
+      );
+      return parseTrashMarkdown(filename, raw);
+    }),
+  );
+  return items.sort((a, b) => b.deletedAt.localeCompare(a.deletedAt));
 }
 
 export async function githubRenamePost(
