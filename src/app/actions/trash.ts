@@ -9,12 +9,11 @@ import {
   isGitHubContentEnabled,
 } from "@/lib/github-content";
 import {
-  ensureDocInTree,
-  loadTreeFromDisk,
-  saveTreeToDisk,
-  type ContentTree,
-} from "@/lib/content-tree";
-import { findPostFile, getPostBySlug } from "@/lib/posts";
+  loadPostForAdmin,
+  persistTreeBestEffort,
+} from "@/lib/content-persist";
+import { ensureDocInTree, loadTreeFromDisk } from "@/lib/content-tree";
+import { findPostFile } from "@/lib/posts";
 import {
   permanentDeleteLocal,
   restoreFromTrashLocal,
@@ -34,52 +33,30 @@ function revalidateAll() {
   revalidatePath("/kb");
 }
 
-/**
- * Best-effort tree update. Never throws: Vercel RO FS must not block soft-delete.
- * When GitHub is enabled, also put tree.json so the index stays consistent.
- */
-async function persistTreeBestEffort(tree: ContentTree): Promise<void> {
-  try {
-    saveTreeToDisk(tree);
-  } catch {
-    /* Vercel read-only or missing volume */
-  }
-  if (isGitHubContentEnabled()) {
-    try {
-      const { putTreeJson } = await import("@/lib/github-tree");
-      await putTreeJson(tree);
-    } catch {
-      /* non-fatal */
-    }
-  }
-}
-
 export async function softDeletePostAction(formData: FormData) {
   await requireAdmin();
   const slug = String(formData.get("slug") ?? "").trim();
   if (!slug) redirect("/admin?error=notfound");
 
   // 1) Soft-delete content FIRST (GitHub is source of truth on Vercel).
-  //    Tree disk writes must not run before this — RO FS would abort the action.
   let deleted = false;
   if (isGitHubContentEnabled()) {
     try {
       await githubSoftDeletePost(slug);
       deleted = true;
     } catch {
-      // Fall back to local if only local exists (dev / missing remote blob)
       const full = findPostFile(slug);
       if (full) {
-        const post = getPostBySlug(slug);
-        softDeleteLocal(full, slug, post.folder ?? "");
+        const post = await loadPostForAdmin(slug);
+        softDeleteLocal(full, slug, post?.folder ?? "");
         deleted = true;
       }
     }
   } else {
     const full = findPostFile(slug);
     if (!full) redirect("/admin?error=notfound");
-    const post = getPostBySlug(slug);
-    softDeleteLocal(full, slug, post.folder ?? "");
+    const post = await loadPostForAdmin(slug);
+    softDeleteLocal(full, slug, post?.folder ?? "");
     deleted = true;
   }
 
@@ -111,7 +88,6 @@ export async function restoreTrashAction(formData: FormData) {
       const r = await githubRestoreTrash(filename);
       slug = r.slug;
       folder = r.folder;
-      // also restore local copy if present in trash
       try {
         restoreFromTrashLocal(filename);
       } catch {

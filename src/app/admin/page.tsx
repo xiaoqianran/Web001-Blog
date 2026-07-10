@@ -12,8 +12,8 @@ import {
   buildTreeFromRelPaths,
   ensureDocInTree,
   loadTreeFromDisk,
-  saveTreeToDisk,
 } from "@/lib/content-tree";
+import { persistTreeBestEffort } from "@/lib/content-persist";
 import { isStaticExport } from "@/lib/deploy";
 import { isGitHubContentEnabled } from "@/lib/github-content";
 import { formatDate, listPostRelPaths } from "@/lib/posts";
@@ -65,16 +65,21 @@ export default async function AdminPage({ searchParams }: Props) {
   const publishedAll = allForStats.posts.filter((p) => !p.draft).length;
   const draftAll = allForStats.posts.filter((p) => p.draft).length;
 
-  // Knowledge tree: merge disk tree with current posts
+  // Knowledge tree: merge disk tree with current posts (RO FS → GitHub put)
   let tree = loadTreeFromDisk();
+  let treeDirty = false;
   if (tree.docs.length === 0 && listPostRelPaths().length > 0) {
     tree = buildTreeFromRelPaths(listPostRelPaths());
-    saveTreeToDisk(tree);
+    treeDirty = true;
   }
   for (const p of allForStats.posts) {
     if (!tree.docs.some((d) => d.slug === p.slug)) {
       tree = ensureDocInTree(tree, p.slug, p.folder || null);
+      treeDirty = true;
     }
+  }
+  if (treeDirty) {
+    await persistTreeBestEffort(tree);
   }
   const postsBySlug = new Map(allForStats.posts.map((p) => [p.slug, p]));
   const folderOptions = tree.folders.map((f) => ({ id: f.id, name: f.name }));
