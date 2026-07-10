@@ -77,8 +77,6 @@ export function PostForm({
   const [uploadMsg, setUploadMsg] = useState<string | null>(null);
   const [importMsg, setImportMsg] = useState<string | null>(null);
   const [uploading, startUpload] = useTransition();
-  // Keep success text until the next save replaces it (do not auto-dismiss).
-  const [lastNotice, setLastNotice] = useState<string | null>(initialNotice);
 
   const [slugOverride, setSlugOverride] = useState<string | null>(
     mode === "edit" ? initial.slug : initial.slug || null,
@@ -91,17 +89,10 @@ export function PostForm({
       : slugifyTitle(title);
 
   const statusError = state?.error;
-  // Prefer latest action notice; fall back to sticky last success message
-  const statusNotice = state?.error
+  // Stay visible: action notice, else URL flash from create redirect. Never auto-clear.
+  const statusNotice = statusError
     ? null
-    : (state?.notice ?? lastNotice);
-
-  // Persist successful notices so they don't vanish after re-render
-  useEffect(() => {
-    if (state?.notice) {
-      setLastNotice(state.notice);
-    }
-  }, [state?.notice]);
+    : (state?.notice ?? initialNotice ?? null);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
