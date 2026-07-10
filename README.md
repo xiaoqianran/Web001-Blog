@@ -2,6 +2,9 @@
 
 用 Next.js App Router + Markdown 搭建的简洁个人博客。
 
+> **终极目标 / 自主推进**：见 [`docs/ULTIMATE_GOAL.md`](docs/ULTIMATE_GOAL.md)  
+> 调用：`/goal 按 docs/ULTIMATE_GOAL.md 完成 Web001-Blog 终极目标`
+
 ## 功能
 
 - 首页精选文章 + 最近文章 + 标签云
