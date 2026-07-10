@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { redirect } from "next/navigation";
 import {
   githubDeletePost,
@@ -128,7 +129,6 @@ function missingGitHubTokenOnVercel(): PostFormState {
 
 async function slugTaken(slug: string): Promise<boolean> {
   if (shouldUseGitBackend()) {
-    // Prefer live GitHub state when available
     try {
       return await githubPostExists(slug);
     } catch {
@@ -136,6 +136,24 @@ async function slugTaken(slug: string): Promise<boolean> {
     }
   }
   return postExists(slug);
+}
+
+/** Never swallow Next.js redirect()/notFound() control flow. */
+function rethrowNextControlFlow(err: unknown): void {
+  if (isRedirectError(err)) throw err;
+  // digest-based fallback for older runtimes
+  if (
+    typeof err === "object" &&
+    err !== null &&
+    "digest" in err &&
+    typeof (err as { digest?: unknown }).digest === "string" &&
+    String((err as { digest: string }).digest).startsWith("NEXT_REDIRECT")
+  ) {
+    throw err;
+  }
+  if (err instanceof Error && err.message === "NEXT_REDIRECT") {
+    throw err;
+  }
 }
 
 export async function createPost(
@@ -158,16 +176,16 @@ export async function createPost(
     };
   }
 
+  let viaGithub = false;
   try {
     if (shouldUseGitBackend()) {
       await githubWritePost(input);
-      revalidatePostPaths(input.slug);
-      redirect(
-        `/admin?created=${encodeURIComponent(input.slug)}&via=github`,
-      );
+      viaGithub = true;
+    } else {
+      writePost(input);
     }
-    writePost(input);
   } catch (err) {
+    rethrowNextControlFlow(err);
     console.error("createPost failed:", err);
     return {
       error:
@@ -178,7 +196,11 @@ export async function createPost(
   }
 
   revalidatePostPaths(input.slug);
-  redirect(`/admin?created=${encodeURIComponent(input.slug)}`);
+  redirect(
+    viaGithub
+      ? `/admin?created=${encodeURIComponent(input.slug)}&via=github`
+      : `/admin?created=${encodeURIComponent(input.slug)}`,
+  );
 }
 
 export async function updatePost(
@@ -196,7 +218,6 @@ export async function updatePost(
     return { error: "原文章不存在" };
   }
 
-  // On GitHub backend, existence may lag local fs after a prior commit
   if (!shouldUseGitBackend() && !postExists(originalSlug)) {
     return { error: "原文章不存在" };
   }
@@ -219,16 +240,16 @@ export async function updatePost(
     };
   }
 
+  let viaGithub = false;
   try {
     if (shouldUseGitBackend()) {
       await githubRenamePost(originalSlug, input);
-      revalidatePostPaths(input.slug, originalSlug);
-      redirect(
-        `/admin?updated=${encodeURIComponent(input.slug)}&via=github`,
-      );
+      viaGithub = true;
+    } else {
+      renamePost(originalSlug, input);
     }
-    renamePost(originalSlug, input);
   } catch (err) {
+    rethrowNextControlFlow(err);
     console.error("updatePost failed:", err);
     return {
       error:
@@ -239,7 +260,11 @@ export async function updatePost(
   }
 
   revalidatePostPaths(input.slug, originalSlug);
-  redirect(`/admin?updated=${encodeURIComponent(input.slug)}`);
+  redirect(
+    viaGithub
+      ? `/admin?updated=${encodeURIComponent(input.slug)}&via=github`
+      : `/admin?updated=${encodeURIComponent(input.slug)}`,
+  );
 }
 
 export async function deletePost(formData: FormData) {
@@ -254,19 +279,25 @@ export async function deletePost(formData: FormData) {
     redirect("/admin?error=notfound");
   }
 
+  let viaGithub = false;
   try {
     if (shouldUseGitBackend()) {
       await githubDeletePost(slug);
-      revalidatePostPaths(slug);
-      redirect(`/admin?deleted=${encodeURIComponent(slug)}&via=github`);
+      viaGithub = true;
+    } else {
+      getPostBySlug(slug);
+      deletePostFile(slug);
     }
-    getPostBySlug(slug);
-    deletePostFile(slug);
   } catch (err) {
+    rethrowNextControlFlow(err);
     console.error("deletePost failed:", err);
     redirect("/admin?error=delete");
   }
 
   revalidatePostPaths(slug);
-  redirect(`/admin?deleted=${encodeURIComponent(slug)}`);
+  redirect(
+    viaGithub
+      ? `/admin?deleted=${encodeURIComponent(slug)}&via=github`
+      : `/admin?deleted=${encodeURIComponent(slug)}`,
+  );
 }
