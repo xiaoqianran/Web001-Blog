@@ -1,31 +1,13 @@
 import fs from "fs";
 import path from "path";
+import type { HfDailyFile, HfPaperItem } from "./hf-paper-shared";
 
-export type HfPaperItem = {
-  id: string;
-  title: string;
-  summary: string;
-  authors: string[];
-  publishedAt: string | null;
-  submittedOnDailyAt: string | null;
-  submitter: string | null;
-  upvotes: number | null;
-  urls: {
-    hf: string;
-    arxiv: string | null;
-    pdf: string | null;
-  };
-};
-
-export type HfDailyFile = {
-  source: string;
-  attribution: string;
-  fetchedAt: string;
-  date: string;
-  sort: string;
-  count: number;
-  papers: HfPaperItem[];
-};
+export type { HfDailyFile, HfPaperItem };
+export {
+  paperDisplayTitle,
+  paperDisplaySummary,
+  hasChineseSummary,
+} from "./hf-paper-shared";
 
 const dataDir = path.join(process.cwd(), "content/data/hf-daily");
 

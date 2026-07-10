@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HfPaperCard } from "@/components/HfPaperCard";
 import { getHfDailyOrFallback, listHfDailyDates } from "@/lib/hf-papers";
 
 export const metadata: Metadata = {
   title: "HF 论文热点",
-  description: "Hugging Face Daily Papers 热点速览（自动日更）。",
+  description: "Hugging Face Daily Papers 热点速览（自动日更，中文机翻摘要）。",
 };
 
 type Props = {
@@ -36,7 +37,7 @@ export default async function HfPapersPage({ searchParams }: Props) {
           >
             HF Daily Papers
           </a>
-          ，写入仓库后展示。不进入主文章流——深度解读仍人工筛选发博。
+          ，写入仓库后展示；摘要默认中文机翻，可切换英文原文。不进入主文章流——深度解读仍人工筛选发博。
         </p>
       </header>
 
@@ -88,72 +89,18 @@ export default async function HfPapersPage({ searchParams }: Props) {
                 hour12: false,
               })}
             </span>
+            {data.locale?.translated !== false && (
+              <>
+                <span>·</span>
+                <span>摘要含中文机翻</span>
+              </>
+            )}
           </div>
 
           <ul className="space-y-4">
             {data.papers.map((paper, i) => (
               <li key={paper.id}>
-                <article className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950 sm:p-6">
-                  <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
-                    <span className="font-mono text-zinc-400">#{i + 1}</span>
-                    <span className="font-mono">{paper.id}</span>
-                    {paper.submitter && <span>· by {paper.submitter}</span>}
-                    {typeof paper.upvotes === "number" && (
-                      <span>· ▲ {paper.upvotes}</span>
-                    )}
-                  </div>
-                  <h2 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-                    <a
-                      href={paper.urls.hf}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-violet-600 dark:hover:text-violet-400"
-                    >
-                      {paper.title}
-                    </a>
-                  </h2>
-                  {paper.authors.length > 0 && (
-                    <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
-                      {paper.authors.join(", ")}
-                      {paper.authors.length >= 12 ? " …" : ""}
-                    </p>
-                  )}
-                  {paper.summary && (
-                    <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                      {paper.summary}
-                    </p>
-                  )}
-                  <div className="mt-4 flex flex-wrap gap-3 text-sm">
-                    <a
-                      href={paper.urls.hf}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium text-violet-600 hover:underline dark:text-violet-400"
-                    >
-                      HF 页面
-                    </a>
-                    {paper.urls.arxiv && (
-                      <a
-                        href={paper.urls.arxiv}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-medium text-zinc-600 hover:underline dark:text-zinc-300"
-                      >
-                        arXiv
-                      </a>
-                    )}
-                    {paper.urls.pdf && (
-                      <a
-                        href={paper.urls.pdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-medium text-zinc-600 hover:underline dark:text-zinc-300"
-                      >
-                        PDF
-                      </a>
-                    )}
-                  </div>
-                </article>
+                <HfPaperCard paper={paper} index={i} defaultLang="zh" />
               </li>
             ))}
           </ul>
