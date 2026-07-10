@@ -77,9 +77,8 @@ export function PostForm({
   const [uploadMsg, setUploadMsg] = useState<string | null>(null);
   const [importMsg, setImportMsg] = useState<string | null>(null);
   const [uploading, startUpload] = useTransition();
-  const [bannerNotice, setBannerNotice] = useState<string | null>(
-    initialNotice,
-  );
+  // Keep success text until the next save replaces it (do not auto-dismiss).
+  const [lastNotice, setLastNotice] = useState<string | null>(initialNotice);
 
   const [slugOverride, setSlugOverride] = useState<string | null>(
     mode === "edit" ? initial.slug : initial.slug || null,
@@ -92,21 +91,17 @@ export function PostForm({
       : slugifyTitle(title);
 
   const statusError = state?.error;
-  const statusNotice = state?.notice ?? bannerNotice;
+  // Prefer latest action notice; fall back to sticky last success message
+  const statusNotice = state?.error
+    ? null
+    : (state?.notice ?? lastNotice);
 
-  // Scroll status into view near save buttons when it changes
+  // Persist successful notices so they don't vanish after re-render
   useEffect(() => {
-    if ((statusError || statusNotice) && statusRef.current) {
-      statusRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (state?.notice) {
+      setLastNotice(state.notice);
     }
-  }, [statusError, statusNotice]);
-
-  // Clear URL flash after first paint so refresh doesn't re-show forever
-  useEffect(() => {
-    if (!initialNotice) return;
-    const t = window.setTimeout(() => setBannerNotice(null), 8000);
-    return () => window.clearTimeout(t);
-  }, [initialNotice]);
+  }, [state?.notice]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -450,10 +445,11 @@ export function PostForm({
           )}
           {!statusError && statusNotice && (
             <p
-              className="text-sm font-medium text-emerald-600 dark:text-emerald-400"
+              className="rounded-lg bg-emerald-50 px-3 py-1.5 text-sm font-medium text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300"
               data-testid="post-form-notice"
+              role="status"
             >
-              {statusNotice}
+              ✓ {statusNotice}
             </p>
           )}
           {!statusError && !statusNotice && (
