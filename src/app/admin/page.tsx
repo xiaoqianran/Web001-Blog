@@ -12,6 +12,7 @@ import {
   buildTreeFromRelPaths,
   ensureDocInTree,
 } from "@/lib/content-tree";
+import { ContentSourceBadge } from "@/components/admin/ContentSourceBadge";
 import {
   loadTreeForAdmin,
   persistTreeBestEffort,
@@ -153,11 +154,14 @@ export default async function AdminPage({ searchParams }: Props) {
             <span className="font-medium text-zinc-900 dark:text-zinc-100">
               {session.username}
             </span>
-            <span className="mx-1.5 text-zinc-300">·</span>
-            <span className="text-sm">
-              列表来源：{source === "github" ? "GitHub 最新" : "本地磁盘"}
-            </span>
           </p>
+          <div className="pt-1">
+            <ContentSourceBadge
+              githubEnabled={gitEnabled}
+              listSource={source === "github" ? "github" : "local"}
+              onVercel={onVercel}
+            />
+          </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <CommandPalette
