@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { logout } from "@/app/actions/auth";
 import { DeletePostButton } from "@/components/DeletePostButton";
+import {
+  CommandPalette,
+  type CmdItem,
+} from "@/components/admin/CommandPalette";
 import { KnowledgeTree } from "@/components/admin/KnowledgeTree";
 import { loadAdminPosts } from "@/lib/admin-posts";
 import {
@@ -145,6 +149,44 @@ export default async function AdminPage({ searchParams }: Props) {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
+          <CommandPalette
+            items={
+              [
+                {
+                  id: "new",
+                  label: "新建文章",
+                  href: "/admin/posts/new",
+                  group: "操作",
+                },
+                {
+                  id: "front",
+                  label: "打开前台首页",
+                  href: "/",
+                  group: "导航",
+                },
+                {
+                  id: "blog",
+                  label: "打开博客列表",
+                  href: "/blog",
+                  group: "导航",
+                },
+                {
+                  id: "kb",
+                  label: "知识库浏览",
+                  href: "/kb",
+                  group: "导航",
+                },
+                ...allForStats.posts.map(
+                  (p): CmdItem => ({
+                    id: p.slug,
+                    label: p.title,
+                    href: `/admin/posts/${encodeURIComponent(p.slug)}/edit`,
+                    group: p.draft ? "草稿" : "文档",
+                  }),
+                ),
+              ] satisfies CmdItem[]
+            }
+          />
           <Link
             href="/admin/posts/new"
             className="rounded-xl bg-violet-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-violet-500"
