@@ -27,6 +27,28 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
+/* Code block + copy button */
+.code-block {
+  @apply relative my-6;
+}
+
+.code-block pre {
+  @apply m-0;
+}
+
+.code-copy-btn {
+  @apply absolute top-2.5 right-2.5 z-10 rounded-md border border-zinc-600/80 bg-zinc-900/90 px-2 py-1 text-xs font-medium text-zinc-200 opacity-0 shadow-sm transition hover:bg-zinc-800 hover:text-white;
+}
+
+.code-block:hover .code-copy-btn,
+.code-copy-btn:focus-visible {
+  @apply opacity-100;
+}
+
+.code-copy-btn--ok {
+  @apply border-emerald-600/60 text-emerald-300;
+}
+
 /* Prose refinements for markdown content */
 .prose pre {
   @apply overflow-x-auto rounded-xl border border-zinc-200 bg-zinc-950 text-zinc-100 dark:border-zinc-800;
