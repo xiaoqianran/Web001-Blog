@@ -156,7 +156,10 @@ function toMeta(post: Post): PostMeta {
 }
 
 export function getPostSlugs(): string[] {
-  ensurePostsDir();
+  // Read-only on Vercel: never mkdir here. Empty/missing dir → no posts.
+  if (!fs.existsSync(postsDirectory)) {
+    return [];
+  }
   return fs
     .readdirSync(postsDirectory)
     .filter((file) => file.endsWith(".md"))
