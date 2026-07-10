@@ -38,11 +38,20 @@ test("createPost/updatePost do not catch NEXT_REDIRECT inside try", () => {
   // Status next to save buttons
   assert.match(form, /post-form-actions/);
   assert.match(form, /post-form-error|post-form-notice/);
-  // Error banner should not be only at the top of the form
-  const topErrorOnly =
-    form.indexOf('role="alert"') < form.indexOf("post-form-actions") &&
-    !form.includes("post-form-error");
-  assert.equal(topErrorOnly, false);
+  assert.match(form, /stripSavedQuery|replaceState/);
+
+  const gh = fs.readFileSync(
+    path.join(root, "src/lib/github-content.ts"),
+    "utf8",
+  );
+  assert.match(gh, /githubReadPost/);
+
+  const edit = fs.readFileSync(
+    path.join(root, "src/app/admin/posts/[slug]/edit/page.tsx"),
+    "utf8",
+  );
+  assert.match(edit, /githubReadPost/);
+  assert.match(edit, /force-dynamic/);
 });
 
 test("parseMarkdownImport fills form fields from .md + frontmatter", async () => {

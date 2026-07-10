@@ -166,17 +166,22 @@ export function getPostSlugs(): string[] {
     .map((file) => file.replace(/\.md$/, ""));
 }
 
-export function getPostBySlug(slug: string): Post {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+/** Parse raw markdown (+ frontmatter) into Post (no filesystem). */
+export function parsePostMarkdown(slug: string, fileContents: string): Post {
   const { data, content } = matter(fileContents);
   const stats = readingTime(content);
+  const dateRaw = data.date;
+  let date = new Date().toISOString();
+  if (typeof dateRaw === "string") date = dateRaw;
+  else if (dateRaw instanceof Date && !Number.isNaN(dateRaw.getTime())) {
+    date = dateRaw.toISOString();
+  }
 
   return {
     slug,
     title: data.title ?? slug,
     description: data.description ?? "",
-    date: data.date ?? new Date().toISOString(),
+    date,
     tags: Array.isArray(data.tags) ? data.tags : [],
     cover: typeof data.cover === "string" ? data.cover : undefined,
     draft: Boolean(data.draft),
@@ -190,6 +195,12 @@ export function getPostBySlug(slug: string): Post {
     contentHtml: "",
     toc: [],
   };
+}
+
+export function getPostBySlug(slug: string): Post {
+  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  return parsePostMarkdown(slug, fileContents);
 }
 
 export async function getPostWithHtml(slug: string): Promise<Post> {

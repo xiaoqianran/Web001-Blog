@@ -3,12 +3,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PostForm } from "@/components/PostForm";
 import {
-  getPostBySlug,
-  getPostSlugs,
-  postExists,
-} from "@/lib/posts";
-import { githubPostExists, isGitHubContentEnabled } from "@/lib/github-content";
+  githubPostExists,
+  githubReadPost,
+  isGitHubContentEnabled,
+} from "@/lib/github-content";
+import { getPostBySlug, getPostSlugs, postExists } from "@/lib/posts";
 import { requireSession } from "@/lib/session";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -35,33 +38,25 @@ export default async function EditPostPage({ params, searchParams }: Props) {
   const slug = decodeURIComponent(raw);
   const sp = await searchParams;
 
-  // Local FS may lag behind GitHub right after first save on Vercel
-  let exists = postExists(slug);
-  if (!exists && isGitHubContentEnabled()) {
-    exists = await githubPostExists(slug).catch(() => false);
+  // Prefer GitHub as source of truth whenever token is set (Vercel write path).
+  let post = null as Awaited<ReturnType<typeof githubReadPost>>;
+  if (isGitHubContentEnabled()) {
+    post = await githubReadPost(slug).catch(() => null);
   }
-  if (!exists) {
-    notFound();
+  if (!post && postExists(slug)) {
+    post = getPostBySlug(slug);
   }
 
-  // Prefer local file; if missing after GH write, show empty-ish form from slug only
-  const post = postExists(slug)
-    ? getPostBySlug(slug)
-    : {
-        slug,
-        title: slug,
-        description: "",
-        date: new Date().toISOString(),
-        tags: [] as string[],
-        content: "",
-        draft: false,
-        cover: undefined as string | undefined,
-        pinned: false,
-        series: undefined as string | undefined,
-        readingTime: "",
-        contentHtml: "",
-        toc: [],
-      };
+  if (!post) {
+    const existsOnGh =
+      isGitHubContentEnabled() &&
+      (await githubPostExists(slug).catch(() => false));
+    if (!existsOnGh && !postExists(slug)) {
+      notFound();
+    }
+    // Extremely rare: exists but unreadable
+    notFound();
+  }
 
   const date = String(post.date).slice(0, 10);
 
@@ -99,7 +94,7 @@ export default async function EditPostPage({ params, searchParams }: Props) {
           >
             {post.title}
           </Link>
-          。可反复保存，不会因 slug 已存在而失败。
+          。内容以 GitHub 最新版为准；可反复保存。
         </p>
       </header>
 
@@ -108,6 +103,7 @@ export default async function EditPostPage({ params, searchParams }: Props) {
           mode="edit"
           originalSlug={post.slug}
           initialNotice={initialNotice}
+          stripSavedQuery={sp.saved === "1"}
           initial={{
             slug: post.slug,
             title: post.title,
