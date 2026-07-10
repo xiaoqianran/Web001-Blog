@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { logout } from "@/app/actions/auth";
+import { DeletePostButton } from "@/components/DeletePostButton";
 import { getAllPosts, getAllTags, formatDate } from "@/lib/posts";
 import { requireSession } from "@/lib/session";
 
@@ -9,10 +10,33 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function AdminPage() {
+type Props = {
+  searchParams: Promise<{
+    created?: string;
+    updated?: string;
+    deleted?: string;
+    error?: string;
+  }>;
+};
+
+export default async function AdminPage({ searchParams }: Props) {
   const session = await requireSession();
   const posts = getAllPosts();
   const tags = getAllTags();
+  const params = await searchParams;
+
+  const flash =
+    params.created
+      ? { type: "ok" as const, text: `已发布文章：${params.created}` }
+      : params.updated
+        ? { type: "ok" as const, text: `已更新文章：${params.updated}` }
+        : params.deleted
+          ? { type: "ok" as const, text: `已删除文章：${params.deleted}` }
+          : params.error === "notfound"
+            ? { type: "err" as const, text: "文章不存在或已被删除" }
+            : params.error === "delete"
+              ? { type: "err" as const, text: "删除失败，请检查写入权限" }
+              : null;
 
   return (
     <div className="space-y-10">
@@ -25,18 +49,42 @@ export default async function AdminPage() {
             管理后台
           </h1>
           <p className="text-zinc-600 dark:text-zinc-400">
-            你好，<span className="font-medium text-zinc-900 dark:text-zinc-100">{session.username}</span>
+            你好，
+            <span className="font-medium text-zinc-900 dark:text-zinc-100">
+              {session.username}
+            </span>
           </p>
         </div>
-        <form action={logout}>
-          <button
-            type="submit"
-            className="rounded-xl border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-900"
+        <div className="flex flex-wrap items-center gap-2">
+          <Link
+            href="/admin/posts/new"
+            className="rounded-xl bg-violet-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-violet-500"
           >
-            退出登录
-          </button>
-        </form>
+            新建文章
+          </Link>
+          <form action={logout}>
+            <button
+              type="submit"
+              className="rounded-xl border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-900"
+            >
+              退出登录
+            </button>
+          </form>
+        </div>
       </header>
+
+      {flash && (
+        <p
+          role="status"
+          className={`rounded-xl border px-4 py-3 text-sm ${
+            flash.type === "ok"
+              ? "border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300"
+              : "border-red-200 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-300"
+          }`}
+        >
+          {flash.text}
+        </p>
+      )}
 
       <section className="grid gap-4 sm:grid-cols-3">
         <StatCard label="文章" value={posts.length} />
@@ -45,7 +93,7 @@ export default async function AdminPage() {
       </section>
 
       <section className="space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-3">
           <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             文章列表
           </h2>
@@ -62,8 +110,13 @@ export default async function AdminPage() {
             <thead className="border-b border-zinc-200 bg-zinc-50 text-xs uppercase tracking-wider text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-400">
               <tr>
                 <th className="px-4 py-3 font-medium">标题</th>
-                <th className="hidden px-4 py-3 font-medium sm:table-cell">日期</th>
-                <th className="hidden px-4 py-3 font-medium md:table-cell">标签</th>
+                <th className="hidden px-4 py-3 font-medium sm:table-cell">
+                  日期
+                </th>
+                <th className="hidden px-4 py-3 font-medium md:table-cell">
+                  标签
+                </th>
+                <th className="px-4 py-3 text-right font-medium">操作</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
@@ -76,6 +129,9 @@ export default async function AdminPage() {
                     >
                       {post.title}
                     </Link>
+                    <p className="mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">
+                      {post.slug}
+                    </p>
                   </td>
                   <td className="hidden px-4 py-3 text-zinc-500 sm:table-cell dark:text-zinc-400">
                     {formatDate(post.date)}
@@ -83,30 +139,38 @@ export default async function AdminPage() {
                   <td className="hidden px-4 py-3 text-zinc-500 md:table-cell dark:text-zinc-400">
                     {post.tags.join(" · ") || "—"}
                   </td>
+                  <td className="px-4 py-3">
+                    <div className="flex items-center justify-end gap-3">
+                      <Link
+                        href={`/admin/posts/${encodeURIComponent(post.slug)}/edit`}
+                        className="text-sm font-medium text-violet-600 hover:text-violet-700 dark:text-violet-400"
+                      >
+                        编辑
+                      </Link>
+                      <DeletePostButton slug={post.slug} title={post.title} />
+                    </div>
+                  </td>
                 </tr>
               ))}
               {posts.length === 0 && (
                 <tr>
                   <td
-                    colSpan={3}
+                    colSpan={4}
                     className="px-4 py-10 text-center text-zinc-500 dark:text-zinc-400"
                   >
-                    暂无文章
+                    暂无文章。
+                    <Link
+                      href="/admin/posts/new"
+                      className="ml-1 font-medium text-violet-600 hover:underline dark:text-violet-400"
+                    >
+                      写第一篇
+                    </Link>
                   </td>
                 </tr>
               )}
             </tbody>
           </table>
         </div>
-      </section>
-
-      <section className="rounded-xl border border-dashed border-zinc-300 p-6 text-sm text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
-        <p className="font-medium text-zinc-900 dark:text-zinc-100">下一步可扩展</p>
-        <ul className="mt-2 list-inside list-disc space-y-1">
-          <li>在后台新建 / 编辑 Markdown 文章</li>
-          <li>上传封面图</li>
-          <li>草稿与发布状态</li>
-        </ul>
       </section>
     </div>
   );

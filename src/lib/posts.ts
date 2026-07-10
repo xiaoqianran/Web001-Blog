@@ -23,6 +23,68 @@ export type PostMeta = {
   readingTime: string;
 };
 
+export type PostInput = {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+  content: string;
+};
+
+const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+export function isValidSlug(slug: string): boolean {
+  return SLUG_PATTERN.test(slug);
+}
+
+export function postExists(slug: string): boolean {
+  return fs.existsSync(path.join(postsDirectory, `${slug}.md`));
+}
+
+export function getPostPath(slug: string): string {
+  return path.join(postsDirectory, `${slug}.md`);
+}
+
+export function serializePost(input: PostInput): string {
+  const body = input.content.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
+  return matter.stringify(body.endsWith("\n") ? body : `${body}\n`, {
+    title: input.title,
+    description: input.description,
+    date: input.date,
+    tags: input.tags,
+  });
+}
+
+export function writePost(input: PostInput): void {
+  ensurePostsDir();
+  if (!isValidSlug(input.slug)) {
+    throw new Error("Invalid slug");
+  }
+  fs.writeFileSync(getPostPath(input.slug), serializePost(input), "utf8");
+}
+
+export function deletePostFile(slug: string): void {
+  if (!isValidSlug(slug)) {
+    throw new Error("Invalid slug");
+  }
+  const fullPath = getPostPath(slug);
+  if (!fs.existsSync(fullPath)) {
+    throw new Error("Post not found");
+  }
+  fs.unlinkSync(fullPath);
+}
+
+export function renamePost(oldSlug: string, input: PostInput): void {
+  if (oldSlug !== input.slug && postExists(input.slug)) {
+    throw new Error("Slug already exists");
+  }
+  writePost(input);
+  if (oldSlug !== input.slug) {
+    deletePostFile(oldSlug);
+  }
+}
+
 export type TocItem = {
   id: string;
   text: string;

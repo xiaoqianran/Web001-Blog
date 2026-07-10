@@ -15,8 +15,9 @@
 - SEO（Metadata / Open Graph / sitemap / robots）
 - RSS 订阅（`/rss.xml`）
 - 管理员登录（JWT 会话 + 受保护后台）
+- 后台新建 / 编辑 / 删除 Markdown 文章
 - 响应式布局
-- Docker 部署（standalone + docker-compose）
+- Docker 部署（standalone + docker-compose，content 目录可写）
 
 ## 快速开始
 
@@ -31,6 +32,9 @@ npm run dev
 
 - 登录页：[/login](http://localhost:3000/login)
 - 管理后台：[/admin](http://localhost:3000/admin)（需登录）
+- 新建文章：[/admin/posts/new](http://localhost:3000/admin/posts/new)
+
+后台保存的文章会写入 `content/posts/*.md`，Docker 下通过 volume 挂载该目录以持久化。
 
 ### 环境变量
 
