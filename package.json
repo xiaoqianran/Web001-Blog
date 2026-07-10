@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test scripts/smoke.test.mjs",
+    "test": "node --experimental-strip-types --test scripts/smoke.test.mjs",
     "ci": "npm run lint && npm test && npm run build"
   },
   "dependencies": {
