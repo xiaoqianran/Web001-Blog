@@ -72,6 +72,7 @@ export default async function NewPostPage({ searchParams }: Props) {
             cover: "",
             pinned: false,
             series: "",
+            folder,
           }}
         />
       </div>

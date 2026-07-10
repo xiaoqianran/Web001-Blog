@@ -138,6 +138,7 @@ export default async function EditPostPage({ params, searchParams }: Props) {
             cover: post.cover ?? "",
             pinned: post.pinned,
             series: post.series ?? "",
+            folder: post.folder ?? "",
           }}
         />
       </div>

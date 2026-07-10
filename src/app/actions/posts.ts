@@ -59,6 +59,12 @@ function parsePostForm(formData: FormData): {
   const content = String(formData.get("content") ?? "");
   const cover = String(formData.get("cover") ?? "").trim();
   const series = String(formData.get("series") ?? "").trim();
+  // folder: present as "" for root, or path; omit only if field missing (preserve path)
+  const folderRaw = formData.get("folder");
+  const folder =
+    folderRaw === null
+      ? undefined
+      : String(folderRaw).replace(/^\/+|\/+$/g, "");
   const draft = formData.get("draft") === "on" || formData.get("draft") === "true";
   const pinned =
     formData.get("pinned") === "on" || formData.get("pinned") === "true";
@@ -91,6 +97,8 @@ function parsePostForm(formData: FormData): {
       pinned,
       cover: cover || undefined,
       series: series || undefined,
+      // undefined = preserve existing path on update; "" or path = explicit
+      folder,
     },
   };
 }
