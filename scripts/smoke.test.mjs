@@ -375,6 +375,40 @@ test("RSS feed parser and seed data", async () => {
   }
 });
 
+test("content-tree build/move/folder and slug stable", async () => {
+  const {
+    buildTreeFromRelPaths,
+    moveDocInTree,
+    addFolderToTree,
+    deleteFolderFromTree,
+    flattenDocOrder,
+    getDocFolderId,
+  } = await loadTs("src/lib/content-tree.ts");
+
+  const tree = buildTreeFromRelPaths([
+    "root.md",
+    "notes/a.md",
+    "notes/deep/b.md",
+  ]);
+  assert.ok(tree.folders.some((f) => f.id === "notes"));
+  assert.ok(tree.folders.some((f) => f.id === "notes/deep"));
+  assert.equal(getDocFolderId(tree, "a"), "notes");
+  assert.equal(getDocFolderId(tree, "root"), null);
+
+  let t2 = moveDocInTree(tree, "root", "notes");
+  assert.equal(getDocFolderId(t2, "root"), "notes");
+  // slug identity preserved
+  assert.ok(t2.docs.some((d) => d.slug === "root"));
+
+  t2 = addFolderToTree(t2, "inbox", null);
+  assert.ok(t2.folders.some((f) => f.id === "inbox"));
+  t2 = deleteFolderFromTree(t2, "inbox");
+  assert.ok(!t2.folders.some((f) => f.id === "inbox"));
+
+  const order = flattenDocOrder(tree);
+  assert.ok(order.includes("a") && order.includes("b"));
+});
+
 test("admin post helpers: filter/sort/updatedAt/recursive list", async () => {
   const {
     filterAdminPosts,
