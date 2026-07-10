@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { logout } from "@/app/actions/auth";
 import { DeletePostButton } from "@/components/DeletePostButton";
+import { isStaticExport } from "@/lib/deploy";
 import { getAllPosts, getAllTags, formatDate } from "@/lib/posts";
 import { requireSession } from "@/lib/session";
 
@@ -20,6 +21,11 @@ type Props = {
 };
 
 export default async function AdminPage({ searchParams }: Props) {
+  if (isStaticExport()) {
+    // layout already shows the notice; avoid cookies/searchParams on static export
+    return null;
+  }
+
   const session = await requireSession();
   const posts = getAllPosts();
   const tags = getAllTags();

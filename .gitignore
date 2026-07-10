@@ -17,6 +17,10 @@
 /.next/
 /out/
 
+# temporary files from scripts/build-pages.mjs
+.pages-bak/
+*.pages-bak
+
 # production
 /build
 

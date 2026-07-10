@@ -1,5 +1,7 @@
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 
+export const dynamic = "force-static";
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 function escapeXml(str: string): string {

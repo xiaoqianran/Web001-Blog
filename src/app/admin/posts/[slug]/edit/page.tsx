@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PostForm } from "@/components/PostForm";
-import { getPostBySlug, postExists } from "@/lib/posts";
+import { getPostBySlug, getPostSlugs, postExists } from "@/lib/posts";
 import { requireSession } from "@/lib/session";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export function generateStaticParams() {
+  return getPostSlugs().map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -18,7 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function EditPostPage({ params }: Props) {
-  await requireSession();
+  const session = await requireSession();
+  if (session.userId === "static") return null;
+
   const { slug: raw } = await params;
   const slug = decodeURIComponent(raw);
 

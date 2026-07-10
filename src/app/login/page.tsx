@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LoginForm } from "@/components/LoginForm";
+import { isStaticExport } from "@/lib/deploy";
 import { getSession } from "@/lib/session";
 
 export const metadata: Metadata = {
@@ -14,6 +16,26 @@ type Props = {
 };
 
 export default async function LoginPage({ searchParams }: Props) {
+  if (isStaticExport()) {
+    return (
+      <div className="mx-auto w-full max-w-md space-y-6 text-center">
+        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          登录不可用
+        </h1>
+        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+          GitHub Pages 为静态托管，不支持管理员登录与写文章。请使用 Docker
+          自托管版本。
+        </p>
+        <Link
+          href="/"
+          className="inline-flex rounded-xl bg-zinc-900 px-4 py-2 text-sm font-medium text-white dark:bg-zinc-100 dark:text-zinc-900"
+        >
+          返回首页
+        </Link>
+      </div>
+    );
+  }
+
   const session = await getSession();
   if (session) {
     redirect("/admin");

@@ -1,6 +1,7 @@
 import "server-only";
 
 import { cookies } from "next/headers";
+import { isStaticExport } from "./deploy";
 import {
   decrypt,
   encrypt,
@@ -12,6 +13,9 @@ import {
 export type { SessionPayload };
 
 export async function createSession(userId: string, username: string) {
+  if (isStaticExport()) {
+    throw new Error("Sessions are not available on static GitHub Pages deploy");
+  }
   const expiresAt = new Date(Date.now() + SESSION_DURATION_MS);
   const session = await encrypt({
     userId,
@@ -30,17 +34,27 @@ export async function createSession(userId: string, username: string) {
 }
 
 export async function deleteSession() {
+  if (isStaticExport()) return;
   const cookieStore = await cookies();
   cookieStore.delete(SESSION_COOKIE);
 }
 
 export async function getSession(): Promise<SessionPayload | null> {
+  if (isStaticExport()) return null;
   const cookieStore = await cookies();
   const token = cookieStore.get(SESSION_COOKIE)?.value;
   return decrypt(token);
 }
 
 export async function requireSession(): Promise<SessionPayload> {
+  if (isStaticExport()) {
+    // Admin routes still compile for static export; layout shows a notice instead.
+    return {
+      userId: "static",
+      username: "static",
+      expiresAt: new Date(0).toISOString(),
+    };
+  }
   const session = await getSession();
   if (!session) {
     const { redirect } = await import("next/navigation");

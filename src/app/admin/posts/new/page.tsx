@@ -13,7 +13,8 @@ function today(): string {
 }
 
 export default async function NewPostPage() {
-  await requireSession();
+  const session = await requireSession();
+  if (session.userId === "static") return null;
 
   return (
     <div className="space-y-8">

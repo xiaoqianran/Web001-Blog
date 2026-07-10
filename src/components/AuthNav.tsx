@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { logout } from "@/app/actions/auth";
+import { isStaticExport } from "@/lib/deploy";
 import { getSession } from "@/lib/session";
 
 export async function AuthNav() {
+  // GitHub Pages is static — no login/session
+  if (isStaticExport()) {
+    return null;
+  }
+
   const session = await getSession();
 
   if (!session) {

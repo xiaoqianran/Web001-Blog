@@ -98,6 +98,35 @@ const hello = "world";
 
 工作流文件：`.github/workflows/ci.yml`。
 
+## GitHub Pages 部署
+
+仓库已配置 **Settings → Pages → Source: GitHub Actions**。
+
+推送到 `main` 后，工作流 [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) 会：
+
+1. `npm run build:pages` 静态导出到 `out/`
+2. 上传并部署到 GitHub Pages
+
+本地预览：
+
+```bash
+npm run build:pages
+npx serve out
+# 项目站路径类似 http://localhost:3000/Web001-Blog/
+```
+
+访问地址（示例）：
+
+`https://xiaoqianran.github.io/Web001-Blog/`
+
+**说明**：Pages 为纯静态托管。文章阅读、标签、主题切换可用；**登录 / 后台写文章** 需要 Docker 自托管（`docker compose up`）。
+
+自定义域名挂在根路径时，在仓库 **Settings → Secrets and variables → Actions → Variables** 添加：
+
+| Name | Value |
+|------|--------|
+| `BASE_PATH` | （空字符串） |
+
 ## Docker
 
 ```bash
