@@ -1,210 +1,317 @@
-# Ultimate Goal — Web001-Blog 完成态
+# Ultimate Goal — Web001-Blog 完成态（产业对标重写）
 
-> 调用方式：在对话里执行  
-> `/goal` + 下方「一键目标正文」整段粘贴  
-> 或：`/goal 按 docs/ULTIMATE_GOAL.md 完成 Web001-Blog 终极目标`
-
----
-
-## 一句话目标
-
-把 **Web001-Blog** 做成可长期运营的 **Next.js 个人技术博客完整产品**：访客体验、内容生产、SEO/订阅、质量与部署闭环均达到「几乎不用再补基础功能」的完成态，并持续以 **Issue → worktree → PR → 合并** 交付。
+> **调用**  
+> `/goal 按 docs/ULTIMATE_GOAL.md 完成 Web001-Blog 终极目标。从阶段 0 开始，Issue→worktree→PR→merge，直到 DoD 全部完成。`
 
 ---
 
-## 产品定位（约束）
+## 1. 为什么重写
+
+上一版目标偏「功能清单堆叠」。  
+本版在对照 **公开开源 / 主流博客产品** 的信息架构与能力后重写：先对齐行业对「完整博客」的共识，再落到 **我们能做、该做、不做** 的完成态。
+
+### 对标对象（公开、可验证）
+
+| 产品 | 类型 | 我们主要学什么 |
+|------|------|----------------|
+| **WordPress.org** | 自托管 CMS | 信息架构：首页流、分类/标签、日期归档、作者页、媒体库、草稿/发布、插件式扩展心智 |
+| **Ghost** | 开源发布平台 | 写作体验优先、内置 SEO/社交、会员与 Newsletter 心智（我们只学理念，不照搬付费墙） |
+| **Hugo + PaperMod** 等主题 | 开发者向静态博客 | 搜索、归档、taxonomy、代码复制、多语言钩子、极简导航 |
+| **Astro / Hexo / 11ty** | SSG 生态 | 内容即文件、构建期 SEO、主题与内容分离、性能默认优秀 |
+| **Bear / Micro.blog 等极简站** | Indie blog | 少即是多：阅读路径干净，避免 CMS 膨胀 |
+
+> 结论：完整博客 = **读者好找 + 作者好写 + 搜索引擎好懂 + 运维可重复**。  
+> 不是把 WordPress 插件市场搬过来。
+
+---
+
+## 2. 产品定位（对标后的取舍）
+
+### 我们是什么
+
+**个人 / 小团队技术博客**：Markdown 源内容 + Next.js 前台 + 轻量管理后台 + Vercel 发布。
+
+对位关系：
+
+| 对标 | 关系 |
+|------|------|
+| WordPress | 借鉴 **内容模型与信息架构**，不做插件宇宙与通用建站 |
+| Ghost | 借鉴 **写作优先 + 内置 SEO/分享**，不做会员订阅电商核心 |
+| Hugo/PaperMod | 借鉴 **归档/搜索/taxonomy/代码体验**，保留动态能力（登录、API 写文） |
+| Medium/Substack | 不竞争算法分发与 newsletter 商业化（可选后期） |
+
+### 硬约束
 
 | 项 | 决策 |
 |----|------|
-| 形态 | 个人博客 / 技术笔记，非多租户 CMS |
-| 内容源 | Markdown + frontmatter（`content/posts/`） |
-| 主部署 | **Vercel**（Node 运行时） |
-| 写内容 | **GitHub Contents API**（`GITHUB_TOKEN`）提交 → 自动部署；本地可直写磁盘 |
-| 评论 | **Giscus**（可选配置） |
-| 协作交付 | 每个能力切片：`gh issue` → `git worktree` → `PR` → `merge main` |
-| 不做 | 多用户注册、电商、复杂 RBAC、自建评论库、重型 Headless CMS |
+| 内容源 | `content/posts/*.md` + frontmatter（Git 可审计） |
+| 主站 | **Vercel** |
+| 在线写文 | **GitHub Contents API** → 自动部署 |
+| 评论 | **Giscus**（可选 env） |
+| 交付 | **Issue → worktree → PR → merge** |
+| 明确不做 | 多作者协作工作流、付费会员、电商、多租户、自建评论库、主题市场 |
 
 ---
 
-## 现状快照（已完成，约 60%）
+## 3. 行业能力地图 → 我们的完成态
 
-### 前台
+下表是「成熟博客产品通常具备的能力」与本项目目标映射。  
+**Must** = 完成态必达；**Should** = 强烈建议；**Later** = 有意识延后。
 
-- [x] 首页精选 + 最近 + 标签云  
-- [x] 文章列表 / 详情 / 标签筛选  
-- [x] Markdown + GFM + 代码高亮 + 一键复制  
-- [x] TOC、阅读时长、上一篇/下一篇  
-- [x] 搜索、草稿隐藏、相关文章、进度条、封面  
-- [x] 分页、动态 OG 图  
-- [x] 主题切换、响应式  
+### 3.1 读者侧（WordPress 归档心智 + PaperMod 阅读体验）
 
-### 后台与安全
+| 能力 | WP / Ghost / Hugo 常见形态 | 本项目现状 | 目标 |
+|------|---------------------------|------------|------|
+| 首页内容流 | 最新文章列表 | ✅ | Must 保持 |
+| 文章详情 | 正文 + 元数据 + 导航 | ✅ | Must 保持 |
+| 分类 | WP Categories（层级） | ❌ 仅 tags | **Should：categories 或把 tags 当主 taxonomy 并做标签索引页增强** |
+| 标签 | Tags + 标签归档 | ✅ 标签页 | Must：分页 + 空状态 |
+| 日期归档 | `/2024/07/`、归档总览 | ❌ | **Must：`/archive` 年/月** |
+| 搜索 | WP 搜索 / PaperMod Fuse | ✅ | Must：体验打磨 |
+| 分页 | 列表分页 | ✅ `/blog` | Must：标签/搜索结果复用 |
+| 相关文章 | 同分类/标签 | ✅ | Must 保持 |
+| 评论 | WP 评论 / Giscus | ✅ 组件 | Must：文档化一键配置 |
+| 暗色模式 | 主题标配 | ✅ | Must 保持 |
+| 代码体验 | 高亮 + 复制 | ✅ | Must 保持 |
+| 分享 | 社交分享按钮 | ❌ | **Must：复制链接 + 系统 Share** |
+| 系列文章 | 主题/插件 | ❌ | **Should：`series` frontmatter** |
+| 作者页 | Author archive | ❌ 单作者 | **Should：关于/作者页合一（site config）** |
+| 订阅 | RSS / Newsletter | 半 ✅ RSS | **Must：RSS+Atom；Later：邮件订阅** |
+| 多语言 | WPML / PaperMod i18n | ❌ | Later |
 
-- [x] 登录 / JWT 会话 / proxy 守卫  
-- [x] 后台 CRUD（本地磁盘 / GitHub API）  
-- [x] 草稿开关  
+### 3.2 作者侧（Ghost 编辑器心智 + WP 发布流）
 
-### SEO / 订阅 / 部署
+| 能力 | 行业形态 | 现状 | 目标 |
+|------|----------|------|------|
+| 草稿 / 发布 | WP draft / Ghost drafts | ✅ draft | Must：状态清晰 |
+| 可视化/预览 | Ghost 编辑器、WP 预览 | ❌ 无预览 | **Must：Markdown 分栏预览** |
+| 媒体库 | WP Media Library | ❌ 外链/手写 | **Must：上传至 `public/uploads`（GitHub API）** |
+| SEO 字段 | Yoast / Ghost SEO | 部分 | **Must：description、cover、canonical；Should：og 覆盖说明** |
+| 定时发布 | WP schedule | ❌ | Later（可用 draft + 手动） |
+| 修订历史 | WP revisions | Git 天然 | Must：依赖 Git，不在 UI 重做 |
+| 写作快捷键 | 常见 | ❌ | Should：Ctrl/Cmd+S 保存 |
+| 后台列表过滤 | 草稿/发布筛选 | 弱 | **Must：Tab + 搜索** |
 
-- [x] Metadata、sitemap、robots、RSS  
-- [x] Vercel + Docker 能力  
-- [x] Giscus 组件（需配置 env）  
+### 3.3 发现与 SEO（Ghost「内置 SEO」标准）
 
-### 已知债务
+Ghost 宣传点：sitemap、canonical、OG、Twitter Card、语义 HTML，**不靠一堆插件**。  
+我们应对齐这个 **「开箱即 SEO」** 标准：
 
-- [ ] 测试文章 slug 不规范（如 `202626-0711-01`）需清理或正规化  
-- [ ] 无 CI 后缺少合并门禁  
-- [ ] 关于页 / 站点配置硬编码  
-- [ ] 无归档、系列、JSON-LD、Atom、键盘快捷键等  
-- [ ] 后台无 Markdown 预览、无媒体上传、无仪表盘洞察  
-- [ ] 无无障碍与性能专项验收  
+| 能力 | 行业 | 现状 | 目标 |
+|------|------|------|------|
+| Sitemap | 标配 | ✅ | Must + 归档等新路由 |
+| robots.txt | 标配 | ✅ | Must |
+| RSS | 标配 | ✅ | Must + Atom |
+| Canonical | Ghost/WP SEO | ❌ | **Must** |
+| Open Graph | 标配 | 文章 ✅ | **Must：站点默认 OG** |
+| Twitter Card | 标配 | 弱 | **Must** |
+| JSON-LD | 插件/主题 | ❌ | **Must：WebSite + BlogPosting** |
+| 语义 HTML / 微格式 | Ghost | 部分 | Should |
+| 性能 | Ghost/SSG 强调 | 未验收 | **Must：Lighthouse 移动端 Performance ≥ 90（文章页）** |
 
----
+### 3.4 站点身份（所有成熟博客都有）
 
-## 完成态定义（Definition of Done）
+| 能力 | 行业 | 现状 | 目标 |
+|------|------|------|------|
+| 站点名 / 副标题 | 设置页 | 硬编码 | **Must：`content/site.json`** |
+| 导航可配置 | 菜单 | 硬编码 | **Should** |
+| 社交链接 | 页脚 | 无/弱 | **Must** |
+| 关于页 | 固定页 | 静态文案 | **Must：配置或 `content/pages/about.md`** |
+| Favicon / 品牌 | 主题 | 基础 | Should |
+| 法律页 | 隐私/条款 | ❌ | Later（个人站可选） |
 
-当且仅当下列 **全部** 满足，目标可标记 `completed`：
+### 3.5 工程与运维
 
-### A. 访客体验完成
-
-1. 阅读路径完整：列表分页、搜索、标签、归档（按年/月）、系列/合集（可选 frontmatter `series`）  
-2. 文章页完整：TOC、进度条、相关文章、分享按钮、评论（Giscus 可开关）、键盘友好  
-3. 无障碍：焦点可见、语义标题、图片 alt、对比度基本达标  
-4. 移动端布局无横向溢出、主路径可点可读  
-
-### B. 内容生产完成
-
-5. 后台：新建 / 编辑 / 删除 / 草稿 / 封面 / 标签；**Markdown 实时预览**  
-6. 后台：文章筛选（全部/已发布/草稿）、按标题搜索  
-7. 媒体：支持上传图片到仓库 `public/uploads/`（经 GitHub API）或粘贴外链；表单内可插入图片 Markdown  
-8. 站点配置：关于页内容、站点名/副标题/社交链接可配置（`content/site.json` 或 frontmatter 文件），非硬编码  
-
-### C. 发现与 SEO 完成
-
-9. JSON-LD `BlogPosting` / `WebSite`  
-10. 站点级默认 OG + 文章动态 OG（已有）+ Twitter card  
-11. RSS + **Atom**；sitemap 含归档/重要静态页  
-12. `robots` 正确；404 体验良好  
-
-### D. 质量与工程完成
-
-13. 恢复 **CI**（lint + test + build），PR 合入前必须绿  
-14. 冒烟测试扩展：分页、草稿过滤、搜索、serialize frontmatter  
-15. 清理无效/测试 posts；示例文章质量统一  
-16. README / `.env.example` 与真实能力一致；无过时 Pages 说明  
-
-### E. 运维完成
-
-17. Vercel 环境变量清单完整且文档化  
-18. 生产冒烟：首页、文章、搜索、登录、后台列表可达  
-19. 安全基线：无默认弱密码写死在文档生产示例；Token 不入库  
-
----
-
-## 执行计划（按 PR 切片，可并行组队）
-
-> 每个切片 = 1 Issue + 1 worktree + 1 PR。顺序可调，但依赖关系如下。
-
-### 阶段 0 — 基线与卫生（先做）
-
-| ID | 切片 | 产出 |
-|----|------|------|
-| P0-1 | 恢复 CI 门禁 | `.github/workflows/ci.yml`：lint/test/build；README 更新 |
-| P0-2 | 内容卫生 | 删除/重命名测试 slug 文章；规范示例 frontmatter |
-| P0-3 | 测试加固 | smoke：draft 过滤、paginate、slugify、serialize |
-
-### 阶段 1 — 内容与信息架构
-
-| ID | 切片 | 产出 |
-|----|------|------|
-| P1-1 | 归档页 | `/archive` 按年/月分组；导航入口 |
-| P1-2 | 系列/合集 | frontmatter `series`；系列列表与系列内上下篇 |
-| P1-3 | 站点配置 | `content/site.json`：name、tagline、social、about；前台读取 |
-| P1-4 | 关于页数据化 | 关于页从 site 配置 / `content/about.md` 渲染 |
-
-### 阶段 2 — 后台生产力
-
-| ID | 切片 | 产出 |
-|----|------|------|
-| P2-1 | 编辑器预览 | 后台 Markdown 分栏预览（GFM） |
-| P2-2 | 后台筛选 | 全部/发布/草稿 Tab + 标题过滤 |
-| P2-3 | 图片上传 | 上传到 `public/uploads/` via GitHub API；插入语法 |
-| P2-4 | 后台体验 | 保存 loading 态、冲突/失败提示优化、快捷键 Ctrl/Cmd+S |
-
-### 阶段 3 — 前台打磨
-
-| ID | 切片 | 产出 |
-|----|------|------|
-| P3-1 | 分享 | 复制链接、Twitter/X、（可选）原生 share API |
-| P3-2 | 标签/归档分页 | 与 blog 一致的分页组件复用 |
-| P3-3 | 无障碍与 UX | skip-link、focus ring、减少 layout shift |
-| P3-4 | 首页增强 | 可选 pinned 文章（`pinned: true`）、空状态文案 |
-
-### 阶段 4 — SEO / 订阅 / 结构化数据
-
-| ID | 切片 | 产出 |
-|----|------|------|
-| P4-1 | JSON-LD | WebSite + BlogPosting |
-| P4-2 | Atom feed | `/atom.xml` |
-| P4-3 | 默认 OG | 站点根 `opengraph-image` |
-| P4-4 | SEO 收尾 | canonical、twitter card 字段补全 |
-
-### 阶段 5 — 验收与收口
-
-| ID | 切片 | 产出 |
-|----|------|------|
-| P5-1 | 生产验收清单 | `docs/ACCEPTANCE.md` 勾选；Vercel 冒烟 |
-| P5-2 | 文档完成态 | README 功能矩阵「全部 ✅」；CHANGELOG 或版本笔记 |
-| P5-3 | 最终审查 | `/review` 或 reviewer 扫一遍；修 critical/high |
+| 能力 | 行业 | 现状 | 目标 |
+|------|------|------|------|
+| CI | 开源项目标配 | 曾有后删 | **Must：恢复 lint/test/build** |
+| 预览环境 | Vercel Preview | 可用 | Must 文档化 |
+| 环境变量清单 | 12-factor | 部分 | Must 完整 |
+| 备份 | Git = 备份 | ✅ | Must 保持「内容在 Git」 |
+| 监控/分析 | Plausible/GA | ❌ | **Should：可选隐私友好统计** |
 
 ---
 
-## 执行纪律（每次推进必须遵守）
+## 4. 信息架构（对标 WordPress 归档模型）
 
-1. **先 Issue，再 worktree**，禁止长时间直接在 `main` 堆功能  
-2. Commit 规范：`feat|fix|docs|refactor|test|chore: …`  
-3. 本地：`npm run lint && npm test && npm run build` 通过再开 PR  
-4. PR 合并后同步 `main`，清理 worktree  
-5. 每完成 1～2 个切片，用 `update_goal` 汇报进度；阶段结束做一次汇总  
-6. 涉及密钥只写 Vercel env / `.env.local`，永不提交  
-7. 优先 **可合并的薄切片**，避免巨型 PR  
-
----
-
-## 进度计量
-
-- **阶段 0～5** 共约 **18 个切片**  
-- 完成度建议：`完成切片数 / 18`  
-- 目标完成时：所有 DoD 勾选 + 生产 URL 可演示 + 文档一致  
-
----
-
-## 一键目标正文（复制到 /goal）
+完成态路由图（读者视角）：
 
 ```
-终极目标：完成 Web001-Blog 个人技术博客产品完成态（详见仓库 docs/ULTIMATE_GOAL.md）。
+/                     首页：最新 + 精选/置顶 + 标签云 + 搜索入口
+/blog                 全部文章（分页）
+/blog/[slug]          文章：正文 · TOC · 进度 · 相关 · 分享 · 评论 · 上下篇
+/tags                 标签索引（全部标签）
+/tags/[tag]           标签归档（分页）
+/archive              日期归档总览（年 → 月 → 文章）
+/series               系列索引（若有 series）
+/series/[name]        系列内文章列表
+/search               全文搜索
+/about                关于 / 作者
+/rss.xml · /atom.xml  订阅
+/sitemap.xml          SEO
+/admin/**             作者后台（鉴权）
+```
 
-约束：
-- 主站 Vercel；内容 Markdown + GitHub API 写入；评论 Giscus（可配置）
-- 交付纪律：Issue → git worktree → PR → merge main；conventional commits
-- 本地每切片必须 lint + test + build 通过
-- 不做多用户/自建评论库/重型 CMS
+Frontmatter 完成态约定：
 
-按 docs/ULTIMATE_GOAL.md 的阶段 0→5 切片顺序推进（可合理微调顺序），直到 Definition of Done 全部满足。
-每完成切片：创建/关闭 Issue、开 PR 并合并、汇报进度与剩余切片。
-最终：生产冒烟通过、README 与功能矩阵更新为完成态、标记 goal completed。
+```yaml
+title: ""
+description: ""
+date: "YYYY-MM-DD"
+tags: []
+categories: []      # 可选；若实现分类
+series: ""          # 可选
+cover: ""           # URL 或 /uploads/...
+draft: false
+pinned: false       # 首页置顶
 ```
 
 ---
 
-## 建议你怎么调用
+## 5. 完成态 Definition of Done
+
+目标 **completed** 当且仅当：
+
+### A. 读者路径（对标 WP 浏览 + PaperMod 体验）
+
+1. 能按 **时间 / 标签 / 搜索 / 归档** 找到任意已发布文章  
+2. 文章页具备：元数据、TOC、进度条、相关、分享、可选评论、上下篇  
+3. 移动端主路径可用；无严重横向溢出  
+4. 基础无障碍：跳过导航、标题层级、焦点可见、有意义的链接文案  
+
+### B. 作者路径（对标 Ghost「写作优先」）
+
+5. 登录后台可完成：写、改、删、草稿、封面、标签、（可选）系列  
+6. 编辑器 **实时预览**；保存成功反馈含「GitHub 已提交 / 等待部署」  
+7. 图片可上传进仓库或明确引导外链；插入 Markdown 无摩擦  
+8. 后台可按 全部/已发布/草稿 过滤  
+
+### C. SEO / 分发（对标 Ghost 内置 SEO）
+
+9. Sitemap + robots + RSS + Atom  
+10. Canonical + OG + Twitter Card + 文章动态 OG 图 + 站点默认 OG  
+11. JSON-LD：`WebSite` + `BlogPosting`  
+12. 文章页 Lighthouse Performance（移动）≥ 90（合理网络；不含第三方评论阻塞的口径需在验收文档注明）  
+
+### D. 站点身份
+
+13. 站点名、副标题、社交链接、关于文案 **可配置**，非散落硬编码  
+14. 页脚与导航展示社交与版权信息  
+
+### E. 工程闭环
+
+15. CI：PR 上 lint + test + build 必须通过  
+16. 测试覆盖：草稿过滤、分页、搜索、slug、serialize  
+17. 示例内容健康：无垃圾测试 slug；README 功能矩阵与实现一致  
+18. 生产 URL 冒烟通过；密钥不进库  
+
+---
+
+## 6. 执行切片（按产品阶段，非纯技术堆砌）
+
+每个切片 = **1 Issue + 1 worktree + 1 PR**。  
+顺序可微调，但 **阶段 0 优先**。
+
+### 阶段 0 — 对齐工程基线（对标开源项目）
+
+| ID | 切片 | 对标理由 |
+|----|------|----------|
+| P0-1 | 恢复 CI 门禁 | 开源仓库默认有质量门 |
+| P0-2 | 清理测试文章 + frontmatter 规范 | 内容卫生 = 产品可信 |
+| P0-3 | 扩展 smoke tests | 回归保护信息架构规则 |
+
+### 阶段 1 — 信息架构补齐（对标 WordPress 归档）
+
+| ID | 切片 | 对标理由 |
+|----|------|----------|
+| P1-1 | `/archive` 年/月归档 | WP 日期归档是博客标配 |
+| P1-2 | `/tags` 索引 + 标签页分页 | WP/PaperMod taxonomy |
+| P1-3 | `series` 系列 | 长文/教程站刚需 |
+| P1-4 | `content/site.json` + 关于页数据化 | 所有 CMS 都有「站点设置」 |
+| P1-5 | `pinned` 首页置顶 | WP sticky / 精选 |
+
+### 阶段 2 — 作者体验（对标 Ghost 写作）
+
+| ID | 切片 | 对标理由 |
+|----|------|----------|
+| P2-1 | Markdown 分栏预览 | Ghost/WP 都强调写作预览 |
+| P2-2 | 后台筛选与搜索 | WP 文章列表筛选 |
+| P2-3 | 图片上传（GitHub → `public/uploads`） | WP 媒体库的轻量版 |
+| P2-4 | 保存 UX + Cmd/Ctrl+S | 专业编辑器标配 |
+
+### 阶段 3 — 读者打磨（对标 PaperMod + 社交）
+
+| ID | 切片 | 对标理由 |
+|----|------|----------|
+| P3-1 | 分享：复制链接 / Web Share API | 现代博客标配 |
+| P3-2 | 搜索/归档分页与空状态统一 | 列表模式一致 |
+| P3-3 | 无障碍与跳过链接 | 合格站点底线 |
+| P3-4 | 可选：隐私友好统计位（Plausible 脚本开关） | Ghost/WP 都有分析心智 |
+
+### 阶段 4 — SEO 开箱（对标 Ghost「no plugins」）
+
+| ID | 切片 | 对标理由 |
+|----|------|----------|
+| P4-1 | JSON-LD WebSite + BlogPosting | 结构化数据 |
+| P4-2 | Atom + RSS 双 feed | 订阅生态 |
+| P4-3 | 根 opengraph-image + Twitter card 补全 | 社交分享 |
+| P4-4 | canonical + sitemap 扩展 | Ghost SEO 清单 |
+
+### 阶段 5 — 验收与产品化收口
+
+| ID | 切片 | 产出 |
+|----|------|------|
+| P5-1 | `docs/ACCEPTANCE.md` 按 DoD 勾选 | 可演示清单 |
+| P5-2 | README 功能矩阵（对标表）全部 ✅ | 对外说明 |
+| P5-3 | 生产冒烟 + 最终 code review | 修 critical/high |
+
+**切片计数**：约 **20**（0:3 + 1:5 + 2:4 + 3:4 + 4:4 + 5:3）。  
+进度：`完成数 / 20`。
+
+---
+
+## 7. 执行纪律
+
+1. 禁止长期直接在 `main` 堆功能；**Issue → worktree → PR → merge**  
+2. Conventional commits：`feat|fix|docs|refactor|test|chore|ci`  
+3. 每切片本地：`npm run lint && npm test && npm run build`  
+4. 密钥只进 Vercel / `.env.local`  
+5. 薄 PR，可回滚；大功能拆切片  
+6. 每完成切片更新 goal 进度；阶段结束小结  
+7. 对标是 **能力对齐**，不是复制 UI 像素或 GPL 主题代码  
+
+---
+
+## 8. 一键 /goal 正文
+
+```
+终极目标：按 docs/ULTIMATE_GOAL.md（产业对标重写版）完成 Web001-Blog 产品完成态。
+
+对标原则：
+- WordPress：信息架构（归档/标签/列表/发布流）
+- Ghost：写作优先 + 开箱 SEO/社交
+- Hugo PaperMod：搜索/归档/taxonomy/阅读体验
+- 不做 WP 插件宇宙、不做 Ghost 会员付费墙核心
+
+约束：Vercel 主站；Markdown+GitHub API 写文；Giscus 可选；Issue→worktree→PR→merge。
+
+从阶段 0 起按切片推进，直至 Definition of Done 全部满足。
+每切片开 Issue、PR 并合并；阶段结束汇报进度与剩余。
+最终：生产冒烟、README 对标矩阵完成、标记 goal completed。
+```
+
+---
+
+## 9. 调用示例
+
+**全量：**
 
 ```text
 /goal 按 docs/ULTIMATE_GOAL.md 完成 Web001-Blog 终极目标。从阶段 0 开始，Issue→worktree→PR→merge，直到 DoD 全部完成。
 ```
 
-若只想跑一段：
+**单阶段：**
 
 ```text
-/goal 仅执行 docs/ULTIMATE_GOAL.md 阶段 0（CI + 内容卫生 + 测试加固），完成后汇报。
+/goal 仅执行 docs/ULTIMATE_GOAL.md 阶段 1（信息架构：归档/标签/系列/站点配置），完成后汇报。
 ```
