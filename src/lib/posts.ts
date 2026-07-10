@@ -24,6 +24,12 @@ export type PostMeta = {
   pinned: boolean;
   series?: string;
   readingTime: string;
+  /** ISO time of last author save (frontmatter updatedAt) */
+  updatedAt?: string;
+  /** Relative dir under content/posts, "" = root (phase B) */
+  folder?: string;
+  /** Relative path from content/posts e.g. notes/a.md */
+  relPath?: string;
 };
 
 export type PostInput = {
@@ -37,6 +43,9 @@ export type PostInput = {
   cover?: string;
   pinned?: boolean;
   series?: string;
+  updatedAt?: string;
+  /** Relative folder under content/posts (no leading/trailing slash) */
+  folder?: string;
 };
 
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -45,12 +54,17 @@ export function isValidSlug(slug: string): boolean {
   return SLUG_PATTERN.test(slug);
 }
 
-export function postExists(slug: string): boolean {
-  return fs.existsSync(path.join(postsDirectory, `${slug}.md`));
+export function getPostPath(slug: string, folder = ""): string {
+  const dir = folder
+    ? path.join(postsDirectory, ...folder.split("/").filter(Boolean))
+    : postsDirectory;
+  return path.join(dir, `${slug}.md`);
 }
 
-export function getPostPath(slug: string): string {
-  return path.join(postsDirectory, `${slug}.md`);
+/** Relative path from content/posts, posix style */
+export function getPostRelPath(slug: string, folder = ""): string {
+  const parts = [...folder.split("/").filter(Boolean), `${slug}.md`];
+  return parts.join("/");
 }
 
 export function serializePost(input: PostInput): string {
@@ -60,6 +74,7 @@ export function serializePost(input: PostInput): string {
     description: input.description,
     date: input.date,
     tags: input.tags,
+    updatedAt: input.updatedAt || new Date().toISOString(),
   };
   if (input.draft) data.draft = true;
   if (input.pinned) data.pinned = true;
@@ -73,14 +88,44 @@ export function writePost(input: PostInput): void {
   if (!isValidSlug(input.slug)) {
     throw new Error("Invalid slug");
   }
-  fs.writeFileSync(getPostPath(input.slug), serializePost(input), "utf8");
+  const folder = (input.folder ?? "").replace(/^\/+|\/+$/g, "");
+  const full = getPostPath(input.slug, folder);
+  fs.mkdirSync(path.dirname(full), { recursive: true });
+  const withTime = {
+    ...input,
+    updatedAt: input.updatedAt || new Date().toISOString(),
+    folder: folder || undefined,
+  };
+  fs.writeFileSync(full, serializePost(withTime), "utf8");
+}
+
+/** Find absolute path of slug by scanning tree (root or nested). */
+export function findPostFile(slug: string): string | null {
+  if (!slug || !fs.existsSync(postsDirectory)) return null;
+  const root = path.join(postsDirectory, `${slug}.md`);
+  if (fs.existsSync(root)) return root;
+  const stack = [postsDirectory];
+  while (stack.length) {
+    const dir = stack.pop()!;
+    for (const name of fs.readdirSync(dir)) {
+      const full = path.join(dir, name);
+      const st = fs.statSync(full);
+      if (st.isDirectory()) {
+        if (name === "trash") continue;
+        stack.push(full);
+      } else if (name === `${slug}.md`) {
+        return full;
+      }
+    }
+  }
+  return null;
 }
 
 export function deletePostFile(slug: string): void {
   if (!isValidSlug(slug)) {
     throw new Error("Invalid slug");
   }
-  const fullPath = getPostPath(slug);
+  const fullPath = findPostFile(slug) ?? getPostPath(slug);
   if (!fs.existsSync(fullPath)) {
     throw new Error("Post not found");
   }
@@ -91,10 +136,29 @@ export function renamePost(oldSlug: string, input: PostInput): void {
   if (oldSlug !== input.slug && postExists(input.slug)) {
     throw new Error("Slug already exists");
   }
-  writePost(input);
-  if (oldSlug !== input.slug) {
-    deletePostFile(oldSlug);
+  const oldPath = findPostFile(oldSlug);
+  // Preserve folder when updating same post unless input.folder set
+  if (input.folder === undefined && oldPath) {
+    const rel = path.relative(postsDirectory, path.dirname(oldPath));
+    input = {
+      ...input,
+      folder: rel === "" ? "" : rel.split(path.sep).join("/"),
+    };
   }
+  writePost(input);
+  if (oldSlug !== input.slug && oldPath && fs.existsSync(oldPath)) {
+    fs.unlinkSync(oldPath);
+  } else if (oldSlug === input.slug && oldPath) {
+    const next = getPostPath(input.slug, input.folder ?? "");
+    if (path.resolve(oldPath) !== path.resolve(next) && fs.existsSync(oldPath)) {
+      // moved folder
+      if (fs.existsSync(next)) fs.unlinkSync(oldPath);
+    }
+  }
+}
+
+export function postExists(slug: string): boolean {
+  return findPostFile(slug) !== null;
 }
 
 export type TocItem = {
@@ -152,22 +216,42 @@ function toMeta(post: Post): PostMeta {
     pinned: post.pinned,
     series: post.series,
     readingTime: post.readingTime,
+    updatedAt: post.updatedAt,
+    folder: post.folder,
+    relPath: post.relPath,
   };
 }
 
+/** List all .md files under content/posts (recursive, skip trash). */
+export function listPostRelPaths(): string[] {
+  if (!fs.existsSync(postsDirectory)) return [];
+  const out: string[] = [];
+  const walk = (dir: string, prefix: string) => {
+    for (const name of fs.readdirSync(dir)) {
+      if (name === "trash" || name.startsWith(".")) continue;
+      const full = path.join(dir, name);
+      const st = fs.statSync(full);
+      const rel = prefix ? `${prefix}/${name}` : name;
+      if (st.isDirectory()) walk(full, rel);
+      else if (name.endsWith(".md")) out.push(rel.replace(/\\/g, "/"));
+    }
+  };
+  walk(postsDirectory, "");
+  return out.sort();
+}
+
 export function getPostSlugs(): string[] {
-  // Read-only on Vercel: never mkdir here. Empty/missing dir → no posts.
-  if (!fs.existsSync(postsDirectory)) {
-    return [];
-  }
-  return fs
-    .readdirSync(postsDirectory)
-    .filter((file) => file.endsWith(".md"))
-    .map((file) => file.replace(/\.md$/, ""));
+  return listPostRelPaths().map((rel) =>
+    path.basename(rel, ".md"),
+  );
 }
 
 /** Parse raw markdown (+ frontmatter) into Post (no filesystem). */
-export function parsePostMarkdown(slug: string, fileContents: string): Post {
+export function parsePostMarkdown(
+  slug: string,
+  fileContents: string,
+  opts?: { folder?: string; relPath?: string },
+): Post {
   const { data, content } = matter(fileContents);
   const stats = readingTime(content);
   const dateRaw = data.date;
@@ -175,6 +259,12 @@ export function parsePostMarkdown(slug: string, fileContents: string): Post {
   if (typeof dateRaw === "string") date = dateRaw;
   else if (dateRaw instanceof Date && !Number.isNaN(dateRaw.getTime())) {
     date = dateRaw.toISOString();
+  }
+  let updatedAt: string | undefined;
+  const u = data.updatedAt;
+  if (typeof u === "string") updatedAt = u;
+  else if (u instanceof Date && !Number.isNaN(u.getTime())) {
+    updatedAt = u.toISOString();
   }
 
   return {
@@ -191,6 +281,9 @@ export function parsePostMarkdown(slug: string, fileContents: string): Post {
         ? data.series.trim()
         : undefined,
     readingTime: stats.text,
+    updatedAt,
+    folder: opts?.folder,
+    relPath: opts?.relPath,
     content,
     contentHtml: "",
     toc: [],
@@ -198,9 +291,17 @@ export function parsePostMarkdown(slug: string, fileContents: string): Post {
 }
 
 export function getPostBySlug(slug: string): Post {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fullPath = findPostFile(slug);
+  if (!fullPath) {
+    throw new Error(`Post not found: ${slug}`);
+  }
   const fileContents = fs.readFileSync(fullPath, "utf8");
-  return parsePostMarkdown(slug, fileContents);
+  const rel = path.relative(postsDirectory, fullPath).split(path.sep).join("/");
+  const folder = path.dirname(rel) === "." ? "" : path.dirname(rel).split(path.sep).join("/");
+  return parsePostMarkdown(slug, fileContents, {
+    folder: folder || undefined,
+    relPath: rel,
+  });
 }
 
 export async function getPostWithHtml(slug: string): Promise<Post> {
@@ -229,8 +330,21 @@ type ListOptions = {
 };
 
 export function getAllPosts(options: ListOptions = {}): PostMeta[] {
-  const slugs = getPostSlugs();
-  let posts = slugs.map((slug) => toMeta(getPostBySlug(slug)));
+  let posts = listPostRelPaths().map((rel) => {
+    const full = path.join(postsDirectory, ...rel.split("/"));
+    const slug = path.basename(rel, ".md");
+    const folder =
+      path.dirname(rel) === "."
+        ? ""
+        : path.dirname(rel).split(path.sep).join("/");
+    const raw = fs.readFileSync(full, "utf8");
+    return toMeta(
+      parsePostMarkdown(slug, raw, {
+        folder: folder || undefined,
+        relPath: rel,
+      }),
+    );
+  });
 
   if (!options.includeDrafts) {
     posts = posts.filter((p) => !p.draft);
@@ -239,6 +353,59 @@ export function getAllPosts(options: ListOptions = {}): PostMeta[] {
   return posts.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
+}
+
+export type AdminPostRow = PostMeta & { content: string };
+
+/** Full post rows for admin (local FS, recursive). */
+export function listLocalAdminPosts(): AdminPostRow[] {
+  return getPostSlugs().map((slug) => {
+    const p = getPostBySlug(slug);
+    return { ...toMeta(p), content: p.content };
+  });
+}
+
+export function sortAdminPosts(
+  posts: AdminPostRow[],
+  sort: "updated" | "date" | "title" = "updated",
+): AdminPostRow[] {
+  const copy = [...posts];
+  if (sort === "title") {
+    return copy.sort((a, b) => a.title.localeCompare(b.title, "zh-CN"));
+  }
+  if (sort === "date") {
+    return copy.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+    );
+  }
+  return copy.sort((a, b) => {
+    const ta = new Date(a.updatedAt || a.date).getTime();
+    const tb = new Date(b.updatedAt || b.date).getTime();
+    return tb - ta;
+  });
+}
+
+export function filterAdminPosts(
+  posts: AdminPostRow[],
+  opts: {
+    filter?: "all" | "published" | "draft";
+    q?: string;
+  },
+): AdminPostRow[] {
+  const filter = opts.filter ?? "all";
+  const q = (opts.q ?? "").trim().toLowerCase();
+  return posts.filter((p) => {
+    if (filter === "published" && p.draft) return false;
+    if (filter === "draft" && !p.draft) return false;
+    if (!q) return true;
+    return (
+      p.title.toLowerCase().includes(q) ||
+      p.slug.toLowerCase().includes(q) ||
+      p.tags.some((t) => t.toLowerCase().includes(q)) ||
+      p.description.toLowerCase().includes(q) ||
+      p.content.toLowerCase().includes(q)
+    );
+  });
 }
 
 export function getPostsByTag(tag: string): PostMeta[] {

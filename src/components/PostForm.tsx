@@ -14,6 +14,7 @@ import {
   type PostFormState,
 } from "@/app/actions/posts";
 import { uploadImage } from "@/app/actions/upload";
+import { EditorChrome } from "@/components/EditorChrome";
 import { MarkdownEditor } from "@/components/MarkdownEditor";
 import { appendMarkdown } from "@/lib/markdown-form";
 import {
@@ -122,6 +123,31 @@ export function PostForm({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  // Dirty leave warning (A6)
+  const isDirty =
+    title !== initial.title ||
+    content !== initial.content ||
+    description !== initial.description ||
+    date !== initial.date ||
+    tags !== initial.tags ||
+    cover !== (initial.cover ?? "") ||
+    series !== (initial.series ?? "") ||
+    draft !== Boolean(initial.draft) ||
+    pinned !== Boolean(initial.pinned) ||
+    (slugOverride !== null &&
+      slugOverride !== "" &&
+      slugOverride !== initial.slug);
+
+  useEffect(() => {
+    const onBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (!isDirty || pending) return;
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [isDirty, pending]);
 
   const onPickImage = (file: File | null) => {
     if (!file) return;
@@ -232,22 +258,16 @@ export function PostForm({
         </p>
       )}
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div className="space-y-2 sm:col-span-2">
-          <label htmlFor="title" className={labelClass}>
-            标题
-          </label>
-          <input
-            id="title"
-            name="title"
-            required
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className={inputClass}
-            placeholder="文章标题"
-          />
-        </div>
+      <EditorChrome
+        title={title}
+        onTitleChange={setTitle}
+        slug={slug}
+        draft={draft}
+      />
+      {/* Keep named title field for form submit */}
+      <input type="hidden" name="title" value={title} required />
 
+      <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <label htmlFor="slug" className={labelClass}>
             Slug （URL）

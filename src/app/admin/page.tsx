@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { logout } from "@/app/actions/auth";
 import { DeletePostButton } from "@/components/DeletePostButton";
+import { loadAdminPosts } from "@/lib/admin-posts";
 import { isStaticExport } from "@/lib/deploy";
 import { isGitHubContentEnabled } from "@/lib/github-content";
-import { getAllPosts, getAllTags, formatDate } from "@/lib/posts";
+import { formatDate } from "@/lib/posts";
 import { requireSession } from "@/lib/session";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "管理后台",
@@ -21,36 +25,35 @@ type Props = {
     via?: string;
     filter?: string;
     q?: string;
+    sort?: string;
   }>;
 };
 
 export default async function AdminPage({ searchParams }: Props) {
   if (isStaticExport()) {
-    // layout already shows the notice; avoid cookies/searchParams on static export
     return null;
   }
 
   const session = await requireSession();
-  const allPosts = getAllPosts({ includeDrafts: true });
-  const publishedCount = allPosts.filter((p) => !p.draft).length;
-  const draftCount = allPosts.filter((p) => p.draft).length;
-  const tags = getAllTags();
   const params = await searchParams;
   const filter =
     params.filter === "published" || params.filter === "draft"
       ? params.filter
       : "all";
-  const q = (params.q ?? "").trim().toLowerCase();
-  const posts = allPosts.filter((p) => {
-    if (filter === "published" && p.draft) return false;
-    if (filter === "draft" && !p.draft) return false;
-    if (!q) return true;
-    return (
-      p.title.toLowerCase().includes(q) ||
-      p.slug.toLowerCase().includes(q) ||
-      p.tags.some((t) => t.toLowerCase().includes(q))
-    );
+  const sort =
+    params.sort === "date" || params.sort === "title" ? params.sort : "updated";
+  const q = (params.q ?? "").trim();
+
+  const { posts, recent, source } = await loadAdminPosts({
+    filter,
+    q,
+    sort,
   });
+
+  const allForStats = await loadAdminPosts({ filter: "all", sort: "updated" });
+  const publishedAll = allForStats.posts.filter((p) => !p.draft).length;
+  const draftAll = allForStats.posts.filter((p) => p.draft).length;
+
   const viaGithub = params.via === "github";
   const gitEnabled = isGitHubContentEnabled();
   const onVercel = Boolean(process.env.VERCEL);
@@ -78,13 +81,26 @@ export default async function AdminPage({ searchParams }: Props) {
           : params.error === "notfound"
             ? { type: "err" as const, text: "文章不存在或已被删除" }
             : params.error === "delete"
-              ? { type: "err" as const, text: "删除失败，请检查 GitHub Token 权限" }
+              ? {
+                  type: "err" as const,
+                  text: "删除失败，请检查 GitHub Token 权限",
+                }
               : params.error === "readonly"
                 ? {
                     type: "err" as const,
-                    text: "未配置 GITHUB_TOKEN：Vercel 无法写盘。请在环境变量中添加有 contents:write 权限的 Token。",
+                    text: "未配置 GITHUB_TOKEN：Vercel 无法写盘。",
                   }
                 : null;
+
+  const qs = (extra: Record<string, string>) => {
+    const sp = new URLSearchParams();
+    if (filter !== "all") sp.set("filter", filter);
+    if (q) sp.set("q", q);
+    if (sort !== "updated") sp.set("sort", sort);
+    for (const [k, v] of Object.entries(extra)) sp.set(k, v);
+    const s = sp.toString();
+    return s ? `?${s}` : "";
+  };
 
   return (
     <div className="space-y-10">
@@ -94,12 +110,16 @@ export default async function AdminPage({ searchParams }: Props) {
             Admin
           </p>
           <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-            管理后台
+            写作台
           </h1>
           <p className="text-zinc-600 dark:text-zinc-400">
             你好，
             <span className="font-medium text-zinc-900 dark:text-zinc-100">
               {session.username}
+            </span>
+            <span className="mx-1.5 text-zinc-300">·</span>
+            <span className="text-sm">
+              列表来源：{source === "github" ? "GitHub 最新" : "本地磁盘"}
             </span>
           </p>
         </div>
@@ -147,36 +167,72 @@ export default async function AdminPage({ searchParams }: Props) {
           <>
             <span className="font-medium">存储：GitHub</span>
             <span className="mx-1.5">·</span>
-            保存文章会提交到仓库并触发 Vercel 重新部署。
+            后台列表与编辑直接读仓库最新内容，不依赖重新部署。
           </>
         ) : onVercel ? (
           <>
             <span className="font-medium">存储未就绪</span>
             <span className="mx-1.5">·</span>
-            请配置环境变量 <code className="text-xs">GITHUB_TOKEN</code>{" "}
-            才能在线写文章。
+            请配置 <code className="text-xs">GITHUB_TOKEN</code>。
           </>
         ) : (
           <>
             <span className="font-medium">存储：本地磁盘</span>
             <span className="mx-1.5">·</span>
             写入 <code className="text-xs">content/posts/</code>
-            。配置 <code className="text-xs">GITHUB_TOKEN</code> 可改为提交到
-            GitHub。
           </>
         )}
       </div>
 
       <section className="grid gap-4 sm:grid-cols-3">
-        <StatCard label="已发布" value={publishedCount} />
-        <StatCard label="草稿" value={draftCount} />
-        <StatCard label="标签" value={tags.length} />
+        <StatCard label="已发布" value={publishedAll} />
+        <StatCard label="草稿" value={draftAll} />
+        <StatCard label="当前筛选" value={posts.length} />
       </section>
+
+      {/* A2 Recent */}
+      {recent.length > 0 && (
+        <section className="space-y-3" data-testid="admin-recent">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            最近编辑
+          </h2>
+          <ul className="grid gap-2 sm:grid-cols-2">
+            {recent.slice(0, 10).map((post) => (
+              <li key={`recent-${post.slug}`}>
+                <Link
+                  href={`/admin/posts/${encodeURIComponent(post.slug)}/edit`}
+                  className="flex items-center justify-between gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-3 transition hover:border-violet-300 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-violet-800"
+                >
+                  <span className="min-w-0 truncate font-medium text-zinc-900 dark:text-zinc-50">
+                    {post.title}
+                    {post.draft && (
+                      <span className="ml-2 text-[10px] font-semibold text-amber-600">
+                        草稿
+                      </span>
+                    )}
+                  </span>
+                  <span className="shrink-0 text-xs text-zinc-400">
+                    {post.updatedAt
+                      ? new Date(post.updatedAt).toLocaleString("zh-CN", {
+                          hour12: false,
+                          month: "numeric",
+                          day: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })
+                      : formatDate(post.date)}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section className="space-y-4">
         <div className="flex items-center justify-between gap-3">
           <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            文章列表
+            全部文章
           </h2>
           <Link
             href="/blog"
@@ -186,7 +242,7 @@ export default async function AdminPage({ searchParams }: Props) {
           </Link>
         </div>
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-wrap gap-1 rounded-lg border border-zinc-200 p-0.5 dark:border-zinc-800">
             {(
               [
@@ -197,7 +253,7 @@ export default async function AdminPage({ searchParams }: Props) {
             ).map(([key, label]) => (
               <Link
                 key={key}
-                href={`/admin?filter=${key}${q ? `&q=${encodeURIComponent(q)}` : ""}`}
+                href={`/admin${qs({ filter: key })}`}
                 className={`rounded-md px-3 py-1.5 text-xs font-medium transition ${
                   filter === key
                     ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
@@ -208,23 +264,49 @@ export default async function AdminPage({ searchParams }: Props) {
               </Link>
             ))}
           </div>
-          <form className="flex gap-2" action="/admin" method="get">
-            {filter !== "all" && (
-              <input type="hidden" name="filter" value={filter} />
-            )}
-            <input
-              name="q"
-              defaultValue={params.q ?? ""}
-              placeholder="搜索标题 / slug / 标签"
-              className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-900 sm:w-56"
-            />
-            <button
-              type="submit"
-              className="rounded-lg bg-zinc-100 px-3 py-1.5 text-sm font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-200"
-            >
-              搜
-            </button>
-          </form>
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="flex gap-1 rounded-lg border border-zinc-200 p-0.5 text-xs dark:border-zinc-800">
+              {(
+                [
+                  ["updated", "更新"],
+                  ["date", "发布"],
+                  ["title", "标题"],
+                ] as const
+              ).map(([key, label]) => (
+                <Link
+                  key={key}
+                  href={`/admin${qs({ sort: key })}`}
+                  className={`rounded-md px-2.5 py-1 font-medium ${
+                    sort === key
+                      ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-zinc-50"
+                      : "text-zinc-500"
+                  }`}
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+            <form className="flex gap-2" action="/admin" method="get">
+              {filter !== "all" && (
+                <input type="hidden" name="filter" value={filter} />
+              )}
+              {sort !== "updated" && (
+                <input type="hidden" name="sort" value={sort} />
+              )}
+              <input
+                name="q"
+                defaultValue={params.q ?? ""}
+                placeholder="搜索标题 / slug / 标签 / 正文"
+                className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-900 sm:w-64"
+              />
+              <button
+                type="submit"
+                className="rounded-lg bg-zinc-100 px-3 py-1.5 text-sm font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-200"
+              >
+                搜
+              </button>
+            </form>
+          </div>
         </div>
 
         <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
@@ -233,7 +315,7 @@ export default async function AdminPage({ searchParams }: Props) {
               <tr>
                 <th className="px-4 py-3 font-medium">标题</th>
                 <th className="hidden px-4 py-3 font-medium sm:table-cell">
-                  日期
+                  更新
                 </th>
                 <th className="hidden px-4 py-3 font-medium md:table-cell">
                   标签
@@ -246,18 +328,12 @@ export default async function AdminPage({ searchParams }: Props) {
                 <tr key={post.slug} className="bg-white dark:bg-zinc-950">
                   <td className="px-4 py-3">
                     <div className="flex flex-wrap items-center gap-2">
-                      {post.draft ? (
-                        <span className="font-medium text-zinc-900 dark:text-zinc-50">
-                          {post.title}
-                        </span>
-                      ) : (
-                        <Link
-                          href={`/blog/${post.slug}`}
-                          className="font-medium text-zinc-900 hover:text-violet-600 dark:text-zinc-50 dark:hover:text-violet-400"
-                        >
-                          {post.title}
-                        </Link>
-                      )}
+                      <Link
+                        href={`/admin/posts/${encodeURIComponent(post.slug)}/edit`}
+                        className="font-medium text-zinc-900 hover:text-violet-600 dark:text-zinc-50 dark:hover:text-violet-400"
+                      >
+                        {post.title}
+                      </Link>
                       {post.draft && (
                         <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-amber-800 uppercase dark:bg-amber-950 dark:text-amber-300">
                           草稿
@@ -266,10 +342,15 @@ export default async function AdminPage({ searchParams }: Props) {
                     </div>
                     <p className="mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">
                       {post.slug}
+                      {post.folder ? ` · ${post.folder}/` : ""}
                     </p>
                   </td>
                   <td className="hidden px-4 py-3 text-zinc-500 sm:table-cell dark:text-zinc-400">
-                    {formatDate(post.date)}
+                    {post.updatedAt
+                      ? new Date(post.updatedAt).toLocaleString("zh-CN", {
+                          hour12: false,
+                        })
+                      : formatDate(post.date)}
                   </td>
                   <td className="hidden px-4 py-3 text-zinc-500 md:table-cell dark:text-zinc-400">
                     {post.tags.join(" · ") || "—"}
@@ -282,6 +363,15 @@ export default async function AdminPage({ searchParams }: Props) {
                       >
                         编辑
                       </Link>
+                      {!post.draft && (
+                        <Link
+                          href={`/blog/${post.slug}`}
+                          className="text-sm text-zinc-500 hover:text-zinc-800 dark:text-zinc-400"
+                          target="_blank"
+                        >
+                          前台
+                        </Link>
+                      )}
                       <DeletePostButton slug={post.slug} title={post.title} />
                     </div>
                   </td>

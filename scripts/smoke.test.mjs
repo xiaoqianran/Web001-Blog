@@ -375,6 +375,80 @@ test("RSS feed parser and seed data", async () => {
   }
 });
 
+test("admin post helpers: filter/sort/updatedAt/recursive list", async () => {
+  const {
+    filterAdminPosts,
+    sortAdminPosts,
+    listPostRelPaths,
+    serializePost,
+    parsePostMarkdown,
+  } = await loadTs("src/lib/posts.ts");
+
+  const sample = serializePost({
+    slug: "t",
+    title: "T",
+    description: "d",
+    date: "2026-01-01",
+    tags: ["a"],
+    content: "hello body",
+    updatedAt: "2026-07-10T12:00:00.000Z",
+  });
+  assert.match(sample, /updatedAt:/);
+  const parsed = parsePostMarkdown("t", sample);
+  assert.equal(parsed.updatedAt, "2026-07-10T12:00:00.000Z");
+
+  const rows = [
+    {
+      slug: "a",
+      title: "Alpha",
+      description: "",
+      date: "2026-01-01",
+      tags: [],
+      draft: false,
+      pinned: false,
+      readingTime: "1 min",
+      content: "foo bar",
+      updatedAt: "2026-07-01T00:00:00.000Z",
+    },
+    {
+      slug: "b",
+      title: "Beta draft",
+      description: "x",
+      date: "2026-02-01",
+      tags: ["ml"],
+      draft: true,
+      pinned: false,
+      readingTime: "1 min",
+      content: "secret keyword xyz",
+      updatedAt: "2026-07-11T00:00:00.000Z",
+    },
+  ];
+  const byBody = filterAdminPosts(rows, { q: "secret keyword" });
+  assert.equal(byBody.length, 1);
+  assert.equal(byBody[0].slug, "b");
+  const drafts = filterAdminPosts(rows, { filter: "draft" });
+  assert.equal(drafts.length, 1);
+  const sorted = sortAdminPosts(rows, "updated");
+  assert.equal(sorted[0].slug, "b");
+
+  const rels = listPostRelPaths();
+  assert.ok(Array.isArray(rels));
+
+  const adminPage = fs.readFileSync(
+    path.join(root, "src/app/admin/page.tsx"),
+    "utf8",
+  );
+  assert.match(adminPage, /loadAdminPosts|admin-recent|最近编辑/);
+  assert.match(
+    fs.readFileSync(path.join(root, "src/components/EditorChrome.tsx"), "utf8"),
+    /editor-chrome|复制前台链接/,
+  );
+  assert.match(
+    fs.readFileSync(path.join(root, "src/components/PostForm.tsx"), "utf8"),
+    /beforeunload|isDirty/,
+  );
+});
+
 test("homepage prioritizes lab feeds over empty posts", () => {
   const home = fs.readFileSync(path.join(root, "src/app/page.tsx"), "utf8");
   assert.match(home, /HomePapersSection|getLatestHfDaily/);
