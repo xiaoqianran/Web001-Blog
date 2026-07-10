@@ -4,6 +4,7 @@
  * Contract:
  * - Local filesystem is best-effort only (may be read-only on Vercel).
  * - When GITHUB_TOKEN is set, GitHub is the source of truth for reads/writes.
+ * - Never putTreeJson from a disk-empty tree without loading GitHub first.
  * - Never let bare saveTreeToDisk / mkdirSync abort an action before GitHub commits.
  */
 
@@ -19,6 +20,25 @@ import {
   isGitHubContentEnabled,
 } from "@/lib/github-content";
 import { getPostBySlug, type Post } from "@/lib/posts";
+
+/**
+ * Load knowledge tree for admin mutations.
+ * When GitHub is enabled, fetch content/tree.json from the repo first so a
+ * subsequent put cannot wipe folders that only exist remotely.
+ * Falls back to local disk / rebuild-from-posts.
+ */
+export async function loadTreeForAdmin(): Promise<ContentTree> {
+  if (isGitHubContentEnabled()) {
+    try {
+      const { fetchTreeJson } = await import("@/lib/github-tree");
+      const remote = await fetchTreeJson();
+      if (remote) return remote;
+    } catch {
+      /* fall through to local */
+    }
+  }
+  return loadTreeFromDisk();
+}
 
 /**
  * Write tree.json: try local disk (catch RO FS), then always attempt GitHub put
@@ -75,7 +95,7 @@ export async function registerDocInTreeBestEffort(
   folder?: string,
 ): Promise<void> {
   try {
-    let tree = loadTreeFromDisk();
+    let tree = await loadTreeForAdmin();
     tree = ensureDocInTree(tree, slug, folder || null);
     await persistTreeBestEffort(tree);
   } catch {

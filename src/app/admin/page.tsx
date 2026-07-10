@@ -11,9 +11,11 @@ import { loadAdminPosts } from "@/lib/admin-posts";
 import {
   buildTreeFromRelPaths,
   ensureDocInTree,
-  loadTreeFromDisk,
 } from "@/lib/content-tree";
-import { persistTreeBestEffort } from "@/lib/content-persist";
+import {
+  loadTreeForAdmin,
+  persistTreeBestEffort,
+} from "@/lib/content-persist";
 import { isStaticExport } from "@/lib/deploy";
 import { isGitHubContentEnabled } from "@/lib/github-content";
 import { formatDate, listPostRelPaths } from "@/lib/posts";
@@ -65,12 +67,16 @@ export default async function AdminPage({ searchParams }: Props) {
   const publishedAll = allForStats.posts.filter((p) => !p.draft).length;
   const draftAll = allForStats.posts.filter((p) => p.draft).length;
 
-  // Knowledge tree: merge disk tree with current posts (RO FS → GitHub put)
-  let tree = loadTreeFromDisk();
+  // Knowledge tree: GitHub-first so empty deploy disk never overwrites remote tree
+  let tree = await loadTreeForAdmin();
   let treeDirty = false;
-  if (tree.docs.length === 0 && listPostRelPaths().length > 0) {
-    tree = buildTreeFromRelPaths(listPostRelPaths());
-    treeDirty = true;
+  if (tree.docs.length === 0 && tree.folders.length === 0) {
+    // Only rebuild when both remote+local tree are empty; prefer post list
+    const localRels = listPostRelPaths();
+    if (localRels.length > 0) {
+      tree = buildTreeFromRelPaths(localRels);
+      treeDirty = true;
+    }
   }
   for (const p of allForStats.posts) {
     if (!tree.docs.some((d) => d.slug === p.slug)) {
