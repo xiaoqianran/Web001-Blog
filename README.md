@@ -29,6 +29,7 @@
 | OG / Twitter / JSON-LD / canonical | ✅ | |
 | CI lint+test+build | ✅ | |
 | HF 论文热点实验室 | ✅ | `/lab/papers` + 日更 Actions |
+| RSS 信息流实验室 | ✅ | `/lab/feeds`（HN + arXiv 等） |
 
 ## Hugging Face 论文日刊
 
@@ -46,6 +47,20 @@ npm run fetch:hf-daily
 - 跳过翻译：`node scripts/fetch-hf-daily.mjs --no-translate`
 
 深度长文仍建议人工筛选后写入 `content/posts`，避免污染主时间线。
+
+## RSS 信息流（方案 A 聚合）
+
+只聚合**标题 / 摘要 / 外链**，不镜像全文：
+
+```bash
+npm run fetch:rss
+# 数据 → content/data/rss-feeds/latest.json 与 YYYY-MM-DD.json
+```
+
+- 源配置：`content/feeds.json`（默认 Hacker News Frontpage、arXiv cs.AI / cs.LG）
+- 页面：`/lab/feeds`（导航「信息流」）
+- 定时：`.github/workflows/rss-feeds.yml`（每 6 小时，可手动 workflow_dispatch）
+- 加源：编辑 `feeds.json` 后重新 fetch 即可
 
 ## 快速开始
 

@@ -237,6 +237,50 @@ test("HF daily papers data and helpers", async () => {
   assert.equal(paperDisplaySummary(sample, "en"), "English abstract here.");
 });
 
+test("RSS feed parser and seed data", async () => {
+  const { parseFeedXml } = await import(
+    pathToFileURL(path.join(root, "scripts/lib/parse-rss.mjs")).href
+  );
+  const sample = `<?xml version="1.0"?>
+<rss version="2.0"><channel>
+<title>Demo</title><link>https://example.com/</link>
+<item>
+  <title><![CDATA[Hello RSS]]></title>
+  <link>https://example.com/a</link>
+  <guid>https://example.com/a</guid>
+  <description><![CDATA[<p>Summary body</p>]]></description>
+  <pubDate>Fri, 10 Jul 2026 12:00:00 +0000</pubDate>
+</item>
+</channel></rss>`;
+  const parsed = parseFeedXml(sample);
+  assert.equal(parsed.title, "Demo");
+  assert.equal(parsed.items.length, 1);
+  assert.equal(parsed.items[0].title, "Hello RSS");
+  assert.equal(parsed.items[0].link, "https://example.com/a");
+  assert.match(parsed.items[0].summary, /Summary body/);
+
+  const feedsConfig = JSON.parse(
+    fs.readFileSync(path.join(root, "content/feeds.json"), "utf8"),
+  );
+  assert.ok(Array.isArray(feedsConfig.feeds));
+  assert.ok(feedsConfig.feeds.some((f) => f.id === "hacker-news"));
+  assert.ok(feedsConfig.feeds.some((f) => String(f.id).startsWith("arxiv")));
+
+  const dir = path.join(root, "content/data/rss-feeds");
+  assert.ok(fs.existsSync(path.join(dir, "latest.json")), "rss seed latest.json");
+  const latest = JSON.parse(
+    fs.readFileSync(path.join(dir, "latest.json"), "utf8"),
+  );
+  assert.ok(latest.feeds?.length >= 1);
+  assert.ok(latest.itemCount >= 1);
+  const hn = latest.feeds.find((f) => f.id === "hacker-news");
+  if (hn) {
+    assert.ok(hn.items.length > 0);
+    assert.ok(hn.items[0].title);
+    assert.ok(hn.items[0].link);
+  }
+});
+
 test("content/posts markdown files are healthy when present", () => {
   const dir = path.join(root, "content/posts");
   assert.ok(fs.existsSync(dir));

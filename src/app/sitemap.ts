@@ -52,6 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.65,
     },
     {
+      url: `${siteUrl}/lab/feeds`,
+      lastModified: new Date(),
+      changeFrequency: "hourly",
+      priority: 0.6,
+    },
+    {
       url: `${siteUrl}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly",
