@@ -820,12 +820,50 @@ test("content-persist shared module: actions must not bare saveTreeToDisk", asyn
   assert.match(persistSrc, /export async function persistTreeBestEffort/);
   assert.match(persistSrc, /export function bestEffortMkdir/);
   assert.match(persistSrc, /export async function loadPostForAdmin/);
+  assert.match(persistSrc, /export async function loadTreeForAdmin/);
   assert.match(persistSrc, /githubReadPost|isGitHubContentEnabled/);
   assert.match(persistSrc, /putTreeJson/);
+  // GitHub-first tree load (fetchTreeJson) before falling back to disk
+  assert.match(persistSrc, /fetchTreeJson/);
+  assert.match(
+    persistSrc,
+    /loadTreeForAdmin[\s\S]*fetchTreeJson[\s\S]*loadTreeFromDisk/,
+  );
   // local save is inside try/catch
   assert.match(
     persistSrc,
     /try\s*\{[\s\S]*saveTreeToDisk[\s\S]*\}\s*catch/,
+  );
+  // registerDoc must load tree via loadTreeForAdmin, not disk-only
+  assert.match(
+    persistSrc,
+    /registerDocInTreeBestEffort[\s\S]*loadTreeForAdmin/,
+  );
+  assert.ok(
+    !/registerDocInTreeBestEffort[\s\S]*loadTreeFromDisk\s*\(/.test(persistSrc),
+    "registerDocInTreeBestEffort must not call loadTreeFromDisk directly",
+  );
+
+  // github-tree must expose fetch (not put-only)
+  const ghTree = fs.readFileSync(
+    path.join(root, "src/lib/github-tree.ts"),
+    "utf8",
+  );
+  assert.match(ghTree, /export async function fetchTreeJson/);
+  assert.match(ghTree, /export async function putTreeJson/);
+
+  // pure parseTreeJson rejects garbage
+  const { parseTreeJson, emptyTree } = await loadTs("src/lib/content-tree.ts");
+  assert.equal(parseTreeJson(null), null);
+  assert.equal(parseTreeJson({ version: 2 }), null);
+  const ok = emptyTree();
+  assert.deepEqual(parseTreeJson(ok), ok);
+  assert.ok(
+    parseTreeJson({
+      version: 1,
+      folders: [{ id: "a", name: "a", parentId: null, order: 0 }],
+      docs: [{ slug: "x", folderId: "a", order: 0 }],
+    }),
   );
 
   const actionsDir = path.join(root, "src/app/actions");
@@ -841,7 +879,11 @@ test("content-persist shared module: actions must not bare saveTreeToDisk", asyn
       !/\bsaveTreeToDisk\s*\(/.test(src),
       `${file} must not call saveTreeToDisk() directly; use persistTreeBestEffort`,
     );
-    // Must not bare mkdirSync for content paths without bestEffort
+    // Mutators must not load tree from disk only (wipes GitHub on put)
+    assert.ok(
+      !/\bloadTreeFromDisk\s*\(/.test(src),
+      `${file} must not call loadTreeFromDisk(); use loadTreeForAdmin (GitHub-first)`,
+    );
     if (file === "tree.ts") {
       assert.ok(
         !/fs\.mkdirSync\s*\(/.test(src),
@@ -857,6 +899,18 @@ test("content-persist shared module: actions must not bare saveTreeToDisk", asyn
   assert.match(treeSrc, /persistTreeBestEffort/);
   assert.match(treeSrc, /bestEffortMkdir/);
   assert.match(treeSrc, /loadPostForAdmin/);
+  assert.match(treeSrc, /loadTreeForAdmin/);
+
+  // createFolderAction: loadTreeForAdmin before persist
+  const createSlice = treeSrc.slice(
+    treeSrc.indexOf("export async function createFolderAction"),
+    treeSrc.indexOf("export async function renameFolderAction"),
+  );
+  assert.ok(
+    createSlice.indexOf("loadTreeForAdmin") <
+      createSlice.indexOf("persistTreeBestEffort"),
+    "createFolder must loadTreeForAdmin before put",
+  );
 
   // movePostAction must load via loadPostForAdmin, not bare getPostBySlug
   const moveSlice = treeSrc.slice(
@@ -864,6 +918,7 @@ test("content-persist shared module: actions must not bare saveTreeToDisk", asyn
     treeSrc.indexOf("export async function reorderPostAction"),
   );
   assert.match(moveSlice, /loadPostForAdmin/);
+  assert.match(moveSlice, /loadTreeForAdmin/);
   assert.ok(
     !/\bgetPostBySlug\s*\(/.test(moveSlice),
     "movePostAction must not call getPostBySlug; use loadPostForAdmin (GitHub-first)",
@@ -875,7 +930,7 @@ test("content-persist shared module: actions must not bare saveTreeToDisk", asyn
   );
   assert.match(trashSrc, /from ["']@\/lib\/content-persist["']/);
   assert.match(trashSrc, /persistTreeBestEffort/);
-  // no local private reimplementation of persist
+  assert.match(trashSrc, /loadTreeForAdmin/);
   assert.ok(
     !/async function persistTreeBestEffort/.test(trashSrc),
     "trash.ts must import persistTreeBestEffort, not redefine it",
@@ -889,6 +944,17 @@ test("content-persist shared module: actions must not bare saveTreeToDisk", asyn
   assert.ok(
     !/\bregisterDocInTree\s*\(/.test(postsSrc),
     "posts.ts must use registerDocInTreeBestEffort (not bare registerDocInTree)",
+  );
+
+  // Admin page display/mutate path also GitHub-first
+  const adminPage = fs.readFileSync(
+    path.join(root, "src/app/admin/page.tsx"),
+    "utf8",
+  );
+  assert.match(adminPage, /loadTreeForAdmin/);
+  assert.ok(
+    !/\bloadTreeFromDisk\s*\(/.test(adminPage),
+    "admin page must not loadTreeFromDisk (risk of put wiping remote)",
   );
 });
 

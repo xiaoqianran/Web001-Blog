@@ -10,9 +10,10 @@ import {
 } from "@/lib/github-content";
 import {
   loadPostForAdmin,
+  loadTreeForAdmin,
   persistTreeBestEffort,
 } from "@/lib/content-persist";
-import { ensureDocInTree, loadTreeFromDisk } from "@/lib/content-tree";
+import { ensureDocInTree } from "@/lib/content-tree";
 import { findPostFile } from "@/lib/posts";
 import {
   permanentDeleteLocal,
@@ -64,7 +65,7 @@ export async function softDeletePostAction(formData: FormData) {
 
   // 2) Drop slug from tree index (best-effort; never blocks soft-delete)
   try {
-    let tree = loadTreeFromDisk();
+    let tree = await loadTreeForAdmin();
     tree = { ...tree, docs: tree.docs.filter((d) => d.slug !== slug) };
     await persistTreeBestEffort(tree);
   } catch {
@@ -105,7 +106,7 @@ export async function restoreTrashAction(formData: FormData) {
   }
 
   try {
-    let tree = loadTreeFromDisk();
+    let tree = await loadTreeForAdmin();
     tree = ensureDocInTree(tree, slug, folder || null);
     await persistTreeBestEffort(tree);
   } catch {

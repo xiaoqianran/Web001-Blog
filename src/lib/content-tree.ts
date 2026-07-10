@@ -33,6 +33,15 @@ export function emptyTree(): ContentTree {
   return { version: 1, folders: [], docs: [] };
 }
 
+/** Validate unknown JSON as ContentTree; pure for tests. */
+export function parseTreeJson(raw: unknown): ContentTree | null {
+  if (!raw || typeof raw !== "object") return null;
+  const o = raw as Record<string, unknown>;
+  if (o.version !== 1) return null;
+  if (!Array.isArray(o.folders) || !Array.isArray(o.docs)) return null;
+  return raw as ContentTree;
+}
+
 /** Build tree from recursive post relative paths (e.g. notes/a.md). */
 export function buildTreeFromRelPaths(relPaths: string[]): ContentTree {
   const tree = emptyTree();
@@ -81,10 +90,9 @@ export function buildTreeFromRelPaths(relPaths: string[]): ContentTree {
 export function loadTreeFromDisk(): ContentTree {
   if (fs.existsSync(treePath)) {
     try {
-      const raw = JSON.parse(fs.readFileSync(treePath, "utf8")) as ContentTree;
-      if (raw?.version === 1 && Array.isArray(raw.folders) && Array.isArray(raw.docs)) {
-        return raw;
-      }
+      const raw = JSON.parse(fs.readFileSync(treePath, "utf8")) as unknown;
+      const parsed = parseTreeJson(raw);
+      if (parsed) return parsed;
     } catch {
       /* fall through */
     }

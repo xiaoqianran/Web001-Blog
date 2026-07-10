@@ -5,12 +5,12 @@ import { isGitHubContentEnabled } from "@/lib/github-content";
 import {
   bestEffortMkdir,
   loadPostForAdmin,
+  loadTreeForAdmin,
   persistTreeBestEffort,
 } from "@/lib/content-persist";
 import {
   addFolderToTree,
   deleteFolderFromTree,
-  loadTreeFromDisk,
   moveDocInTree,
   renameFolderInTree,
   reorderDoc,
@@ -39,9 +39,9 @@ export async function createFolderAction(formData: FormData) {
   const parentIdRaw = String(formData.get("parentId") ?? "").trim();
   const parentId = parentIdRaw === "" ? null : parentIdRaw;
   if (!name) return;
-  let tree = loadTreeFromDisk();
+  // GitHub-first load so put does not wipe remote folders
+  let tree = await loadTreeForAdmin();
   tree = addFolderToTree(tree, name, parentId);
-  // physical dir is local-only best-effort; tree.json goes to GitHub
   const id = tree.folders.find(
     (f) => f.name === name && f.parentId === parentId,
   )?.id;
@@ -58,7 +58,7 @@ export async function renameFolderAction(formData: FormData) {
   const folderId = String(formData.get("folderId") ?? "").trim();
   const name = String(formData.get("name") ?? "").trim();
   if (!folderId || !name) return;
-  let tree = loadTreeFromDisk();
+  let tree = await loadTreeForAdmin();
   tree = renameFolderInTree(tree, folderId, name);
   await persistTreeBestEffort(tree);
   revalidateTree();
@@ -68,7 +68,7 @@ export async function deleteFolderAction(formData: FormData) {
   await requireAdmin();
   const folderId = String(formData.get("folderId") ?? "").trim();
   if (!folderId) return;
-  let tree = loadTreeFromDisk();
+  let tree = await loadTreeForAdmin();
   tree = deleteFolderFromTree(tree, folderId);
   await persistTreeBestEffort(tree);
   revalidateTree();
@@ -100,7 +100,6 @@ export async function movePostAction(formData: FormData) {
     folder: folder || undefined,
   };
 
-  // Content move first (GitHub source of truth), then tree index
   if (isGitHubContentEnabled()) {
     const { githubRenamePost } = await import("@/lib/github-content");
     await githubRenamePost(slug, input);
@@ -127,7 +126,7 @@ export async function movePostAction(formData: FormData) {
     }
   }
 
-  let tree = loadTreeFromDisk();
+  let tree = await loadTreeForAdmin();
   tree = moveDocInTree(tree, slug, folderId);
   await persistTreeBestEffort(tree);
   revalidateTree();
@@ -140,7 +139,7 @@ export async function reorderPostAction(formData: FormData) {
   const slug = String(formData.get("slug") ?? "").trim();
   const direction = String(formData.get("direction") ?? "") as "up" | "down";
   if (!slug || (direction !== "up" && direction !== "down")) return;
-  let tree = loadTreeFromDisk();
+  let tree = await loadTreeForAdmin();
   tree = reorderDoc(tree, slug, direction);
   await persistTreeBestEffort(tree);
   revalidateTree();
@@ -148,6 +147,22 @@ export async function reorderPostAction(formData: FormData) {
 
 export async function syncTreeFromPostsAction() {
   await requireAdmin();
+  // Prefer rebuilding from GitHub post paths when enabled
+  if (isGitHubContentEnabled()) {
+    try {
+      const { githubListPostRepoPaths } = await import("@/lib/github-content");
+      const { buildTreeFromRelPaths } = await import("@/lib/content-tree");
+      const repoPaths = await githubListPostRepoPaths();
+      const rels = repoPaths.map((p) =>
+        p.replace(/^content\/posts\//, ""),
+      );
+      await persistTreeBestEffort(buildTreeFromRelPaths(rels));
+      revalidateTree();
+      return;
+    } catch {
+      /* fall through to local */
+    }
+  }
   const { listPostRelPaths } = await import("@/lib/posts");
   const { buildTreeFromRelPaths } = await import("@/lib/content-tree");
   const tree = buildTreeFromRelPaths(listPostRelPaths());
