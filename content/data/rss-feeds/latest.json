@@ -1,20 +1,15 @@
 {
   "source": "content/feeds.json",
   "attribution": "Aggregated headlines/summaries from third-party RSS/Atom feeds for navigation only. All rights belong to original publishers and authors. Chinese text is machine-translated.",
-  "fetchedAt": "2026-07-12T02:09:48.990Z",
+  "fetchedAt": "2026-07-12T08:08:10.231Z",
   "date": "2026-07-12",
   "feedCount": 3,
-  "itemCount": 15,
+  "itemCount": 20,
   "locale": {
     "summaryDefault": "zh",
     "translated": true
   },
-  "errors": [
-    {
-      "id": "hacker-news",
-      "error": "fetch failed"
-    }
-  ],
+  "errors": [],
   "feeds": [
     {
       "id": "hacker-news",
@@ -22,10 +17,230 @@
       "url": "https://hnrss.org/frontpage",
       "home": "https://news.ycombinator.com/",
       "group": "community",
-      "fetchedAt": "2026-07-12T02:09:39.796Z",
-      "count": 0,
-      "items": [],
-      "error": "fetch failed"
+      "fetchedAt": "2026-07-12T08:07:43.529Z",
+      "count": 20,
+      "items": [
+        {
+          "id": "https://news.ycombinator.com/item?id=48878682",
+          "title": "Show HN: Mindwalk – Replay coding-agent sessions on a 3D map of your codebase",
+          "titleZh": "显示 HN：Mindwalk – 在代码库的 3D 地图上重播编码代理会话",
+          "link": "https://github.com/cosmtrek/mindwalk",
+          "summary": "Article URL: https://github.com/cosmtrek/mindwalk\n\n Comments URL: https://news.ycombinator.com/item?id=48878682\n\n Points: 9\n\n # Comments: 1",
+          "summaryZh": "文章网址：https://github.com/cosmtrek/mindwalk\n\n 评论网址：https://news.ycombinator.com/item?id=48878682\n\n 积分：9\n\n # 评论: 1",
+          "publishedAt": "2026-07-12T05:51:32.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48878682",
+          "author": "cosmtrek"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48878195",
+          "title": "Why Write Code in 2026",
+          "titleZh": "为什么要在 2026 年编写代码",
+          "link": "https://softwaredoug.com/blog/2026/07/09/write-code.html",
+          "summary": "Article URL: https://softwaredoug.com/blog/2026/07/09/write-code.html\n\n Comments URL: https://news.ycombinator.com/item?id=48878195\n\n Points: 42\n\n # Comments: 27",
+          "summaryZh": "文章网址：https://softwaredoug.com/blog/2026/07/09/write-code.html\n\n 评论网址：https://news.ycombinator.com/item?id=48878195\n\n 积分：42\n\n # 评论: 27",
+          "publishedAt": "2026-07-12T04:15:27.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48878195",
+          "author": "zdw"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48878126",
+          "title": "Under federal rule, colleges must leave grads better off or lose financial aid",
+          "titleZh": "根据联邦规定，大学必须让毕业生过上更好的生活，否则就会失去经济援助",
+          "link": "https://www.npr.org/2026/06/30/nx-s1-5835631/turner-camhi-do-no-harm-college-loans",
+          "summary": "Article URL: https://www.npr.org/2026/06/30/nx-s1-5835631/turner-camhi-do-no-harm-college-loans\n\n Comments URL: https://news.ycombinator.com/item?id=48878126\n\n Points: 62\n\n # Comments: 94",
+          "summaryZh": "文章网址：https://www.npr.org/2026/06/30/nx-s1-5835631/turner-camhi-do-no-harm-college-loans\n\n 评论网址：https://news.ycombinator.com/item?id=48878126\n\n 积分：62\n\n #评论：94",
+          "publishedAt": "2026-07-12T04:00:14.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48878126",
+          "author": "nradov"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48877668",
+          "title": "Unexpected Solidlike Fracture in Simple Liquids",
+          "titleZh": "简单液体中意外的类固体断裂",
+          "link": "https://www.quantamagazine.org/we-know-simple-fluids-can-flow-turns-out-some-can-fracture-20260710/",
+          "summary": "https://journals.aps.org/prl/abstract/10.1103/t2vy-32wr\n\n Comments URL: https://news.ycombinator.com/item?id=48877668\n\n Points: 85\n\n # Comments: 44",
+          "summaryZh": "https://journals.aps.org/prl/abstract/10.1103/t2vy-32wr\n\n 评论网址：https://news.ycombinator.com/item?id=48877668\n\n 积分：85\n\n # 评论: 44",
+          "publishedAt": "2026-07-12T02:13:46.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48877668",
+          "author": "Anon84"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48877613",
+          "title": "The Energetic Costs of Cellular Computation (2012)",
+          "titleZh": "蜂窝计算的能源成本 (2012)",
+          "link": "https://arxiv.org/abs/1203.5426",
+          "summary": "Article URL: https://arxiv.org/abs/1203.5426\n\n Comments URL: https://news.ycombinator.com/item?id=48877613\n\n Points: 19\n\n # Comments: 1",
+          "summaryZh": "文章网址：https://arxiv.org/abs/1203.5426\n\n 评论网址：https://news.ycombinator.com/item?id=48877613\n\n 积分：19\n\n # 评论: 1",
+          "publishedAt": "2026-07-12T01:59:35.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48877613",
+          "author": "lioeters"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48877344",
+          "title": "A Erlang style pure Scheme Webserver and further",
+          "titleZh": "一个Erlang风格的纯Scheme Web服务器以及进一步",
+          "link": "https://igropyr.com",
+          "summary": "Article URL: https://igropyr.com\n\n Comments URL: https://news.ycombinator.com/item?id=48877344\n\n Points: 59\n\n # Comments: 6",
+          "summaryZh": "文章网址：https://igropyr.com\n\n 评论网址：https://news.ycombinator.com/item?id=48877344\n\n 积分：59\n\n # 评论: 6",
+          "publishedAt": "2026-07-12T01:03:29.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48877344",
+          "author": "guenchi"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48877314",
+          "title": "A pure scheme web programming tool",
+          "titleZh": "一个纯方案的Web编程工具",
+          "link": "https://goeteia.dev",
+          "summary": "Article URL: https://goeteia.dev\n\n Comments URL: https://news.ycombinator.com/item?id=48877314\n\n Points: 86\n\n # Comments: 20",
+          "summaryZh": "文章网址：https://goeteia.dev\n\n 评论网址：https://news.ycombinator.com/item?id=48877314\n\n 积分：86\n\n # 评论: 20",
+          "publishedAt": "2026-07-12T00:57:18.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48877314",
+          "author": "guenchi"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48877269",
+          "title": "A dock that wakes up reliably",
+          "titleZh": "可靠唤醒的坞站",
+          "link": "https://fabiensanglard.net/tb4/index.html",
+          "summary": "Article URL: https://fabiensanglard.net/tb4/index.html\n\n Comments URL: https://news.ycombinator.com/item?id=48877269\n\n Points: 67\n\n # Comments: 42",
+          "summaryZh": "文章网址：https://fabiensanglad.net/tb4/index.html\n\n 评论网址：https://news.ycombinator.com/item?id=48877269\n\n 积分：67\n\n # 评论: 42",
+          "publishedAt": "2026-07-12T00:48:10.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48877269",
+          "author": "ingve"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48877178",
+          "title": "Martha Lillard, last US polio patient using iron lung, dies at 78 in Oklahoma",
+          "titleZh": "美国最后一位使用铁肺的脊髓灰质炎患者玛莎·利拉德 (Martha Lillard) 在俄克拉荷马州去世，享年 78 岁",
+          "link": "https://abcnews.com/US/wireStory/martha-lillard-us-polio-patient-iron-lung-dies-134668491",
+          "summary": "Article URL: https://abcnews.com/US/wireStory/martha-lillard-us-polio-patient-iron-lung-dies-134668491\n\n Comments URL: https://news.ycombinator.com/item?id=48877178\n\n Points: 74\n\n # Comments: 23",
+          "summaryZh": "文章网址：https://abcnews.com/US/wireStory/martha-lillard-us-polio-patent-iron-lung-dies-134668491\n\n 评论网址：https://news.ycombinator.com/item?id=48877178\n\n 积分：74\n\n # 评论: 23",
+          "publishedAt": "2026-07-12T00:32:15.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48877178",
+          "author": "daniel_iversen"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48876741",
+          "title": "How Doctors die. It’s not like the rest of us (2016)",
+          "titleZh": "医生是怎么死的。它不像我们其他人 (2016)",
+          "link": "https://archive.cancerworld.net/featured/how-doctors-die/",
+          "summary": "Article URL: https://archive.cancerworld.net/featured/how-doctors-die/\n\n Comments URL: https://news.ycombinator.com/item?id=48876741\n\n Points: 146\n\n # Comments: 82",
+          "summaryZh": "文章网址：https://archive.cancerworld.net/featured/how-doctors-die/\n\n 评论网址：https://news.ycombinator.com/item?id=48876741\n\n 积分：146\n\n # 评论: 82",
+          "publishedAt": "2026-07-11T23:15:06.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48876741",
+          "author": "downbad_"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48876619",
+          "title": "Fixed three bugs that made Qwen3.5-122B a daily driver on Mac Studio",
+          "titleZh": "修复了使 Qwen3.5-122B 成为 Mac Studio 上的日常驱动程序的三个错误",
+          "link": "https://mrzk.io/posts/qmlx-maximising-ai-psychosis-minmaxing-mac-studio/",
+          "summary": "Article URL: https://mrzk.io/posts/qmlx-maximising-ai-psychosis-minmaxing-mac-studio/\n\n Comments URL: https://news.ycombinator.com/item?id=48876619\n\n Points: 51\n\n # Comments: 22",
+          "summaryZh": "文章网址：https://mrzk.io/posts/qmlx-maximising-ai-psychosis-minmaxing-mac-studio/\n\n 评论网址：https://news.ycombinator.com/item?id=48876619\n\n 积分：51\n\n # 评论: 22",
+          "publishedAt": "2026-07-11T22:54:06.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48876619",
+          "author": "marzukia"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48876505",
+          "title": "Mesh LLM: distributed AI computing on iroh",
+          "titleZh": "Mesh LLM：iroh 上的分布式 AI 计算",
+          "link": "https://www.iroh.computer/blog/mesh-llm",
+          "summary": "Article URL: https://www.iroh.computer/blog/mesh-llm\n\n Comments URL: https://news.ycombinator.com/item?id=48876505\n\n Points: 220\n\n # Comments: 49",
+          "summaryZh": "文章网址：https://www.iroh.computer/blog/mesh-llm\n\n 评论网址：https://news.ycombinator.com/item?id=48876505\n\n 积分：220\n\n # 评论: 49",
+          "publishedAt": "2026-07-11T22:38:57.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48876505",
+          "author": "tionis"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48876245",
+          "title": "RISCBoy is an open-source portable games console, designed from scratch",
+          "titleZh": "RISCBoy 是一款开源便携式游戏机，从头开始设计",
+          "link": "https://github.com/Wren6991/RISCBoy",
+          "summary": "Article URL: https://github.com/Wren6991/RISCBoy\n\n Comments URL: https://news.ycombinator.com/item?id=48876245\n\n Points: 127\n\n # Comments: 18",
+          "summaryZh": "文章网址：https://github.com/Wren6991/RISCBoy\n\n 评论网址：https://news.ycombinator.com/item?id=48876245\n\n 积分：127\n\n # 评论: 18",
+          "publishedAt": "2026-07-11T21:58:00.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48876245",
+          "author": "mariuz"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48875377",
+          "title": "Show HN: Ant – A JavaScript runtime and ecosystem",
+          "titleZh": "Show HN：Ant – JavaScript 运行时和生态系统",
+          "link": "https://antjs.org",
+          "summary": "Hello HN! I'm the author of Ant, a JavaScript ecosystem built around a runtime with its own JavaScript engine. Ant also includes a package manager, the ants.land package registry, a platform for deploying and hosting applications, and Ant Desktop for building native desktop apps with web technologies, similar to Electron. The goal is for these pieces to work as one coherent platform while remaining compatible with the wider JavaScript ecosystem. It's still early, and I'd appreciate any feedback on the overall direction or what you'd like to see from an e2e alternative to the existing JavaScript stacks. P.S. I’ve shared Ant here before as a runtime; since then, it has grown into the broader ecosystem you see today.\n\n Comments URL: https://news.ycombinator.com/item?id=48875377\n\n Points: 250\n\n # Comments: 107",
+          "summaryZh": "你好，HN！我是 Ant 的作者，Ant 是一个围绕运行时构建的 JavaScript 生态系统，具有自己的 JavaScript 引擎。 Ant 还包括一个包管理器、ants.land 包注册表、一个用于部署和托管应用程序的平台，以及用于使用 Web 技术构建本机桌面应用程序的 Ant Desktop（类似于 Electron）。目标是让这些部分作为一个连贯的平台工作，同时保持与更广泛的 JavaScript 生态系统兼容。现在还为时过早，如果您能提供有关总体方向或您希望从现有 JavaScript 堆栈的 e2e 替代方案中看到的内容的反馈，我将不胜感激。附：我之前在这里分享过 Ant 作为运行时；从那时起，它已经发展成为您今天看到的更广泛的生态系统。\n\n 评论网址：https://news.ycombinator.com/item?id=48875377\n\n 积分：250\n\n # 评论: 107",
+          "publishedAt": "2026-07-11T20:07:18.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48875377",
+          "author": "theMackabu"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48873940",
+          "title": "Prefer strict tables in SQLite",
+          "titleZh": "更喜欢 SQLite 中的严格表",
+          "link": "https://evanhahn.com/prefer-strict-tables-in-sqlite/",
+          "summary": "Article URL: https://evanhahn.com/prefer-strict-tables-in-sqlite/\n\n Comments URL: https://news.ycombinator.com/item?id=48873940\n\n Points: 270\n\n # Comments: 129",
+          "summaryZh": "文章网址：https://evanhahn.com/prefer-strict-tables-in-sqlite/\n\n 评论网址：https://news.ycombinator.com/item?id=48873940\n\n 积分：270\n\n # 评论：129",
+          "publishedAt": "2026-07-11T17:33:55.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48873940",
+          "author": "ingve"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48873836",
+          "title": "Nvidia, CoreWeave, and Nebius: Inside the Circular Financing of the GPU Boom",
+          "titleZh": "Nvidia、CoreWeave 和 Nebius：GPU 繁荣的循环融资内部",
+          "link": "https://io-fund.com/ai-stocks/nvidia-coreweave-nebius-circular-financing-gpu-boom",
+          "summary": "Article URL: https://io-fund.com/ai-stocks/nvidia-coreweave-nebius-circular-financing-gpu-boom\n\n Comments URL: https://news.ycombinator.com/item?id=48873836\n\n Points: 241\n\n # Comments: 81",
+          "summaryZh": "文章网址：https://io-fund.com/ai-stocks/nvidia-coreweave-nebius-circular-financing-gpu-boom\n\n 评论网址：https://news.ycombinator.com/item?id=48873836\n\n 积分：241\n\n # 评论: 81",
+          "publishedAt": "2026-07-11T17:21:49.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48873836",
+          "author": "adletbalzhanov"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48873665",
+          "title": "Sixtyfour (YC P25) Is Hiring",
+          "titleZh": "六十四 (YC P25) 正在招聘",
+          "link": "https://www.ycombinator.com/companies/sixtyfour/jobs/bIbgQkL-operations-associate-data-samples-customer-success",
+          "summary": "Article URL: https://www.ycombinator.com/companies/sixtyfour/jobs/bIbgQkL-operations-associate-data-samples-customer-success\n\n Comments URL: https://news.ycombinator.com/item?id=48873665\n\n Points: 0\n\n # Comments: 0",
+          "summaryZh": "文章网址：https://www.ycombinator.com/companies/sixtyfour/jobs/bIbgQkL-operations-associate-data-samples-customer-success\n\n 评论网址：https://news.ycombinator.com/item?id=48873665\n\n 积分：0\n\n # 评论: 0",
+          "publishedAt": "2026-07-11T17:00:35.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48873665",
+          "author": "HPMOR"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48873457",
+          "title": "UPI: Anatomy of a Payment Transaction",
+          "titleZh": "UPI：支付交易剖析",
+          "link": "https://timeseriesofindia.com/economy/reads/upi-architecture/",
+          "summary": "Article URL: https://timeseriesofindia.com/economy/reads/upi-architecture/\n\n Comments URL: https://news.ycombinator.com/item?id=48873457\n\n Points: 170\n\n # Comments: 63",
+          "summaryZh": "文章网址：https://timeseriesofindia.com/economy/reads/upi-architecture/\n\n 评论网址：https://news.ycombinator.com/item?id=48873457\n\n 积分：170\n\n # 评论: 63",
+          "publishedAt": "2026-07-11T16:33:42.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48873457",
+          "author": "prtk25"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48872874",
+          "title": "We scaled PgBouncer to 4x throughput",
+          "titleZh": "我们将 PgBouncer 的吞吐量扩展到 4 倍",
+          "link": "https://clickhouse.com/blog/pgbouncer-clickhouse-managed-postgres",
+          "summary": "Article URL: https://clickhouse.com/blog/pgbouncer-clickhouse-managed-postgres\n\n Comments URL: https://news.ycombinator.com/item?id=48872874\n\n Points: 202\n\n # Comments: 44",
+          "summaryZh": "文章网址：https://clickhouse.com/blog/pgbouncer-clickhouse-management-postgres\n\n 评论网址：https://news.ycombinator.com/item?id=48872874\n\n 积分：202\n\n # 评论: 44",
+          "publishedAt": "2026-07-11T15:28:02.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48872874",
+          "author": "saisrirampur"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48872858",
+          "title": "The early History of the Singular Value Decomposition (1993) [pdf]",
+          "titleZh": "奇异值分解的早期历史 (1993) [pdf]",
+          "link": "https://www.math.ucdavis.edu/~saito/courses/229A/stewart-svd.pdf",
+          "summary": "Article URL: https://www.math.ucdavis.edu/~saito/courses/229A/stewart-svd.pdf\n\n Comments URL: https://news.ycombinator.com/item?id=48872858\n\n Points: 113\n\n # Comments: 63",
+          "summaryZh": "文章网址：https://www.math.ucdavis.edu/~saito/courses/229A/stewart-svd.pdf\n\n 评论网址：https://news.ycombinator.com/item?id=48872858\n\n 积分：113\n\n # 评论: 63",
+          "publishedAt": "2026-07-11T15:26:12.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48872858",
+          "author": "wolfi1"
+        }
+      ]
     },
     {
       "id": "arxiv-cs-ai",
@@ -33,175 +248,9 @@
       "url": "https://rss.arxiv.org/rss/cs.AI",
       "home": "https://arxiv.org/list/cs.AI/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-07-12T02:09:40.522Z",
-      "count": 15,
-      "items": [
-        {
-          "id": "oai:arXiv.org:2607.07721v1",
-          "title": "Context Graphs for Proactive Enterprise Agents",
-          "titleZh": "主动企业代理的上下文图",
-          "link": "https://arxiv.org/abs/2607.07721",
-          "summary": "arXiv:2607.07721v1 Announce Type: new\nAbstract: Retrieval-Augmented Generation (RAG) and agentic frameworks have advanced enterprise AI considerably, yet agents remain fundamentally reactive: they wait for a human query before acting. This paper argues that genuine enterprise productivity gains require proactive agents: systems that surface relevant, actionable information to workers before they ask. We propose the Context Graph, a live relational data structure that models enterprise entities, their relationships, and state transitions over time. Built on this graph, we define a Delta Detection Engine that continuously monitors state changes, a Proactivity Scorer that ranks candidate insights by urgency, relevance, and persona-fit, and a Surfacing Layer powered by an LLM that delivers ranked notifications with grounded explanations. We formalize each component, derive a unified Proactivity Score function, and provide a complete end-to-end Python implementation using NetworkX and the Anthropic Claude API. Evaluation across three generic enterprise case studies (contract lifecycle management, engineering incident response, and sales pipeline hygiene) demonstrates that context-graph-driven proactivity achieves Precision@5 of 0.83, a false positive rate of 0.11, and reduces mean time to surface from 47 minutes (reactive baseline) to under 30 second.",
-          "summaryZh": "arXiv:2607.07721v1 公告类型：新\n摘要：检索增强生成（RAG）和代理框架极大地促进了企业人工智能的发展，但代理仍然基本上是反应性的：它们在采取行动之前等待人类查询。本文认为，真正的企业生产力提升需要积极主动的代理：在员工提出要求之前向他们提供相关的、可操作的信息的系统。我们提出了上下文图，这是一种实时关系数据结构，可以对企业实体、它们的关系以及随时间的状态转换进行建模。在此图的基础上，我们定义了一个持续监控状态变化的 Delta 检测引擎、一个根据紧急程度、相关性和角色契合度对候选见解进行排名的主动性评分器，以及一个由法学硕士提供支持的表面层，该层提供带有接地解释的排名通知。我们对每个组件进行形式化，派生出统一的主动性评分函数，并使用 NetworkX 和 Anthropic Claude API 提供完整的端到端 Python 实现。对三个通用企业案例研究（合同生命周期管理、工程事件响应和销售管道卫生）的评估表明，上下文图驱动的主动性实现了 0.83 的 Precision@5，误报率为 0.11，并将平均上线时间从 47 分钟（反应基线）减少到 30 秒以下。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Avinash Kumar"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07759v1",
-          "title": "AI-integrated models for assessing agricultural resilience",
-          "titleZh": "用于评估农业复原力的人工智能集成模型",
-          "link": "https://arxiv.org/abs/2607.07759",
-          "summary": "arXiv:2607.07759v1 Announce Type: new\nAbstract: Agricultural supply chains are vulnerable to disruptions through linked biophysical and economic systems. We develop an AI-powered tool that integrates economic models (GTAP) with biophysical models (APSIM) to analyze supply chain shocks, enabling policymakers and market participants to assess cross-disciplinary impacts through queries and responses written in natural language.",
-          "summaryZh": "arXiv:2607.07759v1 公告类型：新\n摘要：农业供应链很容易受到相互关联的生物物理和经济系统的破坏。我们开发了一种人工智能驱动的工具，将经济模型 (GTAP) 与生物物理模型 (APSIM) 相结合来分析供应链冲击，使政策制定者和市场参与者能够通过以自然语言编写的查询和响应来评估跨学科影响。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Joshua R. Waite, Dana Golden, Brett Indelicato, Kevin Camp, Mojdeh Saadati, Shannon Regan, Patrick Schnable, Baskar Ganapathysubramanian, Carlos Messina, Suzanne Thornsbury, Soumik Sarkar"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07760v1",
-          "title": "Adversarial Social Epistemology for Assemblies of Humans and Large Language Models",
-          "titleZh": "人类集合和大型语言模型的对抗性社会认识论",
-          "link": "https://arxiv.org/abs/2607.07760",
-          "summary": "arXiv:2607.07760v1 Announce Type: new\nAbstract: We outline an adversarial social epistemology (ASE) for densely interactive communicative landscapes in which public assertions are scaffolded by chains of testimony, inference, institutional certification, and tacit trust. In such landscapes, agents have incentives and affordances to distort, color, omit, fabricate, or strategically under-specify information for private, reputational, rhetorical, or material gains. We argue that these phenomena are not adequately captured by familiar descriptions of epistemic bubbles, echo chambers, or misinformation diffusion. What requires explanation is how communicative agents exploit the commitments and entitlements that normally make scaffolded assertions trustworthy. We provide language that delivers the requisite analysis, outline mechanisms that subvert trust in scaffolded public communications, and outline machinery for auditing and redressing trust breaches arising from subverting the auditability of inferential chains, drawing on epistemic networks, enriched with an inferentialist semantics for interpreting assertions.",
-          "summaryZh": "arXiv:2607.07760v1 公告类型：新\n摘要：我们概述了一种针对密集互动的交流环境的对抗性社会认识论（ASE），其中公共主张由证词、推理、机构认证和默契信任链支撑。在这种情况下，代理人有动机和能力去歪曲、粉饰、省略、捏造或战略性地低估信息，以获取私人、声誉、修辞或物质利益。我们认为，这些现象并没有被人们熟悉的认知泡沫、回音室或错误信息扩散的描述所充分捕捉到。需要解释的是，沟通主体如何利用通常使脚手架断言值得信赖的承诺和权利。我们提供了提供必要分析的语言，概述了颠覆公共通信中信任的机制，并概述了审计和纠正因颠覆推理链的可审计性而产生的信任违规的机制，利用认知网络，丰富了用于解释断言的推理主义语义。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Mihnea C. Moldoveanu, Joel A. C. Baum"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07761v1",
-          "title": "Aligning Clinical Needs and AI Capabilities: A Survey on LLMs for Medical Reasoning",
-          "titleZh": "协调临床需求和人工智能能力：医学推理法学硕士调查",
-          "link": "https://arxiv.org/abs/2607.07761",
-          "summary": "arXiv:2607.07761v1 Announce Type: new\nAbstract: Large language models (LLMs) have emerged as important tools in healthcare, showing growing potential for clinical reasoning and patient care. This survey examines recent progress in medical LLMs, focusing on reasoning applications and requirements. We present a dual-view approach that connects clinical practice with computational methods. On the clinical side, we establish a five-level competency scheme following Miller's Pyramid, progressing from knowledge recall to dynamic case management. On the computational side, we link deductive, inductive, and abductive reasoning patterns to common medical goals and tasks. We also introduce a benchmark dataset spanning five levels of medical reasoning capability and report results on 18 state-of-the-art models, revealing that medical specialist models excel in diagnosis-centric tasks while general models lead in decision support and dialogue. We conclude by discussing current progress and open challenges, including data limitations, hallucination, and grounding issues, and outline directions toward safer, more reliable, and workflow-ready systems.",
-          "summaryZh": "arXiv:2607.07761v1 公告类型：新\n摘要：大语言模型（LLM）已成为医疗保健领域的重要工具，在临床推理和患者护理方面显示出越来越大的潜力。这项调查考察了医学法学硕士的最新进展，重点关注推理应用和要求。我们提出了一种将临床实践与计算方法联系起来的双视图方法。在临床方面，我们按照米勒金字塔建立了五级能力计划，从知识回忆到动态病例管理。在计算方面，我们将演绎、归纳和溯因推理模式与常见的医学目标和任务联系起来。我们还引入了涵盖五个级别的医学推理能力的基准数据集，并报告了 18 个最先进模型的结果，揭示了医学专家模型在以诊断为中心的任务中表现出色，而通用模型则在决策支持和对话方面领先。最后，我们讨论了当前的进展和开放的挑战，包括数据限制、幻觉和基础问题，并概述了朝着更安全、更可靠和工作流程就绪的系统发展的方向。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Qi Peng, Jiatong Li, Sirui Huang, Yiyang Jiang, Kaisong Gong, Ronger Ding, Shijie Ye, Changmeng Zheng, Yi Cai, Xiaobo Yang, Jin Huang, Xiao-Yong Wei, Qing Li"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07766v1",
-          "title": "Alignment Plausibility: A New Standard for Assuring AI in Healthcare",
-          "titleZh": "一致性合理性：确保医疗保健领域人工智能的新标准",
-          "link": "https://arxiv.org/abs/2607.07766",
-          "summary": "arXiv:2607.07766v1 Announce Type: new\nAbstract: Large language models (LLMs) have become significant providers of mental health support, yet they remain products of an attention economy whose operational and commercial targets favour sustained engagement over the friction that effective psychological support often requires. Developers' safety responses have been largely reactive, addressing the most visible and acute harms while subtler, longer-term patterns of risk (e.g., dependency, boundary erosion, the amplification of distorted beliefs) receive less attention. We contend that making LLMs structurally safe requires alignment organised at three levels that mirror how society assures the safety of human clinical practice: 1) explicit value specification grounded in the codified normative commitments of clinical practice; 2) training that embeds those values in the model; and 3) oversight that detects drift and longer-term harm during deployment, much as clinical supervision does for human practice. Organising alignment in this way yields a construct we call alignment plausibility - a structured demonstration that a system's values, training regime, and oversight mechanisms are together consistent with safe and positive outcomes. We propose alignment plausibility as a regulatory construct (by drawing analogy to the established construct of biological plausibility) for AI in health: a principled way to argue for, or against, trust that systems are aligned to positive health outcomes, will cause no harm even where capable of doing so, and will ultimately lead to patient benefit.",
-          "summaryZh": "arXiv:2607.07766v1 公告类型：新\n摘要：大语言模型（LLM）已成为心理健康支持的重要提供者，但它们仍然是注意力经济的产物，其运营和商业目标倾向于持续参与，而不是有效心理支持通常需要的摩擦。开发商的安全反应在很大程度上是被动的，解决了最明显和最严重的危害，而更微妙、更长期的风险模式（例如依赖性、边界侵蚀、扭曲信念的放大）受到的关注较少。我们认为，要使法学硕士在结构上安全，需要在三个层面上进行协调，反映社会如何确保人类临床实践的安全：1）基于临床实践的成文规范承诺的明确价值规范； 2）将这些值嵌入到模型中的训练； 3）监督，检测部署过程中的偏差和长期伤害，就像临床监督对人类实践所做的那样。以这种方式组织一致性会产生一种我们称之为一致性合理性的结构——一种结构化的证明，表明系统的价值观、培训制度和监督机制与安全和积极的结果是一致的。我们提出将一致性合理性作为健康人工智能的监管结构（通过类比已建立的生物学合理性结构）：一种原则性的方式来论证或反对相信系统与积极的健康结果相一致，即使有能力这样做也不会造成伤害，并最终为患者带来好处。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Gwydion Williams, Sara Zannone, Bilal A Mateen"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07775v1",
-          "title": "Idiobionics: The Unification of Privacy and Intelligent Robotic Prostheses",
-          "titleZh": "独特仿生学：隐私与智能机器人假肢的统一",
-          "link": "https://arxiv.org/abs/2607.07775",
-          "summary": "arXiv:2607.07775v1 Announce Type: new\nAbstract: The human body is at the center of a growing family of technologies designed to tightly and persistently couple biological and digital systems. Robotic prostheses are a representative example of this tight coupling. Also referred to as bionic limbs, robotic prostheses are devices that support people who have lost limbs in pursuing daily life activities such as walking and grasping objects. Bionic limbs are now perceptive and responsive owing to their integration with advanced sensors and artificial intelligence-based control approaches. Consequently, such robotic prostheses can now be viewed as semiautonomous wearable robotic systems that can co-adapt with their users. However, the same sensing and control advancements that increase the capability of robotic prostheses also introduce threat vectors that could be exploited by malicious entities to violate the privacy of users. To fully realize the benefits of next-generation bionic limbs, we maintain it is important to directly understand and address these privacy risks and the barriers they might present to user adoption. This paper therefore introduces a new line of inquiry we term idiobionics to holistically investigate issues at the intersection of privacy and intelligent bionic limbs. As the main contribution of this paper, we define idiobionics, ground it in related literature, and provide preliminary evidence showing and discussing potential adversarial attacks that could exploit intelligent bionic limb designs. We then contribute a curated list of open research questions within idiobionics that are relevant to researchers in wearable robotics and other human-facing autonomous systems. We expect that idiobionics research will help unlock the full potential of robotic prostheses and related bionic devices.",
-          "summaryZh": "arXiv:2607.07775v1 公告类型：新\n摘要：人体处于不断发展的技术系列的中心，这些技术旨在紧密且持久地耦合生物和数字系统。机器人假肢是这种紧密耦合的典型例子。机器人假肢也称为仿生肢体，是支持失去肢体的人进行日常生活活动（例如行走和抓取物体）的设备。由于与先进传感器和基于人工智能的控制方法的集成，仿生肢体现在具有感知能力和响应能力。因此，这种机器人假肢现在可以被视为可以与用户共同适应的半自主可穿戴机器人系统。然而，提高机器人假肢能力的传感和控制进步也带来了威胁向量，这些威胁向量可能被恶意实体利用来侵犯用户的隐私。为了充分实现下一代仿生肢体的好处，我们认为直接了解和解决这些隐私风险以及它们可能给用户采用带来的障碍非常重要。因此，本文引入了一种新的研究方向，我们称之为独特仿生学，以全面研究隐私和智能仿生肢体交叉点的问题。作为本文的主要贡献，我们定义了仿生学，将其扎根于相关文献中，并提供了初步证据，显示和讨论了可以利用智能仿生肢体设计的潜在对抗性攻击。然后，我们提供了一份精选的个人仿生学开放研究问题列表，这些问题与可穿戴机器人和其他面向人类的自主系统的研究人员相关。我们期望仿生学研究将有助于释放机器人假肢和相关仿生设备的全部潜力。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Kwesi Afari Darfoor, Patrick M. Pilarski, Bailey Kacsmar"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07836v1",
-          "title": "Infinity-Parser2 Technical Report",
-          "titleZh": "Infinity-Parser2 技术报告",
-          "link": "https://arxiv.org/abs/2607.07836",
-          "summary": "arXiv:2607.07836v1 Announce Type: new\nAbstract: We present Infinity-Parser2, a large multimodal model that couples a controllable data-synthesis pipeline with multi-task reinforcement learning for end-to-end document parsing, addressing the persistent scarcity of faithfully annotated parsing corpora. Our contributions are threefold. First, we build a scalable synthesis engine, pairing a controllable rendering framework with an iterative refinement loop, and use it to construct and open-source Infinity-Doc2-5M: a 5-million-sample bilingual (Chinese/English) corpus spanning diverse document types, annotated with element bounding boxes, canonical content forms (Markdown, HTML, LaTeX, SMILES, structured charts), and full-page reading order. Second, we introduce a verifiable, multi-task reward system that enables Joint Reinforcement Learning across eight co-trained objectives (document parsing, layout analysis, table parsing, math formula parsing, chart parsing, chemical formula parsing, document VQA, and general multimodal understanding), unifying perception, structure, and reasoning in a single optimization signal. Third, we release two variants under a shared architecture: Infinity-Parser2-Flash, optimized for low-latency inference with a $3.68\\times$ throughput gain over Infinity-Parser-7B, and Infinity-Parser2-Pro, engineered for precision-critical settings. Infinity-Parser2-Pro reaches state-of-the-art 87.6% on olmOCR-Bench and 74.3% on ParseBench, surpassing DeepSeek-OCR-2, PaddleOCR-VL-1.5, and MinerU2.5, with strong generalization to charts, chemical formulas, and document VQA.",
-          "summaryZh": "arXiv:2607.07836v1 公告类型：新\n摘要：我们提出了 Infinity-Parser2，这是一种大型多模态模型，它将可控数据合成管道与用于端到端文档解析的多任务强化学习相结合，解决了忠实注释的解析语料库的持续稀缺问题。我们的贡献是三重的。首先，我们构建了一个可扩展的合成引擎，将可控渲染框架与迭代细化循环配对，并用它构建并开源了 Infinity-Doc2-5M：一个包含 500 万个样本的双语（中文/英文）语料库，涵盖不同的文档类型，用元素边界框、规范内容形式（Markdown、HTML、LaTeX、SMILES、结构化图表）和整页阅读顺序进行注释。其次，我们引入了一个可验证的多任务奖励系统，该系统能够跨八个共同训练的目标（文档解析、布局分析、表格解析、数学公式解析、图表解析、化学式解析、文档 VQA 和一般多模态理解）进行联合强化学习，将感知、结构和推理统一在单个优化信号中。第三，我们在共享架构下发布了两个变体：Infinity-Parser2-Flash，针对低延迟推理进行了优化，吞吐量比 Infinity-Parser-7B 提高了 3.68 美元/倍；Infinity-Parser2-Pro，专为精度关键的设置而设计。 Infinity-Parser2-Pro 在 olmOCR-Bench 上达到最先进的 87.6%，在 ParseBench 上达到 74.3%，超越 DeepSeek-OCR-2、PaddleOCR-VL-1.5 和 MinerU2.5，对图表、化学公式和文档 VQA 具有很强的泛化能力。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Zuming Huang, Jun Huang, Kexuan Ren, Baode Wang, Weizhen Li, Jianming Feng, Yu Wang, Yichen Yao, Shijun Lin, Yige Tang, Cheng Peng, Weidi Xu, Wei Chu, Yinghui Xu, Yuan Qi"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07846v1",
-          "title": "VectorizationLLM: Smart Vectorization Based AI Assistant",
-          "titleZh": "VectorizationLLM：基于智能矢量化的人工智能助手",
-          "link": "https://arxiv.org/abs/2607.07846",
-          "summary": "arXiv:2607.07846v1 Announce Type: new\nAbstract: VectorizationLLM is a specialized Large Language Model based on Google open-weight LLMs. The model is designed to assist students to learn smart vectorization, time/wave vector analysis, piecewise functions, Fourier analysis, and differential equations in MATLAB. The course application is CTEC 247: Applied Computational Analysis II by the Department of Electrical & Computer Engineering Technology at New York Institute of Technology Old Westbury. The LLM model is designed to be an instructive assistant, providing detailed explanations of concepts with examples from in-class notes without providing direct answers to questions. The model is designed with a RAG (Retrieval Augmented Generation) knowledge base and system prompt architecture. Examples in both code, text, and images are provided in the LLM responses.",
-          "summaryZh": "arXiv:2607.07846v1 公告类型：新\n摘要：VectorizationLLM 是一种基于 Google 开放权重 LLM 的专用大型语言模型。该模型旨在帮助学生学习 MATLAB 中的智能矢量化、时间/波矢量分析、分段函数、傅立叶分析和微分方程。课程申请为纽约理工学院旧韦斯特伯里分校电气与计算机工程技术系的 CTEC 247：应用计算分析 II。 LLM 模型旨在成为一个指导性助手，通过课堂笔记中的示例提供概念的详细解释，而不提供问题的直接答案。该模型设计有RAG（检索增强生成）知识库和系统提示架构。 LLM 回复中提供了代码、文本和图像的示例。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Ryan Duke"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07850v1",
-          "title": "A Graph Neural Network Model for Real-Time Gesture Recognition Based on sEMG Signals",
-          "titleZh": "基于表面肌电信号的实时手势识别图神经网络模型",
-          "link": "https://arxiv.org/abs/2607.07850",
-          "summary": "arXiv:2607.07850v1 Announce Type: new\nAbstract: For seemless control of advanced hand prostheses and augmented reality, accurate and immediate hand gestures recognition is essential. Surface electromyography (sEMG) signals obtained from the forearm are commonly employed for this purpose. In this paper, we present a novel approach for sEMG representation that utilizes graph networks which contain information about muscle activation patterns in the forearm. Based on these graph networks, we have developed a machine learning algorithm capable of real-time hand gesture recognition using a graph neural network. The algorithm's performance was evaluated using sEMG signals acquired from myoband, which has 8 electrodes placed around the forearm, involving 8 healthy subjects. The proposed method demonstrated an average classification accuracy of 99\\%, surpassing the performance of state-of-the-art techniques. The average time for both graph construction and prediction stood at 48ms utilizing a M1 pro CPU, rendering the approach well-suited for real-time applications.",
-          "summaryZh": "arXiv:2607.07850v1 公告类型：新\n摘要：为了实现先进假手和增强现实的无缝控制，准确、即时的手势识别至关重要。从前臂获得的表面肌电图 (sEMG) 信号通常用于此目的。在本文中，我们提出了一种新的 sEMG 表示方法，该方法利用包含有关前臂肌肉激活模式信息的图形网络。基于这些图网络，我们开发了一种机器学习算法，能够使用图神经网络进行实时手势识别。该算法的性能是使用从 myoband 获取的 sEMG 信号进行评估的，该 myoband 在前臂周围放置了 8 个电极，涉及 8 名健康受试者。该方法的平均分类精度达到 99%，超过了最先进技术的性能。使用 M1 pro CPU 时，图形构建和预测的平均时间为 48 毫秒，使得该方法非常适合实时应用。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Pragatheeswaran Vipulanandan, Kamal Premaratne, Manohar Murthi"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07858v1",
-          "title": "Agentic AI and Retrieval-Augmented Models in Straight-Through Underwriting",
-          "titleZh": "直通式承保中的代理人工智能和检索增强模型",
-          "link": "https://arxiv.org/abs/2607.07858",
-          "summary": "arXiv:2607.07858v1 Announce Type: new\nAbstract: Artificial intelligence (AI) is beginning to reshape actuarial practice, particularly in domains that require reasoning over unstructured documents, heterogeneous data sources, and regulated decision workflows. Actuaries now face a design space that ranges from traditional rule-based automation to large language models (LLMs), retrieval-augmented generation (RAG), and multi-agent ``agentic'' systems that plan, retrieve, call tools, and reflect. This paper examines how these emerging architectures can support actuarial priorities such as transparency, auditability, and human-in-the-loop governance, with a focus on straight-through decision processes. To make these ideas concrete, we develop and analyze an agentic AI framework for straight-through underwriting of small commercial Business Owner Policies (BOPs). We construct a synthetic but realistic experimental environment and compare three underwriting pipelines: (i) a single-LLM baseline, (ii) a naive RAG system, and (iii) a multi-agent ``Agentic RAG'' pipeline that combines targeted retrieval, third-party data checks, and explicit multi-step rule evaluation. The agentic system performs best overall, with the largest gains in multi-step and missing-information scenarios, where structured retrieval and reflection help the model avoid unsupported straight-through decisions.",
-          "summaryZh": "arXiv:2607.07858v1 公告类型：新\n摘要：人工智能（AI）正在开始重塑精算实践，特别是在需要对非结构化文档、异构数据源和受监管的决策工作流程进行推理的领域。精算师现在面临的设计空间范围从传统的基于规则的自动化到大型语言模型（LLM）、检索增强生成（RAG）以及规划、检索、调用工具和反映的多代理“代理”系统。本文探讨了这些新兴架构如何支持透明度、可审计性和人机交互治理等精算优先事项，重点关注直通式决策流程。为了使这些想法具体化，我们开发并分析了一个代理人工智能框架，用于小型商业企业主保单（BOP）的直通承保。我们构建了一个综合但现实的实验环境，并比较了三种承保管道：（i）单一LLM基线，（ii）朴素的RAG系统，以及（iii）结合了目标检索、第三方数据检查和显式多步骤规则评估的多代理“代理RAG”管道。代理系统整体表现最佳，在多步骤和信息缺失场景中收益最大，其中结构化检索和反射有助于模型避免不受支持的直通式决策。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Robert Richardson, Josh Meyers, Brian Hartman, David Sandberg"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07859v1",
-          "title": "Feedback Manipulation Regularization: Enabling Offline Agent Alignment for Imitation Learning",
-          "titleZh": "反馈操纵正则化：为模仿学习启用离线代理对齐",
-          "link": "https://arxiv.org/abs/2607.07859",
-          "summary": "arXiv:2607.07859v1 Announce Type: new\nAbstract: Reinforcement learning (RL) research has increasingly shifted focus towards alignment, ensuring agents learn behaviors adhering to human values. While human demonstrations and feedback have proven crucial for alignment, existing approaches predominantly combine these signals using multi-stage pipelines designed for the contextual bandit framing of language generation. Yet little work explores how these complementary inputs can serve as a richer, interconnected signal for single-stage offline training in fully sequential decision-making environments. We propose Feedback Manipulation Regularization (FMR), an algorithm-agnostic method that harnesses evaluative feedback as a corrective signal to improve the alignment of imitation learning policies. We adapt Safety Gymnasium environments to be a principled testbed for alignment evaluation, demonstrating improved aptitude and up to a 98\\% reduction in misalignment across a range of imitation learning algorithms. FMR remains robust in limited data regimes, even when learning from scarce aligned and uninformative noisy demonstrations.",
-          "summaryZh": "arXiv:2607.07859v1 公告类型：新\n摘要：强化学习（RL）研究越来越将重点转向一致性，确保智能体学习符合人类价值观的行为。虽然人类演示和反馈已被证明对于对齐至关重要，但现有方法主要使用为语言生成的上下文强盗框架设计的多级管道来组合这些信号。然而，很少有人探讨这些互补输入如何作为更丰富、互连的信号，用于完全顺序决策环境中的单阶段离线训练。我们提出反馈操纵正则化（FMR），这是一种与算法无关的方法，利用评估反馈作为纠正信号来改善模仿学习策略的一致性。我们将 Safety Gymnasium 环境改造为对齐评估的原则性测试平台，展示了改进的能力，并将一系列模仿学习算法的错位减少了 98%。即使从稀缺的对齐且无信息的噪声演示中学习，FMR 在有限的数据范围内仍然保持稳健。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Benjamin Poole, Minwoo Lee"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07883v1",
-          "title": "Nigeria Machinery: A Low-Resource Industrial Dataset with a Domain-Grounded Reasoning Layer",
-          "titleZh": "尼日利亚机械：具有基于领域的推理层的低资源工业数据集",
-          "link": "https://arxiv.org/abs/2607.07883",
-          "summary": "arXiv:2607.07883v1 Announce Type: new\nAbstract: There is relatively little, public, and model-ready data on industrial machinery for African economies. This makes it hard to do quantitative analysis or to train language models on numeric tasks grounded in that setting. We release two things to help with part of this problem. The first is the Nigeria Machinery Usage and Failures Dataset: 89 machine-level records across 28 indicators, covering Nigeria's manufacturing and oil and gas sectors from 2006 to 2025. Every record names a public source and is decoded by a codebook. The second is a method for building chain-of-thought (CoT) reasoning examples from these sparse numeric values. The result is 94 prompt, completion, and reasoning-trace rows. In every row, the prompt names the real indicator, subsector, year, and source of the record it comes from. The data adaptation work was carried out by Adaption Labs. Along the way we describe a problem that is common when language models are used to build datasets. The prompts can match the real numbers while saying nothing about the real domain. We show that fixing this raises the share of domain-grounded prompts from 1 out of 78 in an earlier release to 94 out of 94, and that every retrieval answer now matches its source value (84 out of 84). We release the data, the reasoning layer, and a per-row provenance file under CC-BY-4.0. We are clear about the limits. With 89 records and 17 indicators that have only one observation, this is a reference and seed dataset, not a large training set. Most reasoning rows are retrieval rather than multi-step computation.",
-          "summaryZh": "arXiv:2607.07883v1 公告类型：新\n摘要：关于非洲经济体工业机械的公开且可用于模型的数据相对较少。这使得很难进行定量分析或针对基于该设置的数字任务训练语言模型。我们发布了两个东西来帮助解决这个问题。第一个是尼日利亚机械使用和故障数据集：涵盖 28 个指标的 89 条机器级记录，涵盖 2006 年至 2025 年尼日利亚的制造业和石油天然气行业。每条记录都指定一个公共来源，并通过密码本进行解码。第二种是从这些稀疏数值构建思想链 (CoT) 推理示例的方法。结果是 94 行提示、完成和推理跟踪行。在每一行中，提示都会列出真实指标、子行业、年份及其记录来源。数据适配工作由Adaption Labs进行。在此过程中，我们描述了使用语言模型构建数据集时常见的问题。提示可以匹配真实数字，但不提及真实域。我们表明，修复此问题可将基于域的提示的比例从早期版本中的 78 个中的 1 个提高到 94 个中的 94 个，并且现在每个检索答案都与其源值匹配（84 个中的 84 个）。我们在 CC-BY-4.0 下发布数据、推理层和每行来源文件。我们很清楚限制。这是一个参考数据集和种子数据集，有 89 条记录和 17 个指标，只有一个观测值，而不是一个大型训练集。大多数推理行是检索而不是多步计算。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Gospel Bassey, Vincent Fakiyesi"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07916v1",
-          "title": "Persona Cartography: Charting Language Model Personality Traits in Weight Space",
-          "titleZh": "角色制图：在权重空间中绘制语言模型人格特征图表",
-          "link": "https://arxiv.org/abs/2607.07916",
-          "summary": "arXiv:2607.07916v1 Announce Type: new\nAbstract: Large language models exhibit recurring behavioural patterns -- personas -- that shape generalisation and safety, but we lack reliable tools for decomposing, measuring, and controlling them. Our central insight is to treat personas as positions in a space of behavioural traits, using the OCEAN framework to describe model personas in terms of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism. We train low-rank adapters to amplify or suppress individual traits, and evaluate their effects using an LLM-judge calibrated against a human-validated panel, trait-specific multiple-choice benchmarks, and standard capability evaluations. Across six models from three families (4B-32B), we find that each adapter moves its target trait largely monotonically with scale, combines approximately additively with other adapters to construct mixed personas, and preserves performance on capability benchmarks at moderate scales. We further show that the induced trait axes affect safety-relevant behaviour in downstream evaluations: for example, moving along neuroticism and agreeableness axes affects frustration and sycophancy respectively. We also introduce an unsupervised psychometric pipeline that recovers four interpretable behavioural factors (tone, initiative, didacticism, epistemic caution) from model rollouts. Persona control can then be considered in terms of learning, scaling, and composing traits in weight space, providing a bridge between personality measurement, model editing, and safety.",
-          "summaryZh": "arXiv:2607.07916v1 公告类型：新\n摘要：大型语言模型表现出反复出现的行为模式（人物角色），这些模式塑造了泛化性和安全性，但我们缺乏可靠的工具来分解、测量和控制它们。我们的核心见解是将角色视为行为特征空间中的位置，使用 OCEAN 框架从开放性、责任心、外向性、宜人性和神经质方面描述模型角色。我们训练低等级适配器来放大或抑制个体特征，并使用法学硕士法官根据人类验证的面板、特定特征的多项选择基准和标准能力评估进行校准来评估其效果。在来自三个家族（4B-32B）的六个模型中，我们发现每个适配器在很大程度上单调地随规模移动其目标特征，与其他适配器近似相加地组合以构建混合角色，并在中等规模的能力基准上保持性能。我们进一步表明，诱发的特质轴会影响下游评估中与安全相关的行为：例如，沿着神经质和宜人性轴移动分别会影响挫败感和阿谀奉承。我们还引入了一个无监督的心理测量管道，可以从模型的推出中恢复四种可解释的行为因素（语气、主动性、说教性、认知谨慎）。然后可以从权重空间中的学习、缩放和组合特征的角度来考虑角色控制，从而在人格测量、模型编辑和安全性之间架起一座桥梁。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Luke Baines, Anton Gonzalvez Hawthorne, Mariia Koroliuk, Irakli Shalibashvili, Cl\\'ement Dumas, Konstantinos Voudouris, David Demitri Africa"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07957v1",
-          "title": "Evaluating the Effect of Frame Rate in Sequence-Based Classification of Autism-Related Self-Stimulatory Hand Idiosyncrasies",
-          "titleZh": "评估帧速率在自闭症相关自刺激手特质基于序列的分类中的效果",
-          "link": "https://arxiv.org/abs/2607.07957",
-          "summary": "arXiv:2607.07957v1 Announce Type: new\nAbstract: Autism spectrum disorder (ASD) affects over 75 million individuals worldwide, yet scalable computational methods for remote behavioral screening remain limited. This study addresses two complementary challenges in automated detection of autism-related self-stimulatory behaviors from video: (1) identifying the optimal sequence-based neural network architecture and temporal sampling rate, and (2) characterizing data augmentation strategies for training on small behavioral datasets. For the first objective, long short-term memory (LSTM) and gated recurrent unit (GRU) models were trained on pose-derived features from the Self-Stimulatory Behavior Diagnosis (SSBD) dataset at frame sampling intervals of 1, 5, 15, 30, 45, and 90 frames. Both architectures exceeded prior convolutional neural network (CNN) baselines (62-76% accuracy), with peak accuracies of 97.5% (LSTM) and 98.75% (GRU) at a sampling interval of every 15 frames. For the second objective, ten data augmentation strategies were applied to an I3D transfer learning pipeline, with an ablation study quantifying the marginal contribution of each technique. Horizontal flip achieved the highest standalone accuracy (48.78%), while exclusion of upsampling from the augmentation pipeline produced the largest performance degradation, indicating its necessity for complex behavioral video augmentation. A personalized machine learning approach, in which per-subject models were trained and tested on temporally split segments of each video, produced consistent predictions (mean loss 1.84, SD 0.79). These results provide practitioners with concrete guidance on architecture selection, sampling rate, and augmentation strategy for video-based behavioral classification in data-scarce clinical domains.",
-          "summaryZh": "arXiv:2607.07957v1 公告类型：新\n摘要：自闭症谱系障碍 (ASD) 影响着全球超过 7500 万人，但用于远程行为筛查的可扩展计算方法仍然有限。这项研究解决了从视频中自动检测自闭症相关自我刺激行为的两个互补挑战：（1）确定基于序列的最佳神经网络架构和时间采样率，以及（2）表征用于小型行为数据集训练的数据增强策略。对于第一个目标，长短期记忆 (LSTM) 和门控循环单元 (GRU) 模型以 1、5、15、30、45 和 90 帧的帧采样间隔，根据来自自刺激行为诊断 (SSBD) 数据集的姿势衍生特征进行训练。两种架构都超过了之前的卷积神经网络 (CNN) 基线（准确率 62-76%），每 15 帧采样间隔的峰值准确度分别为 97.5% (LSTM) 和 98.75% (GRU)。对于第二个目标，将十种数据增强策略应用于 I3D 迁移学习管道，并通过消融研究量化每种技术的边际贡献。水平翻转实现了最高的独立精度（48.78％），而从增强管道中排除上采样产生了最大的性能下降，表明其对于复杂行为视频增强的必要性。个性化机器学习方法，在每个视频的时间分割片段上训练和测试每个主题的模型，产生一致的预测（平均损失 1.84，SD 0.79）。这些结果为从业者提供了数据稀缺临床领域中基于视频的行为分类的架构选择、采样率和增强策略的具体指导。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Raunak Mondal, Peter Washington"
-        },
-        {
-          "id": "oai:arXiv.org:2607.07984v1",
-          "title": "Agentic Neural Architecture Search",
-          "titleZh": "代理神经架构搜索",
-          "link": "https://arxiv.org/abs/2607.07984",
-          "summary": "arXiv:2607.07984v1 Announce Type: new\nAbstract: Neural architecture search (NAS) methods have grown increasingly efficient, yet they remain bounded by manually engineered search spaces that require substantial domain expertise and must be rebuilt for every new task. Large language models (LLMs) can generate architectures in an open-ended space, but how to optimally divide the labor between LLM-driven design and NAS-driven search remains unexplored. We propose a mechanism that bridges these two paradigms: an LLM produces a high-quality seed architecture, then decomposes it into a \"slotted architecture\", a scaffold with named, interchangeable module slots that automatically defines a bounded, task-specific search space for conventional NAS to explore, without manual engineering. We instantiate this mechanism in AgentNAS, a modular three-phase pipeline in which each component's contribution can be measured independently. On 17 tasks spanning classification, dense regression, segmentation, and multi-label tagging across diverse modalities (NAS-Bench-360 and Unseen NAS), AgentNAS establishes a new state of the art on 11 tasks, outperforming published baselines including task-specific expert designs. Ablation studies show that the two search mechanisms are broadly complementary: the LLM-generated seed already surpasses published baselines on the majority of tasks, and NAS delivers additional gains in most cases through combinatorial recombination across slots, a mode of search that independent LLM samples cannot replicate. These patterns hold across three LLMs of different capability levels, confirming that the division of labor is robust. Our code is available at https://github.com/alroimfebruary/AgentNAS.",
-          "summaryZh": "arXiv:2607.07984v1 公告类型：新\n摘要：神经架构搜索（NAS）方法已经变得越来越高效，但它们仍然受到手动设计的搜索空间的限制，这些搜索空间需要大量的领域专业知识，并且必须针对每个新任务进行重建。大型语言模型 (LLM) 可以在开放空间中生成架构，但如何在 LLM 驱动的设计和 NAS 驱动的搜索之间优化分配工作仍有待探索。我们提出了一种连接这两种范式的机制：法学硕士产生高质量的种子架构，然后将其分解为“槽式架构”，这是一个具有命名的可互换模块槽的支架，它自动定义一个有界的、特定于任务的搜索空间，供传统 NAS 探索，无需手动工程。我们在 AgentNAS 中实例化了这种机制，这是一个模块化的三相管道，其中每个组件的贡献都可以独立测量。在涵盖分类、密集回归、分割和跨不同模式（NAS-Bench-360 和 Unseen NAS）的多标签标记的 17 项任务中，AgentNAS 在 11 项任务上建立了新的技术水平，优于已发布的基线，包括特定于任务的专家设计。消融研究表明，这两种搜索机制具有广泛的互补性：LLM 生成的种子已经超过了大多数任务的已发布基线，而 NAS 在大多数情况下通过跨时隙的组合重组提供了额外的增益，这是独立 LLM 样本无法复制的搜索模式。这些模式适用于不同能力水平的三个法学硕士，证实了劳动分工是稳健的。我们的代码可在 https://github.com/alroimfebruary/AgentNAS 获取。",
-          "publishedAt": "2026-07-11T04:00:00.000Z",
-          "comments": null,
-          "author": "Seokhoon Jeong, Mijung Kim, Taehwan Kim"
-        }
-      ]
+      "fetchedAt": "2026-07-12T08:07:44.125Z",
+      "count": 0,
+      "items": []
     },
     {
       "id": "arxiv-cs-lg",
@@ -209,7 +258,7 @@
       "url": "https://rss.arxiv.org/rss/cs.LG",
       "home": "https://arxiv.org/list/cs.LG/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-07-12T02:09:40.946Z",
+      "fetchedAt": "2026-07-12T08:07:44.548Z",
       "count": 0,
       "items": []
     }
