@@ -1,20 +1,15 @@
 {
   "source": "content/feeds.json",
   "attribution": "Aggregated headlines/summaries from third-party RSS/Atom feeds for navigation only. All rights belong to original publishers and authors. Chinese text is machine-translated.",
-  "fetchedAt": "2026-07-14T13:21:33.949Z",
+  "fetchedAt": "2026-07-14T19:10:55.655Z",
   "date": "2026-07-14",
   "feedCount": 3,
-  "itemCount": 30,
+  "itemCount": 50,
   "locale": {
     "summaryDefault": "zh",
     "translated": true
   },
-  "errors": [
-    {
-      "id": "hacker-news",
-      "error": "fetch failed"
-    }
-  ],
+  "errors": [],
   "feeds": [
     {
       "id": "hacker-news",
@@ -22,10 +17,230 @@
       "url": "https://hnrss.org/frontpage",
       "home": "https://news.ycombinator.com/",
       "group": "community",
-      "fetchedAt": "2026-07-14T13:20:52.632Z",
-      "count": 0,
-      "items": [],
-      "error": "fetch failed"
+      "fetchedAt": "2026-07-14T19:10:22.265Z",
+      "count": 20,
+      "items": [
+        {
+          "id": "https://news.ycombinator.com/item?id=48910545",
+          "title": "Bonsai 27B (1-bit LLM): The First 27B-Class Model to Run on a Phone",
+          "titleZh": "Bonsai 27B（1 位 LLM）：第一个在手机上运行的 27B 级模型",
+          "link": "https://prismml.com/news/bonsai-27b",
+          "summary": "Article URL: https://prismml.com/news/bonsai-27b\n\n Comments URL: https://news.ycombinator.com/item?id=48910545\n\n Points: 53\n\n # Comments: 11",
+          "summaryZh": "文章网址：https://prismml.com/news/bonsai-27b\n\n 评论网址：https://news.ycombinator.com/item?id=48910545\n\n 积分：53\n\n # 评论: 11",
+          "publishedAt": "2026-07-14T17:50:48.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48910545",
+          "author": "xenova"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48909820",
+          "title": "Kontigo (YC S24) Is Hiring (Head of Security)",
+          "titleZh": "Kontigo (YC S24) 正在招聘（安全主管）",
+          "link": "https://www.ycombinator.com/companies/kontigo/jobs/uNttrlv-head-of-security",
+          "summary": "Article URL: https://www.ycombinator.com/companies/kontigo/jobs/uNttrlv-head-of-security\n\n Comments URL: https://news.ycombinator.com/item?id=48909820\n\n Points: 0\n\n # Comments: 0",
+          "summaryZh": "文章网址：https://www.ycombinator.com/companies/kontigo/jobs/uNttrlv-head-of-security\n\n 评论网址：https://news.ycombinator.com/item?id=48909820\n\n 积分：0\n\n # 评论: 0",
+          "publishedAt": "2026-07-14T17:00:17.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48909820",
+          "author": "jecastillof"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48909785",
+          "title": "The Tower Keeps Rising",
+          "titleZh": "塔不断拔地而起",
+          "link": "https://lucumr.pocoo.org/2026/7/13/the-tower-keeps-rising/",
+          "summary": "Article URL: https://lucumr.pocoo.org/2026/7/13/the-tower-keeps-rising/\n\n Comments URL: https://news.ycombinator.com/item?id=48909785\n\n Points: 129\n\n # Comments: 44",
+          "summaryZh": "文章网址：https://lucumr.pocoo.org/2026/7/13/the-tower-keeps-rising/\n\n 评论网址：https://news.ycombinator.com/item?id=48909785\n\n 积分：129\n\n # 评论: 44",
+          "publishedAt": "2026-07-14T16:57:54.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48909785",
+          "author": "cdrnsf"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48909768",
+          "title": "S&P downgrades Oracle to BBB – only one notch above junk level",
+          "titleZh": "标准普尔将甲骨文评级下调至 BBB——仅比垃圾级高一级",
+          "link": "https://www.heise.de/en/news/S-P-downgrades-Oracle-to-BBB-only-one-notch-above-junk-level-11363472.html",
+          "summary": "Article URL: https://www.heise.de/en/news/S-P-downgrades-Oracle-to-BBB-only-one-notch-above-junk-level-11363472.html\n\n Comments URL: https://news.ycombinator.com/item?id=48909768\n\n Points: 228\n\n # Comments: 186",
+          "summaryZh": "文章网址：https://www.heise.de/en/news/S-P-downgrades-Oracle-to-BBB-only-one-notch-above-junk-level-11363472.html\n\n 评论网址：https://news.ycombinator.com/item?id=48909768\n\n 积分：228\n\n # 评论: 186",
+          "publishedAt": "2026-07-14T16:56:48.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48909768",
+          "author": "gepeto42"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48909424",
+          "title": "Measuring Input Latency on Linux: X11 vs. Wayland, VRR, and DXVK",
+          "titleZh": "测量 Linux 上的输入延迟：X11 与 Wayland、VRR 和 DXVK",
+          "link": "https://marco-nett.de/blog/measuring-input-latency-on-linux-x11-vs-wayland-vrr-dxvk/",
+          "summary": "Article URL: https://marco-nett.de/blog/measuring-input-latency-on-linux-x11-vs-wayland-vrr-dxvk/\n\n Comments URL: https://news.ycombinator.com/item?id=48909424\n\n Points: 222\n\n # Comments: 119",
+          "summaryZh": "文章网址：https://marco-nett.de/blog/measuring-input-latency-on-linux-x11-vs-wayland-vrr-dxvk/\n\n 评论网址：https://news.ycombinator.com/item?id=48909424\n\n 积分：222\n\n # 评论: 119",
+          "publishedAt": "2026-07-14T16:36:06.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48909424",
+          "author": "hoechst"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48908950",
+          "title": "Launch HN: Agnost AI (YC S26) – Extract user feedback from agent conversations",
+          "titleZh": "启动 HN：Agnost AI (YC S26) – 从代理对话中提取用户反馈",
+          "link": "https://agnost.ai",
+          "summary": "Hey HN, we’re Shubham & Parth, childhood friends building Agnost AI ( https://agnost.ai ), product analytics for teams building chat and voice agents. We read production conversations and find behavioral failures like users rageprompting (cursing at the agent), repeatedly rephrasing the same request, correcting the agent, asking for missing features, or leaving after an answer that was technically successful. We have an interactive demo with no signup here: https://app.agnost.ai?demo=true Here's a demo video: https://www.tella.tv/video/agnost-ai-launch-hn-demo-9haa The core problem is that chat and voice products do not have the same metrics as web apps. When the product interface is language, clicks and funnels become much less useful. Users also rarely give explicit feedback, and when they do it's usually sugarcoated. I barely type /feedback in Claude or Codex myself. Most users just curse, ask again, correct the agent, or leave. So product engineers get technical visibility from latency, errors, and traces, but still have to guess whether users got what they wanted. We got here after building around agents for the last year and got a couple of founders asking for something like a PostHog for conversations for the AI assistants they were building. We are not trying to be in the observability or evals space. Observability tells you what happened technically. Evals validate cases you already know. We're more on the discovery side like what users wanted, where they got frustrated, what they asked for repeatedly, and what new evals should exist. Teams send us agent conversation messages through SDKs or OTel, optionally with metadata like account, plan, source, organization, etc. We cluster conversations into product-specific intents. Feature requests and bugs are default categories; most other clusters are created dynamically from the customer’s data and evolve over time. You can create your own cluster in plain English. If a cluster gets too broad, we split it. If a new pattern appears, we suggest it. One AI video editor company used Agnost AI to find feature requests hidden inside chat. The biggest one was that around 70 users wanted auto-subtitles, but users said it as “add this text in this frame” 12x in a single session, “can you caption it”, “give me transcript of audio” and variations across languages. The team later built the feature. Doing this over millions of messages without sending everything to an LLM was the hard part initially. In ClickHouse, “fetch the last 50 events by time across conversations” and “fetch all events in this conversation” want different sort orders, so we had to iterate a lot on sorting keys, partitions, materialized views, and projections. For finding new clusters, sending everything through an LLM was too slow and expensive. HDBSCAN-style embedding clustering also gets painful at scale because of pairwise comparisons. We first split conversations into segments based on cosine drift, run BIRCH to compress the candidate space, and then use HDBSCAN-like clustering on the smaller set. For matching existing clusters, we use embeddings, smaller classifiers/BERT-style models, and LLMs only as fallback for ambiguous cases. We’re live with multiple companies and ingesting ~1M chat and voice messages per day. Pricing is public: Starter is free, Pro is $499/month, and Enterprise is for higher volume, security, retention needs. We use each customer’s data only for that customer. We are SOC 2 Type 1 compliant, Type 2 is in progress, and our SDKs are on PyPI and npm. We’d love feedback from the HN community and people building chat or voice agents: how do you detect these signals today, what feedback methods have worked, and what would block you from trying this? Happy to answer questions and take criticism.\n\n Comments URL: https://news.ycombinator.com/item?id=48908950\n\n Points: 20\n\n # Comments: 7",
+          "summaryZh": "嘿 HN，我们是 Shubham 和 Parth，他们是儿时朋友，正在构建 Agnost AI (https://agnost.ai)，这是为构建聊天和语音代理的团队提供产品分析的产品。我们阅读生产对话并发现行为失败，例如用户愤怒提示（咒骂代理）、反复改写相同的请求、纠正代理、询问缺少的功能或在技术上成功的答案后离开。我们在这里有一个无需注册的交互式演示：https://app.agnost.ai?demo=true 这是一个演示视频：https://www.tella.tv/video/agnost-ai-launch-hn-demo-9haa 核心问题是聊天和语音产品没有与网络应用程序相同的指标。当产品界面是语言时，点击和渠道就变得没那么有用了。用户也很少给出明确的反馈，即使他们这样做，也通常是糖衣的。我自己几乎没有在 Claude 或 Codex 中输入 /feedback。大多数用户只是咒骂、再次询问、纠正代理，或者离开。因此，产品工程师可以从延迟、错误和跟踪中获得技术可见性，但仍然必须猜测用户是否得到了他们想要的东西。我们在去年围绕代理进行了构建之后来到了这里，一些创始人要求使用像 PostHog 这样的东西来为他们正在构建的人工智能助手进行对话。我们并不是试图进入可观察性或评估空间。可观察性告诉您技术上发生了什么。评估验证您已经知道的案例。我们更多的是在发现方面，比如用户想要什么，他们在哪里感到沮丧，他们反复要求什么，以及应该存在哪些新的评估。团队通过 SDK 或 OTel 向我们发送代理对话消息，可选择包含帐户、计划、来源、组织等元数据。我们将对话聚集到特定于产品的意图中。功能请求和错误是默认类别；大多数其他集群都是根据客户的数据动态创建的，并随着时间的推移而发展。您可以用简单的英语创建自己的集群。如果集群变得太宽，我们会将其拆分。如果出现新的模式，我们会建议它。一家人工智能视频编辑公司使用 Agnost AI 来查找隐藏在聊天中的功能请求。最大的一个问题是，大约 70 位用户想要自动字幕，但用户表示，它是在一次会话中 12 次“在该帧中添加此文本”、“你能为它加上字幕吗”、“给我音频文字记录”以及跨语言的变体。该团队后来构建了该功能。在不将所有内容发送给法学硕士的情况下对数百万条消息执行此操作最初是困难的部分。在 ClickHouse 中，",
+          "publishedAt": "2026-07-14T16:06:18.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48908950",
+          "author": "laalshaitaan"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48908271",
+          "title": "Show HN: Opening lines of famous literary works",
+          "titleZh": "Show HN：著名文学作品的开场白",
+          "link": "https://www.verbaprima.com/",
+          "summary": "This came from an idea that had been knocking around in my head for several years. I had been collecting opening lines of famous works and thought it would be cool to see one everyday as I opened the browser. I tried different styles but landed on the simple background with the text, let the words speak for themselves. Over time i've added more quotes I believe now there are close to 60, so hopefully you can refresh a few times and get a fresh one every time. I hope you guys like it, enjoy!\n\n Comments URL: https://news.ycombinator.com/item?id=48908271\n\n Points: 104\n\n # Comments: 67",
+          "summaryZh": "这是我多年来一直在脑海中盘旋的一个想法。我一直在收集著名作品的开场白，并认为每天打开浏览器时都能看到一首是很酷的。我尝试了不同的风格，但最终选择了简单的背景和文字，让文字自己说话。随着时间的推移，我添加了更多的引言，我相信现在已经接近 60 条了，所以希望您可以刷新几次，每次都能获得新的引言。希望大家喜欢，玩得开心！\n\n 评论网址：https://news.ycombinator.com/item?id=48908271\n\n 积分：104\n\n # 评论: 67",
+          "publishedAt": "2026-07-14T15:24:49.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48908271",
+          "author": "plicerin"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48908178",
+          "title": "Are we offloading too much of our thinking to AI?",
+          "titleZh": "我们是否将太多的思维转移给了人工智能？",
+          "link": "https://www.artfish.ai/p/offloading-thinking-to-ai",
+          "summary": "Article URL: https://www.artfish.ai/p/offloading-thinking-to-ai\n\n Comments URL: https://news.ycombinator.com/item?id=48908178\n\n Points: 243\n\n # Comments: 228",
+          "summaryZh": "文章网址：https://www.artfish.ai/p/offloading-thinking-to-ai\n\n 评论网址：https://news.ycombinator.com/item?id=48908178\n\n 积分：243\n\n # 评论：228",
+          "publishedAt": "2026-07-14T15:18:13.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48908178",
+          "author": "yenniejun111"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48907672",
+          "title": "The Agentic Loop: Three loops in a trench coat",
+          "titleZh": "Agentic Loop：风衣中的三个环",
+          "link": "https://www.bobbytables.io/p/the-agentic-loop-three-loops-in-a",
+          "summary": "Article URL: https://www.bobbytables.io/p/the-agentic-loop-three-loops-in-a\n\n Comments URL: https://news.ycombinator.com/item?id=48907672\n\n Points: 33\n\n # Comments: 8",
+          "summaryZh": "文章网址：https://www.bobbytables.io/p/the-agentic-loop- Three-loops-in-a\n\n 评论网址：https://news.ycombinator.com/item?id=48907672\n\n 积分：33\n\n # 评论: 8",
+          "publishedAt": "2026-07-14T14:39:56.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48907672",
+          "author": "btables"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48907665",
+          "title": "IBM Stock has worst day",
+          "titleZh": "IBM 股票经历了最糟糕的一天",
+          "link": "https://www.cnn.com/2026/07/14/tech/ibm-stock-worst-day-ever",
+          "summary": "Article URL: https://www.cnn.com/2026/07/14/tech/ibm-stock-worst-day-ever\n\n Comments URL: https://news.ycombinator.com/item?id=48907665\n\n Points: 26\n\n # Comments: 16",
+          "summaryZh": "文章网址：https://www.cnn.com/2026/07/14/tech/ibm-stock-worst-day-ever\n\n 评论网址：https://news.ycombinator.com/item?id=48907665\n\n 积分：26\n\n # 评论: 16",
+          "publishedAt": "2026-07-14T14:39:25.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48907665",
+          "author": "1970-01-01"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48906339",
+          "title": "Serena Williams Fit-Dex",
+          "titleZh": "塞雷娜·威廉姆斯 Fit-Dex",
+          "link": "https://serena-williams-fitdex.netlify.app/",
+          "summary": "Article URL: https://serena-williams-fitdex.netlify.app/\n\n Comments URL: https://news.ycombinator.com/item?id=48906339\n\n Points: 4\n\n # Comments: 0",
+          "summaryZh": "文章网址：https://serena-williams-fitdex.netlify.app/\n\n 评论网址：https://news.ycombinator.com/item?id=48906339\n\n 积分：4\n\n # 评论: 0",
+          "publishedAt": "2026-07-14T13:12:55.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48906339",
+          "author": "bookofjoe"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48905919",
+          "title": "Show HN: I RL-trained an agent that trains models with RL (for –$1.3k)",
+          "titleZh": "Show HN：我用 RL 训练了一个代理，该代理用 RL 训练模型（花费 – 1,300 美元）",
+          "link": "https://github.com/Danau5tin/ai-trains-ai",
+          "summary": "Article URL: https://github.com/Danau5tin/ai-trains-ai\n\n Comments URL: https://news.ycombinator.com/item?id=48905919\n\n Points: 79\n\n # Comments: 37",
+          "summaryZh": "文章网址：https://github.com/Danau5tin/ai-trains-ai\n\n 评论网址：https://news.ycombinator.com/item?id=48905919\n\n 积分：79\n\n # 评论: 37",
+          "publishedAt": "2026-07-14T12:41:25.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48905919",
+          "author": "Danau5tin"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48905914",
+          "title": "Beautiful Type Erasure with C++26 Reflection",
+          "titleZh": "使用 C++26 反射实现漂亮的类型擦除",
+          "link": "https://ryanjk5.github.io/posts/rjk-duck/",
+          "summary": "Article URL: https://ryanjk5.github.io/posts/rjk-duck/\n\n Comments URL: https://news.ycombinator.com/item?id=48905914\n\n Points: 87\n\n # Comments: 35",
+          "summaryZh": "文章网址：https://ryanjk5.github.io/posts/rjk-duck/\n\n 评论网址：https://news.ycombinator.com/item?id=48905914\n\n 积分：87\n\n # 评论: 35",
+          "publishedAt": "2026-07-14T12:40:50.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48905914",
+          "author": "RyanJK5"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48905667",
+          "title": "Differentiable Fortran with LFortran and Enzyme",
+          "titleZh": "使用 LFortran 和 Enzyme 可微分 Fortran",
+          "link": "https://docs.pasteurlabs.ai/projects/tesseract-core/latest/blog/2026-07-09-enzyme-lfortran-autodiff.html",
+          "summary": "Article URL: https://docs.pasteurlabs.ai/projects/tesseract-core/latest/blog/2026-07-09-enzyme-lfortran-autodiff.html\n\n Comments URL: https://news.ycombinator.com/item?id=48905667\n\n Points: 42\n\n # Comments: 13",
+          "summaryZh": "文章网址：https://docs.pasteurlabs.ai/projects/tesseract-core/latest/blog/2026-07-09-enzyme-lfortran-autodiff.html\n\n 评论网址：https://news.ycombinator.com/item?id=48905667\n\n 积分：42\n\n # 评论: 13",
+          "publishedAt": "2026-07-14T12:21:46.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48905667",
+          "author": "dionhaefner"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48905290",
+          "title": "Germany set to restrict its Freedom of Information Act",
+          "titleZh": "德国将限制其信息自由法",
+          "link": "https://www.dw.com/en/germany-freedom-of-information-act/a-77939695",
+          "summary": "Article URL: https://www.dw.com/en/germany-freedom-of-information-act/a-77939695\n\n Comments URL: https://news.ycombinator.com/item?id=48905290\n\n Points: 245\n\n # Comments: 154",
+          "summaryZh": "文章网址：https://www.dw.com/en/germany-freedom-of-information-act/a-77939695\n\n 评论网址：https://news.ycombinator.com/item?id=48905290\n\n 积分：245\n\n # 评论：154",
+          "publishedAt": "2026-07-14T11:49:48.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48905290",
+          "author": "robtherobber"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48905248",
+          "title": "How to stop Claude from saying load-bearing",
+          "titleZh": "如何阻止克劳德说承重",
+          "link": "https://jola.dev/posts/how-to-stop-claude-from-saying-load-bearing",
+          "summary": "Article URL: https://jola.dev/posts/how-to-stop-claude-from-saying-load-bearing\n\n Comments URL: https://news.ycombinator.com/item?id=48905248\n\n Points: 265\n\n # Comments: 338",
+          "summaryZh": "文章网址：https://jola.dev/posts/how-to-stop-claude-from-saying-load-bearing\n\n 评论网址：https://news.ycombinator.com/item?id=48905248\n\n 积分：265\n\n # 评论: 338",
+          "publishedAt": "2026-07-14T11:46:02.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48905248",
+          "author": "shintoist"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48905118",
+          "title": "Punch yourself in the face with reality",
+          "titleZh": "用现实打自己的脸",
+          "link": "https://adi.bio/reality",
+          "summary": "Article URL: https://adi.bio/reality\n\n Comments URL: https://news.ycombinator.com/item?id=48905118\n\n Points: 153\n\n # Comments: 77",
+          "summaryZh": "文章网址：https://adi.bio/reality\n\n 评论网址：https://news.ycombinator.com/item?id=48905118\n\n 积分：153\n\n # 评论: 77",
+          "publishedAt": "2026-07-14T11:33:19.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48905118",
+          "author": "AdityaAnand1"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48905105",
+          "title": "No Spanish reading crisis?",
+          "titleZh": "没有西班牙语阅读危机吗？",
+          "link": "https://www.commonreader.co.uk/p/no-spanish-reading-crisis",
+          "summary": "Article URL: https://www.commonreader.co.uk/p/no-spanish-reading-crisis\n\n Comments URL: https://news.ycombinator.com/item?id=48905105\n\n Points: 65\n\n # Comments: 104",
+          "summaryZh": "文章网址：https://www.commonreader.co.uk/p/no-spanish-reading-crisis\n\n 评论网址：https://news.ycombinator.com/item?id=48905105\n\n 积分：65\n\n # 评论: 104",
+          "publishedAt": "2026-07-14T11:31:59.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48905105",
+          "author": "jruohonen"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48903777",
+          "title": "European \"age verification\" \"app\" forcing everyone to use Android or iOS",
+          "titleZh": "欧洲“年龄验证”“应用程序”迫使所有人使用Android或iOS",
+          "link": "https://github.com/eu-digital-identity-wallet/av-doc-technical-specification/discussions/19",
+          "summary": "Article URL: https://github.com/eu-digital-identity-wallet/av-doc-technical-specification/discussions/19\n\n Comments URL: https://news.ycombinator.com/item?id=48903777\n\n Points: 347\n\n # Comments: 226",
+          "summaryZh": "文章网址：https://github.com/eu-digital-identity-wallet/av-doc-technical-specification/discussions/19\n\n 评论网址：https://news.ycombinator.com/item?id=48903777\n\n 积分：347\n\n # 评论：226",
+          "publishedAt": "2026-07-14T08:34:57.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48903777",
+          "author": "roundabout-host"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48903715",
+          "title": "Alternative(s) to run CUDA on non-Nvidia hardware",
+          "titleZh": "在非 Nvidia 硬件上运行 CUDA 的替代方案",
+          "link": "https://www.hpcwire.com/2026/07/09/spectral-compute-aims-to-set-cuda-free-will-it-succeed/",
+          "summary": "Article URL: https://www.hpcwire.com/2026/07/09/spectral-compute-aims-to-set-cuda-free-will-it-succeed/\n\n Comments URL: https://news.ycombinator.com/item?id=48903715\n\n Points: 115\n\n # Comments: 65",
+          "summaryZh": "文章网址：https://www.hpcwire.com/2026/07/09/spectral-compute-aims-to-set-cuda-free-will-it-succeed/\n\n 评论网址：https://news.ycombinator.com/item?id=48903715\n\n 积分：115\n\n # 评论: 65",
+          "publishedAt": "2026-07-14T08:24:49.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48903715",
+          "author": "alok-g"
+        }
+      ]
     },
     {
       "id": "arxiv-cs-ai",
@@ -33,7 +248,7 @@
       "url": "https://rss.arxiv.org/rss/cs.AI",
       "home": "https://arxiv.org/list/cs.AI/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-07-14T13:20:53.261Z",
+      "fetchedAt": "2026-07-14T19:10:22.845Z",
       "count": 15,
       "items": [
         {
@@ -53,7 +268,7 @@
           "titleZh": "格式敏感性指数：LLM 基准测试中令牌控制的提示包装器稳健性和模式合规性",
           "link": "https://arxiv.org/abs/2607.09665",
           "summary": "arXiv:2607.09665v1 Announce Type: new\nAbstract: Prompt wrappers often differ only in formatting, yet they can change model scores enough to flip leaderboard conclusions. We study this variance under a token-controlled protocol and introduce two complementary metrics: the Format Sensitivity Index (FSI), the accuracy range induced by wrapper choice, and the Parseability Sensitivity Index (PSI), the corresponding range in answer parseability. Across 140,000 OpenRouter generations spanning 7 QA tasks, 5 wrapper families, and 4 instruct models from 7B to 72B parameters, we find that mean FSI varies by over 30x across models and is largely explained by compliance failures. A fixed-effects regression shows that parseability remains a strong predictor of accuracy even after controlling for task, model, and wrapper. We argue that reporting accuracy without wrapper variance and compliance is statistically fragile, and we give practical recommendations for both benchmarking and structured-output deployments.",
-          "summaryZh": "arXiv:2607.09665v1 公告类型：新\n摘要：提示包装器通常仅在格式上有所不同，但它们可以改变模型分数足以推翻排行榜结论。我们在令牌控制协议下研究这种方差，并引入两个互补的指标：格式敏感度指数（FSI）（由包装器选择引起的准确度范围）和可解析性敏感度指数（PSI）（答案可解析性的相应范围）。在跨越 7 个 QA 任务、5 个包装器系列和 4 个从 7B 到 72B 参数的指令模型的 140,000 个 OpenRouter 代中，我们发现模型之间的平均 FSI 变化超过 30 倍，这在很大程度上是由合规性失败造成的。固定效应回归表明，即使在控制任务、模型和包装器之后，可解析性仍然是准确度的有力预测因素。我们认为，没有包装器方差和合规性的报告准确性在统计上是脆弱的，并且我们为基准测试和结构化输出部署提供了实用的建议。",
+          "summaryZh": "arXiv:2607.09665v1 公告类型：新\n摘要：提示包装器通常仅在格式上有所不同，但它们可以改变模型分数足以推翻排行榜结论。我们在令牌控制协议下研究这种方差，并引入两个补充指标：格式敏感度指数（FSI）（由包装器选择引起的准确度范围）和可解析性敏感度指数（PSI）（答案可解析性的相应范围）。在涵盖 7 个 QA 任务、5 个包装器系列和 4 个从 7B 到 72B 参数的指令模型的 140,000 个 OpenRouter 代中，我们发现模型之间的平均 FSI 变化超过 30 倍，这在很大程度上是由合规性失败造成的。固定效应回归表明，即使在控制任务、模型和包装器之后，可解析性仍然是准确度的有力预测因素。我们认为，没有包装器方差和合规性的报告准确性在统计上是脆弱的，并且我们为基准测试和结构化输出部署提供了实用的建议。",
           "publishedAt": "2026-07-14T04:00:00.000Z",
           "comments": null,
           "author": "Deep Pankajbhai Mehta"
@@ -86,7 +301,7 @@
           "titleZh": "将潜在 CoT 推理解释为动态系统",
           "link": "https://arxiv.org/abs/2607.09698",
           "summary": "arXiv:2607.09698v1 Announce Type: new\nAbstract: Recent latent reasoning methods, such as CODI and COCONUT, face a fundamental interpretability problem: they maintain multiple superimposed candidate traces in the hidden space at each step, unlike explicit- CoT, which follows a single transparent reasoning trace. Existing mechanistic methods show compression, shortcuts, and superposition without explaining how reasoning evolves across latent steps. To address this gap, we model latent token sequences as trajectories in representation space and apply dynamical systems analysis to characterize the evolution of reasoning. Using quantitative measures, such as step-to-step change, direction consistency, and Lyapunov sensitivity, alongside qualitative projections, such as UMAP and DMD/PHATE, we show that latent CoT exhibits structured, non-random dynamics with two distinct stability classes. CODI behaves as a stable attractor, while COCONUT behaves as an unstable expanding system, and SIM-CoT supervision tightens both behaviors without changing the underlying dynamics. This framework advances the interpretability of latent CoT reasoning dynamics and provides actionable insights for improving latent reasoning performance. Code1 and Project page2 available online.",
-          "summaryZh": "arXiv:2607.09698v1 公告类型：新\n摘要：最近的潜在推理方法，例如 CODI 和 COCONUT，面临着一个基本的可解释性问题：它们在每一步的隐藏空间中维护多个叠加的候选轨迹，这与遵循单个透明推理轨迹的显式 CoT 不同。现有的机械方法显示了压缩、捷径和叠加，但没有解释推理如何跨潜在步骤演化。为了解决这一差距，我们将潜在标记序列建模为表示空间中的轨迹，并应用动态系统分析来表征推理的演化。使用定量测量（例如逐步变化、方向一致性和 Lyapunov 灵敏度）以及定性预测（例如 UMAP 和 DMD/PHATE），我们表明潜在 CoT 表现出结构化、非随机动态，具有两个不同的稳定性类别。 CODI 表现为稳定的吸引子，而 COCONUT 表现为不稳定的扩展系统，SIM-CoT 监督在不改变潜在动态的情况下收紧了这两种行为。该框架提高了潜在 CoT 推理动态的可解释性，并为提高潜在推理性能提供了可行的见解。代码 1 和项目页面 2 可在线获取。",
+          "summaryZh": "arXiv:2607.09698v1 公告类型：新\n摘要：最近的潜在推理方法，例如 CODI 和 COCONUT，面临着一个基本的可解释性问题：它们在每一步的隐藏空间中维护多个叠加的候选轨迹，这与遵循单个透明推理轨迹的显式 CoT 不同。现有的机械方法显示了压缩、捷径和叠加，但没有解释推理如何跨潜在步骤演变。为了解决这一差距，我们将潜在标记序列建模为表示空间中的轨迹，并应用动态系统分析来表征推理的演化。使用定量测量（例如逐步变化、方向一致性和 Lyapunov 灵敏度）以及定性预测（例如 UMAP 和 DMD/PHATE），我们表明潜在 CoT 表现出结构化、非随机动态，具有两个不同的稳定性类别。 CODI 表现为稳定的吸引子，而 COCONUT 表现为不稳定的扩展系统，SIM-CoT 监督在不改变潜在动态的情况下收紧了这两种行为。该框架提高了潜在 CoT 推理动态的可解释性，并为提高潜在推理性能提供了可行的见解。代码 1 和项目页面 2 可在线获取。",
           "publishedAt": "2026-07-14T04:00:00.000Z",
           "comments": null,
           "author": "Sabari Iyyappan Duraipandian, Shreya Sanjay Boyane, Manju Nagesh, Jerome Francis, Archana Vaidheeswaran, Kevin Zhu"
@@ -130,7 +345,7 @@
           "titleZh": "具有规则对齐小语言模型和多代理自校正的闭环控制",
           "link": "https://arxiv.org/abs/2607.09713",
           "summary": "arXiv:2607.09713v1 Announce Type: new\nAbstract: A key step toward autonomous industrial operation is the ability to create and reconfigure control policies from natural-language requirement specifications, with minimal or no manual redesign. In this setting, policy generation by AI agents can be a credible path when paired with a plant-aware validator (e.g., a digital twin) that can check generated candidate actions before execution. However, practical deployment is constrained by inference latency and compute footprint: large cloud-based models are often too slow, opaque, or data-sensitive for edge closed-loop use. This work investigates whether a compact Small Language Model (SLM) can be retrained for control reasoning and embedded in a validator-guided correction loop. We use a Qwen2.5-1.5B model aligned via Group Relative Policy Optimization (GRPO), combined with (i) an action agent, (ii) a symbolic/digital-twin-style validation layer, and (iii) a reprompting agent that iteratively steers outputs toward valid actions. In randomized thermal-control simulations (30 experiments with 500 steps each), the framework achieves 91.5% average action-alignment accuracy (86.3%--100% across cases) at 3.84\\,s mean inference latency. Under symbolic re-mapping, it maintains a 95% in-range rate, indicating robust physical regulation despite reduced token-level agreement. These results support SLM+validator architectures as a practical path toward reconfigurable autonomous control at the edge.",
-          "summaryZh": "arXiv:2607.09713v1 公告类型：新\n摘要：实现自主工业运营的关键一步是能够根据自然语言需求规范创建和重新配置控制策略，而无需或很少进行手动重新设计。在这种情况下，人工智能代理生成的策略与植物感知验证器（例如数字孪生）配合使用可以成为可靠的路径，该验证器可以在执行之前检查生成的候选操作。然而，实际部署受到推理延迟和计算占用的限制：基于云的大型模型对于边缘闭环使用通常太慢、不透明或数据敏感。这项工作研究了是否可以重新训练紧凑的小语言模型（SLM）以进行控制推理并嵌入到验证器引导的校正循环中。我们使用通过组相对策略优化 (GRPO) 对齐的 Qwen2.5-1.5B 模型，并结合 (i) 动作代理、(ii) 符号/数字孪生式验证层和 (iii) 迭代引导输出走向有效操作的重新提示代理。在随机热控制模拟（30 个实验，每个实验 500 个步骤）中，该框架在 3.84 秒的平均推理延迟下实现了 91.5% 的平均动作对齐精度（在不同情况下为 86.3%--100%）。在符号重新映射下，它保持了 95% 的范围内比率，这表明尽管代币级别协议减少，但物理监管依然强劲。这些结果支持 SLM+验证器架构作为实现边缘可重构自主控制的实用路径。",
+          "summaryZh": "arXiv:2607.09713v1 公告类型：新\n摘要：实现自主工业运营的关键一步是能够根据自然语言需求规范创建和重新配置控制策略，而无需或很少进行手动重新设计。在这种情况下，人工智能代理生成的策略与植物感知验证器（例如数字孪生）配合使用可以成为可靠的路径，该验证器可以在执行之前检查生成的候选操作。然而，实际部署受到推理延迟和计算占用的限制：基于云的大型模型对于边缘闭环使用通常太慢、不透明或数据敏感。这项工作研究了是否可以重新训练紧凑的小语言模型（SLM）以进行控制推理并嵌入到验证器引导的校正循环中。我们使用通过组相对策略优化 (GRPO) 对齐的 Qwen2.5-1.5B 模型，并结合 (i) 动作代理、(ii) 符号/数字孪生式验证层和 (iii) 迭代引导输出走向有效操作的重新提示代理。在随机热控制模拟（30 个实验，每个实验 500 个步骤）中，该框架在 3.84 秒的平均推理延迟下实现了 91.5% 的平均动作对齐精度（在不同情况下为 86.3%--100%）。在符号重新映射下，它保持了 95% 的范围内比率，表明尽管代币级别协议减少，但物理监管仍然强劲。这些结果支持 SLM+验证器架构作为实现边缘可重构自主控制的实用路径。",
           "publishedAt": "2026-07-14T04:00:00.000Z",
           "comments": null,
           "author": "Yuchen Wang, Javal Vyas, Tong Liu, Mehmet Mercangoz"
@@ -209,7 +424,7 @@
       "url": "https://rss.arxiv.org/rss/cs.LG",
       "home": "https://arxiv.org/list/cs.LG/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-07-14T13:20:53.702Z",
+      "fetchedAt": "2026-07-14T19:10:23.297Z",
       "count": 15,
       "items": [
         {
@@ -361,7 +576,7 @@
           "titleZh": "安全响应很重要：输出感知安全护栏可减少 MLLM 中的过度拒绝",
           "link": "https://arxiv.org/abs/2607.09697",
           "summary": "arXiv:2607.09697v1 Announce Type: new\nAbstract: Existing safety mechanisms for multimodal large language models (MLLMs) face a fundamental trade-off between safety and utility. Model fine-tuning achieves robust safety but compromises general utility. Input-side safety guardrails offer a lightweight alternative, yet they suffer from severe over-refusal, indiscriminately blocking benign queries or those the model could have safely answered through refusal or advisory responses. We identify that the root cause of over-refusal lies in the input-aware paradigm: safety guardrails make safety decisions without considering whether the model itself is capable of generating safe responses. Usually, MLLMs already possess intrinsic safety mechanisms that can transform harmful inputs into harmless outputs, but input-side safety guardrails override this capability, degrading user experience. Motivated by this insight, we propose a paradigm shift toward output-aware safety guardrails. Our method operates within the model's hidden state space to predict whether the forthcoming generation will be unsafe before it is fully produced. By training a lightweight classifier via multi-instance contrastive learning on hidden state representations, our approach distinguishes between inputs that will lead to unsafe outputs and those that will not, even when the inputs themselves contain risky elements. This enables precise intervention only when the model's actual response would be harmful. Extensive experiments demonstrate that our output-aware safety guardrail matches the safety performance of existing methods while drastically reducing over-refusal, preserving the model's utility and built-in safety capabilities. Code is available at: https://github.com/kunzhan/OutGuard",
-          "summaryZh": "arXiv:2607.09697v1 公告类型：新\n摘要：多模态大语言模型（MLLM）的现有安全机制面临安全性和实用性之间的基本权衡。模型微调实现了强大的安全性，但牺牲了通用性。输入端安全护栏提供了一种轻量级的替代方案，但它们遭受严重的过度拒绝、不加区别地阻止良性查询或模型可以通过拒绝或咨询响应安全回答的查询。我们发现过度拒绝的根本原因在于输入感知范式：安全护栏在不考虑模型本身是否能够生成安全响应的情况下做出安全决策。通常，MLLM 已经拥有本质安全机制，可以将有害输入转化为无害输出，但输入侧安全护栏会覆盖此功能，从而降低用户体验。受这种洞察力的启发，我们提出了向输出感知安全护栏的范式转变。我们的方法在模型的隐藏状态空间内运行，以预测即将到来的一代在完全生产之前是否不安全。通过对隐藏状态表示进行多实例对比学习来训练轻量级分类器，我们的方法可以区分会导致不安全输出的输入和不会导致不安全输出的输入，即使输入本身包含风险元素。只有当模型的实际响应有害时，才能进行精确干预。大量的实验表明，我们的输出感知安全护栏与现有方法的安全性能相匹配，同时大大减少了过度拒绝，保留了模型的实用性和内置安全功能。代码位于：https://github.com/kunzhan/OutGuard",
+          "summaryZh": "arXiv:2607.09697v1 公告类型：新\n摘要：多模态大语言模型（MLLM）的现有安全机制面临安全性和实用性之间的基本权衡。模型微调实现了强大的安全性，但牺牲了通用性。输入端安全护栏提供了一种轻量级的替代方案，但它们遭受严重的过度拒绝、不加区别地阻止良性查询或模型可以通过拒绝或咨询响应安全回答的问题。我们发现过度拒绝的根本原因在于输入感知范式：安全护栏在不考虑模型本身是否能够生成安全响应的情况下做出安全决策。通常，MLLM 已经拥有本质安全机制，可以将有害输入转化为无害输出，但输入侧安全护栏会覆盖此功能，从而降低用户体验。受这种洞察力的启发，我们提出了向输出感知安全护栏的范式转变。我们的方法在模型的隐藏状态空间内运行，以预测即将到来的一代在完全生产之前是否不安全。通过对隐藏状态表示进行多实例对比学习来训练轻量级分类器，我们的方法可以区分会导致不安全输出的输入和不会导致不安全输出的输入，即使输入本身包含风险元素。只有当模型的实际响应有害时，才能进行精确干预。大量的实验表明，我们的输出感知安全护栏与现有方法的安全性能相匹配，同时大大减少了过度拒绝，保留了模型的实用性和内置安全功能。代码位于：https://github.com/kunzhan/OutGuard",
           "publishedAt": "2026-07-14T04:00:00.000Z",
           "comments": null,
           "author": "Jiayi Li, Kun Zhan"
