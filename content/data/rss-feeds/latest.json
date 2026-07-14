@@ -1,15 +1,20 @@
 {
   "source": "content/feeds.json",
   "attribution": "Aggregated headlines/summaries from third-party RSS/Atom feeds for navigation only. All rights belong to original publishers and authors. Chinese text is machine-translated.",
-  "fetchedAt": "2026-07-14T07:53:26.014Z",
+  "fetchedAt": "2026-07-14T13:21:33.949Z",
   "date": "2026-07-14",
   "feedCount": 3,
-  "itemCount": 50,
+  "itemCount": 30,
   "locale": {
     "summaryDefault": "zh",
     "translated": true
   },
-  "errors": [],
+  "errors": [
+    {
+      "id": "hacker-news",
+      "error": "fetch failed"
+    }
+  ],
   "feeds": [
     {
       "id": "hacker-news",
@@ -17,230 +22,10 @@
       "url": "https://hnrss.org/frontpage",
       "home": "https://news.ycombinator.com/",
       "group": "community",
-      "fetchedAt": "2026-07-14T07:53:00.966Z",
-      "count": 20,
-      "items": [
-        {
-          "id": "https://news.ycombinator.com/item?id=48902599",
-          "title": "OpenAI's Ad Business Is on Pace to Miss Its Own Forecast by 90%, Analyst Says",
-          "titleZh": "分析师称 OpenAI 的广告业务将比自己的预测低 90%",
-          "link": "https://www.adweek.com/media/openais-ad-business-is-on-pace-to-miss-its-own-forecast-by-90-analyst-says/",
-          "summary": "Article URL: https://www.adweek.com/media/openais-ad-business-is-on-pace-to-miss-its-own-forecast-by-90-analyst-says/\n\n Comments URL: https://news.ycombinator.com/item?id=48902599\n\n Points: 30\n\n # Comments: 13",
-          "summaryZh": "文章网址：https://www.adweek.com/media/openais-ad-business-is-on-pace-to-miss-its-own-forecast-by-90-analyst-says/\n\n 评论网址：https://news.ycombinator.com/item?id=48902599\n\n 积分：30\n\n # 评论: 13",
-          "publishedAt": "2026-07-14T05:21:02.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48902599",
-          "author": "EvgeniyZh"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48902026",
-          "title": "YouTrackDB is a general-use object-oriented graph database",
-          "titleZh": "YouTrackDB 是一个通用的面向对象的图形数据库",
-          "link": "https://github.com/JetBrains/youtrackdb",
-          "summary": "Article URL: https://github.com/JetBrains/youtrackdb\n\n Comments URL: https://news.ycombinator.com/item?id=48902026\n\n Points: 90\n\n # Comments: 23",
-          "summaryZh": "文章网址：https://github.com/JetBrains/youtrackdb\n\n 评论网址：https://news.ycombinator.com/item?id=48902026\n\n 积分：90\n\n # 评论: 23",
-          "publishedAt": "2026-07-14T03:39:55.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48902026",
-          "author": "gjvc"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48901645",
-          "title": "Our Amish Language",
-          "titleZh": "我们的阿米什语言",
-          "link": "https://www.thedial.world/articles/news/amish-pennsylvania-dutch",
-          "summary": "Article URL: https://www.thedial.world/articles/news/amish-pennsylvania-dutch\n\n Comments URL: https://news.ycombinator.com/item?id=48901645\n\n Points: 35\n\n # Comments: 14",
-          "summaryZh": "文章网址：https://www.thedial.world/articles/news/amish-pennsylvania-dutch\n\n 评论网址：https://news.ycombinator.com/item?id=48901645\n\n 积分：35\n\n # 评论: 14",
-          "publishedAt": "2026-07-14T02:40:41.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48901645",
-          "author": "NaOH"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48901569",
-          "title": "Japan develops a method to recover up to 90% of lithium from used EV batteries",
-          "titleZh": "日本开发出一种从废旧电动汽车电池中回收高达 90% 锂的方法",
-          "link": "https://tech.supercarblondie.com/japan-recovers-up-to-90-of-lithium-from-used-ev-batteries/",
-          "summary": "Article URL: https://tech.supercarblondie.com/japan-recovers-up-to-90-of-lithium-from-used-ev-batteries/\n\n Comments URL: https://news.ycombinator.com/item?id=48901569\n\n Points: 353\n\n # Comments: 86",
-          "summaryZh": "文章网址：https://tech.supercarblondie.com/japan-recovers-up-to-90-of-lithium-from-used-ev-batteries/\n\n 评论网址：https://news.ycombinator.com/item?id=48901569\n\n 积分：353\n\n # 评论: 86",
-          "publishedAt": "2026-07-14T02:27:20.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48901569",
-          "author": "donohoe"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48901454",
-          "title": "Fundamentals of Wireless Communication (2005)",
-          "titleZh": "无线通信基础知识 (2005)",
-          "link": "https://web.stanford.edu/~dntse/wireless_book.html",
-          "summary": "Article URL: https://web.stanford.edu/~dntse/wireless_book.html\n\n Comments URL: https://news.ycombinator.com/item?id=48901454\n\n Points: 114\n\n # Comments: 3",
-          "summaryZh": "文章网址：https://web.stanford.edu/~dntse/wireless_book.html\n\n 评论网址：https://news.ycombinator.com/item?id=48901454\n\n 积分：114\n\n # 评论: 3",
-          "publishedAt": "2026-07-14T02:10:19.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48901454",
-          "author": "teleforce"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48901356",
-          "title": "Satellite Tracker – Live Map of Starlink and 30k Satellites",
-          "titleZh": "卫星跟踪器 – Starlink 和 30k 卫星的实时地图",
-          "link": "https://satellitemap.space/",
-          "summary": "Article URL: https://satellitemap.space/\n\n Comments URL: https://news.ycombinator.com/item?id=48901356\n\n Points: 69\n\n # Comments: 22",
-          "summaryZh": "文章网址：https://satellitemap.space/\n\n 评论网址：https://news.ycombinator.com/item?id=48901356\n\n 积分：69\n\n # 评论: 22",
-          "publishedAt": "2026-07-14T01:55:24.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48901356",
-          "author": "rolph"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48901292",
-          "title": "What will be left for us to work on?",
-          "titleZh": "我们还剩下什么工作要做？",
-          "link": "https://www.normaltech.ai/p/what-will-be-left-for-us-to-work",
-          "summary": "Article URL: https://www.normaltech.ai/p/what-will-be-left-for-us-to-work\n\n Comments URL: https://news.ycombinator.com/item?id=48901292\n\n Points: 112\n\n # Comments: 107",
-          "summaryZh": "文章网址：https://www.normaltech.ai/p/what-will-be-left-for-us-to-work\n\n 评论网址：https://news.ycombinator.com/item?id=48901292\n\n 积分：112\n\n # 评论: 107",
-          "publishedAt": "2026-07-14T01:44:40.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48901292",
-          "author": "randomwalker"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48901275",
-          "title": "Building Food Metadata with LLM Juries",
-          "titleZh": "与法学硕士评审团一起构建食品元数据",
-          "link": "https://careersatdoordash.com/blog/building-food-metadata-with-llm-juries-context-optimization-multimodal-ai/",
-          "summary": "Article URL: https://careersatdoordash.com/blog/building-food-metadata-with-llm-juries-context-optimization-multimodal-ai/\n\n Comments URL: https://news.ycombinator.com/item?id=48901275\n\n Points: 31\n\n # Comments: 8",
-          "summaryZh": "文章网址：https://careersatdoordash.com/blog/building-food-metadata-with-llm-juries-context-optimization-multimodal-ai/\n\n 评论网址：https://news.ycombinator.com/item?id=48901275\n\n 积分：31\n\n # 评论: 8",
-          "publishedAt": "2026-07-14T01:41:49.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48901275",
-          "author": "tie-in"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48901235",
-          "title": "Is x86 ready to ACE it?",
-          "titleZh": "x86 准备好 ACE 了吗？",
-          "link": "https://chipsandcheese.com/p/is-x86-ready-to-ace-it",
-          "summary": "Article URL: https://chipsandcheese.com/p/is-x86-ready-to-ace-it\n\n Comments URL: https://news.ycombinator.com/item?id=48901235\n\n Points: 60\n\n # Comments: 8",
-          "summaryZh": "文章网址：https://chipsandcheese.com/p/is-x86-ready-to-ace-it\n\n 评论网址：https://news.ycombinator.com/item?id=48901235\n\n 积分：60\n\n # 评论: 8",
-          "publishedAt": "2026-07-14T01:36:13.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48901235",
-          "author": "mfiguiere"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48901224",
-          "title": "The Economics of Recursive Self-Improvement [pdf]",
-          "titleZh": "递归自我完善的经济学 [pdf]",
-          "link": "https://elasticity.institute/rsi-paper.pdf",
-          "summary": "Article URL: https://elasticity.institute/rsi-paper.pdf\n\n Comments URL: https://news.ycombinator.com/item?id=48901224\n\n Points: 77\n\n # Comments: 19",
-          "summaryZh": "文章网址：https://elasticity.institute/rsi-paper.pdf\n\n 评论网址：https://news.ycombinator.com/item?id=48901224\n\n 积分：77\n\n # 评论: 19",
-          "publishedAt": "2026-07-14T01:35:23.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48901224",
-          "author": "apsec112"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48901126",
-          "title": "MorphoHDL: A minimalistic language for growing circuits",
-          "titleZh": "MorphoHDL：一种用于生长电路的简约语言",
-          "link": "https://paradigms-of-intelligence.github.io/morpho/",
-          "summary": "Article URL: https://paradigms-of-intelligence.github.io/morpho/\n\n Comments URL: https://news.ycombinator.com/item?id=48901126\n\n Points: 56\n\n # Comments: 8",
-          "summaryZh": "文章网址：https://paradigms-of-intelligence.github.io/morpho/\n\n 评论网址：https://news.ycombinator.com/item?id=48901126\n\n 积分：56\n\n # 评论: 8",
-          "publishedAt": "2026-07-14T01:17:30.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48901126",
-          "author": "jacktang"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48901020",
-          "title": "ESBMC-Arduino: Closing the Deployment Gap for Formal Verification",
-          "titleZh": "ESBMC-Arduino：缩小形式验证的部署差距",
-          "link": "https://arxiv.org/abs/2607.08550",
-          "summary": "Article URL: https://arxiv.org/abs/2607.08550\n\n Comments URL: https://news.ycombinator.com/item?id=48901020\n\n Points: 5\n\n # Comments: 1",
-          "summaryZh": "文章网址：https://arxiv.org/abs/2607.08550\n\n 评论网址：https://news.ycombinator.com/item?id=48901020\n\n 积分：5\n\n # 评论: 1",
-          "publishedAt": "2026-07-14T00:58:55.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48901020",
-          "author": "Jimmc414"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48901010",
-          "title": "The Git history command deserves more attention",
-          "titleZh": "Git历史命令值得更多关注",
-          "link": "https://lalitm.com/post/git-history/",
-          "summary": "Article URL: https://lalitm.com/post/git-history/\n\n Comments URL: https://news.ycombinator.com/item?id=48901010\n\n Points: 241\n\n # Comments: 137",
-          "summaryZh": "文章网址：https://lalitm.com/post/git-history/\n\n 评论网址：https://news.ycombinator.com/item?id=48901010\n\n 积分：241\n\n # 评论: 137",
-          "publishedAt": "2026-07-14T00:57:11.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48901010",
-          "author": "turbocon"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48900319",
-          "title": "Show HN: Sx 2.0 – Share AI skills with your team through a Dropbox folder",
-          "titleZh": "Show HN: Sx 2.0 – 通过 Dropbox 文件夹与您的团队分享 AI 技能",
-          "link": "https://sleuth-io.github.io/sx/2026/07/10/your-dropbox-is-now-a-skill-server.html",
-          "summary": "Hi all, author here. SX started as a CLI to let developers share skills across AI clients without having to rely on git for storage. This allowed sharing at the Repo/Team/Org and Personal level. However, the more we spoke to users the more we realized that non-technical users were actually using skills more and more but they had no way to share. And there was no way you were going to get your legal team to install and learn git. SX 2.0 is targeting non-technical teams by adding a native Mac, Windows and Linux app. Our vault format was reworked so it can be used directly as a claude or codex plugin. And by storing your vault in Dropbox, Google Drive, iCloud or others you can be up and sharing in under a minute. 2.0 also adds an extension system with extensions that manage Skill Evals, LLM de-duping, metics and much more https://github.com/sleuth-io/sx-extensions . It's Apache-2.0 and you can download it here https://github.com/sleuth-io/sx .\n\n Comments URL: https://news.ycombinator.com/item?id=48900319\n\n Points: 34\n\n # Comments: 29",
-          "summaryZh": "大家好，这里是作者。 SX 最初是一个 CLI，让开发人员可以跨 AI 客户端共享技能，而无需依赖 git 进行存储。这允许在存储库/团队/组织和个人级别进行共享。然而，我们与用户交谈越多，我们就越意识到非技术用户实际上越来越多地使用技能，但他们无法分享。而且你不可能让你的法律团队安装和学习 git。 SX 2.0 通过添加本机 Mac、Windows 和 Linux 应用程序来针对非技术团队。我们的Vault格式经过重新设计，因此可以直接用作claude或codex插件。通过将您的保管库存储在 Dropbox、Google Drive、iCloud 或其他设备中，您可以在一分钟内完成设置并进行共享。 2.0 还添加了一个扩展系统，其中包含管理技能评估、LLM 重复数据删除、metics 等的扩展 https://github.com/sleuth-io/sx-extensions 。它是 Apache-2.0，您可以在此处下载 https://github.com/sleuth-io/sx 。\n\n 评论网址：https://news.ycombinator.com/item?id=48900319\n\n 积分：34\n\n # 评论：29",
-          "publishedAt": "2026-07-13T23:26:52.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48900319",
-          "author": "detkin"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48900191",
-          "title": "An Englishwoman who sketched India before photography took hold",
-          "titleZh": "一位在摄影术流行之前描绘印度的英国女人",
-          "link": "https://www.bbc.com/news/articles/cm2drrv6q54o",
-          "summary": "Article URL: https://www.bbc.com/news/articles/cm2drrv6q54o\n\n Comments URL: https://news.ycombinator.com/item?id=48900191\n\n Points: 127\n\n # Comments: 37",
-          "summaryZh": "文章网址：https://www.bbc.com/news/articles/cm2drrv6q54o\n\n 评论网址：https://news.ycombinator.com/item?id=48900191\n\n 积分：127\n\n # 评论: 37",
-          "publishedAt": "2026-07-13T23:12:22.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48900191",
-          "author": "1659447091"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48899321",
-          "title": "A Study of Microsoft's Early 2026 Rollout of Claude Code and GitHub Copilot CLI",
-          "titleZh": "对 Microsoft 2026 年初推出的 Claude Code 和 GitHub Copilot CLI 的研究",
-          "link": "https://arxiv.org/abs/2607.01418",
-          "summary": "Article URL: https://arxiv.org/abs/2607.01418\n\n Comments URL: https://news.ycombinator.com/item?id=48899321\n\n Points: 56\n\n # Comments: 35",
-          "summaryZh": "文章网址：https://arxiv.org/abs/2607.01418\n\n 评论网址：https://news.ycombinator.com/item?id=48899321\n\n 积分：56\n\n # 评论: 35",
-          "publishedAt": "2026-07-13T21:43:51.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48899321",
-          "author": "softwaredoug"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48898814",
-          "title": "SalesPatriot (YC W25) Is Hiring Full Stack Engineers (SF)",
-          "titleZh": "SalesPatriot (YC W25) 正在招聘全栈工程师 (SF)",
-          "link": "https://jobs.ashbyhq.com/SalesPatriot/df223727-5781-433e-bc75-2aa5bf8dc8d7",
-          "summary": "Article URL: https://jobs.ashbyhq.com/SalesPatriot/df223727-5781-433e-bc75-2aa5bf8dc8d7\n\n Comments URL: https://news.ycombinator.com/item?id=48898814\n\n Points: 0\n\n # Comments: 0",
-          "summaryZh": "文章网址：https://jobs.ashbyhq.com/SalesPatriot/df223727-5781-433e-bc75-2aa5bf8dc8d7\n\n 评论网址：https://news.ycombinator.com/item?id=48898814\n\n 积分：0\n\n # 评论: 0",
-          "publishedAt": "2026-07-13T21:01:00.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48898814",
-          "author": "maciejSz"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48897975",
-          "title": "Show HN: I implemented a neural network in SQL",
-          "titleZh": "Show HN：我用 SQL 实现了一个神经网络",
-          "link": "https://github.com/xqlsystems/xarray-sql/blob/claude/xarray-sql-mnist-demo/benchmarks/nn.py",
-          "summary": "Two weeks ago I was on my babymoon in Corfu, Greece. While in transit, I was overseeing a GSoC intern submit an important feature to my array database library, Xarray-SQL. He added `to_dataset()`, which completed the roundtrip between thinking of array data in a tabular model simultaneously as gridded rasters (the premise of the project is that every Nd array can be mapped to 2d, where orthogonal dims of the Nd array are just primary keys of a tabular representation). We discussed in chat, now that this feature existed, what demos could we make that would prove this data model works? With down time on a warm beach during a heatwave, cool salty water giving me fresh ideas, I had an idea: what if we used Coiled's Geospatial benchmark discussion as a comprehensive overview of geo and climate queries. Are all of these common operations secretly relational, just with the wrong data model? Using Claude Code on the beach, I can confirm that this seemed to be the case: Claude and I publish a benchmark that illustrated how every common operation in geo and climate sciences (at the 100 TB range) were actually secretly relational operations: https://github.com/xqlsystems/xarray-sql/blob/main/docs/geos... . Most surprisingly of all, from these examples was that a core operation, regridding, was just a sparse matrix-vector product. Claude had pointed out to me that in this data model, matmul was just a `SUM(val * val) ... JOIN .. GROUP BY`. This has a direct parallel to einsum notation, but can be expressed in (arguably) elegant SQL syntax! This capability seemed to be greater than the sum of it's parts. Back in the cool water of the Ionian, I thought about the implications of this more deeply. I reflected that, all of the Coiled benchmarks did, deep down, was _post process_ simulations that happen in numerical/array code. Why couldn't these physics calculations be push down into the database also, if we could so matmul in SQL? Then it hit me: maybe they could, if in addition to linear algebra, if SQL could do calculus! https://bsky.app/profile/al.merose.com/post/3mpbods7wts2y Later on, I implemented autograd on top of DataFusion's visitor pattern based on JAX's implementation. In my simplified array model, it turns out that we only care about partial differentiation on the diagonal of the Jacobian, meaning that `grad()`, `jvp` and `vjp` are just row-wise operations! I then implemented a common physics calculation from the coiled benchmark that required gradients. From here, I realized if I can autograd in the database, why can't I create a neural network? As I came back home, I created some slides, and presented this work to DataFusion's inaugural showcase: https://www.youtube.com/watch?t=1511&v=5o-4hL8vGPw&feature=y... I realized in this synthesis that SQL is not necessarily a toy language for writing neural networks, but in fact, may be highly desirable in the future due to the fundamental principles of relational databases: the logical layer should be independent from the physical layer. If that property holds, and a neural network is a series of relations, could we create a SOTA distributed system for training more easily? For example, if we had one global logical plan of dataflow, could we better distribute work on 1000+ GPUs? Several scientists and engineers and I are working together to explore this weird world of relational arrays at https://xql.systems (discord link at the bottom if you want to get involved).\n\n Comments URL: https://news.ycombinator.com/item?id=48897975\n\n Points: 87\n\n # Comments: 17",
-          "summaryZh": "两周前，我在希腊科孚岛度蜜月。在途中，我正在监督一名 GSoC 实习生向我的阵列数据库 Xarray-SQL 提交一项重要功能。他添加了“to_dataset()”，它完成了将表格模型中的数组数据同时视为网格栅格之间的往返（该项目的前提是每个 Nd 数组都可以映射到 2d，其中 Nd 数组的正交维度只是表格表示的主键）。我们在聊天中讨论过，既然这个功能已经存在，我们可以做哪些演示来证明这个数据模型是有效的？在热浪期间在温暖的海滩上休息一段时间，凉爽的咸水给了我新的想法，我有了一个想法：如果我们使用 Coiled 的地理空间基准讨论作为地理和气候查询的全面概述会怎么样。所有这些常见操作是否都秘密相关，只是使用了错误的数据模型？在海滩上使用 Claude Code，我可以确认情况似乎是这样：Claude 和我发布了一个基准，说明了地理和气候科学中的每个常见操作（在 100 TB 范围内）实际上是秘密关系操作：https://github.com/xqlsystems/xarray-sql/blob/main/docs/geos...。最令人惊讶的是，从这些示例来看，核心操作（重新网格化）只是稀疏矩阵向量乘积。 Claude 向我指出，在这个数据模型中，matmul 只是一个“SUM(val * val) ... JOIN .. GROUP BY”。这与 einsum 表示法直接平行，但可以用（可以说）优雅的 SQL 语法来表达！这种能力似乎大于其各个部分的总和。回到爱奥尼亚河的清凉水中，我更深入地思考了这一点的含义。我反映，所有 Coiled 基准测试在本质上都是在数字/数组代码中进行的_后处理_模拟。如果我们可以在 SQL 中进行 matmul 运算，为什么不能将这些物理计算也推入数据库呢？然后我突然想到：也许他们可以，如果除了线性代数之外，如果 SQL 还可以做微积分！ https://bsky.app/profile/al.merose.com/post/3mpbods7wts2y 后来，我在基于 JAX 实现的 DataFusion 访问者模式之上实现了 autograd。在我的简化数组模型中，事实证明我们只关心雅可比行列式对角线上的偏微分，这意味着“grad()”、“jvp”和“vjp”只是逐行运算！然后，我根据需要梯度的卷绕基准实现了常见的物理计算。从",
-          "publishedAt": "2026-07-13T20:00:10.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48897975",
-          "author": "alxmrs"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48897329",
-          "title": "TFTP Honey Pot Results",
-          "titleZh": "TFTP 蜜罐结果",
-          "link": "https://bruceediger.com/posts/tftp-honeypot-results/",
-          "summary": "Article URL: https://bruceediger.com/posts/tftp-honeypot-results/\n\n Comments URL: https://news.ycombinator.com/item?id=48897329\n\n Points: 79\n\n # Comments: 34",
-          "summaryZh": "文章网址：https://bruceediger.com/posts/tftp-honeypot-results/\n\n 评论网址：https://news.ycombinator.com/item?id=48897329\n\n 积分：79\n\n # 评论: 34",
-          "publishedAt": "2026-07-13T19:11:17.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48897329",
-          "author": "speckx"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48897104",
-          "title": "The infinite scroll may become endangered if controversial Calif. law passes",
-          "titleZh": "如果有争议的加州法律通过，无限卷轴可能会受到威胁",
-          "link": "https://www.sfgate.com/politics/article/meta-social-media-teenagers-22337724.php",
-          "summary": "Article URL: https://www.sfgate.com/politics/article/meta-social-media-teenagers-22337724.php\n\n Comments URL: https://news.ycombinator.com/item?id=48897104\n\n Points: 148\n\n # Comments: 260",
-          "summaryZh": "文章网址：https://www.sfgate.com/politics/article/meta-social-media-teenagers-22337724.php\n\n 评论网址：https://news.ycombinator.com/item?id=48897104\n\n 积分：148\n\n # 评论：260",
-          "publishedAt": "2026-07-13T18:53:53.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48897104",
-          "author": "Stratoscope"
-        }
-      ]
+      "fetchedAt": "2026-07-14T13:20:52.632Z",
+      "count": 0,
+      "items": [],
+      "error": "fetch failed"
     },
     {
       "id": "arxiv-cs-ai",
@@ -248,7 +33,7 @@
       "url": "https://rss.arxiv.org/rss/cs.AI",
       "home": "https://arxiv.org/list/cs.AI/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-07-14T07:53:01.500Z",
+      "fetchedAt": "2026-07-14T13:20:53.261Z",
       "count": 15,
       "items": [
         {
@@ -268,7 +53,7 @@
           "titleZh": "格式敏感性指数：LLM 基准测试中令牌控制的提示包装器稳健性和模式合规性",
           "link": "https://arxiv.org/abs/2607.09665",
           "summary": "arXiv:2607.09665v1 Announce Type: new\nAbstract: Prompt wrappers often differ only in formatting, yet they can change model scores enough to flip leaderboard conclusions. We study this variance under a token-controlled protocol and introduce two complementary metrics: the Format Sensitivity Index (FSI), the accuracy range induced by wrapper choice, and the Parseability Sensitivity Index (PSI), the corresponding range in answer parseability. Across 140,000 OpenRouter generations spanning 7 QA tasks, 5 wrapper families, and 4 instruct models from 7B to 72B parameters, we find that mean FSI varies by over 30x across models and is largely explained by compliance failures. A fixed-effects regression shows that parseability remains a strong predictor of accuracy even after controlling for task, model, and wrapper. We argue that reporting accuracy without wrapper variance and compliance is statistically fragile, and we give practical recommendations for both benchmarking and structured-output deployments.",
-          "summaryZh": "arXiv:2607.09665v1 公告类型：新\n摘要：提示包装器通常仅在格式上有所不同，但它们可以改变模型分数足以推翻排行榜结论。我们在令牌控制协议下研究这种方差，并引入两个补充指标：格式敏感度指数（FSI）（由包装器选择引起的准确度范围）和可解析性敏感度指数（PSI）（答案可解析性的相应范围）。在涵盖 7 个 QA 任务、5 个包装器系列和 4 个从 7B 到 72B 参数的指令模型的 140,000 个 OpenRouter 代中，我们发现模型之间的平均 FSI 变化超过 30 倍，这在很大程度上是由合规性失败造成的。固定效应回归表明，即使在控制任务、模型和包装器之后，可解析性仍然是准确度的有力预测因素。我们认为，没有包装器方差和合规性的报告准确性在统计上是脆弱的，并且我们为基准测试和结构化输出部署提供了实用的建议。",
+          "summaryZh": "arXiv:2607.09665v1 公告类型：新\n摘要：提示包装器通常仅在格式上有所不同，但它们可以改变模型分数足以推翻排行榜结论。我们在令牌控制协议下研究这种方差，并引入两个互补的指标：格式敏感度指数（FSI）（由包装器选择引起的准确度范围）和可解析性敏感度指数（PSI）（答案可解析性的相应范围）。在跨越 7 个 QA 任务、5 个包装器系列和 4 个从 7B 到 72B 参数的指令模型的 140,000 个 OpenRouter 代中，我们发现模型之间的平均 FSI 变化超过 30 倍，这在很大程度上是由合规性失败造成的。固定效应回归表明，即使在控制任务、模型和包装器之后，可解析性仍然是准确度的有力预测因素。我们认为，没有包装器方差和合规性的报告准确性在统计上是脆弱的，并且我们为基准测试和结构化输出部署提供了实用的建议。",
           "publishedAt": "2026-07-14T04:00:00.000Z",
           "comments": null,
           "author": "Deep Pankajbhai Mehta"
@@ -301,7 +86,7 @@
           "titleZh": "将潜在 CoT 推理解释为动态系统",
           "link": "https://arxiv.org/abs/2607.09698",
           "summary": "arXiv:2607.09698v1 Announce Type: new\nAbstract: Recent latent reasoning methods, such as CODI and COCONUT, face a fundamental interpretability problem: they maintain multiple superimposed candidate traces in the hidden space at each step, unlike explicit- CoT, which follows a single transparent reasoning trace. Existing mechanistic methods show compression, shortcuts, and superposition without explaining how reasoning evolves across latent steps. To address this gap, we model latent token sequences as trajectories in representation space and apply dynamical systems analysis to characterize the evolution of reasoning. Using quantitative measures, such as step-to-step change, direction consistency, and Lyapunov sensitivity, alongside qualitative projections, such as UMAP and DMD/PHATE, we show that latent CoT exhibits structured, non-random dynamics with two distinct stability classes. CODI behaves as a stable attractor, while COCONUT behaves as an unstable expanding system, and SIM-CoT supervision tightens both behaviors without changing the underlying dynamics. This framework advances the interpretability of latent CoT reasoning dynamics and provides actionable insights for improving latent reasoning performance. Code1 and Project page2 available online.",
-          "summaryZh": "arXiv:2607.09698v1 公告类型：新\n摘要：最近的潜在推理方法，例如 CODI 和 COCONUT，面临着一个基本的可解释性问题：它们在每一步的隐藏空间中维护多个叠加的候选轨迹，这与遵循单个透明推理轨迹的显式 CoT 不同。现有的机械方法显示了压缩、捷径和叠加，但没有解释推理如何跨潜在步骤演变。为了解决这一差距，我们将潜在标记序列建模为表示空间中的轨迹，并应用动态系统分析来表征推理的演化。使用定量测量（例如逐步变化、方向一致性和 Lyapunov 灵敏度）以及定性预测（例如 UMAP 和 DMD/PHATE），我们表明潜在 CoT 表现出结构化、非随机动态，具有两个不同的稳定性类别。 CODI 表现为稳定的吸引子，而 COCONUT 表现为不稳定的扩展系统，SIM-CoT 监督在不改变潜在动态的情况下收紧了这两种行为。该框架提高了潜在 CoT 推理动态的可解释性，并为提高潜在推理性能提供了可行的见解。代码 1 和项目页面 2 可在线获取。",
+          "summaryZh": "arXiv:2607.09698v1 公告类型：新\n摘要：最近的潜在推理方法，例如 CODI 和 COCONUT，面临着一个基本的可解释性问题：它们在每一步的隐藏空间中维护多个叠加的候选轨迹，这与遵循单个透明推理轨迹的显式 CoT 不同。现有的机械方法显示了压缩、捷径和叠加，但没有解释推理如何跨潜在步骤演化。为了解决这一差距，我们将潜在标记序列建模为表示空间中的轨迹，并应用动态系统分析来表征推理的演化。使用定量测量（例如逐步变化、方向一致性和 Lyapunov 灵敏度）以及定性预测（例如 UMAP 和 DMD/PHATE），我们表明潜在 CoT 表现出结构化、非随机动态，具有两个不同的稳定性类别。 CODI 表现为稳定的吸引子，而 COCONUT 表现为不稳定的扩展系统，SIM-CoT 监督在不改变潜在动态的情况下收紧了这两种行为。该框架提高了潜在 CoT 推理动态的可解释性，并为提高潜在推理性能提供了可行的见解。代码 1 和项目页面 2 可在线获取。",
           "publishedAt": "2026-07-14T04:00:00.000Z",
           "comments": null,
           "author": "Sabari Iyyappan Duraipandian, Shreya Sanjay Boyane, Manju Nagesh, Jerome Francis, Archana Vaidheeswaran, Kevin Zhu"
@@ -345,7 +130,7 @@
           "titleZh": "具有规则对齐小语言模型和多代理自校正的闭环控制",
           "link": "https://arxiv.org/abs/2607.09713",
           "summary": "arXiv:2607.09713v1 Announce Type: new\nAbstract: A key step toward autonomous industrial operation is the ability to create and reconfigure control policies from natural-language requirement specifications, with minimal or no manual redesign. In this setting, policy generation by AI agents can be a credible path when paired with a plant-aware validator (e.g., a digital twin) that can check generated candidate actions before execution. However, practical deployment is constrained by inference latency and compute footprint: large cloud-based models are often too slow, opaque, or data-sensitive for edge closed-loop use. This work investigates whether a compact Small Language Model (SLM) can be retrained for control reasoning and embedded in a validator-guided correction loop. We use a Qwen2.5-1.5B model aligned via Group Relative Policy Optimization (GRPO), combined with (i) an action agent, (ii) a symbolic/digital-twin-style validation layer, and (iii) a reprompting agent that iteratively steers outputs toward valid actions. In randomized thermal-control simulations (30 experiments with 500 steps each), the framework achieves 91.5% average action-alignment accuracy (86.3%--100% across cases) at 3.84\\,s mean inference latency. Under symbolic re-mapping, it maintains a 95% in-range rate, indicating robust physical regulation despite reduced token-level agreement. These results support SLM+validator architectures as a practical path toward reconfigurable autonomous control at the edge.",
-          "summaryZh": "arXiv:2607.09713v1 公告类型：新\n摘要：实现自主工业运营的关键一步是能够根据自然语言需求规范创建和重新配置控制策略，而无需或很少进行手动重新设计。在这种情况下，人工智能代理生成的策略与植物感知验证器（例如数字孪生）配合使用可以成为可靠的路径，该验证器可以在执行之前检查生成的候选操作。然而，实际部署受到推理延迟和计算占用的限制：基于云的大型模型对于边缘闭环使用通常太慢、不透明或数据敏感。这项工作研究了是否可以重新训练紧凑的小语言模型（SLM）以进行控制推理并嵌入到验证器引导的校正循环中。我们使用通过组相对策略优化 (GRPO) 对齐的 Qwen2.5-1.5B 模型，并结合 (i) 动作代理、(ii) 符号/数字孪生式验证层和 (iii) 迭代引导输出走向有效操作的重新提示代理。在随机热控制模拟（30 个实验，每个实验 500 个步骤）中，该框架在 3.84 秒的平均推理延迟下实现了 91.5% 的平均动作对齐精度（在不同情况下为 86.3%--100%）。在符号重新映射下，它保持了 95% 的范围内比率，表明尽管代币级别协议减少，但物理监管仍然强劲。这些结果支持 SLM+验证器架构作为实现边缘可重构自主控制的实用路径。",
+          "summaryZh": "arXiv:2607.09713v1 公告类型：新\n摘要：实现自主工业运营的关键一步是能够根据自然语言需求规范创建和重新配置控制策略，而无需或很少进行手动重新设计。在这种情况下，人工智能代理生成的策略与植物感知验证器（例如数字孪生）配合使用可以成为可靠的路径，该验证器可以在执行之前检查生成的候选操作。然而，实际部署受到推理延迟和计算占用的限制：基于云的大型模型对于边缘闭环使用通常太慢、不透明或数据敏感。这项工作研究了是否可以重新训练紧凑的小语言模型（SLM）以进行控制推理并嵌入到验证器引导的校正循环中。我们使用通过组相对策略优化 (GRPO) 对齐的 Qwen2.5-1.5B 模型，并结合 (i) 动作代理、(ii) 符号/数字孪生式验证层和 (iii) 迭代引导输出走向有效操作的重新提示代理。在随机热控制模拟（30 个实验，每个实验 500 个步骤）中，该框架在 3.84 秒的平均推理延迟下实现了 91.5% 的平均动作对齐精度（在不同情况下为 86.3%--100%）。在符号重新映射下，它保持了 95% 的范围内比率，这表明尽管代币级别协议减少，但物理监管依然强劲。这些结果支持 SLM+验证器架构作为实现边缘可重构自主控制的实用路径。",
           "publishedAt": "2026-07-14T04:00:00.000Z",
           "comments": null,
           "author": "Yuchen Wang, Javal Vyas, Tong Liu, Mehmet Mercangoz"
@@ -424,7 +209,7 @@
       "url": "https://rss.arxiv.org/rss/cs.LG",
       "home": "https://arxiv.org/list/cs.LG/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-07-14T07:53:01.943Z",
+      "fetchedAt": "2026-07-14T13:20:53.702Z",
       "count": 15,
       "items": [
         {
@@ -576,7 +361,7 @@
           "titleZh": "安全响应很重要：输出感知安全护栏可减少 MLLM 中的过度拒绝",
           "link": "https://arxiv.org/abs/2607.09697",
           "summary": "arXiv:2607.09697v1 Announce Type: new\nAbstract: Existing safety mechanisms for multimodal large language models (MLLMs) face a fundamental trade-off between safety and utility. Model fine-tuning achieves robust safety but compromises general utility. Input-side safety guardrails offer a lightweight alternative, yet they suffer from severe over-refusal, indiscriminately blocking benign queries or those the model could have safely answered through refusal or advisory responses. We identify that the root cause of over-refusal lies in the input-aware paradigm: safety guardrails make safety decisions without considering whether the model itself is capable of generating safe responses. Usually, MLLMs already possess intrinsic safety mechanisms that can transform harmful inputs into harmless outputs, but input-side safety guardrails override this capability, degrading user experience. Motivated by this insight, we propose a paradigm shift toward output-aware safety guardrails. Our method operates within the model's hidden state space to predict whether the forthcoming generation will be unsafe before it is fully produced. By training a lightweight classifier via multi-instance contrastive learning on hidden state representations, our approach distinguishes between inputs that will lead to unsafe outputs and those that will not, even when the inputs themselves contain risky elements. This enables precise intervention only when the model's actual response would be harmful. Extensive experiments demonstrate that our output-aware safety guardrail matches the safety performance of existing methods while drastically reducing over-refusal, preserving the model's utility and built-in safety capabilities. Code is available at: https://github.com/kunzhan/OutGuard",
-          "summaryZh": "arXiv:2607.09697v1 公告类型：新\n摘要：多模态大语言模型（MLLM）的现有安全机制面临安全性和实用性之间的基本权衡。模型微调实现了强大的安全性，但牺牲了通用性。输入端安全护栏提供了一种轻量级的替代方案，但它们遭受严重的过度拒绝、不加区别地阻止良性查询或模型可以通过拒绝或咨询响应安全回答的问题。我们发现过度拒绝的根本原因在于输入感知范式：安全护栏在不考虑模型本身是否能够生成安全响应的情况下做出安全决策。通常，MLLM 已经拥有本质安全机制，可以将有害输入转化为无害输出，但输入侧安全护栏会覆盖此功能，从而降低用户体验。受这种洞察力的启发，我们提出了向输出感知安全护栏的范式转变。我们的方法在模型的隐藏状态空间内运行，以预测即将到来的一代在完全生产之前是否不安全。通过对隐藏状态表示进行多实例对比学习来训练轻量级分类器，我们的方法可以区分会导致不安全输出的输入和不会导致不安全输出的输入，即使输入本身包含风险元素。只有当模型的实际响应有害时，才能进行精确干预。大量的实验表明，我们的输出感知安全护栏与现有方法的安全性能相匹配，同时大大减少了过度拒绝，保留了模型的实用性和内置安全功能。代码位于：https://github.com/kunzhan/OutGuard",
+          "summaryZh": "arXiv:2607.09697v1 公告类型：新\n摘要：多模态大语言模型（MLLM）的现有安全机制面临安全性和实用性之间的基本权衡。模型微调实现了强大的安全性，但牺牲了通用性。输入端安全护栏提供了一种轻量级的替代方案，但它们遭受严重的过度拒绝、不加区别地阻止良性查询或模型可以通过拒绝或咨询响应安全回答的查询。我们发现过度拒绝的根本原因在于输入感知范式：安全护栏在不考虑模型本身是否能够生成安全响应的情况下做出安全决策。通常，MLLM 已经拥有本质安全机制，可以将有害输入转化为无害输出，但输入侧安全护栏会覆盖此功能，从而降低用户体验。受这种洞察力的启发，我们提出了向输出感知安全护栏的范式转变。我们的方法在模型的隐藏状态空间内运行，以预测即将到来的一代在完全生产之前是否不安全。通过对隐藏状态表示进行多实例对比学习来训练轻量级分类器，我们的方法可以区分会导致不安全输出的输入和不会导致不安全输出的输入，即使输入本身包含风险元素。只有当模型的实际响应有害时，才能进行精确干预。大量的实验表明，我们的输出感知安全护栏与现有方法的安全性能相匹配，同时大大减少了过度拒绝，保留了模型的实用性和内置安全功能。代码位于：https://github.com/kunzhan/OutGuard",
           "publishedAt": "2026-07-14T04:00:00.000Z",
           "comments": null,
           "author": "Jiayi Li, Kun Zhan"
