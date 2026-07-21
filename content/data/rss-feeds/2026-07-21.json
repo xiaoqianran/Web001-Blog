@@ -1,7 +1,7 @@
 {
   "source": "content/feeds.json",
   "attribution": "Aggregated headlines/summaries from third-party RSS/Atom feeds for navigation only. All rights belong to original publishers and authors. Chinese text is machine-translated.",
-  "fetchedAt": "2026-07-21T08:16:50.827Z",
+  "fetchedAt": "2026-07-21T13:26:10.681Z",
   "date": "2026-07-21",
   "feedCount": 3,
   "itemCount": 50,
@@ -17,49 +17,60 @@
       "url": "https://hnrss.org/frontpage",
       "home": "https://news.ycombinator.com/",
       "group": "community",
-      "fetchedAt": "2026-07-21T08:16:17.545Z",
+      "fetchedAt": "2026-07-21T13:25:42.654Z",
       "count": 20,
       "items": [
         {
-          "id": "https://news.ycombinator.com/item?id=48988793",
-          "title": "Linux kernel will support $ORIGIN, sort of",
-          "titleZh": "Linux 内核将支持 $ORIGIN 之类的",
-          "link": "https://fzakaria.com/2026/07/20/linux-kernel-will-support-origin-sort-of",
-          "summary": "Article URL: https://fzakaria.com/2026/07/20/linux-kernel-will-support-origin-sort-of\n\n Comments URL: https://news.ycombinator.com/item?id=48988793\n\n Points: 15\n\n # Comments: 7",
-          "summaryZh": "文章网址：https://fzakaria.com/2026/07/20/linux-kernel-will-support-origin-sort-of\n\n 评论网址：https://news.ycombinator.com/item?id=48988793\n\n 积分：15\n\n # 评论: 7",
-          "publishedAt": "2026-07-21T06:29:22.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48988793",
-          "author": "ingve"
+          "id": "https://news.ycombinator.com/item?id=48991815",
+          "title": "The Great Steam Deck Crash of 2026: How the New Pricing Decreased Demand by 80%",
+          "titleZh": "2026 年 Steam Deck 大崩盘：新定价如何使需求减少 80%",
+          "link": "https://boilingsteam.com/the-great-steam-deck-volume-crash/",
+          "summary": "Article URL: https://boilingsteam.com/the-great-steam-deck-volume-crash/\n\n Comments URL: https://news.ycombinator.com/item?id=48991815\n\n Points: 6\n\n # Comments: 0",
+          "summaryZh": "文章网址：https://boilingsteam.com/the-great-steam-deck-volume-crash/\n\n 评论网址：https://news.ycombinator.com/item?id=48991815\n\n 积分：6\n\n # 评论: 0",
+          "publishedAt": "2026-07-21T13:05:28.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48991815",
+          "author": "ekianjo"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48991139",
+          "title": "New US homeownership measure puts people first",
+          "titleZh": "美国新住房拥有率措施以人为本",
+          "link": "https://www.minneapolisfed.org/article/2026/new-homeownership-measure-puts-people-first",
+          "summary": "Article URL: https://www.minneapolisfed.org/article/2026/new-homeownership-measure-puts-people-first\n\n Comments URL: https://news.ycombinator.com/item?id=48991139\n\n Points: 79\n\n # Comments: 56",
+          "summaryZh": "文章网址：https://www.minneapolisfed.org/article/2026/new-homeownership-measure-puts-people-first\n\n 评论网址：https://news.ycombinator.com/item?id=48991139\n\n 积分：79\n\n # 评论: 56",
+          "publishedAt": "2026-07-21T12:03:14.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48991139",
+          "author": "throw0101a"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=48989701",
+          "title": "Qwen-Image-3.0: Rich Content, Authentic Details, Deep Knowledge",
+          "titleZh": "Qwen-Image-3.0：内容丰富、细节真实、知识渊博",
+          "link": "https://qwen.ai/blog?id=qwen-image-3.0",
+          "summary": "Article URL: https://qwen.ai/blog?id=qwen-image-3.0\n\n Comments URL: https://news.ycombinator.com/item?id=48989701\n\n Points: 268\n\n # Comments: 122",
+          "summaryZh": "文章网址：https://qwen.ai/blog?id=qwen-image-3.0\n\n 评论网址：https://news.ycombinator.com/item?id=48989701\n\n 积分：268\n\n # 评论: 122",
+          "publishedAt": "2026-07-21T08:44:23.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48989701",
+          "author": "ilreb"
         },
         {
           "id": "https://news.ycombinator.com/item?id=48988158",
           "title": "Show HN: Ex Situ – Open-source spatial index of displaced cultural artifacts",
           "titleZh": "Show HN：Ex Situ – 流离失所的文物的开源空间索引",
           "link": "https://exsitu.app/map",
-          "summary": "Hi, I designed and developed a spatial index that maps museum artefacts as connecting arcs/hyperlinks from their origin site to institutional location/sources. The Index specifically looks at western/euro-american institutions and maps their collection categorised by them under Islamic art, Asian/African art, ethnological collections, Middle East, South America etc. Started as my MA thesis in 2022, kept building since, mostly solo with a little funding. Fully open source, self-hosted, AGPL-3.0, Next.js + Deck.gl on the frontend, Strapi backend, Python ETL pulling from museum open-access APIs. Currently indexing over 100k artifacts from all over the world, across 8 collections (Met, V&A, SMB Berlin). Recently added an md export so researchers can download provenance data for a filtered set of artifacts. The infrastructure is conceptualized as an indexer, not a hoster. Even images are kept as URLs pointing to the source institutions. It's connective tissue between archives that were never designed to speak to each other, with an origin-first search UI concept. The data model is on purpose flat, to avoid encoding problematic taxonomies, and routes researchers directly to the source giving responsibility to the source institutions rather than duplicating institutional data. It indexes the relationship between origin sites and destination collections. Coming from a design background, taking this project from prototype to production app has been incredibly rewarding, but honestly it’s getting a little bit overwhelming to scale alone. I would love community’s feedback on performance scaling, any code contributions, data pipelines for missing museum apis or general feedback. Repo: https://github.com/hburakyel/ex-situ Live: https://exsitu.app\n\n Comments URL: https://news.ycombinator.com/item?id=48988158\n\n Points: 24\n\n # Comments: 11",
-          "summaryZh": "您好，我设计并开发了一个空间索引，将博物馆文物映射为从原点到机构位置/来源的连接弧/超链接。该指数专门关注西方/欧美机构，并将其收藏按伊斯兰艺术、亚洲/非洲艺术、民族学收藏、中东、南美等分类。该指数于 2022 年作为我的硕士论文开始，此后一直在不断完善，大部分都是靠少量资金独立完成的。完全开源、自托管、前端 AGPL-3.0、Next.js + Deck.gl、Strapi 后端、从博物馆开放访问 API 提取的 Python ETL。目前正在对来自世界各地 8 个馆藏（Met、V&A、SMB Berlin）的 10 万多件文物进行索引。最近添加了 md 导出，以便研究人员可以下载一组经过过滤的工件的来源数据。该基础设施被概念化为索引器，而不是主机。甚至图像也被保留为指向来源机构的 URL。它是档案之间的结缔组织，从未被设计为相互通信，具有起源优先的搜索 UI 概念。数据模型故意采用扁平化，以避免编码有问题的分类法，并将研究人员直接引导至源头，将责任交给源机构，而不是重复机构数据。它索引源站点和目标集合之间的关系。来自设计背景，将这个项目从原型转变为生产应用程序是非常有意义的，但说实话，单独扩展有点让人难以承受。我希望社区能够提供有关性能扩展、任何代码贡献、缺少博物馆 API 的数据管道或一般反馈的反馈。仓库：https://github.com/hburakyel/ex-situ 直播：https://exsitu.app\n\n 评论网址：https://news.ycombinator.com/item?id=48988158\n\n 积分：24\n\n # 评论: 11",
+          "summary": "Hi, I designed and developed a spatial index that maps museum artefacts as connecting arcs/hyperlinks from their origin site to institutional location/sources. The Index specifically looks at western/euro-american institutions and maps their collection categorised by them under Islamic art, Asian/African art, ethnological collections, Middle East, South America etc. Started as my MA thesis in 2022, kept building since, mostly solo with a little funding. Fully open source, self-hosted, AGPL-3.0, Next.js + Deck.gl on the frontend, Strapi backend, Python ETL pulling from museum open-access APIs. Currently indexing over 100k artifacts from all over the world, across 8 collections (Met, V&A, SMB Berlin). Recently added an md export so researchers can download provenance data for a filtered set of artifacts. The infrastructure is conceptualized as an indexer, not a hoster. Even images are kept as URLs pointing to the source institutions. It's connective tissue between archives that were never designed to speak to each other, with an origin-first search UI concept. The data model is on purpose flat, to avoid encoding problematic taxonomies, and routes researchers directly to the source giving responsibility to the source institutions rather than duplicating institutional data. It indexes the relationship between origin sites and destination collections. Coming from a design background, taking this project from prototype to production app has been incredibly rewarding, but honestly it’s getting a little bit overwhelming to scale alone. I would love community’s feedback on performance scaling, any code contributions, data pipelines for missing museum apis or general feedback. Repo: https://github.com/hburakyel/ex-situ Live: https://exsitu.app\n\n Comments URL: https://news.ycombinator.com/item?id=48988158\n\n Points: 43\n\n # Comments: 26",
+          "summaryZh": "您好，我设计并开发了一个空间索引，将博物馆文物映射为从原点到机构位置/来源的连接弧/超链接。该指数专门关注西方/欧美机构，并将其收藏按伊斯兰艺术、亚洲/非洲艺术、民族学收藏、中东、南美等分类。该指数于 2022 年作为我的硕士论文开始，此后一直在不断完善，大部分都是靠少量资金独立完成的。完全开源、自托管、前端 AGPL-3.0、Next.js + Deck.gl、Strapi 后端、从博物馆开放访问 API 提取的 Python ETL。目前正在对来自世界各地 8 个馆藏（Met、V&A、SMB Berlin）的 10 万多件文物进行索引。最近添加了 md 导出，以便研究人员可以下载一组经过过滤的工件的来源数据。该基础设施被概念化为索引器，而不是主机。甚至图像也被保留为指向来源机构的 URL。它是档案之间的结缔组织，从未被设计为相互通信，具有起源优先的搜索 UI 概念。数据模型故意采用扁平化，以避免编码有问题的分类法，并将研究人员直接引导至源头，将责任交给源机构，而不是重复机构数据。它索引源站点和目标集合之间的关系。来自设计背景，将这个项目从原型转变为生产应用程序是非常有意义的，但说实话，单独扩展有点让人难以承受。我希望社区能够提供有关性能扩展、任何代码贡献、缺少博物馆 API 的数据管道或一般反馈的反馈。仓库：https://github.com/hburakyel/ex-situ 直播：https://exsitu.app\n\n 评论网址：https://news.ycombinator.com/item?id=48988158\n\n 积分：43\n\n # 评论: 26",
           "publishedAt": "2026-07-21T04:48:32.000Z",
           "comments": "https://news.ycombinator.com/item?id=48988158",
           "author": "hbyel"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48987863",
-          "title": "Five US tech giants' hidden debts soar to $1.65T on opaque AI funding",
-          "titleZh": "由于人工智能融资不透明，美国五家科技巨头的隐性债务飙升至 1.65 吨",
-          "link": "https://asia.nikkei.com/business/technology/five-us-tech-giants-hidden-debts-soar-to-1.65tn-on-opaque-ai-funding",
-          "summary": "Article URL: https://asia.nikkei.com/business/technology/five-us-tech-giants-hidden-debts-soar-to-1.65tn-on-opaque-ai-funding\n\n Comments URL: https://news.ycombinator.com/item?id=48987863\n\n Points: 240\n\n # Comments: 112",
-          "summaryZh": "文章网址：https://asia.nikkei.com/business/technology/ Five-us-tech-giants-hidden-debts-soar-to-1.65tn-on-opaque-ai-funding\n\n 评论网址：https://news.ycombinator.com/item?id=48987863\n\n 积分：240\n\n # 评论: 112",
-          "publishedAt": "2026-07-21T03:56:03.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48987863",
-          "author": "NordStreamYacht"
         },
         {
           "id": "https://news.ycombinator.com/item?id=48987846",
           "title": "Running Doom on Our Custom CPU and Going Viral",
           "titleZh": "在我们的定制 CPU 上运行 Doom 并迅速走红",
           "link": "https://www.armaangomes.com/blogs/doom/",
-          "summary": "Article URL: https://www.armaangomes.com/blogs/doom/\n\n Comments URL: https://news.ycombinator.com/item?id=48987846\n\n Points: 52\n\n # Comments: 9",
-          "summaryZh": "文章网址：https://www.armaangomes.com/blogs/doom/\n\n 评论网址：https://news.ycombinator.com/item?id=48987846\n\n 积分：52\n\n # 评论: 9",
+          "summary": "Article URL: https://www.armaangomes.com/blogs/doom/\n\n Comments URL: https://news.ycombinator.com/item?id=48987846\n\n Points: 98\n\n # Comments: 21",
+          "summaryZh": "文章网址：https://www.armaangomes.com/blogs/doom/\n\n 评论网址：https://news.ycombinator.com/item?id=48987846\n\n 积分：98\n\n # 评论: 21",
           "publishedAt": "2026-07-21T03:54:16.000Z",
           "comments": "https://news.ycombinator.com/item?id=48987846",
           "author": "arghunter"
@@ -69,8 +80,8 @@
           "title": "A Koi Pond Mosaic Made from 10 Pounds of 3D Printer Waste",
           "titleZh": "由 10 磅 3D 打印机废料制成的锦鲤池马赛克",
           "link": "https://www.instructables.com/A-Koi-Pond-Mosaic-Made-From-10-Pounds-of-3D-Printe/",
-          "summary": "Article URL: https://www.instructables.com/A-Koi-Pond-Mosaic-Made-From-10-Pounds-of-3D-Printe/\n\n Comments URL: https://news.ycombinator.com/item?id=48987831\n\n Points: 28\n\n # Comments: 21",
-          "summaryZh": "文章网址：https://www.instructables.com/A-Koi-Pond-Mosaic-Made-From-10-Pounds-of-3D-Printe/\n\n 评论网址：https://news.ycombinator.com/item?id=48987831\n\n 积分：28\n\n # 评论: 21",
+          "summary": "Article URL: https://www.instructables.com/A-Koi-Pond-Mosaic-Made-From-10-Pounds-of-3D-Printe/\n\n Comments URL: https://news.ycombinator.com/item?id=48987831\n\n Points: 49\n\n # Comments: 38",
+          "summaryZh": "文章网址：https://www.instructables.com/A-Koi-Pond-Mosaic-Made-From-10-Pounds-of-3D-Printe/\n\n 评论网址：https://news.ycombinator.com/item?id=48987831\n\n 积分：49\n\n # 评论: 38",
           "publishedAt": "2026-07-21T03:52:05.000Z",
           "comments": "https://news.ycombinator.com/item?id=48987831",
           "author": "sudo_cowsay"
@@ -80,8 +91,8 @@
           "title": "Incremental – A library for incremental computations",
           "titleZh": "Incremental – 用于增量计算的库",
           "link": "https://github.com/janestreet/incremental",
-          "summary": "Article URL: https://github.com/janestreet/incremental\n\n Comments URL: https://news.ycombinator.com/item?id=48987822\n\n Points: 146\n\n # Comments: 22",
-          "summaryZh": "文章网址：https://github.com/janestreet/incremental\n\n 评论网址：https://news.ycombinator.com/item?id=48987822\n\n 积分：146\n\n # 评论: 22",
+          "summary": "Article URL: https://github.com/janestreet/incremental\n\n Comments URL: https://news.ycombinator.com/item?id=48987822\n\n Points: 264\n\n # Comments: 51",
+          "summaryZh": "文章网址：https://github.com/janestreet/incremental\n\n 评论网址：https://news.ycombinator.com/item?id=48987822\n\n 积分：264\n\n # 评论: 51",
           "publishedAt": "2026-07-21T03:50:53.000Z",
           "comments": "https://news.ycombinator.com/item?id=48987822",
           "author": "handfuloflight"
@@ -91,30 +102,19 @@
           "title": "VTubing: How a Japanese Phenomenon Is Going Worldwide",
           "titleZh": "VTubing：日本现象如何走向世界",
           "link": "https://www.tokyodev.com/articles/vtubing-how-a-japanese-phenomenon-is-going-worldwide",
-          "summary": "Article URL: https://www.tokyodev.com/articles/vtubing-how-a-japanese-phenomenon-is-going-worldwide\n\n Comments URL: https://news.ycombinator.com/item?id=48987775\n\n Points: 12\n\n # Comments: 0",
-          "summaryZh": "文章网址：https://www.tokyodev.com/articles/vtubing-how-a-japanese-phenomenon-is-going-worldwide\n\n 评论网址：https://news.ycombinator.com/item?id=48987775\n\n 积分：12\n\n # 评论: 0",
+          "summary": "Article URL: https://www.tokyodev.com/articles/vtubing-how-a-japanese-phenomenon-is-going-worldwide\n\n Comments URL: https://news.ycombinator.com/item?id=48987775\n\n Points: 59\n\n # Comments: 43",
+          "summaryZh": "文章网址：https://www.tokyodev.com/articles/vtubing-how-a-japanese-phenomenon-is-going-worldwide\n\n 评论网址：https://news.ycombinator.com/item?id=48987775\n\n 积分：59\n\n # 评论: 43",
           "publishedAt": "2026-07-21T03:42:47.000Z",
           "comments": "https://news.ycombinator.com/item?id=48987775",
           "author": "pwim"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=48986731",
-          "title": "Flock Credibility Lost as It Repeatedly Lies to City Councils, Police, & Public",
-          "titleZh": "多次向市议会、警察和公众撒谎，导致信誉丧失",
-          "link": "https://www.aclu.org/news/privacy-technology/tracking-alpr-cameras/flock-safety-credibility-lost-as-it-repeatedly-lies-to-city-councils-police-departments-and-public-across-the-country",
-          "summary": "Article URL: https://www.aclu.org/news/privacy-technology/tracking-alpr-cameras/flock-safety-credibility-lost-as-it-repeatedly-lies-to-city-councils-police-departments-and-public-across-the-country\n\n Comments URL: https://news.ycombinator.com/item?id=48986731\n\n Points: 369\n\n # Comments: 97",
-          "summaryZh": "文章网址：https://www.aclu.org/news/privacy-technology/tracking-alpr-cameras/flock-safety-credibility-lost-as-it-repeatedly-lies-to-city-councils-police-departments-and-public-across-the-country\n\n 评论网址：https://news.ycombinator.com/item?id=48986731\n\n 积分：369\n\n #评论：97",
-          "publishedAt": "2026-07-21T00:33:53.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48986731",
-          "author": "StatsAreFun"
         },
         {
           "id": "https://news.ycombinator.com/item?id=48986091",
           "title": "Jellyfin founder Andrew leaves team",
           "titleZh": "Jellyfin 创始人 Andrew 离开团队",
           "link": "https://forum.jellyfin.org/t-project-leadership-changes",
-          "summary": "Article URL: https://forum.jellyfin.org/t-project-leadership-changes\n\n Comments URL: https://news.ycombinator.com/item?id=48986091\n\n Points: 230\n\n # Comments: 175",
-          "summaryZh": "文章网址：https://forum.jellyfin.org/t-project-leadership-changes\n\n 评论网址：https://news.ycombinator.com/item?id=48986091\n\n 积分：230\n\n # 评论: 175",
+          "summary": "Article URL: https://forum.jellyfin.org/t-project-leadership-changes\n\n Comments URL: https://news.ycombinator.com/item?id=48986091\n\n Points: 288\n\n # Comments: 257",
+          "summaryZh": "文章网址：https://forum.jellyfin.org/t-project-leadership-changes\n\n 评论网址：https://news.ycombinator.com/item?id=48986091\n\n 积分：288\n\n # 评论: 257",
           "publishedAt": "2026-07-20T23:15:41.000Z",
           "comments": "https://news.ycombinator.com/item?id=48986091",
           "author": "swat535"
@@ -124,8 +124,8 @@
           "title": "I wrote an bash enumerator because I was sick of xargs",
           "titleZh": "我写了一个 bash 枚举器，因为我厌倦了 xargs",
           "link": "https://numerlab.org/2025/07/20/bashumerate-enumerator/",
-          "summary": "Article URL: https://numerlab.org/2025/07/20/bashumerate-enumerator/\n\n Comments URL: https://news.ycombinator.com/item?id=48984270\n\n Points: 121\n\n # Comments: 98",
-          "summaryZh": "文章网址：https://numerlab.org/2025/07/20/bashumerate-enumerator/\n\n 评论网址：https://news.ycombinator.com/item?id=48984270\n\n 积分：121\n\n #评论：98",
+          "summary": "Article URL: https://numerlab.org/2025/07/20/bashumerate-enumerator/\n\n Comments URL: https://news.ycombinator.com/item?id=48984270\n\n Points: 161\n\n # Comments: 148",
+          "summaryZh": "文章网址：https://numerlab.org/2025/07/20/bashumerate-enumerator/\n\n 评论网址：https://news.ycombinator.com/item?id=48984270\n\n 积分：161\n\n # 评论: 148",
           "publishedAt": "2026-07-20T20:12:19.000Z",
           "comments": "https://news.ycombinator.com/item?id=48984270",
           "author": "wallach-game"
@@ -135,8 +135,8 @@
           "title": "Show HN: Immersive Gaussian Splat tour of grace cathedral, San Francisco",
           "titleZh": "Show HN：旧金山恩典大教堂的沉浸式高斯 Splat 之旅",
           "link": "https://vincentwoo.com/3d/grace_cathedral/",
-          "summary": "Article URL: https://vincentwoo.com/3d/grace_cathedral/\n\n Comments URL: https://news.ycombinator.com/item?id=48984254\n\n Points: 154\n\n # Comments: 33",
-          "summaryZh": "文章网址：https://vincentwoo.com/3d/grace_cathedral/\n\n 评论网址：https://news.ycombinator.com/item?id=48984254\n\n 积分：154\n\n # 评论: 33",
+          "summary": "Article URL: https://vincentwoo.com/3d/grace_cathedral/\n\n Comments URL: https://news.ycombinator.com/item?id=48984254\n\n Points: 208\n\n # Comments: 45",
+          "summaryZh": "文章网址：https://vincentwoo.com/3d/grace_cathedral/\n\n 评论网址：https://news.ycombinator.com/item?id=48984254\n\n 积分：208\n\n # 评论: 45",
           "publishedAt": "2026-07-20T20:10:44.000Z",
           "comments": "https://news.ycombinator.com/item?id=48984254",
           "author": "akanet"
@@ -146,8 +146,8 @@
           "title": "The Power of Awareness: Overcoming Surveillance Capitalism",
           "titleZh": "意识的力量：克服监视资本主义",
           "link": "https://www.scottrlarson.com/presentations/overcoming-surveillance-capitalism-with-awareness/",
-          "summary": "Article URL: https://www.scottrlarson.com/presentations/overcoming-surveillance-capitalism-with-awareness/\n\n Comments URL: https://news.ycombinator.com/item?id=48984231\n\n Points: 98\n\n # Comments: 16",
-          "summaryZh": "文章网址：https://www.scottrlarson.com/presentations/overcoming-surveillance-capitalism-with-awareness/\n\n 评论网址：https://news.ycombinator.com/item?id=48984231\n\n 积分：98\n\n # 评论: 16",
+          "summary": "Article URL: https://www.scottrlarson.com/presentations/overcoming-surveillance-capitalism-with-awareness/\n\n Comments URL: https://news.ycombinator.com/item?id=48984231\n\n Points: 131\n\n # Comments: 25",
+          "summaryZh": "文章网址：https://www.scottrlarson.com/presentations/overcoming-surveillance-capitalism-with-awareness/\n\n 评论网址：https://news.ycombinator.com/item?id=48984231\n\n 积分：131\n\n # 评论: 25",
           "publishedAt": "2026-07-20T20:08:45.000Z",
           "comments": "https://news.ycombinator.com/item?id=48984231",
           "author": "trinsic2"
@@ -157,8 +157,8 @@
           "title": "Human mathematicians are being outcounterexampled",
           "titleZh": "人类数学家正在被反例击败",
           "link": "https://xenaproject.wordpress.com/2026/07/20/human-mathematicians-are-being-outcounterexampled/",
-          "summary": "Article URL: https://xenaproject.wordpress.com/2026/07/20/human-mathematicians-are-being-outcounterexampled/\n\n Comments URL: https://news.ycombinator.com/item?id=48983382\n\n Points: 321\n\n # Comments: 127",
-          "summaryZh": "文章网址：https://xenaproject.wordpress.com/2026/07/20/ human-mathematicians-are-being-outcounterexampled/\n\n 评论网址：https://news.ycombinator.com/item?id=48983382\n\n 积分：321\n\n # 评论: 127",
+          "summary": "Article URL: https://xenaproject.wordpress.com/2026/07/20/human-mathematicians-are-being-outcounterexampled/\n\n Comments URL: https://news.ycombinator.com/item?id=48983382\n\n Points: 397\n\n # Comments: 183",
+          "summaryZh": "文章网址：https://xenaproject.wordpress.com/2026/07/20/ human-mathematicians-are-being-outcounterexampled/\n\n 评论网址：https://news.ycombinator.com/item?id=48983382\n\n 积分：397\n\n # 评论: 183",
           "publishedAt": "2026-07-20T19:03:37.000Z",
           "comments": "https://news.ycombinator.com/item?id=48983382",
           "author": "artninja1988"
@@ -168,8 +168,8 @@
           "title": "Nativ: Run frontier open models locally on your Mac",
           "titleZh": "Nativ：在 Mac 上本地运行前沿开放模型",
           "link": "https://blaizzy.github.io/nativ/",
-          "summary": "Article URL: https://blaizzy.github.io/nativ/\n\n Comments URL: https://news.ycombinator.com/item?id=48982681\n\n Points: 260\n\n # Comments: 86",
-          "summaryZh": "文章网址：https://blaizzy.github.io/nativ/\n\n 评论网址：https://news.ycombinator.com/item?id=48982681\n\n 积分：260\n\n # 评论: 86",
+          "summary": "Article URL: https://blaizzy.github.io/nativ/\n\n Comments URL: https://news.ycombinator.com/item?id=48982681\n\n Points: 312\n\n # Comments: 107",
+          "summaryZh": "文章网址：https://blaizzy.github.io/nativ/\n\n 评论网址：https://news.ycombinator.com/item?id=48982681\n\n 积分：312\n\n # 评论: 107",
           "publishedAt": "2026-07-20T18:16:08.000Z",
           "comments": "https://news.ycombinator.com/item?id=48982681",
           "author": "aratahikaru5"
@@ -179,8 +179,8 @@
           "title": "Agent swarms and the new model economics",
           "titleZh": "代理群与新经济模型",
           "link": "https://cursor.com/blog/agent-swarm-model-economics",
-          "summary": "Article URL: https://cursor.com/blog/agent-swarm-model-economics\n\n Comments URL: https://news.ycombinator.com/item?id=48982535\n\n Points: 183\n\n # Comments: 82",
-          "summaryZh": "文章网址：https://cursor.com/blog/agent-swarm-model-economics\n\n 评论网址：https://news.ycombinator.com/item?id=48982535\n\n 积分：183\n\n # 评论: 82",
+          "summary": "Article URL: https://cursor.com/blog/agent-swarm-model-economics\n\n Comments URL: https://news.ycombinator.com/item?id=48982535\n\n Points: 232\n\n # Comments: 103",
+          "summaryZh": "文章网址：https://cursor.com/blog/agent-swarm-model-economics\n\n 评论网址：https://news.ycombinator.com/item?id=48982535\n\n 积分：232\n\n # 评论: 103",
           "publishedAt": "2026-07-20T18:06:13.000Z",
           "comments": "https://news.ycombinator.com/item?id=48982535",
           "author": "jlaneve"
@@ -190,8 +190,8 @@
           "title": "Kimi Work",
           "titleZh": "基米工作",
           "link": "https://www.kimi.com/products/kimi-work",
-          "summary": "Article URL: https://www.kimi.com/products/kimi-work\n\n Comments URL: https://news.ycombinator.com/item?id=48981703\n\n Points: 517\n\n # Comments: 222",
-          "summaryZh": "文章网址：https://www.kimi.com/products/kimi-work\n\n 评论网址：https://news.ycombinator.com/item?id=48981703\n\n 积分：517\n\n # 评论：222",
+          "summary": "Article URL: https://www.kimi.com/products/kimi-work\n\n Comments URL: https://news.ycombinator.com/item?id=48981703\n\n Points: 609\n\n # Comments: 250",
+          "summaryZh": "文章网址：https://www.kimi.com/products/kimi-work\n\n 评论网址：https://news.ycombinator.com/item?id=48981703\n\n 积分：609\n\n # 评论：250",
           "publishedAt": "2026-07-20T17:13:23.000Z",
           "comments": "https://news.ycombinator.com/item?id=48981703",
           "author": "ms7892"
@@ -201,8 +201,8 @@
           "title": "Jelly UI: Soft-body physics for native HTML form controls",
           "titleZh": "Jelly UI：原生 HTML 表单控件的软体物理",
           "link": "https://jelly-ui.com/",
-          "summary": "Article URL: https://jelly-ui.com/\n\n Comments URL: https://news.ycombinator.com/item?id=48981620\n\n Points: 458\n\n # Comments: 149",
-          "summaryZh": "文章网址：https://jelly-ui.com/\n\n 评论网址：https://news.ycombinator.com/item?id=48981620\n\n 积分：458\n\n # 评论：149",
+          "summary": "Article URL: https://jelly-ui.com/\n\n Comments URL: https://news.ycombinator.com/item?id=48981620\n\n Points: 570\n\n # Comments: 167",
+          "summaryZh": "文章网址：https://jelly-ui.com/\n\n 评论网址：https://news.ycombinator.com/item?id=48981620\n\n 积分：570\n\n # 评论: 167",
           "publishedAt": "2026-07-20T17:07:39.000Z",
           "comments": "https://news.ycombinator.com/item?id=48981620",
           "author": "baldvinmar"
@@ -212,8 +212,8 @@
           "title": "How we measured AI writing across arXiv, and where the measurement breaks",
           "titleZh": "我们如何测量 arXiv 上的人工智能写作，以及测量的突破点",
           "link": "https://unslop.run/blog/measuring-ai-writing-on-arxiv",
-          "summary": "Article URL: https://unslop.run/blog/measuring-ai-writing-on-arxiv\n\n Comments URL: https://news.ycombinator.com/item?id=48981206\n\n Points: 218\n\n # Comments: 152",
-          "summaryZh": "文章网址：https://unslop.run/blog/measuring-ai-writing-on-arxiv\n\n 评论网址：https://news.ycombinator.com/item?id=48981206\n\n 积分：218\n\n # 评论: 152",
+          "summary": "Article URL: https://unslop.run/blog/measuring-ai-writing-on-arxiv\n\n Comments URL: https://news.ycombinator.com/item?id=48981206\n\n Points: 229\n\n # Comments: 156",
+          "summaryZh": "文章网址：https://unslop.run/blog/measuring-ai-writing-on-arxiv\n\n 评论网址：https://news.ycombinator.com/item?id=48981206\n\n 积分：229\n\n # 评论: 156",
           "publishedAt": "2026-07-20T16:36:36.000Z",
           "comments": "https://news.ycombinator.com/item?id=48981206",
           "author": "dopamine_daddy"
@@ -230,15 +230,15 @@
           "author": "alexsouthmayd"
         },
         {
-          "id": "https://news.ycombinator.com/item?id=48979931",
-          "title": "Corners Don't Look Like That: Regarding Screenspace Ambient Occlusion (2012)",
-          "titleZh": "角落看起来不像那样：关于屏幕空间环境光遮挡 (2012)",
-          "link": "https://nothings.org/gamedev/ssao/",
-          "summary": "Article URL: https://nothings.org/gamedev/ssao/\n\n Comments URL: https://news.ycombinator.com/item?id=48979931\n\n Points: 164\n\n # Comments: 70",
-          "summaryZh": "文章网址：https://nothings.org/gamedev/ssao/\n\n 评论网址：https://news.ycombinator.com/item?id=48979931\n\n 积分：164\n\n # 评论: 70",
-          "publishedAt": "2026-07-20T15:07:31.000Z",
-          "comments": "https://news.ycombinator.com/item?id=48979931",
-          "author": "firephox"
+          "id": "https://news.ycombinator.com/item?id=48980520",
+          "title": "I Stopped “Creating Content”",
+          "titleZh": "我停止“创建内容”",
+          "link": "https://refactoringenglish.com/blog/why-i-stopped-creating-content/",
+          "summary": "Article URL: https://refactoringenglish.com/blog/why-i-stopped-creating-content/\n\n Comments URL: https://news.ycombinator.com/item?id=48980520\n\n Points: 215\n\n # Comments: 174",
+          "summaryZh": "文章网址：https://refactoringenglish.com/blog/why-i-stopped-creating-content/\n\n 评论网址：https://news.ycombinator.com/item?id=48980520\n\n 积分：215\n\n # 评论: 174",
+          "publishedAt": "2026-07-20T15:47:28.000Z",
+          "comments": "https://news.ycombinator.com/item?id=48980520",
+          "author": "mtlynch"
         }
       ]
     },
@@ -248,7 +248,7 @@
       "url": "https://rss.arxiv.org/rss/cs.AI",
       "home": "https://arxiv.org/list/cs.AI/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-07-21T08:16:18.264Z",
+      "fetchedAt": "2026-07-21T13:25:43.257Z",
       "count": 15,
       "items": [
         {
@@ -309,7 +309,7 @@
         {
           "id": "oai:arXiv.org:2607.16200v1",
           "title": "Deterministic Replay for AI Agent Systems",
-          "titleZh": "AI 代理系统的确定性重放",
+          "titleZh": "AI 代理系统的确定性重播",
           "link": "https://arxiv.org/abs/2607.16200",
           "summary": "arXiv:2607.16200v1 Announce Type: new\nAbstract: AI agent systems that couple large language models (LLMs) with external tools and APIs are inherently non-deterministic: LLM sampling variance, external API state, CDN infrastructure headers, and execution-environment noise collectively prevent any prior agent run from being faithfully re-executed. Existing observability platforms capture execution logs but cannot reproduce a run in isolation. We present agrepl, a developer-first CLI framework for deterministic replay of agent executions. agrepl intercepts all external interactions at the transport layer via a man-in-the-middle (MITM) proxy, serialises them as structured execution traces, and replays them in a strictly isolated environment with zero outbound network access. We formalise the agent execution model, define the request-key matching function K(s), and prove the determinism invariant. We introduce a noise-aware diff algorithm classifying HTTP header divergence into signal and noise tiers. Empirical evaluation across five workloads (n = 250 replay instances) demonstrates replay fidelity F = 1.0 and a median per-step latency reduction of 98.3%. agrepl is implemented in Go, ships as a single static binary, and is released under the MIT licence.\n Keywords: AI agents, deterministic replay, LLM debugging, reproducibility, MITM proxy, execution tracing, record/replay systems.",
           "summaryZh": "arXiv:2607.16200v1 公告类型：新\n摘要：将大型语言模型 (LLM) 与外部工具和 API 结合起来的人工智能代理系统本质上是不确定的：LLM 采样方差、外部 API 状态、CDN 基础设施标头和执行环境噪声共同阻止了任何先前运行的代理被忠实地重新执行。现有的可观察性平台捕获执行日志，但无法单独重现运行。我们推出了 agrepl，这是一个开发人员优先的 CLI 框架，用于确定性重放代理执行。 agrepl 通过中间人 (MITM) 代理拦截传输层的所有外部交互，将它们序列化为结构化执行跟踪，并在出站网络访问为零的严格隔离环境中重播它们。我们形式化代理执行模型，定义请求密钥匹配函数 K(s)，并证明确定性不变量。我们引入了一种噪声感知差异算法，将 HTTP 标头差异分为信号层和噪声层。对五个工作负载（n = 250 个重放实例）的实证评估表明，重放保真度 F = 1.0，每步延迟中值减少了 98.3%。 agrepl 在 Go 中实现，作为单个静态二进制文件发布，并根据 MIT 许可证发布。\n 关键词：AI 代理、确定性重放、LLM 调试、再现性、MITM 代理、执行跟踪、记录/重放系统。",
@@ -342,7 +342,7 @@
         {
           "id": "oai:arXiv.org:2607.16204v1",
           "title": "Masked Diffusion Language Models are Strong and Steerable Text-Based World Models for Agentic RL",
-          "titleZh": "掩蔽扩散语言模型是强大且可操纵的基于文本的代理强化学习世界模型",
+          "titleZh": "掩蔽扩散语言模型是用于代理 RL 的强大且可操纵的基于文本的世界模型",
           "link": "https://arxiv.org/abs/2607.16204",
           "summary": "arXiv:2607.16204v1 Announce Type: new\nAbstract: Recent growth in reinforcement learning (RL) has surfaced a need for diverse, specialized training environments. Hand-curated environments with fixed task and reward difficulties become ineffective signals as model performance improves, and sparse rewards over long horizons induce mode collapse on specific workflows or tool structures. World models that simulate environment states have matched pure rollout performance, making them promising for scaling diversity on-demand. However, autoregressive (AR) world models suffer from a left-to-right bias preventing conditioning on globally interdependent state anchors such as tool schemas, prior turns, and expected outcomes. We (i) formalize text-based world modeling as a steerable transition-dynamics problem decomposed into initial state, task context, tool schemas, domain rules, and steering directives, and (ii) curate 239,403 grounded state-action trajectories spanning nine open-source environments and twelve frontier model families. We compare AR LMs and masked diffusion language models (MDLMs), showing MDLMs, via bidirectional anchor-aware denoising, achieve better coherence, groundedness, and empirically validated rollout diversity than LLMs over 4x their parameter size, at comparable inference latency. We introduce a plug-and-play GRPO training framework with deterministic state checks, and perform zero-shot transfer ablations on three OOD environments (ScienceWorld, ALFWorld, AppWorld) across three 1.2B-7B agent backbones (LFM2.5, Qwen3, Mistral), achieving up to 47% absolute gains over baselines without environment-specific fine-tuning. We further conduct behavioral analysis of failure modes under adversarial scenarios and human evaluation on realism, outcome correctness, and training utility. We open-source our work to encourage research in this direction.",
           "summaryZh": "arXiv:2607.16204v1 公告类型：新\n摘要：强化学习（RL）的最新发展表明了对多样化、专业培训环境的需求。随着模型性能的提高，具有固定任务和奖励难度的手工策划环境变得无效信号，并且长期稀疏的奖励会导致特定工作流程或工具结构的模式崩溃。模拟环境状态的世界模型与纯粹的部署性能相匹配，使它们有望按需扩展多样性。然而，自回归（AR）世界模型存在从左到右的偏差，无法对全局相互依赖的状态锚（例如工具模式、先前的转向和预期结果）进行调节。我们 (i) 将基于文本的世界建模形式化为可操纵的转换动力学问题，分解为初始状态、任务上下文、工具模式、领域规则和转向指令，以及 (ii) 策划跨越 9 个开源环境和 12 个前沿模型系列的 239,403 个接地状态动作轨迹。我们比较了 AR LM 和掩码扩散语言模型 (MDLM)，结果表明，MDLM 通过双向锚感知去噪，在相当的推理延迟下，比参数大小超过 4 倍的 LLM 实现了更好的连贯性、基础性和经经验验证的推出多样性。我们引入了具有确定性状态检查的即插即用 GRPO 训练框架，并在三个 OOD 环境（ScienceWorld、ALFWorld、AppWorld）上跨三个 1.2B-7B 代理骨干网（LFM2.5、Qwen3、Mistral）执行零样本传输消融，无需针对特定环境进行微调，即可实现比基线高达 47% 的绝对增益。我们进一步对对抗场景下的故障模式进行行为分析，并对现实性、结果正确性和训练效用进行人类评估。我们开源我们的工作以鼓励这个方向的研究。",
@@ -356,7 +356,7 @@
           "titleZh": "需要 8 个代币：通过辅助分支从弱到强的离策略强化学习",
           "link": "https://arxiv.org/abs/2607.16205",
           "summary": "arXiv:2607.16205v1 Announce Type: new\nAbstract: Reinforcement learning with verifiable rewards has emerged as a standard approach for enhancing reasoning in large language models, which typically optimizes the policy by contrasting multiple self generated rollouts. However, we identify a critical support limited bottleneck in this paradigm: on challenging reasoning tasks, the target model's samples often exhibit semantic redundancy, converging into the same erroneous \"reasoning basins\" that offer negligible reward contrast for policy updates. In this paper, we propose to overcome this limitation through a weak to strong learning paradigm, where a policy's exploration is informed by a weaker but computationally efficient auxiliary model. We introduce W2SPO, an off policy RL method that injects short auxiliary segments often as brief as 8 tokens into intermediate target model trajectories and the target model then completes the reasoning path from these diverted states. Policy updates are restricted to these short inserted segments based on final verifiable rewards. Empirically, W2SPO achieves superior performance among evaluated 4B scale models on mathematical reasoning benchmarks, outperforming evaluated post trained baselines. Compared with vanilla GRPO under the same sampling budget, W2SPO improves Pass@1 from 62.3% to 64.2% while achieving a 3.55 times training speedup. These results suggest that weak auxiliary branches can induce stronger target reasoning policies by expanding local exploration support.",
-          "summaryZh": "arXiv:2607.16205v1 公告类型：新\n摘要：具有可验证奖励的强化学习已成为增强大型语言模型推理的标准方法，通常通过对比多个自生成的部署来优化策略。然而，我们在该范式中发现了一个关键的支持有限瓶颈：在具有挑战性的推理任务中，目标模型的样本通常表现出语义冗余，收敛到相同的错误“推理盆地”，为策略更新提供可忽略不计的奖励对比。在本文中，我们建议通过弱到强的学习范式来克服这一限制，其中策略的探索是由较弱但计算高效的辅助模型通知的。我们引入了 W2SPO，一种非策略 RL 方法，它将短辅助段（通常只有 8 个令牌）注入到中间目标模型轨迹中，然后目标模型从这些转移状态完成推理路径。策略更新仅限于这些基于最终可验证奖励的短插入片段。根据经验，W2SPO 在数学推理基准评估的 4B 尺度模型中实现了卓越的性能，优于评估后训练的基线。与相同采样预算下的普通 GRPO 相比，W2SPO 将 Pass@1 从 62.3% 提高到 64.2%，同时实现了 3.55 倍的训练加速。这些结果表明，弱辅助分支可以通过扩大本地勘探支持来引发更强的目标推理政策。",
+          "summaryZh": "arXiv:2607.16205v1 公告类型：新\n摘要：具有可验证奖励的强化学习已成为增强大型语言模型推理的标准方法，通常通过对比多个自生成的部署来优化策略。然而，我们在该范式中发现了一个关键的支持有限瓶颈：在具有挑战性的推理任务中，目标模型的样本通常表现出语义冗余，收敛到相同的错误“推理盆地”，为策略更新提供可忽略不计的奖励对比。在本文中，我们建议通过弱到强的学习范式来克服这一限制，其中策略的探索是由较弱但计算高效的辅助模型通知的。我们引入了 W2SPO，这是一种非策略 RL 方法，它将短辅助段（通常只有 8 个令牌）注入到中间目标模型轨迹中，然后目标模型从这些转移状态完成推理路径。策略更新仅限于这些基于最终可验证奖励的短插入片段。根据经验，W2SPO 在数学推理基准评估的 4B 尺度模型中实现了卓越的性能，优于评估后训练的基线。与相同采样预算下的普通 GRPO 相比，W2SPO 将 Pass@1 从 62.3% 提高到 64.2%，同时实现了 3.55 倍的训练加速。这些结果表明，弱辅助分支可以通过扩大本地勘探支持来引发更强的目标推理政策。",
           "publishedAt": "2026-07-21T04:00:00.000Z",
           "comments": null,
           "author": "Dayu Wang, Jiaye Yang, Weikang Li, Jiahui Liang, Liwei Qian, Xin Pei, Jizhou Huang"
@@ -424,7 +424,7 @@
       "url": "https://rss.arxiv.org/rss/cs.LG",
       "home": "https://arxiv.org/list/cs.LG/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-07-21T08:16:18.704Z",
+      "fetchedAt": "2026-07-21T13:25:43.707Z",
       "count": 15,
       "items": [
         {
@@ -532,7 +532,7 @@
           "titleZh": "HantaWatch：汉坦病毒基因组监测的联合学习",
           "link": "https://arxiv.org/abs/2607.16234",
           "summary": "arXiv:2607.16234v1 Announce Type: new\nAbstract: Hantavirus genomic surveillance is limited by the distribution of sequence data, non-IID source heterogeneity, and constrained expert-review capacity. We propose HantaWatch, a federated learning framework that enables laboratories and surveillance sites to collaboratively train sequence-based models without sharing raw data. HantaWatch integrates k-mer feature extraction, source-aware federated client construction, adaptive DU-FedProx optimization, surveillance-specific model selection, and prediction-only triage. Experiments on binary and multi-class tasks show that HantaWatch supports high-risk screening, outbreak-associated prediction, clade classification, and clinical-syndrome categorization while balancing predictive performance, false-negative risk, and update stability. The framework converts model output into risk scores, confidence estimates, uncertainty flags, and ranked expert-review priorities. HantaWatch therefore provides a practical federated decision-support layer for decentralized Hantavirus surveillance, supporting expert prioritization without replacing laboratory or public-health interpretation.",
-          "summaryZh": "arXiv:2607.16234v1 公告类型：新\n摘要：汉坦病毒基因组监测受到序列数据分布、非 IID 来源异质性和专家评审能力有限的限制。我们提出了 HantaWatch，这是一种联合学习框架，使实验室和监测站点能够协作训练基于序列的模型，而无需共享原始数据。 HantaWatch 集成了 k-mer 特征提取、源感知联合客户端构建、自适应 DU-FedProx 优化、特定于监视的模型选择和仅预测分类。二元和多类任务的实验表明，HantaWatch 支持高风险筛查、疫情相关预测、进化枝分类和临床综合征分类，同时平衡预测性能、假阴性风险和更新稳定性。该框架将模型输出转换为风险评分、置信度估计、不确定性标记和排名的专家评审优先级。因此，HantaWatch 为分散的汉坦病毒监测提供了实用的联合决策支持层，支持专家优先级排序，而无需取代实验室或公共卫生解释。",
+          "summaryZh": "arXiv:2607.16234v1 公告类型：新\n摘要：汉坦病毒基因组监测受到序列数据分布、非 IID 来源异质性和专家评审能力有限的限制。我们提出了 HantaWatch，这是一种联合学习框架，使实验室和监测站点能够协作训练基于序列的模型，而无需共享原始数据。 HantaWatch 集成了 k-mer 特征提取、源感知联合客户端构建、自适应 DU-FedProx 优化、特定于监视的模型选择和仅预测分类。二元和多类任务的实验表明，HantaWatch 支持高风险筛查、疫情相关预测、进化枝分类和临床综合征分类，同时平衡预测性能、假阴性风险和更新稳定性。该框架将模型输出转换为风险评分、置信度估计、不确定性标记和专家评审优先级的排名。因此，HantaWatch 为分散的汉坦病毒监测提供了实用的联合决策支持层，支持专家优先级排序，而无需取代实验室或公共卫生解释。",
           "publishedAt": "2026-07-21T04:00:00.000Z",
           "comments": null,
           "author": "Shanika Iroshi Nanayakkara, Shiva Raj Pokhrel"
