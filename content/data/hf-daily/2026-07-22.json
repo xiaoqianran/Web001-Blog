@@ -1,0 +1,413 @@
+{
+  "source": "huggingface.co/api/daily_papers",
+  "attribution": "Data from Hugging Face Daily Papers (community curation). All rights belong to the original authors. Chinese text is machine-translated.",
+  "fetchedAt": "2026-07-22T10:24:33.340Z",
+  "date": "2026-07-22",
+  "sort": "trending",
+  "count": 15,
+  "locale": {
+    "summaryDefault": "zh",
+    "translated": true
+  },
+  "papers": [
+    {
+      "id": "2606.23050",
+      "title": "Unlimited OCR Works",
+      "summary": "Recently, end-to-end OCR models, exemplified by DeepSeek OCR, have once again thrust OCR into the spotlight. A widely held view is that employing a large language model (LLM) as the decoder allows the model to leverage the prior distribution of language, leading to improved OCR performance. However, the downside is equally evident: as the output sequence lengthens, the accumulated KV cache drives up memory consumption and progressively slows down generation. This stands in stark contrast to humans, who exhibit no such decline in efficiency during long-horizon copying tasks. In this technical report, we propose Unlimited OCR, a model designed to emulate human parsing working memory. Taking DeepSeek OCR as the baseline, we replace all attention layers in the decoder with our proposed Reference Sliding Window Attention (R-SWA), which reduces attention computation costs while maintaining a constant KV cache throughout the entire decoding process. By combining the high compression rate of DeepSeek OCR's encoder with our constant KV cache design, Unlimited OCR can transcribe dozens of pages of documents in a single forward pass under a standard maximum length of 32K. More importantly, R-SWA is a general-purpose parsing attention mechanism - beyond OCR, it is equally applicable to tasks such as ASR, translation, etc. Codes and model weights are publicly available at http://github.com/baidu/Unlimited-OCR.",
+      "summaryZh": "最近，以DeepSeek OCR为代表的端到端OCR模型再次将OCR推向了人们的视线。一种广泛持有的观点是，采用大型语言模型 (LLM) 作为解码器允许模型利用语言的先验分布，从而提高 OCR 性能。然而，缺点也同样明显：随着输出序列的延长，累积的 KV 缓存会增加内存消耗并逐渐减慢生成速度。这与人类形成鲜明对比，人类在执行长视距复制任务时并没有表现出效率下降的情况。在这份技术报告中，我们提出了 Unlimited OCR，一种旨在模拟人类解析工作记忆的模型。以 DeepSeek OCR 为基准，我们用我们提出的参考滑动窗口注意力（R-SWA）替换解码器中的所有注意力层，这降低了注意力计算成本，同时在整个解码过程中保持恒定的 KV 缓存。通过将 DeepSeek OCR 编码器的高压缩率与我们的恒定 KV 缓存设计相结合，Unlimited OCR 可以在标准最大长度 32K 的情况下在单次前向传递中转录数十页文档。更重要的是，R-SWA 是一种通用的解析注意力机制——除了 OCR 之外，它同样适用于 ASR、翻译等任务。代码和模型权重可在 http://github.com/baidu/Unlimited-OCR 上公开。",
+      "titleZh": "无限 OCR 作品",
+      "authors": [
+        "Youyang Yin",
+        "Huanhuan Liu",
+        "YY",
+        "Qunyi Xie",
+        "Chaorun Liu",
+        "Shiqi Yang",
+        "Shaohua Wang",
+        "Zhanlong Liu",
+        "Hao Zou",
+        "Jinyue Chen",
+        "Shu Wei",
+        "Jingjing Wu"
+      ],
+      "publishedAt": "2026-06-22T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-06-23T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 58,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2606.23050",
+        "arxiv": "https://arxiv.org/abs/2606.23050",
+        "pdf": "https://arxiv.org/pdf/2606.23050"
+      }
+    },
+    {
+      "id": "2604.14141",
+      "title": "Geometric Context Transformer for Streaming 3D Reconstruction",
+      "summary": "Streaming 3D reconstruction aims to recover 3D information, such as camera poses and point clouds, from a video stream, which necessitates geometric accuracy, temporal\n  consistency, and computational efficiency. Motivated by the principles of Simultaneous Localization and Mapping (SLAM), we introduce LingBot-Map, a feed-forward 3D foundation\n  model for reconstructing scenes from streaming data, built upon a geometric context transformer (GCT) architecture. A defining aspect of LingBot-Map lies in its carefully\n  designed attention mechanism, which integrates an anchor context, a pose-reference window, and a trajectory memory to address coordinate grounding, dense geometric cues, and\n  long-range drift correction, respectively. This design keeps the streaming state compact while retaining rich geometric context, enabling stable efficient inference at around\n  20 FPS on 518 x 378 resolution inputs over long sequences exceeding 10,000 frames. Extensive evaluations across a variety of benchmarks demonstrate that our approach\n  achieves superior performance compared to both existing streaming and iterative optimization-based approaches.",
+      "summaryZh": "流式 3D 重建旨在从视频流中恢复 3D 信息，例如相机姿态和点云，这需要几何精度、时间精度\n  一致性和计算效率。受同步定位与建图 (SLAM) 原理的启发，我们推出了 LingBot-Map，一种前馈 3D 基础\n  用于从流数据重建场景的模型，建立在几何上下文变换器（GCT）架构之上。 LingBot-Map 的一个决定性方面在于它的精心设计\n  设计了注意力机制，它集成了锚上下文、姿势参考窗口和轨迹记忆来解决坐标基础、密集的几何线索和\n  分别进行长程漂移校正。这种设计保持流状态紧凑，同时保留丰富的几何上下文，从而能够在大约\n  在超过 10,000 帧的长序列上，在 518 x 378 分辨率输入上达到 20 FPS。跨各种基准的广泛评估表明我们的方法\n  与现有的流式传输和基于迭代优化的方法相比，实现了卓越的性能。",
+      "titleZh": "用于流式 3D 重建的几何上下文转换器",
+      "authors": [
+        "Lin-Zhuo Chen",
+        "Jian Gao",
+        "Yihang Chen",
+        "Ka Leong Cheng",
+        "Yipengjing Sun",
+        "Liangxiao Hu",
+        "Nan Xue",
+        "Xing Zhu",
+        "Yujun Shen",
+        "Yao Yao",
+        "Yinghao Xu"
+      ],
+      "publishedAt": "2026-04-15T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-04-16T00:00:00.000Z",
+      "submitter": "nielsr",
+      "upvotes": 30,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2604.14141",
+        "arxiv": "https://arxiv.org/abs/2604.14141",
+        "pdf": "https://arxiv.org/pdf/2604.14141"
+      }
+    },
+    {
+      "id": "2605.23904",
+      "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
+      "summary": "Agent skills today are hand-crafted, generated one-shot, or evolved through loosely controlled self-revision, none of which behaves like a deep-learning optimizer for the skill, and none of which reliably improves over its starting point under feedback. We argue the skill should instead be trained as the external state of a frozen agent, with the same discipline that makes weight-space optimization reproducible. SkillOpt is, to our knowledge, the first systematic controllable text-space optimizer for agent skills: a separate optimizer model turns scored rollouts into bounded add/delete/replace edits on a single skill document, and an edit is accepted only when it strictly improves a held-out validation score. A textual learning-rate budget, rejected-edit buffer, and epoch-wise slow/meta update make skill training stable while adding zero inference-time model calls at deployment. Across six benchmarks, seven target models, and three execution harnesses (direct chat, Codex, Claude Code), SkillOpt is best or tied on all 52 evaluated (model, benchmark, harness) cells and beats every per-cell competitor among human, one-shot LLM, Trace2Skill, TextGrad, GEPA, and EvoSkill skills. On GPT-5.5 it lifts the average no-skill accuracy by +23.5 points in direct chat, by +24.8 inside the Codex agentic loop, and by +19.1 inside Claude Code. Transfer experiments further show that optimized skill artifacts retain value when moved across model scales, between Codex and Claude Code execution environments, and to a nearby math benchmark without further optimization.",
+      "summaryZh": "今天的代理技能是手工制作的、一次性生成的，或者是通过松散控制的自我修订而演变的，其中没有一个表现得像技能的深度学习优化器，也没有一个在反馈下可靠地改进了其起点。我们认为，该技能应该作为冻结代理的外部状态进行训练，并采用与权重空间优化可重复的相同规则。据我们所知，SkillOpt 是第一个用于代理技能的系统可控文本空间优化器：一个单独的优化器模型将评分推出转化为对单个技能文档的有界添加/删除/替换编辑，并且只有在严格提高保留的验证分数时才接受编辑。文本学习率预算、拒绝编辑缓冲区和逐年缓慢/元更新使技能训练稳定，同时在部署时添加零推理时间模型调用。在六个基准、七个目标模型和三个执行工具（直接聊天、Codex、Claude Code）中，SkillOpt 在所有 52 个评估（模型、基准、工具）单元中表现最好或并列，并且击败了人类一次性 LLM、Trace2Skill、TextGrad、GEPA 和 EvoSkill 技能中的每一个单元竞争对手。在 GPT-5.5 上，它在直接聊天中将平均无技能准确度提高了 +23.5 点，在 Codex 代理循环内提高了 +24.8 点，在 Claude Code 内提高了 +19.1 点。转移实验进一步表明，优化的技能工件在跨模型规模、Codex 和 Claude Code 执行环境之间转移以及转移到附近的数学基准时保留价值，而无需进一步优化。",
+      "titleZh": "SkillOpt：自我进化座席技能的执行策略",
+      "authors": [
+        "Yifan Yang",
+        "Ziyang Gong",
+        "Weiquan Huang",
+        "Qihao Yang",
+        "Ziwei Zhou",
+        "Zisu Huang",
+        "Yan Li",
+        "Xuemei Gao",
+        "Qi Dai",
+        "Bei Liu",
+        "Kai Qiu",
+        "Yuqing Yang"
+      ],
+      "publishedAt": "2026-05-22T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-05-25T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 260,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2605.23904",
+        "arxiv": "https://arxiv.org/abs/2605.23904",
+        "pdf": "https://arxiv.org/pdf/2605.23904"
+      }
+    },
+    {
+      "id": "2410.15608",
+      "title": "Moonshine: Speech Recognition for Live Transcription and Voice Commands",
+      "summary": "This paper introduces Moonshine, a family of speech recognition models\noptimized for live transcription and voice command processing. Moonshine is\nbased on an encoder-decoder transformer architecture and employs Rotary\nPosition Embedding (RoPE) instead of traditional absolute position embeddings.\nThe model is trained on speech segments of various lengths, but without using\nzero-padding, leading to greater efficiency for the encoder during inference\ntime. When benchmarked against OpenAI's Whisper tiny.en, Moonshine Tiny\ndemonstrates a 5x reduction in compute requirements for transcribing a\n10-second speech segment while incurring no increase in word error rates across\nstandard evaluation datasets. These results highlight Moonshine's potential for\nreal-time and resource-constrained applications.",
+      "summaryZh": "本文介绍了 Moonshine，一个语音识别模型家族\n针对实时转录和语音命令处理进行了优化。月光是\n基于编码器-解码器变压器架构并采用 Rotary\n位置嵌入（RoPE）代替传统的绝对位置嵌入。\n该模型在不同长度的语音片段上进行训练，但没有使用\n零填充，可以提高编码器在推理过程中的效率\n时间。当与 OpenAI 的 Whisper tiny.en 进行基准测试时，Moonshine Tiny\n证明转录的计算需求减少了 5 倍\n10 秒的语音片段，同时不会增加单词错误率\n标准评估数据集。这些结果凸显了 Moonshine 的潜力\n实时和资源受限的应用程序。",
+      "titleZh": "Moonshine：实时转录和语音命令的语音识别",
+      "authors": [
+        "Nat Jeffries",
+        "Evan King",
+        "Manjunath Kudlur",
+        "Guy Nicholson",
+        "James Wang",
+        "Pete Warden"
+      ],
+      "publishedAt": "2024-10-21T03:13:20.000Z",
+      "submittedOnDailyAt": "2024-10-20T23:13:20.000Z",
+      "submitter": null,
+      "upvotes": 13,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2410.15608",
+        "arxiv": "https://arxiv.org/abs/2410.15608",
+        "pdf": "https://arxiv.org/pdf/2410.15608"
+      }
+    },
+    {
+      "id": "2509.02523",
+      "title": "Flavors of Moonshine: Tiny Specialized ASR Models for Edge Devices",
+      "summary": "We present the Flavors of Moonshine, a suite of tiny automatic speech\nrecognition (ASR) models specialized for a range of underrepresented languages.\nPrevailing wisdom suggests that multilingual ASR models outperform monolingual\ncounterparts by exploiting cross-lingual phonetic similarities. We challenge\nthis assumption, showing that for sufficiently small models (27M parameters),\ntraining monolingual systems on a carefully balanced mix of high-quality\nhuman-labeled, pseudo-labeled, and synthetic data yields substantially superior\nperformance. On average, our models achieve error rates 48% lower than the\ncomparably sized Whisper Tiny model, outperform the 9x larger Whisper Small\nmodel, and in most cases match or outperform the 28x larger Whisper Medium\nmodel. These results advance the state of the art for models of this size,\nenabling accurate on-device ASR for languages that previously had limited\nsupport. We release Arabic, Chinese, Japanese, Korean, Ukrainian, and\nVietnamese Moonshine models under a permissive open-source license.",
+      "summaryZh": "我们展示了 Moonshine 的味道，一套小型自动语音\n专门针对一系列代表性不足的语言的识别（ASR）模型。\n普遍的观点表明，多语言 ASR 模型的表现优于单语言\n通过利用跨语言语音相似性来进行对应。我们挑战\n这个假设表明，对于足够小的模型（27M 参数），\n在精心平衡的高质量组合上训练单语系统\n人类标记、伪标记和合成数据产生显着优越的结果\n性能。平均而言，我们的模型的错误率比其他模型低 48%\n同等尺寸的 Whisper Tiny 型号，性能优于 9 倍大的 Whisper Small\n模型，在大多数情况下匹配或优于 28 倍大的 Whisper Medium\n模型。这些结果推进了这种尺寸模型的最新技术水平，\n为以前有限的语言提供准确的设备上 ASR\n支持。我们发布阿拉伯语、中文、日语、韩语、乌克兰语和\n越南 Moonshine 模型采用宽松的开源许可证。",
+      "titleZh": "Moonshine 的味道：用于边缘设备的小型专用 ASR 模型",
+      "authors": [
+        "Evan King",
+        "Adam Sabra",
+        "Manjunath Kudlur",
+        "James Wang",
+        "Pete Warden"
+      ],
+      "publishedAt": "2025-09-02T17:22:54.000Z",
+      "submittedOnDailyAt": "2025-09-03T00:00:00.000Z",
+      "submitter": "evanking",
+      "upvotes": 21,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2509.02523",
+        "arxiv": "https://arxiv.org/abs/2509.02523",
+        "pdf": "https://arxiv.org/pdf/2509.02523"
+      }
+    },
+    {
+      "id": "2412.20138",
+      "title": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+      "summary": "Significant progress has been made in automated problem-solving using\nsocieties of agents powered by large language models (LLMs). In finance,\nefforts have largely focused on single-agent systems handling specific tasks or\nmulti-agent frameworks independently gathering data. However, the multi-agent\nsystems' potential to replicate real-world trading firms' collaborative\ndynamics remains underexplored. TradingAgents proposes a novel stock trading\nframework inspired by trading firms, featuring LLM-powered agents in\nspecialized roles such as fundamental analysts, sentiment analysts, technical\nanalysts, and traders with varied risk profiles. The framework includes Bull\nand Bear researcher agents assessing market conditions, a risk management team\nmonitoring exposure, and traders synthesizing insights from debates and\nhistorical data to make informed decisions. By simulating a dynamic,\ncollaborative trading environment, this framework aims to improve trading\nperformance. Detailed architecture and extensive experiments reveal its\nsuperiority over baseline models, with notable improvements in cumulative\nreturns, Sharpe ratio, and maximum drawdown, highlighting the potential of\nmulti-agent LLM frameworks in financial trading. TradingAgents is available at\nhttps://github.com/TauricResearch/TradingAgents.",
+      "summaryZh": "使用自动化解决问题取得了重大进展\n由大型语言模型 (LLM) 提供支持的代理协会。在金融领域，\n工作主要集中在处理特定任务的单代理系统或\n多代理框架独立收集数据。然而，多代理\n系统复制现实世界贸易公司协作的潜力\n动力学仍有待探索。 TradingAgents 提出了一种新颖的股票交易方式\n受贸易公司启发的框架，以法学硕士支持的代理为特色\n专业角色，例如基本面分析师、情绪分析师、技术分析师\n具有不同风险状况的分析师和交易员。该框架包括 Bull\n贝尔斯登研究人员评估市场状况，风险管理团队\n监控风险敞口，交易者从辩论中综合见解\n历史数据以做出明智的决策。通过模拟动态，\n协作交易环境，该框架旨在改善交易\n性能。详细的架构和广泛的实验揭示了它的\n优于基线模型，累积显着改进\n回报率、夏普比率和最大回撤，凸显了\n金融交易中的多代理法学硕士框架。交易代理可在\nhttps://github.com/TauricResearch/TradingAgents。",
+      "titleZh": "TradingAgents：多代理LLM金融交易框架",
+      "authors": [
+        "Yijia Xiao",
+        "Edward Sun",
+        "Di Luo",
+        "Wei Wang"
+      ],
+      "publishedAt": "2024-12-28T12:54:06.000Z",
+      "submittedOnDailyAt": "2024-12-28T07:54:06.000Z",
+      "submitter": null,
+      "upvotes": 115,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2412.20138",
+        "arxiv": "https://arxiv.org/abs/2412.20138",
+        "pdf": "https://arxiv.org/pdf/2412.20138"
+      }
+    },
+    {
+      "id": "2407.16741",
+      "title": "OpenDevin: An Open Platform for AI Software Developers as Generalist\n  Agents",
+      "summary": "Software is one of the most powerful tools that we humans have at our\ndisposal; it allows a skilled programmer to interact with the world in complex\nand profound ways. At the same time, thanks to improvements in large language\nmodels (LLMs), there has also been a rapid development in AI agents that\ninteract with and affect change in their surrounding environments. In this\npaper, we introduce OpenDevin, a platform for the development of powerful and\nflexible AI agents that interact with the world in similar ways to those of a\nhuman developer: by writing code, interacting with a command line, and browsing\nthe web. We describe how the platform allows for the implementation of new\nagents, safe interaction with sandboxed environments for code execution,\ncoordination between multiple agents, and incorporation of evaluation\nbenchmarks. Based on our currently incorporated benchmarks, we perform an\nevaluation of agents over 15 challenging tasks, including software engineering\n(e.g., SWE-Bench) and web browsing (e.g., WebArena), among others. Released\nunder the permissive MIT license, OpenDevin is a community project spanning\nacademia and industry with more than 1.3K contributions from over 160\ncontributors and will improve going forward.",
+      "summaryZh": "软件是我们人类拥有的最强大的工具之一\n处置；它允许熟练的程序员以复杂的方式与世界互动\n和深刻的方法。同时得益于大语言的改进\n模型（法学硕士），人工智能代理也得到了快速发展，\n与周围环境相互作用并影响其变化。在这个\n论文中，我们介绍了 OpenDevin，一个用于开发功能强大且\n灵活的人工智能代理，以类似于人类的方式与世界互动\n人类开发人员：通过编写代码、与命令行交互和浏览\n网络。我们描述了该平台如何允许实施新的\n代理，与沙盒环境安全交互以执行代码，\n多个主体之间的协调以及评估的结合\n基准。根据我们当前纳入的基准，我们执行\n对代理进行超过 15 项挑战性任务的评估，包括软件工程\n（例如，SWE-Bench）和网页浏览（例如，WebArena）等。已发布\n在 MIT 许可下，OpenDevin 是一个社区项目，涵盖\n学术界和工业界超过 160 人做出了超过 1,300 份贡献\n贡献者并将继续改进。",
+      "titleZh": "OpenDevin：面向多面手的人工智能软件开发人员的开放平台\n  代理商",
+      "authors": [
+        "Xingyao Wang",
+        "Boxuan Li",
+        "Yufan Song",
+        "Frank F. Xu",
+        "Xiangru Tang",
+        "Mingchen Zhuge",
+        "Jiayi Pan",
+        "Yueqi Song",
+        "Bowen Li",
+        "Jaskirat Singh",
+        "Hoang H. Tran",
+        "Fuqiang Li"
+      ],
+      "publishedAt": "2024-07-23T17:50:43.000Z",
+      "submittedOnDailyAt": "2024-07-25T00:00:00.000Z",
+      "submitter": "akhaliq",
+      "upvotes": 83,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2407.16741",
+        "arxiv": "https://arxiv.org/abs/2407.16741",
+        "pdf": "https://arxiv.org/pdf/2407.16741"
+      }
+    },
+    {
+      "id": "2607.18217",
+      "title": "HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement",
+      "summary": "Human-object centric video personalization (HOCVP) is a core task within subject-driven video generation. However, existing methods suffer from two key limitations. First, most approaches focusing on inter-subject personalization still struggle to strike a balance between high subject fidelity and accurate interaction patterns between humans and diverse objects, especially when objects represent abstract concepts such as logos. Second, while intra-subject references (e.g., OCR maps, multi-view inputs) are expected to enhance subject fidelity, most existing works lack mechanisms to understand such latent correspondence. To address both challenges, we propose HOMIE, an HOCVP framework that tackles both inter- and intra-subject input settings in a unified manner. Compared to previous approaches, HOMIE proposes a better MLLM integration strategy to extract knowledge of reference-level relationships without compromising the controllability of text encoders or incurring costly re-alignment. Specifically, we introduce global multimodal guidance within self-attention to better align MLLM-derived semantic features with VAE tokens. Furthermore, we propose modality-reference embedding to differentiate tokens from MLLM features and VAE tokens and associate intra-subject reference image tokens. Extensive experiments validate that our method achieves state-of-the-art performance across various HOCVP tasks. Project Page: https://yiyangcai.github.io/homie-page.github.io/",
+      "summaryZh": "以人为中心的视频个性化 (HOCVP) 是主题驱动视频生成中的核心任务。然而，现有方法存在两个关键限制。首先，大多数关注主体间个性化的方法仍然难以在高主体保真度和人类与不同物体之间的准确交互模式之间取得平衡，特别是当物体代表徽标等抽象概念时。其次，虽然主题内参考（例如 OCR 地图、多视图输入）有望提高主题保真度，但大多数现有作品缺乏理解这种潜在对应关系的机制。为了应对这两个挑战，我们提出了 HOMIE，这是一个 HOCVP 框架，它以统一的方式处理主体间和主体内的输入设置。与以前的方法相比，HOMIE 提出了一种更好的 MLLM 集成策略，可以提取参考级关系的知识，而不会影响文本编码器的可控性或产生昂贵的重新对齐。具体来说，我们在自注意力中引入全局多模态指导，以更好地将 MLLM 派生的语义特征与 VAE 令牌结合起来。此外，我们提出模态参考嵌入来区分标记与 MLLM 特征和 VAE 标记，并关联主体内参考图像标记。大量实验验证了我们的方法在各种 HOCVP 任务中实现了最先进的性能。项目页面：https://yiyangcai.github.io/homie-page.github.io/",
+      "titleZh": "HOMIE：通过多模态智能增强实现以人为中心的视频个性化",
+      "authors": [
+        "Yiyang Cai",
+        "Nan Chen",
+        "Rongchang Xie",
+        "Junwen Pan",
+        "Chunyang Jiang",
+        "Cheng Chen",
+        "Wen Zhou",
+        "Zhenbang Sun",
+        "Wei Xue",
+        "Wenhan Luo",
+        "Yike Guo"
+      ],
+      "publishedAt": "2026-07-20T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-07-21T00:00:00.000Z",
+      "submitter": "CNcreator0331",
+      "upvotes": 51,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2607.18217",
+        "arxiv": "https://arxiv.org/abs/2607.18217",
+        "pdf": "https://arxiv.org/pdf/2607.18217"
+      }
+    },
+    {
+      "id": "2607.15330",
+      "title": "Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories",
+      "summary": "We present Xiaomi-Robotics-1, a foundational vision-language-action (VLA) model capable of (1) following diverse language instructions to perform a wide range of mobile manipulation tasks in unseen environments out-of-the-box, and (2) efficiently adapting to novel downstream tasks with minimal fine-tuning data. We propose a two-stage training recipe consisting of pre-training and post-training. During pre-training, we imbue the model with broad and generalizable action-generation capabilities by training on over 100k hours of real-world manipulation trajectories collected via UMI devices. Crucially, we develop a scalable auto-labeling pipeline that annotates trajectory clips with natural languages describing scene state transitions, providing rich and precise conditioning for action learning. During post-training, we aim to align these capabilities with robot embodiments and imperative instructions that humans naturally use to prompt robots. Extensive experiments demonstrate strong scaling behavior. Xiaomi-Robotics-1 consistently improves with increased data scales and model sizes during pre-training. This scaling behavior directly transfers to post-training, where a stronger pre-training model yields better out-of-the-box real-robot performance in unseen environments. Furthermore, Xiaomi-Robotics-1 serves as a strong robot foundation policy that can be efficiently fine-tuned on complex, dexterous tasks with high data efficiency. Across multiple simulation benchmarks, Xiaomi-Robotics-1 outperforms state-of-the-art methods. Notably, it establishes a new state-of-the-art with a 57.6% success rate on RoboCasa365, surpassing the previous best of 46.6%. Furthermore, it achieves an average score of 20.07 on RoboDojo, significantly outperforming the prior state-of-the-art (13.07). Code and model checkpoints will be released. Project page: https://robotics.xiaomi.com/xiaomi-robotics-1.html",
+      "summaryZh": "我们提出了Xiaomi-Robotics-1，这是一种基础的视觉-语言-动作（VLA）模型，能够（1）遵循不同的语言指令，在未见的环境中开箱即用地执行各种移动操作任务，以及（2）以最少的微调数据有效地适应新的下游任务。我们提出了一个由预训练和后训练组成的两阶段训练方案。在预训练期间，我们通过 UMI 设备收集的超过 10 万小时的真实操作轨迹进行训练，为模型注入广泛且可概括的动作生成能力。至关重要的是，我们开发了一个可扩展的自动标记管道，用描述场景状态转换的自然语言对轨迹片段进行注释，为动作学习提供丰富而精确的调节。在训练后，我们的目标是将这些功能与机器人实施例和人类自然用来提示机器人的命令指令结合起来。大量的实验证明了强大的缩放行为。在预训练期间，Xiaomi-Robotics-1 随着数据规模和模型大小的增加而不断改进。这种扩展行为直接转移到训练后，更强大的预训练模型可以在未见过的环境中产生更好的开箱即用的真实机器人性能。此外，Xiaomi-Robotics-1作为强大的机器人基础策略，可以在复杂、灵巧的任务上进行高效微调，并具有高数据效率。在多个模拟基准测试中，Xiaomi-Robotics-1 的性能优于最先进的方法。值得注意的是，它在 RoboCasa365 上以 57.6% 的成功率创造了新的最先进水平，超过了之前 46.6% 的最佳成绩。此外，它在 RoboDojo 上的平均得分为 20.07，显着优于之前的最佳水平 (13.07)。代码和模型检查点将被发布。项目页面：https://robotics.xiaomi.com/xiaomi-robotics-1.html",
+      "titleZh": "Xiaomi-Robotics-1：利用超过 10 万小时的真实世界轨迹扩展视觉-语言-动作模型",
+      "authors": [
+        "Xiaomi Robotics Team",
+        "Jun Guo",
+        "Piaopiao Jin",
+        "Jason Li",
+        "Peiyan Li",
+        "Yingyan Li",
+        "Futeng Liu",
+        "Wanli Peng",
+        "Optimus Qin",
+        "Yifei Su",
+        "Nan Sun",
+        "Qiao Sun"
+      ],
+      "publishedAt": "2026-07-16T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-07-20T00:00:00.000Z",
+      "submitter": "YeWen27",
+      "upvotes": 60,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2607.15330",
+        "arxiv": "https://arxiv.org/abs/2607.15330",
+        "pdf": "https://arxiv.org/pdf/2607.15330"
+      }
+    },
+    {
+      "id": "2509.22186",
+      "title": "MinerU2.5: A Decoupled Vision-Language Model for Efficient\n  High-Resolution Document Parsing",
+      "summary": "We introduce MinerU2.5, a 1.2B-parameter document parsing vision-language\nmodel that achieves state-of-the-art recognition accuracy while maintaining\nexceptional computational efficiency. Our approach employs a coarse-to-fine,\ntwo-stage parsing strategy that decouples global layout analysis from local\ncontent recognition. In the first stage, the model performs efficient layout\nanalysis on downsampled images to identify structural elements, circumventing\nthe computational overhead of processing high-resolution inputs. In the second\nstage, guided by the global layout, it performs targeted content recognition on\nnative-resolution crops extracted from the original image, preserving\nfine-grained details in dense text, complex formulas, and tables. To support\nthis strategy, we developed a comprehensive data engine that generates diverse,\nlarge-scale training corpora for both pretraining and fine-tuning. Ultimately,\nMinerU2.5 demonstrates strong document parsing ability, achieving\nstate-of-the-art performance on multiple benchmarks, surpassing both\ngeneral-purpose and domain-specific models across various recognition tasks,\nwhile maintaining significantly lower computational overhead.",
+      "summaryZh": "我们介绍MinerU2.5，一个1.2B参数的文档解析视觉语言\n该模型可实现最先进的识别精度，同时保持\n卓越的计算效率。我们的方法采用从粗到细的方法，\n将全局布局分析与局部布局分析分离的两阶段解析策略\n内容识别。第一阶段，模型进行高效布局\n对下采样图像进行分析以识别结构元素，规避\n处理高分辨率输入的计算开销。在第二个\n舞台上，以全球布局为导向，进行有针对性的内容识别\n从原始图像中提取的原始分辨率作物，保留\n密集文本、复杂公式和表格中的细粒度细节。支持\n根据这一策略，我们开发了一个全面的数据引擎，可以生成不同的、\n用于预训练和微调的大规模训练语料库。最终，\nMinerU2.5展现出强大的文档解析能力，实现\n在多个基准测试中具有最先进的性能，超越了两者\n跨各种识别任务的通用和特定领域模型，\n同时保持显着较低的计算开销。",
+      "titleZh": "MinerU2.5：一种高效的解耦视觉语言模型\n  高分辨率文档解析",
+      "authors": [
+        "Junbo Niu",
+        "Zheng Liu",
+        "Zhuangcheng Gu",
+        "Bin Wang",
+        "Linke Ouyang",
+        "Zhiyuan Zhao",
+        "Tao Chu",
+        "Tianyao He",
+        "Fan Wu",
+        "Qintong Zhang",
+        "Zhenjiang Jin",
+        "Guang Liang"
+      ],
+      "publishedAt": "2025-09-26T10:45:48.000Z",
+      "submittedOnDailyAt": "2025-09-29T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 176,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2509.22186",
+        "arxiv": "https://arxiv.org/abs/2509.22186",
+        "pdf": "https://arxiv.org/pdf/2509.22186"
+      }
+    },
+    {
+      "id": "2504.19413",
+      "title": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+      "summary": "Large Language Models (LLMs) have demonstrated remarkable prowess in\ngenerating contextually coherent responses, yet their fixed context windows\npose fundamental challenges for maintaining consistency over prolonged\nmulti-session dialogues. We introduce Mem0, a scalable memory-centric\narchitecture that addresses this issue by dynamically extracting,\nconsolidating, and retrieving salient information from ongoing conversations.\nBuilding on this foundation, we further propose an enhanced variant that\nleverages graph-based memory representations to capture complex relational\nstructures among conversational elements. Through comprehensive evaluations on\nLOCOMO benchmark, we systematically compare our approaches against six baseline\ncategories: (i) established memory-augmented systems, (ii) retrieval-augmented\ngeneration (RAG) with varying chunk sizes and k-values, (iii) a full-context\napproach that processes the entire conversation history, (iv) an open-source\nmemory solution, (v) a proprietary model system, and (vi) a dedicated memory\nmanagement platform. Empirical results show that our methods consistently\noutperform all existing memory systems across four question categories:\nsingle-hop, temporal, multi-hop, and open-domain. Notably, Mem0 achieves 26%\nrelative improvements in the LLM-as-a-Judge metric over OpenAI, while Mem0 with\ngraph memory achieves around 2% higher overall score than the base\nconfiguration. Beyond accuracy gains, we also markedly reduce computational\noverhead compared to full-context method. In particular, Mem0 attains a 91%\nlower p95 latency and saves more than 90% token cost, offering a compelling\nbalance between advanced reasoning capabilities and practical deployment\nconstraints. Our findings highlight critical role of structured, persistent\nmemory mechanisms for long-term conversational coherence, paving the way for\nmore reliable and efficient LLM-driven AI agents.",
+      "summaryZh": "大型语言模型（LLM）在以下领域表现出了非凡的能力：\n生成上下文连贯的响应，但它们的上下文窗口是固定的\n对长期保持一致性提出了根本性挑战\n多会话对话。我们引入 Mem0，一个可扩展的以内存为中心的\n通过动态提取解决此问题的架构，\n整合并从正在进行的对话中检索重要信息。\n在此基础上，我们进一步提出了一个增强的变体\n利用基于图形的内存表示来捕获复杂的关系\n对话元素之间的结构。通过综合评价\nLOCOMO 基准，我们系统地将我们的方法与六个基准进行比较\n类别：(i) 已建立的记忆增强系统，(ii) 检索增强系统\n具有不同块大小和 k 值的生成（RAG），（iii）完整上下文\n处理整个对话历史记录的方法，（iv）开源\n内存解决方案，(v) 专有模型系统，以及 (vi) 专用内存\n管理平台。实证结果表明我们的方法始终如一\n在四个问题类别上优于所有现有的记忆系统：\n单跳、时间、多跳和开放域。值得注意的是，Mem0 达到了 26%\nLLM-as-a-Judge 指标相对于 OpenAI 的相对改进，而 Mem0 具有\n图形内存的总体得分比基础得分高出约 2%\n配置。除了精度提升之外，我们还显着减少了计算量\n与全上下文方法相比的开销。特别是 Mem0 达到了 91%\n更低的 p95 延迟并节省 90% 以上的代币成本，提供引人注目的\n高级推理能力和实际部署之间的平衡\n限制。我们的研究结果强调了结构化、持久性的关键作用\n长期对话连贯性的记忆机制，为\n更可靠、更高效的法学硕士驱动的人工智能代理。",
+      "titleZh": "Mem0：使用可扩展的长期内存构建可投入生产的 AI 代理",
+      "authors": [
+        "Prateek Chhikara",
+        "Dev Khant",
+        "Saket Aryan",
+        "Taranjeet Singh",
+        "Deshraj Yadav"
+      ],
+      "publishedAt": "2025-04-28T01:46:35.000Z",
+      "submittedOnDailyAt": "2025-04-29T00:00:00.000Z",
+      "submitter": "akhaliq",
+      "upvotes": 67,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2504.19413",
+        "arxiv": "https://arxiv.org/abs/2504.19413",
+        "pdf": "https://arxiv.org/pdf/2504.19413"
+      }
+    },
+    {
+      "id": "2607.04439",
+      "title": "ResearchStudio-Idea: An Evidence-Grounded Research-Ideation Skill Suite from ML Conference Outcomes",
+      "summary": "Large language models have made research ideation increasingly accessible, yet effective idea development requires more than generating candidate directions. Researchers must ground a problem in current literature, identify meaningful bottlenecks, differentiate from existing solutions, and evaluate risks before committing to implementation. We present ResearchStudio-Idea as a reusable skill suite for this first mile of research ideation. The suite includes Paper-Search, a standalone multi-source literature search skill; Scoop-Check, a standalone prior-art collision checker for novelty claims; and IdeaSpark, the end-to-end skill that composes evidence grounding, pattern-guided generation, collision retrieval, audit, and idea-card rendering into one workflow. IdeaSpark is constructed from a corpus of 1,947 machine learning conference papers collected from ICLR, ICML, and NeurIPS between 2021 and 2025, including Oral papers, a separately tracked high-citation subset, and rejected submissions. Analysis of these outcomes reveals 31 recurring ideation sub-patterns, consolidated into 15 reusable ideation patterns. Each pattern is operationalized as a structured card containing research contexts, bottleneck types, differentiation strategies, supporting precedents, and common failure modes. Given a research problem and an evidence bundle, IdeaSpark evaluates evidence readiness, reconstructs the surrounding research context, identifies unresolved bottlenecks, selects relevant patterns, instantiates one candidate direction, retrieves potentially conflicting prior work, and performs outcome-informed auditing. This workflow transforms reusable ideation patterns into traceable research proposals. Blind automated-judge evaluations show that IdeaSpark consistently produces stronger research proposals than no-skill and generic-skill baselines while maintaining competitive novelty.",
+      "summaryZh": "大型语言模型使研究构想变得越来越容易获得，但有效的构想开发需要的不仅仅是生成候选方向。研究人员必须在当前文献中找出问题，找出有意义的瓶颈，与现有解决方案区分开来，并在实施之前评估风险。我们将 ResearchStudio-Idea 作为研究构思第一英里的可重用技能套件推出。该套件包括 Paper-Search，一种独立的多源文献搜索技能； Scoop-Check，一个独立的现有技术碰撞检查器，用于新颖性声明； IdeaSpark，一种端到端技能，将证据基础、模式引导生成、冲突检索、审计和创意卡渲染整合到一个工作流程中。 IdeaSpark 由 2021 年至 2025 年间从 ICLR、ICML 和 NeurIPS 收集的 1,947 篇机器学习会议论文组成的语料库构建，其中包括口头论文、单独跟踪的高引用子集和被拒绝的提交论文。对这些结果的分析揭示了 31 种反复出现的构思子模式，并合并为 15 种可重复使用的构思模式。每个模式都可作为结构化卡片来操作，其中包含研究背景、瓶颈类型、差异化策略、支持先例和常见故障模式。给定一个研究问题和一组证据，IdeaSpark 会评估证据准备情况，重建周围的研究背景，识别未解决的瓶颈，选择相关模式，实例化一个候选方向，检索可能存在冲突的先前工作，并执行基于结果的审核。该工作流程将可重复使用的构思模式转化为可追踪的研究提案。盲式自动评审评估表明，IdeaSpark 始终能够产生比无技能和通用技能基线更强的研究提案，同时保持竞争新颖性。",
+      "titleZh": "ResearchStudio-Idea：来自 ML 会议成果的循证研究构思技能套件",
+      "authors": [
+        "Qihao Zhao",
+        "Yangyu Huang",
+        "Yalun Dai",
+        "Lingao Xiao",
+        "Jianjun Gao",
+        "Xin Zhang",
+        "Wenshan Wu",
+        "Scarlett Li",
+        "Yang He",
+        "Yan Lu",
+        "Yap Kim Hui"
+      ],
+      "publishedAt": "2026-07-05T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-07-07T00:00:00.000Z",
+      "submitter": "fistyyyy",
+      "upvotes": 60,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2607.04439",
+        "arxiv": "https://arxiv.org/abs/2607.04439",
+        "pdf": "https://arxiv.org/pdf/2607.04439"
+      }
+    },
+    {
+      "id": "2309.06180",
+      "title": "Efficient Memory Management for Large Language Model Serving with\n  PagedAttention",
+      "summary": "High throughput serving of large language models (LLMs) requires batching\nsufficiently many requests at a time. However, existing systems struggle\nbecause the key-value cache (KV cache) memory for each request is huge and\ngrows and shrinks dynamically. When managed inefficiently, this memory can be\nsignificantly wasted by fragmentation and redundant duplication, limiting the\nbatch size. To address this problem, we propose PagedAttention, an attention\nalgorithm inspired by the classical virtual memory and paging techniques in\noperating systems. On top of it, we build vLLM, an LLM serving system that\nachieves (1) near-zero waste in KV cache memory and (2) flexible sharing of KV\ncache within and across requests to further reduce memory usage. Our\nevaluations show that vLLM improves the throughput of popular LLMs by\n2-4times with the same level of latency compared to the state-of-the-art\nsystems, such as FasterTransformer and Orca. The improvement is more pronounced\nwith longer sequences, larger models, and more complex decoding algorithms.\nvLLM's source code is publicly available at\nhttps://github.com/vllm-project/vllm",
+      "summaryZh": "大型语言模型 (LLM) 的高吞吐量服务需要批处理\n一次有足够多的请求。然而，现有系统却举步维艰\n因为每个请求的键值缓存（KV缓存）内存巨大并且\n动态增长和收缩。当管理效率低下时，该内存可能会被\n碎片和冗余重复造成了极大的浪费，限制了\n批量大小。为了解决这个问题，我们提出PagedAttention，一个注意力机制\n算法的灵感来自于经典的虚拟内存和分页技术\n操作系统。在此基础上，我们构建了 vLLM，一个 LLM 服务系统，\n实现 (1) KV 缓存内存近乎零浪费和 (2) KV 灵活共享\n在请求内和请求之间进行缓存，以进一步减少内存使用。我们的\n评估表明，vLLM 通过以下方式提高了流行 LLM 的吞吐量：\n与最先进的技术相比，相同延迟水平下的 2-4 倍\n系统，例如 FasterTransformer 和 Orca。改善效果更加明显\n具有更长的序列、更大的模型和更复杂的解码算法。\nvLLM 的源代码可在以下位置公开获取：\nhttps://github.com/vllm-project/vllm",
+      "titleZh": "大型语言模型的高效内存管理\n  分页注意力",
+      "authors": [
+        "Woosuk Kwon",
+        "Zhuohan Li",
+        "Siyuan Zhuang",
+        "Ying Sheng",
+        "Lianmin Zheng",
+        "Cody Hao Yu",
+        "Joseph E. Gonzalez",
+        "Hao Zhang",
+        "Ion Stoica"
+      ],
+      "publishedAt": "2023-09-12T12:50:04.000Z",
+      "submittedOnDailyAt": "2023-09-13T00:00:00.000Z",
+      "submitter": "akhaliq",
+      "upvotes": 63,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2309.06180",
+        "arxiv": "https://arxiv.org/abs/2309.06180",
+        "pdf": "https://arxiv.org/pdf/2309.06180"
+      }
+    },
+    {
+      "id": "2403.08299",
+      "title": "AutoDev: Automated AI-Driven Development",
+      "summary": "The landscape of software development has witnessed a paradigm shift with the\nadvent of AI-powered assistants, exemplified by GitHub Copilot. However,\nexisting solutions are not leveraging all the potential capabilities available\nin an IDE such as building, testing, executing code, git operations, etc.\nTherefore, they are constrained by their limited capabilities, primarily\nfocusing on suggesting code snippets and file manipulation within a chat-based\ninterface. To fill this gap, we present AutoDev, a fully automated AI-driven\nsoftware development framework, designed for autonomous planning and execution\nof intricate software engineering tasks. AutoDev enables users to define\ncomplex software engineering objectives, which are assigned to AutoDev's\nautonomous AI Agents to achieve. These AI agents can perform diverse operations\non a codebase, including file editing, retrieval, build processes, execution,\ntesting, and git operations. They also have access to files, compiler output,\nbuild and testing logs, static analysis tools, and more. This enables the AI\nAgents to execute tasks in a fully automated manner with a comprehensive\nunderstanding of the contextual information required. Furthermore, AutoDev\nestablishes a secure development environment by confining all operations within\nDocker containers. This framework incorporates guardrails to ensure user\nprivacy and file security, allowing users to define specific permitted or\nrestricted commands and operations within AutoDev. In our evaluation, we tested\nAutoDev on the HumanEval dataset, obtaining promising results with 91.5% and\n87.8% of Pass@1 for code generation and test generation respectively,\ndemonstrating its effectiveness in automating software engineering tasks while\nmaintaining a secure and user-controlled development environment.",
+      "summaryZh": "软件开发的格局见证了范式的转变\n以 GitHub Copilot 为代表的人工智能助手的出现。然而，\n现有的解决方案没有利用所有可用的潜在功能\n在 IDE 中，例如构建、测试、执行代码、git 操作等。\n因此，他们受到自身能力有限的限制，主要是\n专注于在基于聊天的内容中建议代码片段和文件操作\n界面。为了填补这一空白，我们推出了 AutoDev，一种完全自动化的人工智能驱动的\n软件开发框架，专为自主规划和执行而设计\n复杂的软件工程任务。 AutoDev 使用户能够定义\n复杂的软件工程目标，这些目标被分配给 AutoDev\n自主AI代理来实现。这些人工智能代理可以执行多种操作\n在代码库上，包括文件编辑、检索、构建过程、执行、\n测试和 git 操作。他们还可以访问文件、编译器输出、\n构建和测试日志、静态分析工具等等。这使得人工智能\n代理以完全自动化的方式执行任务，具有全面的\n了解所需的上下文信息。此外，自动开发\n通过将所有操作限制在内部来建立安全的开发环境\nDocker 容器。该框架包含护栏以确保用户\n隐私和文件安全，允许用户定义特定的允许或\nAutoDev 中的受限命令和操作。在我们的评估中，我们测试了\nAutoDev 在 HumanEval 数据集上获得了 91.5% 的有希望的结果\n代码生成和测试生成分别达到 Pass@1 的 87.8%，\n展示其在自动化软件工程任务方面的有效性，同时\n维护安全且用户控制的开发环境。",
+      "titleZh": "AutoDev：自动化人工智能驱动开发",
+      "authors": [
+        "Michele Tufano",
+        "Anisha Agarwal",
+        "Jinu Jang",
+        "Roshanak Zilouchian Moghaddam",
+        "Neel Sundaresan"
+      ],
+      "publishedAt": "2024-03-13T07:12:03.000Z",
+      "submittedOnDailyAt": "2024-03-13T03:12:03.000Z",
+      "submitter": null,
+      "upvotes": 18,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2403.08299",
+        "arxiv": "https://arxiv.org/abs/2403.08299",
+        "pdf": "https://arxiv.org/pdf/2403.08299"
+      }
+    },
+    {
+      "id": "2307.09702",
+      "title": "Efficient Guided Generation for Large Language Models",
+      "summary": "In this article we describe an efficient approach to guiding language model\ntext generation with regular expressions and context-free grammars. Our\napproach adds little to no overhead to the token sequence generation process,\nand makes guided generation feasible in practice. An implementation is provided\nin the open source Python library Outlines.",
+      "summaryZh": "在本文中，我们描述了一种指导语言模型的有效方法\n使用正则表达式和上下文无关语法生成文本。我们的\n方法对令牌序列生成过程几乎没有增加任何开销，\n并使引导生成在实践中变得可行。提供了一个实现\n在开源 Python 库 Outlines 中。",
+      "titleZh": "大型语言模型的高效引导生成",
+      "authors": [
+        "Brandon T. Willard",
+        "Rémi Louf"
+      ],
+      "publishedAt": "2023-07-19T01:14:49.000Z",
+      "submittedOnDailyAt": "2023-07-18T21:14:49.000Z",
+      "submitter": null,
+      "upvotes": 8,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2307.09702",
+        "arxiv": "https://arxiv.org/abs/2307.09702",
+        "pdf": "https://arxiv.org/pdf/2307.09702"
+      }
+    }
+  ]
+}
