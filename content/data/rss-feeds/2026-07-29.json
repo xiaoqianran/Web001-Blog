@@ -1,20 +1,15 @@
 {
   "source": "content/feeds.json",
   "attribution": "Aggregated headlines/summaries from third-party RSS/Atom feeds for navigation only. All rights belong to original publishers and authors. Chinese text is machine-translated.",
-  "fetchedAt": "2026-07-29T08:30:57.550Z",
+  "fetchedAt": "2026-07-29T13:56:30.569Z",
   "date": "2026-07-29",
   "feedCount": 3,
-  "itemCount": 30,
+  "itemCount": 50,
   "locale": {
     "summaryDefault": "zh",
     "translated": true
   },
-  "errors": [
-    {
-      "id": "hacker-news",
-      "error": "fetch failed"
-    }
-  ],
+  "errors": [],
   "feeds": [
     {
       "id": "hacker-news",
@@ -22,10 +17,230 @@
       "url": "https://hnrss.org/frontpage",
       "home": "https://news.ycombinator.com/",
       "group": "community",
-      "fetchedAt": "2026-07-29T08:30:12.573Z",
-      "count": 0,
-      "items": [],
-      "error": "fetch failed"
+      "fetchedAt": "2026-07-29T13:55:58.997Z",
+      "count": 20,
+      "items": [
+        {
+          "id": "https://news.ycombinator.com/item?id=49096969",
+          "title": "Handbook.md shows that long policy documents do not reliably govern agents",
+          "titleZh": "Handbook.md 表明，长政策文件并不能可靠地管理代理人",
+          "link": "https://arxiv.org/abs/2607.25398",
+          "summary": "Article URL: https://arxiv.org/abs/2607.25398\n\n Comments URL: https://news.ycombinator.com/item?id=49096969\n\n Points: 38\n\n # Comments: 14",
+          "summaryZh": "文章网址：https://arxiv.org/abs/2607.25398\n\n 评论网址：https://news.ycombinator.com/item?id=49096969\n\n 积分：38\n\n # 评论: 14",
+          "publishedAt": "2026-07-29T13:01:57.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49096969",
+          "author": "spIrr"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49096953",
+          "title": "After the AI Crash",
+          "titleZh": "人工智能崩溃之后",
+          "link": "https://potsandpansbyccg.com/2026/07/29/after-the-ai-crash/",
+          "summary": "Article URL: https://potsandpansbyccg.com/2026/07/29/after-the-ai-crash/\n\n Comments URL: https://news.ycombinator.com/item?id=49096953\n\n Points: 36\n\n # Comments: 31",
+          "summaryZh": "文章网址：https://potsandpansbyccg.com/2026/07/29/after-the-ai-crash/\n\n 评论网址：https://news.ycombinator.com/item?id=49096953\n\n 积分：36\n\n # 评论: 31",
+          "publishedAt": "2026-07-29T13:00:39.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49096953",
+          "author": "sysoleg"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49096917",
+          "title": "Show HN: Bullshit Detector – agent skills that fact-check videos and articles",
+          "titleZh": "Show HN：Bullshit Detector – 对视频和文章进行事实核查的代理技能",
+          "link": "https://github.com/SerhiiKorniienko/bullshit-detector",
+          "summary": "Article URL: https://github.com/SerhiiKorniienko/bullshit-detector\n\n Comments URL: https://news.ycombinator.com/item?id=49096917\n\n Points: 26\n\n # Comments: 5",
+          "summaryZh": "文章网址：https://github.com/SerhiiKorniienko/bullshit- detector\n\n 评论网址：https://news.ycombinator.com/item?id=49096917\n\n 积分：26\n\n # 评论: 5",
+          "publishedAt": "2026-07-29T12:58:27.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49096917",
+          "author": "skorniienko"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49096767",
+          "title": "Show HN: Echologue – the private AI voice journal I built for myself",
+          "titleZh": "Show HN：Echologue – 我为自己打造的私人人工智能语音日记",
+          "link": "https://echologue.com/",
+          "summary": "I have tried journaling many times but nothing stuck. So I decided to make my own app for myself with these features: * Voice first * Private first * AI chat * Automatic tagging, meaning extraction, and semantic retrieval using embeddings stored locally * Export to LLM the AI angle is especially interesting for me. It allows me to ask questions like: * \"remind me highlights and crazy nights in the last 3 months\" * \"How was I feeling during my trip in Spain and how big of a problem was my breakup\" * \"How would you judge my overall interactions with Marc after I told him about my problems\" the overall process is fire and forget. I just talk for let's say a minute every day or when there was something of interest. Everything is stored on device. The AI inference is done with Zero Data Retention Endpoints. No email or anything else is kept, you are completely anonymous, I have no idea what or how people use this. Otherwise journaling doesn't work. I can't say my secret thoughts when I know someone has a master key or can suffer a security breach. I hope you enjoy the product as much as I do.\n\n Comments URL: https://news.ycombinator.com/item?id=49096767\n\n Points: 7\n\n # Comments: 7",
+          "summaryZh": "我曾多次尝试写日记，但没有任何进展。因此，我决定为自己制作具有以下功能的应用程序： * 语音优先 * 隐私优先 * AI 聊天 * 使用本地存储的嵌入自动标记、含义提取和语义检索 * 导出到 LLM，AI 角度对我来说特别有趣。它让我可以提出这样的问题：*“提醒我过去三个月里的亮点和疯狂的夜晚”*“我在西班牙旅行期间感觉如何，我的分手问题有多大”*“在我告诉马克我的问题后，你会如何评价我与马克的整体互动”整个过程就是一劳永逸。我只是每天说一分钟，或者当有感兴趣的事情时。一切都存储在设备上。 AI 推理是通过零数据保留端点完成的。不保留电子邮件或其他任何内容，您完全匿名，我不知道人们使用什么或如何使用它。否则日记就不起作用。当我知道某人拥有主密钥或可能遭受安全漏洞时，我无法说出我的秘密想法。我希望您和我一样喜欢这个产品。\n\n 评论网址：https://news.ycombinator.com/item?id=49096767\n\n 积分：7\n\n # 评论: 7",
+          "publishedAt": "2026-07-29T12:43:36.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49096767",
+          "author": "arisAlexis"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49096742",
+          "title": "A Texture Lookup Approach to Bézier Curve Evaluation on the GPU (JCGT)",
+          "titleZh": "GPU 上贝塞尔曲线评估的纹理查找方法 (JCGT)",
+          "link": "https://jcgt.org/published/0015/02/01/",
+          "summary": "Article URL: https://jcgt.org/published/0015/02/01/\n\n Comments URL: https://news.ycombinator.com/item?id=49096742\n\n Points: 12\n\n # Comments: 0",
+          "summaryZh": "文章网址：https://jcgt.org/published/0015/02/01/\n\n 评论网址：https://news.ycombinator.com/item?id=49096742\n\n 积分：12\n\n # 评论: 0",
+          "publishedAt": "2026-07-29T12:40:13.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49096742",
+          "author": "ibobev"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49096493",
+          "title": "Pulse Path – a browser puzzle where placement is the only decision",
+          "titleZh": "脉冲路径 – 一个浏览器谜题，其中放置是唯一的决定",
+          "link": "https://pulsepathgame.netlify.app/",
+          "summary": "Article URL: https://pulsepathgame.netlify.app/\n\n Comments URL: https://news.ycombinator.com/item?id=49096493\n\n Points: 7\n\n # Comments: 5",
+          "summaryZh": "文章网址：https://pulsepathgame.netlify.app/\n\n 评论网址：https://news.ycombinator.com/item?id=49096493\n\n 积分：7\n\n # 评论: 5",
+          "publishedAt": "2026-07-29T12:19:30.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49096493",
+          "author": "crysislol"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49096427",
+          "title": "Disrupting supply chain attacks on NPM and GitHub Actions",
+          "titleZh": "针对 NPM 和 GitHub Actions 的中断供应链攻击",
+          "link": "https://github.blog/security/supply-chain-security/disrupting-supply-chain-attacks-on-npm-and-github-actions/",
+          "summary": "Article URL: https://github.blog/security/supply-chain-security/disrupting-supply-chain-attacks-on-npm-and-github-actions/\n\n Comments URL: https://news.ycombinator.com/item?id=49096427\n\n Points: 20\n\n # Comments: 5",
+          "summaryZh": "文章网址：https://github.blog/security/supply-chain-security/disrupting-supply-chain-attacks-on-npm-and-github-actions/\n\n 评论网址：https://news.ycombinator.com/item?id=49096427\n\n 积分：20\n\n # 评论: 5",
+          "publishedAt": "2026-07-29T12:11:18.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49096427",
+          "author": "nyku"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49096290",
+          "title": "French musician Kavinsky found dead",
+          "titleZh": "法国音乐家卡文斯基被发现身亡",
+          "link": "https://www.euronews.com/culture/2026/07/29/dj-kavinsky-known-for-his-track-nightcall-found-dead-at-his-paris-home",
+          "summary": "Article URL: https://www.euronews.com/culture/2026/07/29/dj-kavinsky-known-for-his-track-nightcall-found-dead-at-his-paris-home\n\n Comments URL: https://news.ycombinator.com/item?id=49096290\n\n Points: 125\n\n # Comments: 31",
+          "summaryZh": "文章网址：https://www.euronews.com/culture/2026/07/29/dj-kavinsky-known-for-his-track-nightcall-found-dead-at-his-paris-home\n\n 评论网址：https://news.ycombinator.com/item?id=49096290\n\n 积分：125\n\n # 评论: 31",
+          "publishedAt": "2026-07-29T11:54:37.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49096290",
+          "author": "bristleworm"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49096188",
+          "title": "Document-borne AI worms can self-propagate through Copilot for Word",
+          "titleZh": "文档传播的 AI 蠕虫可以通过 Copilot for Word 自我传播",
+          "link": "https://enklypesalt.com/posts/context-collapse-part3-ai-worming-through-word/",
+          "summary": "Article URL: https://enklypesalt.com/posts/context-collapse-part3-ai-worming-through-word/\n\n Comments URL: https://news.ycombinator.com/item?id=49096188\n\n Points: 132\n\n # Comments: 106",
+          "summaryZh": "文章网址：https://enklypesalt.com/posts/context-collapse-part3-ai-worming-through-word/\n\n 评论网址：https://news.ycombinator.com/item?id=49096188\n\n 积分：132\n\n # 评论: 106",
+          "publishedAt": "2026-07-29T11:44:33.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49096188",
+          "author": "Canopy9560"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49095865",
+          "title": "KOReader",
+          "titleZh": "KO阅读器",
+          "link": "https://koreader.rocks/",
+          "summary": "Article URL: https://koreader.rocks/\n\n Comments URL: https://news.ycombinator.com/item?id=49095865\n\n Points: 239\n\n # Comments: 89",
+          "summaryZh": "文章网址：https://koreader.rocks/\n\n 评论网址：https://news.ycombinator.com/item?id=49095865\n\n 积分：239\n\n # 评论: 89",
+          "publishedAt": "2026-07-29T11:05:08.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49095865",
+          "author": "Cider9986"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49095628",
+          "title": "SpecForge – A Platform for Authoring Formal Specifications",
+          "titleZh": "SpecForge – 编写正式规范的平台",
+          "link": "https://docs.imiron.io/v/0.5.10/en/tour.html",
+          "summary": "Article URL: https://docs.imiron.io/v/0.5.10/en/tour.html\n\n Comments URL: https://news.ycombinator.com/item?id=49095628\n\n Points: 42\n\n # Comments: 1",
+          "summaryZh": "文章网址：https://docs.imiron.io/v/0.5.10/en/tour.html\n\n 评论网址：https://news.ycombinator.com/item?id=49095628\n\n 积分：42\n\n # 评论: 1",
+          "publishedAt": "2026-07-29T10:35:19.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49095628",
+          "author": "agnishom"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49095511",
+          "title": "Amiga Graphics Archive",
+          "titleZh": "Amiga 图形档案",
+          "link": "https://amiga.lychesis.net/index.html",
+          "summary": "Article URL: https://amiga.lychesis.net/index.html\n\n Comments URL: https://news.ycombinator.com/item?id=49095511\n\n Points: 67\n\n # Comments: 11",
+          "summaryZh": "文章网址：https://amiga.lychesis.net/index.html\n\n 评论网址：https://news.ycombinator.com/item?id=49095511\n\n 积分：67\n\n # 评论: 11",
+          "publishedAt": "2026-07-29T10:19:44.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49095511",
+          "author": "Bluestein"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49095361",
+          "title": "The only road in London where you have to drive on the right",
+          "titleZh": "伦敦唯一一条必须靠右行驶的道路",
+          "link": "https://www.mylondon.news/news/transport/only-road-london-you-drive-30499294",
+          "summary": "Article URL: https://www.mylondon.news/news/transport/only-road-london-you-drive-30499294\n\n Comments URL: https://news.ycombinator.com/item?id=49095361\n\n Points: 13\n\n # Comments: 20",
+          "summaryZh": "文章网址：https://www.mylondon.news/news/transport/only-road-london-you-drive-30499294\n\n 评论网址：https://news.ycombinator.com/item?id=49095361\n\n 积分：13\n\n # 评论: 20",
+          "publishedAt": "2026-07-29T09:59:09.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49095361",
+          "author": "theanonymousone"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49095143",
+          "title": "Show HN: Vimgolf.ai – Learn Vim by playing through a map of levels",
+          "titleZh": "显示 HN：Vimgolf.ai – 通过玩关卡地图来学习 Vim",
+          "link": "https://vimgolf.ai",
+          "summary": "Just launched my app, VimGolf.ai! As users complete the levels on the map, I introduce progressively more complicated concepts — it’s aimed at people who have never used Vim. Any feedback would be much appreciated!\n\n Comments URL: https://news.ycombinator.com/item?id=49095143\n\n Points: 24\n\n # Comments: 17",
+          "summaryZh": "刚刚启动了我的应用程序 VimGolf.ai！当用户完成地图上的关卡时，我会逐渐引入更复杂的概念——它针对的是从未使用过 Vim 的人。任何反馈将不胜感激！\n\n 评论网址：https://news.ycombinator.com/item?id=49095143\n\n 积分：24\n\n # 评论: 17",
+          "publishedAt": "2026-07-29T09:26:52.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49095143",
+          "author": "nickandbro"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49094346",
+          "title": "SQLite in Production: Optimizing WAL Mode, Concurrency, and VFS Layers",
+          "titleZh": "生产中的 SQLite：优化 WAL 模式、并发性和 VFS 层",
+          "link": "https://micrologics.org/blog/sqlite-in-production-optimizing-wal-mode-concurrency-and-vfs-layers-for-low-latency-app-servers",
+          "summary": "Article URL: https://micrologics.org/blog/sqlite-in-production-optimizing-wal-mode-concurrency-and-vfs-layers-for-low-latency-app-servers\n\n Comments URL: https://news.ycombinator.com/item?id=49094346\n\n Points: 135\n\n # Comments: 50",
+          "summaryZh": "文章网址：https://micrologics.org/blog/sqlite-in-product-optimizing-wal-mode-concurrency-and-vfs-layers-for-low-latency-app-servers\n\n 评论网址：https://news.ycombinator.com/item?id=49094346\n\n 积分：135\n\n # 评论: 50",
+          "publishedAt": "2026-07-29T07:18:24.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49094346",
+          "author": "ankitg12"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49093569",
+          "title": "More Tailscale tricks for your jailbroken Kindle",
+          "titleZh": "适用于越狱 Kindle 的更多 Tailscale 技巧",
+          "link": "https://tailscale.com/blog/jailbroken-kindle-proxy-tun-modes",
+          "summary": "Article URL: https://tailscale.com/blog/jailbroken-kindle-proxy-tun-modes\n\n Comments URL: https://news.ycombinator.com/item?id=49093569\n\n Points: 285\n\n # Comments: 93",
+          "summaryZh": "文章网址：https://tailscale.com/blog/jailbroken-kindle-proxy-tun-modes\n\n 评论网址：https://news.ycombinator.com/item?id=49093569\n\n 积分：285\n\n #评论：93",
+          "publishedAt": "2026-07-29T04:58:46.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49093569",
+          "author": "Error6571"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49093435",
+          "title": "Cracking Windows Open: Porting RADV to Win32",
+          "titleZh": "破解Windows打开：将RADV移植到Win32",
+          "link": "https://www.collabora.com/news-and-blog/news-and-events/cracking-windows-open-porting-radv-to-win32.html",
+          "summary": "Article URL: https://www.collabora.com/news-and-blog/news-and-events/cracking-windows-open-porting-radv-to-win32.html\n\n Comments URL: https://news.ycombinator.com/item?id=49093435\n\n Points: 72\n\n # Comments: 21",
+          "summaryZh": "文章网址：https://www.collabora.com/news-and-blog/news-and-events/cracking-windows-open-porting-radv-to-win32.html\n\n 评论网址：https://news.ycombinator.com/item?id=49093435\n\n 积分：72\n\n # 评论: 21",
+          "publishedAt": "2026-07-29T04:30:47.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49093435",
+          "author": "zdw"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49093434",
+          "title": "User Interfaces of the Demo Scene",
+          "titleZh": "演示场景的用户界面",
+          "link": "https://www.datagubbe.se/scenegui/",
+          "summary": "Article URL: https://www.datagubbe.se/scenegui/\n\n Comments URL: https://news.ycombinator.com/item?id=49093434\n\n Points: 290\n\n # Comments: 49",
+          "summaryZh": "文章网址：https://www.datagubbe.se/scenegui/\n\n 评论网址：https://news.ycombinator.com/item?id=49093434\n\n 积分：290\n\n # 评论: 49",
+          "publishedAt": "2026-07-29T04:30:36.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49093434",
+          "author": "zdw"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49093232",
+          "title": "Transformer Transformer: A Unified Model for Motion-Conditioned Robot Co-Design",
+          "titleZh": "Transformer Transformer：运动条件机器人协同设计的统一模型",
+          "link": "https://transformer-transformer.github.io/",
+          "summary": "Article URL: https://transformer-transformer.github.io/\n\n Comments URL: https://news.ycombinator.com/item?id=49093232\n\n Points: 69\n\n # Comments: 8",
+          "summaryZh": "文章网址：https://transformer-transformer.github.io/\n\n 评论网址：https://news.ycombinator.com/item?id=49093232\n\n 积分：69\n\n # 评论: 8",
+          "publishedAt": "2026-07-29T03:52:29.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49093232",
+          "author": "ilreb"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49092499",
+          "title": "LearnVector – Andrew Ng's AI company building one‑to‑one learning experiences",
+          "titleZh": "LearnVector – 吴恩达的人工智能公司构建一对一的学习体验",
+          "link": "https://learnvector.ai/",
+          "summary": "Article URL: https://learnvector.ai/\n\n Comments URL: https://news.ycombinator.com/item?id=49092499\n\n Points: 231\n\n # Comments: 149",
+          "summaryZh": "文章网址：https://learnvector.ai/\n\n 评论网址：https://news.ycombinator.com/item?id=49092499\n\n 积分：231\n\n # 评论：149",
+          "publishedAt": "2026-07-29T01:49:19.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49092499",
+          "author": "ajhai"
+        }
+      ]
     },
     {
       "id": "arxiv-cs-ai",
@@ -33,7 +248,7 @@
       "url": "https://rss.arxiv.org/rss/cs.AI",
       "home": "https://arxiv.org/list/cs.AI/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-07-29T08:30:13.214Z",
+      "fetchedAt": "2026-07-29T13:55:59.593Z",
       "count": 15,
       "items": [
         {
@@ -209,7 +424,7 @@
       "url": "https://rss.arxiv.org/rss/cs.LG",
       "home": "https://arxiv.org/list/cs.LG/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-07-29T08:30:13.651Z",
+      "fetchedAt": "2026-07-29T13:56:00.032Z",
       "count": 15,
       "items": [
         {
