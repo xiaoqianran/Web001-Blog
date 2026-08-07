@@ -1,7 +1,7 @@
 {
   "source": "content/feeds.json",
   "attribution": "Aggregated headlines/summaries from third-party RSS/Atom feeds for navigation only. All rights belong to original publishers and authors. Chinese text is machine-translated.",
-  "fetchedAt": "2026-08-07T07:06:01.658Z",
+  "fetchedAt": "2026-08-07T12:50:29.103Z",
   "date": "2026-08-07",
   "feedCount": 3,
   "itemCount": 50,
@@ -17,16 +17,38 @@
       "url": "https://hnrss.org/frontpage",
       "home": "https://news.ycombinator.com/",
       "group": "community",
-      "fetchedAt": "2026-08-07T07:05:22.347Z",
+      "fetchedAt": "2026-08-07T12:49:56.048Z",
       "count": 20,
       "items": [
+        {
+          "id": "https://news.ycombinator.com/item?id=49208314",
+          "title": "US strikes $1.2B deal to pay German firm to halt offshore wind projects",
+          "titleZh": "美国达成120亿美元协议，向德国公司支付停止海上风电项目的费用",
+          "link": "https://www.bbc.com/news/articles/c1e1vg0gjl5o",
+          "summary": "Article URL: https://www.bbc.com/news/articles/c1e1vg0gjl5o\n\n Comments URL: https://news.ycombinator.com/item?id=49208314\n\n Points: 319\n\n # Comments: 287",
+          "summaryZh": "文章网址：https://www.bbc.com/news/articles/c1e1vg0gjl5o\n\n 评论网址：https://news.ycombinator.com/item?id=49208314\n\n 积分：319\n\n # 评论：287",
+          "publishedAt": "2026-08-07T10:28:55.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49208314",
+          "author": "defrost"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49207793",
+          "title": "Show HN: Certo – An open source platform to deliver Open Badges",
+          "titleZh": "Show HN：Certo – 提供开放徽章的开源平台",
+          "link": "https://github.com/schroedinger-Hat/certo",
+          "summary": "Certo is open-source infrastructure for issuing, managing, verifying, and exchanging digital credentials. It implements Open Badges 3.0[1] and W3C Verifiable Credentials[2] which are the open standards that make credentials portable, machine-verifiable, and vendor-independent. It is designed to be: - Self-hosted: run it inside your own infrastructure, air-gapped network, or sovereign cloud\n- Standards-compliant: credentials it issues work with any OB3/VC-compatible system\n- API-first: everything the UI can do, the API can do\n- Exportable: your data is always yours, in open formats\n- Extensible: a small, stable core with a plugin interface for everything else A demo is available at https://certo.schroedinger-hat.org/ which we're using for Schrödinger Hat[3] conferences, workshops, partner communities. I'll be around if you have any questions. Feel free to give a feedback on the project. [1] https://www.imsglobal.org/spec/ob/v3p0\n[2] https://www.w3.org/TR/vc-data-model/\n[3] https://schroedinger-hat.org/\n\n Comments URL: https://news.ycombinator.com/item?id=49207793\n\n Points: 5\n\n # Comments: 0",
+          "summaryZh": "Certo 是用于发布、管理、验证和交换数字凭证的开源基础设施。它实现了开放徽章 3.0[1] 和 W3C 可验证凭证[2]，这些开放标准使凭证可移植、可机器验证且独立于供应商。它的设计目的是： - 自托管：在您自己的基础设施、气隙网络或主权云中运行\n- 符合标准：它颁发的凭证适用于任何 OB3/VC 兼容系统\n- API优先：UI能做的一切，API也能做\n- 可导出：您的数据始终属于您，采用开放格式\n- 可扩展：一个小型、稳定的核心，带有适用于其他所有内容的插件接口 https://certo.schroedinger-hat.org/ 提供了一个演示，我们将其用于薛定谔帽[3] 会议、研讨会、合作伙伴社区。如果您有任何疑问，我会在场。请随时提供有关该项目的反馈。 [1] https://www.imsglobal.org/spec/ob/v3p0\n[2] https://www.w3.org/TR/vc-data-model/\n[3] https://schroedinger-hat.org/\n\n 评论网址：https://news.ycombinator.com/item?id=49207793\n\n 积分：5\n\n # 评论: 0",
+          "publishedAt": "2026-08-07T09:10:30.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49207793",
+          "author": "thejoin95"
+        },
         {
           "id": "https://news.ycombinator.com/item?id=49206130",
           "title": "Framework discloses data breach via Metabase 0-day",
           "titleZh": "框架通过 Metabase 0day 披露数据泄露",
           "link": "https://community.frame.work/t/framework-data-breach-discussion/83939",
-          "summary": "Article URL: https://community.frame.work/t/framework-data-breach-discussion/83939\n\n Comments URL: https://news.ycombinator.com/item?id=49206130\n\n Points: 35\n\n # Comments: 6",
-          "summaryZh": "文章网址：https://community.frame.work/t/framework-data-breach-discussion/83939\n\n 评论网址：https://news.ycombinator.com/item?id=49206130\n\n 积分：35\n\n # 评论: 6",
+          "summary": "Article URL: https://community.frame.work/t/framework-data-breach-discussion/83939\n\n Comments URL: https://news.ycombinator.com/item?id=49206130\n\n Points: 108\n\n # Comments: 40",
+          "summaryZh": "文章网址：https://community.frame.work/t/framework-data-breach-discussion/83939\n\n 评论网址：https://news.ycombinator.com/item?id=49206130\n\n 积分：108\n\n # 评论: 40",
           "publishedAt": "2026-08-07T05:17:57.000Z",
           "comments": "https://news.ycombinator.com/item?id=49206130",
           "author": "RobinHirst11"
@@ -36,19 +58,19 @@
           "title": "New Orleans is testing Carbyne’s AI-powered Emergency Call Triage software",
           "titleZh": "新奥尔良正在测试 Carbyne 的人工智能紧急呼叫分类软件",
           "link": "https://www.shreveporttimes.com/story/news/local/louisiana/2026/07/28/is-new-orleans-using-ai-to-answer-911-calls-instead-of-human-dispatchers-impacts-emergencies-crime/91065014007/",
-          "summary": "Article URL: https://www.shreveporttimes.com/story/news/local/louisiana/2026/07/28/is-new-orleans-using-ai-to-answer-911-calls-instead-of-human-dispatchers-impacts-emergencies-crime/91065014007/\n\n Comments URL: https://news.ycombinator.com/item?id=49204546\n\n Points: 51\n\n # Comments: 64",
-          "summaryZh": "文章网址：https://www.shreveporttimes.com/story/news/local/louisiana/2026/07/28/is-new-orleans-using-ai-to-answer-911-calls-instead-of- human-dispatchers-impacts-emergcies-crime/91065014007/\n\n 评论网址：https://news.ycombinator.com/item?id=49204546\n\n 积分：51\n\n # 评论: 64",
+          "summary": "Article URL: https://www.shreveporttimes.com/story/news/local/louisiana/2026/07/28/is-new-orleans-using-ai-to-answer-911-calls-instead-of-human-dispatchers-impacts-emergencies-crime/91065014007/\n\n Comments URL: https://news.ycombinator.com/item?id=49204546\n\n Points: 65\n\n # Comments: 101",
+          "summaryZh": "文章网址：https://www.shreveporttimes.com/story/news/local/louisiana/2026/07/28/is-new-orleans-using-ai-to-answer-911-calls-instead-of- human-dispatchers-impacts-emergcies-crime/91065014007/\n\n 评论网址：https://news.ycombinator.com/item?id=49204546\n\n 积分：65\n\n # 评论: 101",
           "publishedAt": "2026-08-07T00:37:30.000Z",
           "comments": "https://news.ycombinator.com/item?id=49204546",
           "author": "champagnepapi"
         },
         {
           "id": "https://news.ycombinator.com/item?id=49204352",
-          "title": "Meta Ordered to Pay $942M to Address Harm to Kids from Social Media",
-          "titleZh": "Meta 被责令支付 9.42 亿美元，以解决社交媒体对儿童造成的伤害",
-          "link": "https://www.wsj.com/tech/meta-ordered-to-pay-942-million-to-address-harm-to-kids-from-social-media-8ba5aab7",
-          "summary": "Article URL: https://www.wsj.com/tech/meta-ordered-to-pay-942-million-to-address-harm-to-kids-from-social-media-8ba5aab7\n\n Comments URL: https://news.ycombinator.com/item?id=49204352\n\n Points: 165\n\n # Comments: 106",
-          "summaryZh": "文章网址：https://www.wsj.com/tech/meta-ordered-to-pay-942-million-to-address-harm-to-kids-from-social-media-8ba5aab7\n\n 评论网址：https://news.ycombinator.com/item?id=49204352\n\n 积分：165\n\n # 评论: 106",
+          "title": "New Mexico court orders Meta to pay $567m over harms to children’s mental health",
+          "titleZh": "新墨西哥州法院命令 Meta 因损害儿童心理健康而支付 5.67 亿美元",
+          "link": "https://www.theguardian.com/technology/2026/aug/06/new-mexico-court-meta",
+          "summary": "https://www.reuters.com/world/new-mexico-court-orders-meta-p... https://www.theguardian.com/technology/2026/aug/06/new-mexic... https://www.kob.com/new-mexico/nm-court-orders-meta-to-pay-5... https://www.bbc.com/news/articles/cd7lz3wr2rlo https://www.wsj.com/tech/meta-ordered-to-pay-942-million-to-...\n\n Comments URL: https://news.ycombinator.com/item?id=49204352\n\n Points: 389\n\n # Comments: 241",
+          "summaryZh": "https://www.reuters.com/world/new-mexico-court-orders-meta-p... https://www.theguardian.com/technology/2026/aug/06/new-mexic... https://www.kob.com/new-mexico/nm-court-orders-meta-to-pay-5... https://www.bbc.com/news/articles/cd7lz3wr2rlo https://www.wsj.com/tech/meta-ordered-to-pay-942-million-to-...\n\n 评论网址：https://news.ycombinator.com/item?id=49204352\n\n 积分：389\n\n # 评论：241",
           "publishedAt": "2026-08-07T00:06:28.000Z",
           "comments": "https://news.ycombinator.com/item?id=49204352",
           "author": "boplicity"
@@ -58,8 +80,8 @@
           "title": "Welcoming the Nepalese Government to Have I Been Pwned",
           "titleZh": "欢迎尼泊尔政府让我被抓",
           "link": "https://www.troyhunt.com/welcoming-the-nepalese-government-to-have-i-been-pwned/",
-          "summary": "Article URL: https://www.troyhunt.com/welcoming-the-nepalese-government-to-have-i-been-pwned/\n\n Comments URL: https://news.ycombinator.com/item?id=49203105\n\n Points: 134\n\n # Comments: 21",
-          "summaryZh": "文章网址：https://www.troyhunt.com/welcoming-the-nepalese-government-to-have-i-been-pwned/\n\n 评论网址：https://news.ycombinator.com/item?id=49203105\n\n 积分：134\n\n # 评论: 21",
+          "summary": "Article URL: https://www.troyhunt.com/welcoming-the-nepalese-government-to-have-i-been-pwned/\n\n Comments URL: https://news.ycombinator.com/item?id=49203105\n\n Points: 171\n\n # Comments: 27",
+          "summaryZh": "文章网址：https://www.troyhunt.com/welcoming-the-nepalese-government-to-have-i-been-pwned/\n\n 评论网址：https://news.ycombinator.com/item?id=49203105\n\n 积分：171\n\n # 评论: 27",
           "publishedAt": "2026-08-06T21:52:16.000Z",
           "comments": "https://news.ycombinator.com/item?id=49203105",
           "author": "gnabgib"
@@ -69,8 +91,8 @@
           "title": "Inside vLLM: Anatomy of a High-Throughput LLM Inference System (2025)",
           "titleZh": "vLLM 内部：高通量 LLM 推理系统剖析 (2025)",
           "link": "https://www.aleksagordic.com/blog/vllm",
-          "summary": "Article URL: https://www.aleksagordic.com/blog/vllm\n\n Comments URL: https://news.ycombinator.com/item?id=49202852\n\n Points: 90\n\n # Comments: 5",
-          "summaryZh": "文章网址：https://www.aleksagordic.com/blog/vllm\n\n 评论网址：https://news.ycombinator.com/item?id=49202852\n\n 积分：90\n\n # 评论: 5",
+          "summary": "Article URL: https://www.aleksagordic.com/blog/vllm\n\n Comments URL: https://news.ycombinator.com/item?id=49202852\n\n Points: 122\n\n # Comments: 7",
+          "summaryZh": "文章网址：https://www.aleksagordic.com/blog/vllm\n\n 评论网址：https://news.ycombinator.com/item?id=49202852\n\n 积分：122\n\n # 评论: 7",
           "publishedAt": "2026-08-06T21:30:21.000Z",
           "comments": "https://news.ycombinator.com/item?id=49202852",
           "author": "sebg"
@@ -80,19 +102,30 @@
           "title": "Bioengineered chewing gum may offer a way to fight HPV and other microbes",
           "titleZh": "生物工程口香糖可能提供对抗 HPV 和其他微生物的方法",
           "link": "https://www.sciencedaily.com/releases/2026/08/260803080917.htm",
-          "summary": "Article URL: https://www.sciencedaily.com/releases/2026/08/260803080917.htm\n\n Comments URL: https://news.ycombinator.com/item?id=49202716\n\n Points: 102\n\n # Comments: 22",
-          "summaryZh": "文章网址：https://www.sciencedaily.com/releases/2026/08/260803080917.htm\n\n 评论网址：https://news.ycombinator.com/item?id=49202716\n\n 积分：102\n\n # 评论: 22",
+          "summary": "Article URL: https://www.sciencedaily.com/releases/2026/08/260803080917.htm\n\n Comments URL: https://news.ycombinator.com/item?id=49202716\n\n Points: 151\n\n # Comments: 43",
+          "summaryZh": "文章网址：https://www.sciencedaily.com/releases/2026/08/260803080917.htm\n\n 评论网址：https://news.ycombinator.com/item?id=49202716\n\n 积分：151\n\n # 评论: 43",
           "publishedAt": "2026-08-06T21:18:32.000Z",
           "comments": "https://news.ycombinator.com/item?id=49202716",
           "author": "Audiophilip"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49202690",
+          "title": "What is a product?",
+          "titleZh": "什么是产品？",
+          "link": "https://roge.onwrite.app/what-is-a-product",
+          "summary": "Article URL: https://roge.onwrite.app/what-is-a-product\n\n Comments URL: https://news.ycombinator.com/item?id=49202690\n\n Points: 77\n\n # Comments: 48",
+          "summaryZh": "文章网址：https://roge.onwrite.app/what-is-a-product\n\n 评论网址：https://news.ycombinator.com/item?id=49202690\n\n 积分：77\n\n # 评论: 48",
+          "publishedAt": "2026-08-06T21:16:52.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49202690",
+          "author": "rogix"
         },
         {
           "id": "https://news.ycombinator.com/item?id=49201970",
           "title": "AMD acquires Taalas to boost inference performance by etching models in silicon",
           "titleZh": "AMD 收购 Taalas，通过在硅中蚀刻模型来提高推理性能",
           "link": "https://www.theregister.com/systems/2026/08/06/amd-acquires-ai-chip-startup-taalas-to-boost-inference-performance-by-etching-models-into-silicon/5284344",
-          "summary": "https://ir.amd.com/news-events/press-releases/detail/1296/am... https://chatjimmy.ai/\n\n Comments URL: https://news.ycombinator.com/item?id=49201970\n\n Points: 557\n\n # Comments: 429",
-          "summaryZh": "https://ir.amd.com/news-events/press-releases/detail/1296/am... https://chatjimmy.ai/\n\n 评论网址：https://news.ycombinator.com/item?id=49201970\n\n 积分：557\n\n # 评论：429",
+          "summary": "https://ir.amd.com/news-events/press-releases/detail/1296/am... https://chatjimmy.ai/\n\n Comments URL: https://news.ycombinator.com/item?id=49201970\n\n Points: 733\n\n # Comments: 546",
+          "summaryZh": "https://ir.amd.com/news-events/press-releases/detail/1296/am... https://chatjimmy.ai/\n\n 评论网址：https://news.ycombinator.com/item?id=49201970\n\n 积分：733\n\n # 评论: 546",
           "publishedAt": "2026-08-06T20:23:11.000Z",
           "comments": "https://news.ycombinator.com/item?id=49201970",
           "author": "itvision"
@@ -102,8 +135,8 @@
           "title": "Quake – 30th Anniversary Update",
           "titleZh": "《雷神之锤》 – 30 周年更新",
           "link": "https://slayersclub.bethesda.net/en-US/news/quake-30th-anniversary-update",
-          "summary": "Article URL: https://slayersclub.bethesda.net/en-US/news/quake-30th-anniversary-update\n\n Comments URL: https://news.ycombinator.com/item?id=49201930\n\n Points: 270\n\n # Comments: 138",
-          "summaryZh": "文章网址：https://slayersclub.bethesda.net/en-US/news/quake-30th-anniversary-update\n\n 评论网址：https://news.ycombinator.com/item?id=49201930\n\n 积分：270\n\n # 评论: 138",
+          "summary": "Article URL: https://slayersclub.bethesda.net/en-US/news/quake-30th-anniversary-update\n\n Comments URL: https://news.ycombinator.com/item?id=49201930\n\n Points: 345\n\n # Comments: 169",
+          "summaryZh": "文章网址：https://slayersclub.bethesda.net/en-US/news/quake-30th-anniversary-update\n\n 评论网址：https://news.ycombinator.com/item?id=49201930\n\n 积分：345\n\n # 评论: 169",
           "publishedAt": "2026-08-06T20:21:19.000Z",
           "comments": "https://news.ycombinator.com/item?id=49201930",
           "author": "dsubburam"
@@ -113,8 +146,8 @@
           "title": "Herdr is joining Y Combinator. The runtime stays open",
           "titleZh": "Herdr 即将加入 Y Combinator。运行时保持开放",
           "link": "https://herdr.dev/blog/herdr-is-joining-y-combinator/",
-          "summary": "Article URL: https://herdr.dev/blog/herdr-is-joining-y-combinator/\n\n Comments URL: https://news.ycombinator.com/item?id=49201003\n\n Points: 187\n\n # Comments: 126",
-          "summaryZh": "文章网址：https://herdr.dev/blog/herdr-is-joining-y-combinator/\n\n 评论网址：https://news.ycombinator.com/item?id=49201003\n\n 积分：187\n\n # 评论: 126",
+          "summary": "Article URL: https://herdr.dev/blog/herdr-is-joining-y-combinator/\n\n Comments URL: https://news.ycombinator.com/item?id=49201003\n\n Points: 230\n\n # Comments: 161",
+          "summaryZh": "文章网址：https://herdr.dev/blog/herdr-is-joining-y-combinator/\n\n 评论网址：https://news.ycombinator.com/item?id=49201003\n\n 积分：230\n\n # 评论: 161",
           "publishedAt": "2026-08-06T19:14:21.000Z",
           "comments": "https://news.ycombinator.com/item?id=49201003",
           "author": "collinmanderson"
@@ -124,8 +157,8 @@
           "title": "My phone detects going on a run as “someone snatching my phone and running off”",
           "titleZh": "我的手机检测到我正在跑步，因为“有人抢走了我的手机并逃跑”",
           "link": "https://mastodon.gamedev.place/@rygorous/117047697255584965",
-          "summary": "Article URL: https://mastodon.gamedev.place/@rygorous/117047697255584965\n\n Comments URL: https://news.ycombinator.com/item?id=49200439\n\n Points: 119\n\n # Comments: 215",
-          "summaryZh": "文章网址：https://mastodon.gamedev.place/@rygorous/117047697255584965\n\n 评论网址：https://news.ycombinator.com/item?id=49200439\n\n 积分：119\n\n # 评论：215",
+          "summary": "Article URL: https://mastodon.gamedev.place/@rygorous/117047697255584965\n\n Comments URL: https://news.ycombinator.com/item?id=49200439\n\n Points: 160\n\n # Comments: 267",
+          "summaryZh": "文章网址：https://mastodon.gamedev.place/@rygorous/117047697255584965\n\n 评论网址：https://news.ycombinator.com/item?id=49200439\n\n 积分：160\n\n # 评论：267",
           "publishedAt": "2026-08-06T18:26:08.000Z",
           "comments": "https://news.ycombinator.com/item?id=49200439",
           "author": "luu"
@@ -135,8 +168,8 @@
           "title": "Improving GPT‑5.6 Sol in ChatGPT, expanding GPT‑5.6 Luna access for free users",
           "titleZh": "改进 ChatGPT 中的 GPT-5.6 Sol，扩展免费用户的 GPT-5.6 Luna 访问权限",
           "link": "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/",
-          "summary": "Article URL: https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/\n\n Comments URL: https://news.ycombinator.com/item?id=49199357\n\n Points: 212\n\n # Comments: 154",
-          "summaryZh": "文章网址：https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/\n\n 评论网址：https://news.ycombinator.com/item?id=49199357\n\n 积分：212\n\n # 评论：154",
+          "summary": "Article URL: https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/\n\n Comments URL: https://news.ycombinator.com/item?id=49199357\n\n Points: 259\n\n # Comments: 203",
+          "summaryZh": "文章网址：https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/\n\n 评论网址：https://news.ycombinator.com/item?id=49199357\n\n 积分：259\n\n # 评论：203",
           "publishedAt": "2026-08-06T17:02:04.000Z",
           "comments": "https://news.ycombinator.com/item?id=49199357",
           "author": "tedsanders"
@@ -146,22 +179,11 @@
           "title": "Taste Is All That's Left",
           "titleZh": "剩下的就是味道",
           "link": "https://notashelf.dev/posts/taste-is-all-thats-left",
-          "summary": "Article URL: https://notashelf.dev/posts/taste-is-all-thats-left\n\n Comments URL: https://news.ycombinator.com/item?id=49199346\n\n Points: 346\n\n # Comments: 262",
-          "summaryZh": "文章网址：https://notashelf.dev/posts/taste-is-all-thats-left\n\n 评论网址：https://news.ycombinator.com/item?id=49199346\n\n 积分：346\n\n # 评论：262",
+          "summary": "Article URL: https://notashelf.dev/posts/taste-is-all-thats-left\n\n Comments URL: https://news.ycombinator.com/item?id=49199346\n\n Points: 492\n\n # Comments: 356",
+          "summaryZh": "文章网址：https://notashelf.dev/posts/taste-is-all-thats-left\n\n 评论网址：https://news.ycombinator.com/item?id=49199346\n\n 积分：492\n\n # 评论: 356",
           "publishedAt": "2026-08-06T17:01:33.000Z",
           "comments": "https://news.ycombinator.com/item?id=49199346",
           "author": "tsak"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=49198583",
-          "title": "Show HN: The Channels SDK – Bring Any Agent to Any Channel (Slack, MS Teams)",
-          "titleZh": "Show HN：渠道 SDK – 将任何代理带到任何渠道（Slack、MS Teams）",
-          "link": "https://github.com/CopilotKit/channels-sdk",
-          "summary": "Article URL: https://github.com/CopilotKit/channels-sdk\n\n Comments URL: https://news.ycombinator.com/item?id=49198583\n\n Points: 98\n\n # Comments: 21",
-          "summaryZh": "文章网址：https://github.com/CopilotKit/channels-sdk\n\n 评论网址：https://news.ycombinator.com/item?id=49198583\n\n 积分：98\n\n # 评论: 21",
-          "publishedAt": "2026-08-06T16:05:51.000Z",
-          "comments": "https://news.ycombinator.com/item?id=49198583",
-          "author": "davidmckayv"
         },
         {
           "id": "https://news.ycombinator.com/item?id=49198464",
@@ -179,30 +201,19 @@
           "title": "GitHub Actions and Pages are experiencing degraded availability",
           "titleZh": "GitHub Actions 和 Pages 的可用性下降",
           "link": "https://www.githubstatus.com/incidents/qcvjkzcs7j74",
-          "summary": "https://www.githubstatus.com/uptime/br0l2tvcx85d\n\n Comments URL: https://news.ycombinator.com/item?id=49198302\n\n Points: 375\n\n # Comments: 303",
-          "summaryZh": "https://www.githubstatus.com/uptime/br0l2tvcx85d\n\n 评论网址：https://news.ycombinator.com/item?id=49198302\n\n 积分：375\n\n # 评论: 303",
+          "summary": "https://www.githubstatus.com/uptime/br0l2tvcx85d\n\n Comments URL: https://news.ycombinator.com/item?id=49198302\n\n Points: 426\n\n # Comments: 350",
+          "summaryZh": "https://www.githubstatus.com/uptime/br0l2tvcx85d\n\n 评论网址：https://news.ycombinator.com/item?id=49198302\n\n 积分：426\n\n # 评论：350",
           "publishedAt": "2026-08-06T15:49:38.000Z",
           "comments": "https://news.ycombinator.com/item?id=49198302",
           "author": "Footkerchief"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=49198069",
-          "title": "Software development with AI is starting to feel like cooking steak",
-          "titleZh": "使用人工智能进行软件开发开始感觉像烹饪牛排",
-          "link": "https://blog.sydorets.com/en/posts/almost-no-skill-required-to-cook-a-steak/",
-          "summary": "Article URL: https://blog.sydorets.com/en/posts/almost-no-skill-required-to-cook-a-steak/\n\n Comments URL: https://news.ycombinator.com/item?id=49198069\n\n Points: 341\n\n # Comments: 370",
-          "summaryZh": "文章网址：https://blog.sydorets.com/en/posts/almost-no-skill-required-to-cook-a-steak/\n\n 评论网址：https://news.ycombinator.com/item?id=49198069\n\n 积分：341\n\n # 评论：370",
-          "publishedAt": "2026-08-06T15:30:48.000Z",
-          "comments": "https://news.ycombinator.com/item?id=49198069",
-          "author": "yusyd"
         },
         {
           "id": "https://news.ycombinator.com/item?id=49195468",
           "title": "Humans missed 1 in 3 threats approving AI agent commands across 40k game runs",
           "titleZh": "在 4 万次游戏运行中，人类错过了三分之一批准 AI 代理命令的威胁",
           "link": "https://scalex.dev/blog/ai-agent-permissions-stats/",
-          "summary": "Article URL: https://scalex.dev/blog/ai-agent-permissions-stats/\n\n Comments URL: https://news.ycombinator.com/item?id=49195468\n\n Points: 284\n\n # Comments: 202",
-          "summaryZh": "文章网址：https://scalex.dev/blog/ai-agent-permissions-stats/\n\n 评论网址：https://news.ycombinator.com/item?id=49195468\n\n 积分：284\n\n # 评论: 202",
+          "summary": "Article URL: https://scalex.dev/blog/ai-agent-permissions-stats/\n\n Comments URL: https://news.ycombinator.com/item?id=49195468\n\n Points: 316\n\n # Comments: 223",
+          "summaryZh": "文章网址：https://scalex.dev/blog/ai-agent-permissions-stats/\n\n 评论网址：https://news.ycombinator.com/item?id=49195468\n\n 积分：316\n\n # 评论：223",
           "publishedAt": "2026-08-06T11:58:07.000Z",
           "comments": "https://news.ycombinator.com/item?id=49195468",
           "author": "Wirbelwind"
@@ -212,8 +223,8 @@
           "title": "Mario Meets Pareto",
           "titleZh": "马里奥遇见帕累托",
           "link": "https://www.mayerowitz.io/blog/mario-meets-pareto",
-          "summary": "Article URL: https://www.mayerowitz.io/blog/mario-meets-pareto\n\n Comments URL: https://news.ycombinator.com/item?id=49195231\n\n Points: 996\n\n # Comments: 155",
-          "summaryZh": "文章网址：https://www.mayerowitz.io/blog/mario-meets-pareto\n\n 评论网址：https://news.ycombinator.com/item?id=49195231\n\n 积分：996\n\n # 评论：155",
+          "summary": "Article URL: https://www.mayerowitz.io/blog/mario-meets-pareto\n\n Comments URL: https://news.ycombinator.com/item?id=49195231\n\n Points: 1068\n\n # Comments: 160",
+          "summaryZh": "文章网址：https://www.mayerowitz.io/blog/mario-meets-pareto\n\n 评论网址：https://news.ycombinator.com/item?id=49195231\n\n 积分：1068\n\n # 评论: 160",
           "publishedAt": "2026-08-06T11:24:53.000Z",
           "comments": "https://news.ycombinator.com/item?id=49195231",
           "author": "theanonymousone"
@@ -223,22 +234,11 @@
           "title": "Scientists discover Kelvin-Helmholtz Instability on the surface of the Sun",
           "titleZh": "科学家发现太阳表面的开尔文-亥姆霍兹不稳定性",
           "link": "https://nso.edu/press-release/nsf-inouye-solar-telescope-enables-major-discovery-of-a-hidden-solar-process/",
-          "summary": "https://www.bbc.com/news/articles/c36d4376nd2o , https://archive.is/YDn6S\n\n Comments URL: https://news.ycombinator.com/item?id=49184355\n\n Points: 200\n\n # Comments: 42",
-          "summaryZh": "https://www.bbc.com/news/articles/c36d4376nd2o，https://archive.is/YDn6S\n\n 评论网址：https://news.ycombinator.com/item?id=49184355\n\n 积分：200\n\n # 评论: 42",
+          "summary": "https://www.bbc.com/news/articles/c36d4376nd2o , https://archive.is/YDn6S\n\n Comments URL: https://news.ycombinator.com/item?id=49184355\n\n Points: 254\n\n # Comments: 53",
+          "summaryZh": "https://www.bbc.com/news/articles/c36d4376nd2o，https://archive.is/YDn6S\n\n 评论网址：https://news.ycombinator.com/item?id=49184355\n\n 积分：254\n\n # 评论: 53",
           "publishedAt": "2026-08-05T15:33:23.000Z",
           "comments": "https://news.ycombinator.com/item?id=49184355",
           "author": "neversaydie"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=49171650",
-          "title": "Truemetrics (YC S23) Is Hiring in Berlin – GTM Lead",
-          "titleZh": "Truemetrics (YC S23) 正在柏林招聘 – GTM 负责人",
-          "link": "https://www.ycombinator.com/companies/truemetrics/jobs/bIQQ7tP-founding-gtm-lead",
-          "summary": "Article URL: https://www.ycombinator.com/companies/truemetrics/jobs/bIQQ7tP-founding-gtm-lead\n\n Comments URL: https://news.ycombinator.com/item?id=49171650\n\n Points: 0\n\n # Comments: 0",
-          "summaryZh": "文章网址：https://www.ycombinator.com/companies/truemetrics/jobs/bIQQ7tP-founding-gtm-lead\n\n 评论网址：https://news.ycombinator.com/item?id=49171650\n\n 积分：0\n\n # 评论: 0",
-          "publishedAt": "2026-08-04T17:00:12.000Z",
-          "comments": "https://news.ycombinator.com/item?id=49171650",
-          "author": "truemetricsIngo"
         }
       ]
     },
@@ -248,7 +248,7 @@
       "url": "https://rss.arxiv.org/rss/cs.AI",
       "home": "https://arxiv.org/list/cs.AI/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-08-07T07:05:22.913Z",
+      "fetchedAt": "2026-08-07T12:49:56.642Z",
       "count": 15,
       "items": [
         {
@@ -279,7 +279,7 @@
           "titleZh": "啄木鸟蒸馏：弱模型诊断强模型中的推理错误",
           "link": "https://arxiv.org/abs/2608.05168",
           "summary": "arXiv:2608.05168v1 Announce Type: new\nAbstract: Large language models often fail on reasoning tasks despite possessing the capability to solve them. We argue that many such failures arise from localized reasoning bugs in intermediate steps rather than from global incompetence. We show that these bugs are frequently repairable: inserting a short patch generated by a weak probe model after the same strong-model reasoning prefix can redirect the trajectory toward a correct solution.\n However, this corrective effect is not reliably internalized by directly fine-tuning on weak patches or repaired trajectories, suggesting that the useful signal lies not in the intervention text itself, but in how it reshapes the model's future reasoning distribution. We therefore propose Woodpecker Distillation, a weak-to-strong training framework that learns from contrastive local interventions. Our method contrasts successful and unsuccessful weak-model patches at the same prefix, constructs a corrective teacher distribution from their induced future token predictions, and distills this signal into the strong model.\n Experiments on mathematical reasoning benchmarks show that Woodpecker Distillation consistently improves strong-model performance and outperforms direct imitation baselines.",
-          "summaryZh": "arXiv:2608.05168v1 公告类型：新\n摘要：大型语言模型尽管具有解决推理任务的能力，但在推理任务上常常失败。我们认为，许多此类失败源于中间步骤中的局部推理错误，而不是全局无能。我们证明这些错误通常是可以修复的：在相同的强模型推理前缀之后插入由弱探测模型生成的短补丁可以将轨迹重定向到正确的解决方案。\n 然而，这种纠正效果并不能通过直接对薄弱补丁或修复轨迹进行微调来可靠地内化，这表明有用的信号不在于干预文本本身，而在于它如何重塑模型的未来推理分布。因此，我们提出啄木鸟蒸馏，这是一种从弱到强的训练框架，可以从对比的当地干预措施中学习。我们的方法对比相同前缀的成功和不成功的弱模型补丁，根据其诱导的未来标记预测构建校正教师分布，并将该信号提炼到强模型中。\n 数学推理基准实验表明，啄木鸟蒸馏持续提高了强模型性能，并且优于直接模仿基准。",
+          "summaryZh": "arXiv:2608.05168v1 公告类型：新\n摘要：尽管大型语言模型具有解决推理任务的能力，但在推理任务上常常失败。我们认为，许多此类失败源于中间步骤中的局部推理错误，而不是全局无能。我们证明这些错误通常是可以修复的：在相同的强模型推理前缀之后插入由弱探测模型生成的短补丁可以将轨迹重定向到正确的解决方案。\n 然而，这种纠正效果并不能通过直接对薄弱补丁或修复轨迹进行微调来可靠地内化，这表明有用的信号不在于干预文本本身，而在于它如何重塑模型的未来推理分布。因此，我们提出啄木鸟蒸馏，这是一种从弱到强的训练框架，可以从对比的当地干预措施中学习。我们的方法对比相同前缀的成功和不成功的弱模型补丁，根据其诱导的未来标记预测构建校正教师分布，并将该信号提炼到强模型中。\n 数学推理基准实验表明，啄木鸟蒸馏持续提高了强模型性能，并且优于直接模仿基准。",
           "publishedAt": "2026-08-07T04:00:00.000Z",
           "comments": null,
           "author": "Dayu Wang, Jiaye Yang, Weikang Li, Jiahui Liang, Yang Li, Deguo Xia, Jizhou Huang"
@@ -323,7 +323,7 @@
           "titleZh": "Otter：具有时间意识、历史条件的人类国际象棋人工智能",
           "link": "https://arxiv.org/abs/2608.05206",
           "summary": "arXiv:2608.05206v1 Announce Type: new\nAbstract: Otter is a 15.3M-parameter human chess AI that predicts human move selection by modeling play as a time-aware, sequential process rather than treating each position in isolation. It combines two conditioning signals: (1) a move history encoder that conditions predictions on the last 20 moves, capturing opening preferences, positional drift, and intra-game behavioral tendencies; and (2) a time control module that modulates predictions based on clock pressure. Otter is trained on 6.1 billion positions from 117 million Lichess rapid games over 30 days on a single T4 GPU.\n Otter achieves 55.23% top-1 and 90.95% top-5 move-prediction accuracy, surpassing the prior state-of-the-art human chess model, Maia 2, with far fewer parameters and less training data. Across 11 Elo brackets ( =2000), accuracy peaks at 57.38% in the 1900-1999 bracket. These results show that modeling chess as a time-aware, sequential activity yields more human-accurate move prediction than position-only approaches, using a smaller model. Code, trained models, and complete training logs are publicly released.",
-          "summaryZh": "arXiv:2608.05206v1 公告类型：新\n摘要：Otter 是一个 1530 万参数的人类国际象棋人工智能，它通过将比赛建模为时间感知的顺序过程来预测人类的走法选择，而不是孤立地处理每个位置。它结合了两个条件信号：（1）一个走棋历史编码器，用于对最后 20 个走棋进行预测，捕获开局偏好、位置漂移和游戏内行为倾向； (2) 时间控制模块，根据时钟压力调节预测。 Otter 在 30 天内在单个 T4 GPU 上对 1.17 亿场 Lichess 快速游戏中的 61 亿个位置进行了训练。\n Otter 的 top-1 着法预测准确率达到 55.23%，top-5 着法预测准确率达到 90.95%，超越了之前最先进的人类国际象棋模型 Maia 2，且参数和训练数据都少得多。在 11 个 Elo 区间 (=2000) 中，1900-1999 区间的准确率达到峰值 57.38%。这些结果表明，使用较小的模型，将国际象棋建模为时间感知的顺序活动，比仅使用位置的方法产生更准确的移动预测。代码、训练模型和完整的训练日志均公开发布。",
+          "summaryZh": "arXiv:2608.05206v1 公告类型：新\n摘要：Otter 是一个 1530 万参数的人类国际象棋人工智能，它通过将比赛建模为时间感知的顺序过程来预测人类的走法选择，而不是孤立地处理每个位置。它结合了两个条件信号：（1）一个走棋历史编码器，用于对最后 20 个走棋进行预测，捕获开局偏好、位置漂移和游戏内行为倾向； (2) 时间控制模块，根据时钟压力调整预测。 Otter 在 30 天内在单个 T4 GPU 上对 1.17 亿场 Lichess 快速游戏中的 61 亿个位置进行了训练。\n Otter 的 top-1 着法预测准确率达到 55.23%，top-5 着法预测准确率达到 90.95%，超越了之前最先进的人类国际象棋模型 Maia 2，且参数和训练数据都少得多。在 11 个 Elo 区间 (=2000) 中，1900-1999 区间的准确率达到峰值 57.38%。这些结果表明，使用较小的模型，将国际象棋建模为时间感知的顺序活动，比仅使用位置的方法产生更准确的移动预测。代码、训练模型和完整的训练日志均公开发布。",
           "publishedAt": "2026-08-07T04:00:00.000Z",
           "comments": null,
           "author": "Tarun Kumar S"
@@ -424,7 +424,7 @@
       "url": "https://rss.arxiv.org/rss/cs.LG",
       "home": "https://arxiv.org/list/cs.LG/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-08-07T07:05:23.346Z",
+      "fetchedAt": "2026-08-07T12:49:57.065Z",
       "count": 15,
       "items": [
         {
@@ -444,7 +444,7 @@
           "titleZh": "纠正功能何时有帮助？黑盒预报器修正特征发现代理",
           "link": "https://arxiv.org/abs/2608.05207",
           "summary": "arXiv:2608.05207v1 Announce Type: new\nAbstract: Frozen pretrained forecasters often fail in structured, recurring ways that are costly to repair through fine-tuning. We study corrective feature discovery: mining interpretable features of a frozen forecaster's residual to drive a lightweight post-hoc corrector. Prior automated feature engineering models the data-generating process; corrective features instead model the model-failure process. We present CRAFTER (Corrective Residual Agent with Feature-based Temporal Exploration and Reasoning), which keeps the backbone frozen and mines its residual with two complementary generators: a compositional search over the raw input channels, and a large language model (LLM) that proposes named feature combinations, binary flags, and short executable code. A single validation-grounded gate accepts or rejects every candidate regardless of its origin, and a validation-selected corrector applies the accepted features or leaves the forecast unchanged. This source-agnostic pipeline also allows prior feature-engineering systems to be evaluated under identical conditions, making CRAFTER an instrument for attributing forecast improvements to the feature source alone. Across six public datasets and six frozen backbones, CRAFTER surpasses every dedicated feature-engineering system at every feature budget, roughly doubling the improvement achieved by the corrector alone and reducing the error of the weakest backbones by up to 27%. These gains are robust across different LLM backends and persist even when applied on top of fine-tuned backbones.",
-          "summaryZh": "arXiv:2608.05207v1 公告类型：新\n摘要：冻结的预训练预测器通常会以结构化、重复性的方式失败，而通过微调进行修复的成本高昂。我们研究校正特征发现：挖掘冻结预测器残差的可解释特征来驱动轻量级事后校正器。先前的自动化特征工程对数据生成过程进行建模；纠正特征而是对模型失效过程进行建模。我们提出了 CRAFTER（具有基于特征的时间探索和推理的校正残差代理），它使主干保持冻结状态，并使用两个互补的生成器挖掘其残差：对原始输入通道的组合搜索，以及提出命名特征组合、二进制标志和简短可执行代码的大型语言模型（LLM）。单个基于验证的门接受或拒绝每个候选者，无论其来源如何，并且验证选择的校正器应用接受的特征或保持预测不变。这种与源无关的管道还允许在相同条件下评估先前的特征工程系统，从而使 CRAFTER 成为将预测改进单独归因于特征源的工具。在六个公共数据集和六个冻结骨干网中，CRAFTER 在每个特征预算上都超越了每个专用特征工程系统，将仅校正器所实现的改进大约翻倍，并将最弱骨干网的错误减少高达 27%。这些收益在不同的 LLM 后端上都很强大，即使应用于微调的主干网上也能持续存在。",
+          "summaryZh": "arXiv:2608.05207v1 公告类型：新\n摘要：冻结的预训练预测器通常会以结构化、重复性的方式失败，而通过微调进行修复的成本高昂。我们研究校正特征发现：挖掘冻结预测器残差的可解释特征来驱动轻量级事后校正器。先前的自动化特征工程对数据生成过程进行建模；纠正特征而是对模型失效过程进行建模。我们提出了 CRAFTER（具有基于特征的时间探索和推理的校正残差代理），它使主干保持冻结状态，并使用两个互补的生成器挖掘其残差：对原始输入通道的组合搜索，以及提出命名特征组合、二进制标志和简短可执行代码的大型语言模型（LLM）。单个基于验证的门接受或拒绝每个候选者，无论其来源如何，并且验证选择的校正器应用接受的特征或保持预测不变。这种与源无关的管道还允许在相同条件下评估先前的特征工程系统，从而使 CRAFTER 成为将预测改进单独归因于特征源的工具。在六个公共数据集和六个冻结骨干网中，CRAFTER 在每个特征预算上都超越了每个专用特征工程系统，将仅校正器所实现的改进大约翻倍，并将最弱骨干网的错误减少高达 27%。这些收益在不同的 LLM 后端中都很强大，即使应用于微调的骨干网也能持续存在。",
           "publishedAt": "2026-08-07T04:00:00.000Z",
           "comments": null,
           "author": "Fangxin Wang, Ziyi Zhang, Diyi Zhuang, Langzhou He, Shiyu Wang, Baichuan Mo, Philip S. Yu"
@@ -565,7 +565,7 @@
           "titleZh": "QEvict：用于注意力漂移鲁棒长上下文解码的可恢复量化 KV 驱逐",
           "link": "https://arxiv.org/abs/2608.05326",
           "summary": "arXiv:2608.05326v1 Announce Type: new\nAbstract: Autoregressive large language model inference is increasingly constrained by the memory footprint of the Key-Value (KV) cache. A dominant line of work reduces this footprint by evicting tokens that appear unimportant under attention-derived scores. However, such policies make an implicit irreversible decision: once a token is evicted, it cannot become useful again. We show that this assumption is brittle during decoding. Token and window importance drift as generated queries evolve, causing standard eviction policies to permanently discard states that later receive substantial attention under the full-cache model. To characterize this behaviour, we introduce Future Missed Mass and Global LIR, two diagnostics that measure future attention assigned to discarded states and the reactivation of historically inactive regions. We propose QEvict, a three-tier KV-cache management scheme that replaces binary retain-or-delete eviction with recoverable eviction. QEvict maintains high-confidence windows in full precision, stores intermediate windows in a quantized recoverable tier, and deletes only the lowest-confidence windows. During decoding, cumulative attention scores update window importance and when a quantized window becomes important again, it is dequantized and promoted to the full-precision. Under a fixed memory budget, this design preserves broader historical context while retaining exact full precision for the most important regions. Across long-context understanding, retrieval, and reasoning benchmarks, QEvict consistently improves over representative eviction and quantization baselines, reducing missed attention and improving information retention",
-          "summaryZh": "arXiv:2608.05326v1 公告类型：新\n摘要：自回归大型语言模型推理越来越受到键值（KV）缓存的内存占用的限制。主要工作线通过驱逐在注意力衍生分数下显得不重要的令牌来减少这种足迹。然而，这样的政策做出了一个隐含的不可逆转的决定：一旦代币被驱逐，它就不能再次变得有用。我们证明这种假设在解码过程中是脆弱的。随着生成的查询的发展，令牌和窗口重要性发生变化，导致标准驱逐策略永久丢弃后来在全缓存模型下受到大量关注的状态。为了描述这种行为，我们引入了未来错过的质量和全局 LIR，这两种诊断方法可以衡量分配给废弃状态的未来注意力以及历史不活跃区域的重新激活。我们提出了 QEvict，一种三层 KV 缓存管理方案，用可恢复驱逐取代二进制保留或删除驱逐。 QEvict 以全精度维护高置信度窗口，将中间窗口存储在量化的可恢复层中，并仅删除最低置信度窗口。在解码过程中，累积注意力分数会更新窗口重要性，当量化窗口再次变得重要时，它会被反量化并提升到全精度。在固定的内存预算下，这种设计保留了更广泛的历史背景，同时保留了最重要区域的精确完整精度。在长上下文理解、检索和推理基准测试中，QEvict 持续改进代表性逐出和量化基线，减少注意力缺失并提高信息保留",
+          "summaryZh": "arXiv:2608.05326v1 公告类型：新\n摘要：自回归大型语言模型推理越来越受到键值（KV）缓存的内存占用的限制。主要工作线通过驱逐在注意力衍生分数下显得不重要的令牌来减少这种足迹。然而，此类政策做出了隐含的不可逆转的决定：一旦代币被驱逐，它就无法再次变得有用。我们证明这种假设在解码过程中是脆弱的。随着生成的查询的发展，令牌和窗口重要性发生变化，导致标准驱逐策略永久丢弃后来在全缓存模型下受到大量关注的状态。为了描述这种行为，我们引入了未来错过的质量和全局 LIR，这两种诊断方法可以衡量分配给废弃状态的未来注意力以及历史不活跃区域的重新激活。我们提出了 QEvict，一种三层 KV 缓存管理方案，用可恢复驱逐取代二进制保留或删除驱逐。 QEvict 以全精度维护高置信度窗口，将中间窗口存储在量化的可恢复层中，并仅删除最低置信度窗口。在解码过程中，累积注意力分数会更新窗口重要性，当量化窗口再次变得重要时，它会被反量化并提升为全精度。在固定的内存预算下，这种设计保留了更广泛的历史背景，同时保留了最重要区域的精确完整精度。在长上下文理解、检索和推理基准测试中，QEvict 持续改进代表性逐出和量化基线，减少注意力缺失并提高信息保留",
           "publishedAt": "2026-08-07T04:00:00.000Z",
           "comments": null,
           "author": "Ayushman Garg, Akshita Gupta, Shaswata Bhattacharya, Abhishek Gupta, Sandeep Kumar, Manoj Kumar"
