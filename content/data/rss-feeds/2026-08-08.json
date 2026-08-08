@@ -1,10 +1,10 @@
 {
   "source": "content/feeds.json",
   "attribution": "Aggregated headlines/summaries from third-party RSS/Atom feeds for navigation only. All rights belong to original publishers and authors. Chinese text is machine-translated.",
-  "fetchedAt": "2026-08-08T01:09:28.436Z",
+  "fetchedAt": "2026-08-08T06:40:58.004Z",
   "date": "2026-08-08",
   "feedCount": 3,
-  "itemCount": 50,
+  "itemCount": 20,
   "locale": {
     "summaryDefault": "zh",
     "translated": true
@@ -17,27 +17,49 @@
       "url": "https://hnrss.org/frontpage",
       "home": "https://news.ycombinator.com/",
       "group": "community",
-      "fetchedAt": "2026-08-08T01:09:04.519Z",
+      "fetchedAt": "2026-08-08T06:40:42.081Z",
       "count": 20,
       "items": [
         {
-          "id": "https://news.ycombinator.com/item?id=49217629",
-          "title": "Should AI labs be treated like the owners of dangerous animals?",
-          "titleZh": "人工智能实验室是否应该像危险动物的主人一样对待？",
-          "link": "https://www.economist.com/science-and-technology/2026/08/06/should-ai-labs-be-treated-like-the-owners-of-dangerous-animals",
-          "summary": "Article URL: https://www.economist.com/science-and-technology/2026/08/06/should-ai-labs-be-treated-like-the-owners-of-dangerous-animals\n\n Comments URL: https://news.ycombinator.com/item?id=49217629\n\n Points: 12\n\n # Comments: 9",
-          "summaryZh": "文章网址：https://www.economist.com/science-and-technology/2026/08/06/should-ai-labs-be-treatment-like-the-owners-of-dangerous-animals\n\n 评论网址：https://news.ycombinator.com/item?id=49217629\n\n 积分：12\n\n # 评论: 9",
-          "publishedAt": "2026-08-08T00:03:31.000Z",
-          "comments": "https://news.ycombinator.com/item?id=49217629",
-          "author": "reasonableklout"
+          "id": "https://news.ycombinator.com/item?id=49218707",
+          "title": "Mythos social engineering AISI INC-2026-07-28-01",
+          "titleZh": "神话社会工程 AISI INC-2026-07-28-01",
+          "link": "https://web.archive.org/web/20260731053721/http://github.com/ancaferro/myNetwork/pull/3",
+          "summary": "Article URL: https://web.archive.org/web/20260731053721/http://github.com/ancaferro/myNetwork/pull/3\n\n Comments URL: https://news.ycombinator.com/item?id=49218707\n\n Points: 42\n\n # Comments: 15",
+          "summaryZh": "文章网址：https://web.archive.org/web/20260731053721/http://github.com/ancaferro/myNetwork/pull/3\n\n 评论网址：https://news.ycombinator.com/item?id=49218707\n\n 积分：42\n\n # 评论: 15",
+          "publishedAt": "2026-08-08T03:41:56.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49218707",
+          "author": "dnnehgf"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49218179",
+          "title": "NASA to keep its 48-year-old Voyager 2 probe running for yet another year",
+          "titleZh": "NASA 将让其已有 48 年历史的航行者 2 号探测器再运行一年",
+          "link": "https://www.space.com/space-exploration/voyager/nasa-figured-out-how-to-keep-its-48-year-old-voyager-2-probe-running-for-yet-another-year",
+          "summary": "Article URL: https://www.space.com/space-exploration/voyager/nasa-figured-out-how-to-keep-its-48-year-old-voyager-2-probe-running-for-yet-another-year\n\n Comments URL: https://news.ycombinator.com/item?id=49218179\n\n Points: 169\n\n # Comments: 26",
+          "summaryZh": "文章网址：https://www.space.com/space-exploration/voyager/nasa-figured-out-how-to-keep-its-48-year-old-voyager-2-probe-running-for-yet-another-year\n\n 评论网址：https://news.ycombinator.com/item?id=49218179\n\n 积分：169\n\n # 评论: 26",
+          "publishedAt": "2026-08-08T01:49:11.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49218179",
+          "author": "wglb"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49217993",
+          "title": "The Nixpkgs core team has disbanded",
+          "titleZh": "Nixpkgs核心团队已解散",
+          "link": "https://discourse.nixos.org/t/the-nixpkgs-core-team-has-disbanded/79413",
+          "summary": "Article URL: https://discourse.nixos.org/t/the-nixpkgs-core-team-has-disbanded/79413\n\n Comments URL: https://news.ycombinator.com/item?id=49217993\n\n Points: 250\n\n # Comments: 106",
+          "summaryZh": "文章网址：https://discourse.nixos.org/t/the-nixpkgs-core-team-has-disbanded/79413\n\n 评论网址：https://news.ycombinator.com/item?id=49217993\n\n 积分：250\n\n # 评论: 106",
+          "publishedAt": "2026-08-08T01:12:45.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49217993",
+          "author": "Meleagris"
         },
         {
           "id": "https://news.ycombinator.com/item?id=49216946",
           "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
           "titleZh": "美国能源部启动 Genesis 开放模型计划",
           "link": "https://genesisopenmodels.anl.gov/",
-          "summary": "Article URL: https://genesisopenmodels.anl.gov/\n\n Comments URL: https://news.ycombinator.com/item?id=49216946\n\n Points: 52\n\n # Comments: 17",
-          "summaryZh": "文章网址：https://genesisopenmodels.anl.gov/\n\n 评论网址：https://news.ycombinator.com/item?id=49216946\n\n 积分：52\n\n # 评论: 17",
+          "summary": "Article URL: https://genesisopenmodels.anl.gov/\n\n Comments URL: https://news.ycombinator.com/item?id=49216946\n\n Points: 189\n\n # Comments: 64",
+          "summaryZh": "文章网址：https://genesisopenmodels.anl.gov/\n\n 评论网址：https://news.ycombinator.com/item?id=49216946\n\n 积分：189\n\n # 评论: 64",
           "publishedAt": "2026-08-07T22:24:27.000Z",
           "comments": "https://news.ycombinator.com/item?id=49216946",
           "author": "moelf"
@@ -47,8 +69,8 @@
           "title": "Water system controllers don't belong on the internet, says ex-NSA chief",
           "titleZh": "前国家安全局局长表示，供水系统控制器不属于互联网",
           "link": "https://www.theregister.com/security/2026/08/07/water-system-controllers-dont-belong-on-the-internet-says-ex-nsa-chief-after-suspected-iran-attacks/5285070",
-          "summary": "Article URL: https://www.theregister.com/security/2026/08/07/water-system-controllers-dont-belong-on-the-internet-says-ex-nsa-chief-after-suspected-iran-attacks/5285070\n\n Comments URL: https://news.ycombinator.com/item?id=49216362\n\n Points: 113\n\n # Comments: 68",
-          "summaryZh": "文章网址：https://www.theregister.com/security/2026/08/07/water-system-controllers-dont-belong-on-the-internet-says-ex-nsa-chief-after-suspected-iran-attacks/5285070\n\n 评论网址：https://news.ycombinator.com/item?id=49216362\n\n 积分：113\n\n # 评论: 68",
+          "summary": "Article URL: https://www.theregister.com/security/2026/08/07/water-system-controllers-dont-belong-on-the-internet-says-ex-nsa-chief-after-suspected-iran-attacks/5285070\n\n Comments URL: https://news.ycombinator.com/item?id=49216362\n\n Points: 171\n\n # Comments: 114",
+          "summaryZh": "文章网址：https://www.theregister.com/security/2026/08/07/water-system-controllers-dont-belong-on-the-internet-says-ex-nsa-chief-after-suspected-iran-attacks/5285070\n\n 评论网址：https://news.ycombinator.com/item?id=49216362\n\n 积分：171\n\n # 评论: 114",
           "publishedAt": "2026-08-07T21:19:57.000Z",
           "comments": "https://news.ycombinator.com/item?id=49216362",
           "author": "Bender"
@@ -58,8 +80,8 @@
           "title": "Psychological Warfare in Reverse Engineering (2015)",
           "titleZh": "逆向工程中的心理战 (2015)",
           "link": "https://github.com/xoreaxeaxeax/repsych",
-          "summary": "Article URL: https://github.com/xoreaxeaxeax/repsych\n\n Comments URL: https://news.ycombinator.com/item?id=49214775\n\n Points: 44\n\n # Comments: 2",
-          "summaryZh": "文章网址：https://github.com/xoreaxeaxeax/repsych\n\n 评论网址：https://news.ycombinator.com/item?id=49214775\n\n 积分：44\n\n # 评论: 2",
+          "summary": "Article URL: https://github.com/xoreaxeaxeax/repsych\n\n Comments URL: https://news.ycombinator.com/item?id=49214775\n\n Points: 61\n\n # Comments: 3",
+          "summaryZh": "文章网址：https://github.com/xoreaxeaxeax/repsych\n\n 评论网址：https://news.ycombinator.com/item?id=49214775\n\n 积分：61\n\n # 评论: 3",
           "publishedAt": "2026-08-07T18:51:45.000Z",
           "comments": "https://news.ycombinator.com/item?id=49214775",
           "author": "theanonymousone"
@@ -69,8 +91,8 @@
           "title": "Ancient Library – 1,060 Greek/Latin texts, click any word to parse it",
           "titleZh": "古代图书馆 – 1,060 篇希腊/拉丁文本，点击任意单词即可解析",
           "link": "https://ancientlibrary.net/",
-          "summary": "Article URL: https://ancientlibrary.net/\n\n Comments URL: https://news.ycombinator.com/item?id=49214770\n\n Points: 138\n\n # Comments: 47",
-          "summaryZh": "文章网址：https://ancientlibrary.net/\n\n 评论网址：https://news.ycombinator.com/item?id=49214770\n\n 积分：138\n\n # 评论: 47",
+          "summary": "Article URL: https://ancientlibrary.net/\n\n Comments URL: https://news.ycombinator.com/item?id=49214770\n\n Points: 182\n\n # Comments: 58",
+          "summaryZh": "文章网址：https://ancientlibrary.net/\n\n 评论网址：https://news.ycombinator.com/item?id=49214770\n\n 积分：182\n\n # 评论: 58",
           "publishedAt": "2026-08-07T18:51:14.000Z",
           "comments": "https://news.ycombinator.com/item?id=49214770",
           "author": "aagha"
@@ -80,8 +102,8 @@
           "title": "Managing AI Coding Costs at Scale",
           "titleZh": "大规模管理人工智能编码成本",
           "link": "https://www.databricks.com/blog/managing-ai-coding-costs-scale",
-          "summary": "Article URL: https://www.databricks.com/blog/managing-ai-coding-costs-scale\n\n Comments URL: https://news.ycombinator.com/item?id=49214468\n\n Points: 156\n\n # Comments: 162",
-          "summaryZh": "文章网址：https://www.databricks.com/blog/managing-ai-coding-costs-scale\n\n 评论网址：https://news.ycombinator.com/item?id=49214468\n\n 积分：156\n\n # 评论: 162",
+          "summary": "Article URL: https://www.databricks.com/blog/managing-ai-coding-costs-scale\n\n Comments URL: https://news.ycombinator.com/item?id=49214468\n\n Points: 211\n\n # Comments: 194",
+          "summaryZh": "文章网址：https://www.databricks.com/blog/managing-ai-coding-costs-scale\n\n 评论网址：https://news.ycombinator.com/item?id=49214468\n\n 积分：211\n\n # 评论：194",
           "publishedAt": "2026-08-07T18:25:17.000Z",
           "comments": "https://news.ycombinator.com/item?id=49214468",
           "author": "moonikakiss"
@@ -91,8 +113,8 @@
           "title": "Assembly Hall of Shame",
           "titleZh": "耻辱大会堂",
           "link": "https://github.com/xoreaxeaxeax/asm-hall-of-shame",
-          "summary": "Article URL: https://github.com/xoreaxeaxeax/asm-hall-of-shame\n\n Comments URL: https://news.ycombinator.com/item?id=49214098\n\n Points: 240\n\n # Comments: 55",
-          "summaryZh": "文章网址：https://github.com/xoreaxeaxeax/asm-hall-of-shame\n\n 评论网址：https://news.ycombinator.com/item?id=49214098\n\n 积分：240\n\n # 评论: 55",
+          "summary": "Article URL: https://github.com/xoreaxeaxeax/asm-hall-of-shame\n\n Comments URL: https://news.ycombinator.com/item?id=49214098\n\n Points: 305\n\n # Comments: 71",
+          "summaryZh": "文章网址：https://github.com/xoreaxeaxeax/asm-hall-of-shame\n\n 评论网址：https://news.ycombinator.com/item?id=49214098\n\n 积分：305\n\n # 评论: 71",
           "publishedAt": "2026-08-07T18:01:30.000Z",
           "comments": "https://news.ycombinator.com/item?id=49214098",
           "author": "piotrgrabowski"
@@ -102,8 +124,8 @@
           "title": "DeepSeek V4 Flash 0731",
           "titleZh": "DeepSeek V4 闪存 0731",
           "link": "https://arcprize.org/results/deepseek-v4-flash-0731",
-          "summary": "Article URL: https://arcprize.org/results/deepseek-v4-flash-0731\n\n Comments URL: https://news.ycombinator.com/item?id=49214008\n\n Points: 441\n\n # Comments: 255",
-          "summaryZh": "文章网址：https://arcprize.org/results/deepseek-v4-flash-0731\n\n 评论网址：https://news.ycombinator.com/item?id=49214008\n\n 积分：441\n\n # 评论：255",
+          "summary": "Article URL: https://arcprize.org/results/deepseek-v4-flash-0731\n\n Comments URL: https://news.ycombinator.com/item?id=49214008\n\n Points: 555\n\n # Comments: 333",
+          "summaryZh": "文章网址：https://arcprize.org/results/deepseek-v4-flash-0731\n\n 评论网址：https://news.ycombinator.com/item?id=49214008\n\n 积分：555\n\n # 评论: 333",
           "publishedAt": "2026-08-07T17:56:20.000Z",
           "comments": "https://news.ycombinator.com/item?id=49214008",
           "author": "tosh"
@@ -113,8 +135,8 @@
           "title": "Oracle bans AI-generated code from OpenJDK",
           "titleZh": "Oracle 禁止 OpenJDK 中人工智能生成的代码",
           "link": "https://app.dealroom.co/news/feed/oracle-bans-ai-generated-code-from-openjdk-despite-ellison-s-claim-oracle-isn-t-writing-its-own-code",
-          "summary": "Article URL: https://app.dealroom.co/news/feed/oracle-bans-ai-generated-code-from-openjdk-despite-ellison-s-claim-oracle-isn-t-writing-its-own-code\n\n Comments URL: https://news.ycombinator.com/item?id=49213754\n\n Points: 373\n\n # Comments: 248",
-          "summaryZh": "文章网址：https://app.dealroom.co/news/feed/oracle-bans-ai- generated-code-from-openjdk-despite-ellison-s-claim-oracle-isn-t-writing-its-own-code\n\n 评论网址：https://news.ycombinator.com/item?id=49213754\n\n 积分：373\n\n # 评论：248",
+          "summary": "Article URL: https://app.dealroom.co/news/feed/oracle-bans-ai-generated-code-from-openjdk-despite-ellison-s-claim-oracle-isn-t-writing-its-own-code\n\n Comments URL: https://news.ycombinator.com/item?id=49213754\n\n Points: 442\n\n # Comments: 304",
+          "summaryZh": "文章网址：https://app.dealroom.co/news/feed/oracle-bans-ai- generated-code-from-openjdk-despite-ellison-s-claim-oracle-isn-t-writing-its-own-code\n\n 评论网址：https://news.ycombinator.com/item?id=49213754\n\n 积分：442\n\n # 评论: 304",
           "publishedAt": "2026-08-07T17:36:30.000Z",
           "comments": "https://news.ycombinator.com/item?id=49213754",
           "author": "delduca"
@@ -124,8 +146,8 @@
           "title": "Responding to the next frontier of critical cyber capabilities",
           "titleZh": "应对关键网络能力的下一个前沿",
           "link": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/",
-          "summary": "Article URL: https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/\n\n Comments URL: https://news.ycombinator.com/item?id=49213029\n\n Points: 151\n\n # Comments: 167",
-          "summaryZh": "文章网址：https://openai.com/index/responding-next-frontier-ritic-cyber-capability/\n\n 评论网址：https://news.ycombinator.com/item?id=49213029\n\n 积分：151\n\n # 评论: 167",
+          "summary": "Article URL: https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/\n\n Comments URL: https://news.ycombinator.com/item?id=49213029\n\n Points: 174\n\n # Comments: 173",
+          "summaryZh": "文章网址：https://openai.com/index/responding-next-frontier-ritic-cyber-capability/\n\n 评论网址：https://news.ycombinator.com/item?id=49213029\n\n 积分：174\n\n # 评论: 173",
           "publishedAt": "2026-08-07T16:39:36.000Z",
           "comments": "https://news.ycombinator.com/item?id=49213029",
           "author": "artninja1988"
@@ -135,8 +157,8 @@
           "title": "An all-sky map of half a million supermassive black holes",
           "titleZh": "五十万个超大质量黑洞的全天图",
           "link": "https://www.sdss.org/black-hole-mapper-release-20/",
-          "summary": "Article URL: https://www.sdss.org/black-hole-mapper-release-20/\n\n Comments URL: https://news.ycombinator.com/item?id=49211921\n\n Points: 136\n\n # Comments: 35",
-          "summaryZh": "文章网址：https://www.sdss.org/black-hole-mapper-release-20/\n\n 评论网址：https://news.ycombinator.com/item?id=49211921\n\n 积分：136\n\n # 评论: 35",
+          "summary": "Article URL: https://www.sdss.org/black-hole-mapper-release-20/\n\n Comments URL: https://news.ycombinator.com/item?id=49211921\n\n Points: 158\n\n # Comments: 37",
+          "summaryZh": "文章网址：https://www.sdss.org/black-hole-mapper-release-20/\n\n 评论网址：https://news.ycombinator.com/item?id=49211921\n\n 积分：158\n\n # 评论: 37",
           "publishedAt": "2026-08-07T15:24:53.000Z",
           "comments": "https://news.ycombinator.com/item?id=49211921",
           "author": "MarcoDewey"
@@ -146,30 +168,19 @@
           "title": "Möbius-Strip Crosswords",
           "titleZh": "莫比乌斯带填字游戏",
           "link": "https://quuxplusone.github.io/blog/2026/08/04/mobius-crossword/",
-          "summary": "Article URL: https://quuxplusone.github.io/blog/2026/08/04/mobius-crossword/\n\n Comments URL: https://news.ycombinator.com/item?id=49211660\n\n Points: 50\n\n # Comments: 6",
-          "summaryZh": "文章网址：https://quuxplusone.github.io/blog/2026/08/04/mobius-crossword/\n\n 评论网址：https://news.ycombinator.com/item?id=49211660\n\n 积分：50\n\n # 评论: 6",
+          "summary": "Article URL: https://quuxplusone.github.io/blog/2026/08/04/mobius-crossword/\n\n Comments URL: https://news.ycombinator.com/item?id=49211660\n\n Points: 66\n\n # Comments: 10",
+          "summaryZh": "文章网址：https://quuxplusone.github.io/blog/2026/08/04/mobius-crossword/\n\n 评论网址：https://news.ycombinator.com/item?id=49211660\n\n 积分：66\n\n # 评论: 10",
           "publishedAt": "2026-08-07T15:10:34.000Z",
           "comments": "https://news.ycombinator.com/item?id=49211660",
           "author": "ibobev"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=49211386",
-          "title": "A year of fighting scrapers on my 1.5 million-page website",
-          "titleZh": "在我拥有 150 万页的网站上与爬虫作斗争的一年",
-          "link": "https://patronview.com/news/99-percent-of-my-website-traffic-is-bots/",
-          "summary": "Article URL: https://patronview.com/news/99-percent-of-my-website-traffic-is-bots/\n\n Comments URL: https://news.ycombinator.com/item?id=49211386\n\n Points: 365\n\n # Comments: 347",
-          "summaryZh": "文章网址：https://patronview.com/news/99-percent-of-my-website-traffic-is-bots/\n\n 评论网址：https://news.ycombinator.com/item?id=49211386\n\n 积分：365\n\n # 评论: 347",
-          "publishedAt": "2026-08-07T14:51:57.000Z",
-          "comments": "https://news.ycombinator.com/item?id=49211386",
-          "author": "petercooper"
         },
         {
           "id": "https://news.ycombinator.com/item?id=49209572",
           "title": "Radical Study Suggests Life on Earth Arose Twice",
           "titleZh": "激进的研究表明地球上的生命两次出现",
           "link": "https://www.sciencealert.com/radical-study-suggests-life-on-earth-arose-from-non-living-matter-twice",
-          "summary": "Article URL: https://www.sciencealert.com/radical-study-suggests-life-on-earth-arose-from-non-living-matter-twice\n\n Comments URL: https://news.ycombinator.com/item?id=49209572\n\n Points: 90\n\n # Comments: 79",
-          "summaryZh": "文章网址：https://www.sciencealert.com/radical-study-suggests-life-on-earth-arose-from-non-living-matter-twice\n\n 评论网址：https://news.ycombinator.com/item?id=49209572\n\n 积分：90\n\n # 评论: 79",
+          "summary": "Article URL: https://www.sciencealert.com/radical-study-suggests-life-on-earth-arose-from-non-living-matter-twice\n\n Comments URL: https://news.ycombinator.com/item?id=49209572\n\n Points: 127\n\n # Comments: 94",
+          "summaryZh": "文章网址：https://www.sciencealert.com/radical-study-suggests-life-on-earth-arose-from-non-living-matter-twice\n\n 评论网址：https://news.ycombinator.com/item?id=49209572\n\n 积分：127\n\n #评论：94",
           "publishedAt": "2026-08-07T12:45:08.000Z",
           "comments": "https://news.ycombinator.com/item?id=49209572",
           "author": "jnord"
@@ -179,8 +190,8 @@
           "title": "What happens if an entire class of workers loses faith in their careers",
           "titleZh": "如果整个阶层的工人对自己的职业失去信心会发生什么",
           "link": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
-          "summary": "Article URL: https://www.noemamag.com/why-is-everyone-in-tech-so-sad/\n\n Comments URL: https://news.ycombinator.com/item?id=49209539\n\n Points: 390\n\n # Comments: 526",
-          "summaryZh": "文章网址：https://www.noemamag.com/why-is-everyone-in-tech-so-sad/\n\n 评论网址：https://news.ycombinator.com/item?id=49209539\n\n 积分：390\n\n # 评论: 526",
+          "summary": "Article URL: https://www.noemamag.com/why-is-everyone-in-tech-so-sad/\n\n Comments URL: https://news.ycombinator.com/item?id=49209539\n\n Points: 540\n\n # Comments: 626",
+          "summaryZh": "文章网址：https://www.noemamag.com/why-is-everyone-in-tech-so-sad/\n\n 评论网址：https://news.ycombinator.com/item?id=49209539\n\n 积分：540\n\n # 评论: 626",
           "publishedAt": "2026-08-07T12:42:27.000Z",
           "comments": "https://news.ycombinator.com/item?id=49209539",
           "author": "RickJWagner"
@@ -190,8 +201,8 @@
           "title": "Show HN: Wyzer Programming Language",
           "titleZh": "显示 HN：Wyzer 编程语言",
           "link": "https://github.com/Wyzer-Lang/wyzer",
-          "summary": "So i've been working on this project since a few days (or months i should say), it's called wyzer (meaning wiser) it's a statically typed, compiled, resource-oriented programming language with integrated distributed safety via choreographic programming and perceus memory model, The reason why i began this project is out of frustration from Rust, you see it does provide safety for your memory by the strict type checking but what it does not gurantee safety against are distributed deadlocks which is basically a few independent nodes or services wait permanently for resources or messages held by each other, forming a circular wait, the rest are cross-service correctness and protocol mismatch as well. If we are specific over here Wyzer works on mainly generalizing the concept of choreographic programming in a high level programming language because its the very few attempts of actually solving these gaps of safety. Instead of borrow checkers and lifetimes wyzer has linear/affine types and a perceus reference counting which is computationally much simpler for an LSP to understand as well after 5 months of research and a few weeks of development i am soon going to release version 0.1.0 of it, if you would like to contribute to it you're most welcome!\n\n Comments URL: https://news.ycombinator.com/item?id=49209385\n\n Points: 171\n\n # Comments: 100",
-          "summaryZh": "所以我几天（或者我应该说几个月）以来一直在研究这个项目，它被称为 wyzer（意思是更明智），它是一种静态类型、编译的、面向资源的编程语言，通过编排编程和 perceus 内存模型集成了分布式安全性，我开始这个项目的原因是出于 Rust 的挫败感，你会发现它确实通过严格的类型检查为你的内存提供了安全性，但它不能保证分布式死锁的安全性，分布式死锁基本上是一些独立的节点或服务永久等待彼此持有的资源或消息，形成循环等待，剩下的就是跨服务正确性和协议不匹配。如果我们在这里具体说明的话，Wyzer 主要致力于以高级编程语言概括编排编程的概念，因为实际上解决这些安全差距的尝试很少。 wyzer 没有借用检查器和生命周期，而是具有线性/仿射类型和 perceus 引用计数，这在计算上对于 LSP 来说更容易理解，经过 5 个月的研究和几周的开发，我很快将发布它的 0.1.0 版本，如果您愿意为其做出贡献，我们非常欢迎！\n\n 评论网址：https://news.ycombinator.com/item?id=49209385\n\n 积分：171\n\n # 评论：100",
+          "summary": "So i've been working on this project since a few days (or months i should say), it's called wyzer (meaning wiser) it's a statically typed, compiled, resource-oriented programming language with integrated distributed safety via choreographic programming and perceus memory model, The reason why i began this project is out of frustration from Rust, you see it does provide safety for your memory by the strict type checking but what it does not gurantee safety against are distributed deadlocks which is basically a few independent nodes or services wait permanently for resources or messages held by each other, forming a circular wait, the rest are cross-service correctness and protocol mismatch as well. If we are specific over here Wyzer works on mainly generalizing the concept of choreographic programming in a high level programming language because its the very few attempts of actually solving these gaps of safety. Instead of borrow checkers and lifetimes wyzer has linear/affine types and a perceus reference counting which is computationally much simpler for an LSP to understand as well after 5 months of research and a few weeks of development i am soon going to release version 0.1.0 of it, if you would like to contribute to it you're most welcome!\n\n Comments URL: https://news.ycombinator.com/item?id=49209385\n\n Points: 188\n\n # Comments: 105",
+          "summaryZh": "所以我几天（或者我应该说几个月）以来一直在研究这个项目，它被称为 wyzer（意思是更明智），它是一种静态类型、编译的、面向资源的编程语言，通过编排编程和 perceus 内存模型集成了分布式安全性，我开始这个项目的原因是出于 Rust 的挫败感，你会发现它确实通过严格的类型检查为你的内存提供了安全性，但它不能保证分布式死锁的安全性，分布式死锁基本上是一些独立的节点或服务永久等待彼此持有的资源或消息，形成循环等待，剩下的就是跨服务正确性和协议不匹配。如果我们在这里具体说明的话，Wyzer 主要致力于以高级编程语言概括编排编程的概念，因为实际上解决这些安全差距的尝试很少。 wyzer 没有借用检查器和生命周期，而是具有线性/仿射类型和 perceus 引用计数，这在计算上对于 LSP 来说更容易理解，经过 5 个月的研究和几周的开发，我很快将发布它的 0.1.0 版本，如果您愿意为其做出贡献，我们非常欢迎！\n\n 评论网址：https://news.ycombinator.com/item?id=49209385\n\n 积分：188\n\n # 评论: 105",
           "publishedAt": "2026-08-07T12:28:55.000Z",
           "comments": "https://news.ycombinator.com/item?id=49209385",
           "author": "v0id_isgood"
@@ -201,8 +212,8 @@
           "title": "Making Postgres 300x faster for analytics: batching, operator fusion, and SIMD",
           "titleZh": "使 Postgres 的分析速度提高 300 倍：批处理、运算符融合和 SIMD",
           "link": "https://malisper.me/how-we-made-postgres-hundreds-of-times-faster-the-query-engine/",
-          "summary": "Article URL: https://malisper.me/how-we-made-postgres-hundreds-of-times-faster-the-query-engine/\n\n Comments URL: https://news.ycombinator.com/item?id=49208535\n\n Points: 241\n\n # Comments: 112",
-          "summaryZh": "文章网址：https://malisper.me/how-we-made-postgres-hundreds-of-times-faster-the-query-engine/\n\n 评论网址：https://news.ycombinator.com/item?id=49208535\n\n 积分：241\n\n # 评论: 112",
+          "summary": "Article URL: https://malisper.me/how-we-made-postgres-hundreds-of-times-faster-the-query-engine/\n\n Comments URL: https://news.ycombinator.com/item?id=49208535\n\n Points: 268\n\n # Comments: 130",
+          "summaryZh": "文章网址：https://malisper.me/how-we-made-postgres-hundreds-of-times-faster-the-query-engine/\n\n 评论网址：https://news.ycombinator.com/item?id=49208535\n\n 积分：268\n\n # 评论：130",
           "publishedAt": "2026-08-07T11:00:35.000Z",
           "comments": "https://news.ycombinator.com/item?id=49208535",
           "author": "poly2it"
@@ -212,8 +223,8 @@
           "title": "Show HN: textlog – A quiet, text-only microblogging platform, open-source, no JS",
           "titleZh": "Show HN:textlog – 一个安静的纯文本微博平台，开源，无JS",
           "link": "https://textlog.cc/about",
-          "summary": "Article URL: https://textlog.cc/about\n\n Comments URL: https://news.ycombinator.com/item?id=49208458\n\n Points: 132\n\n # Comments: 58",
-          "summaryZh": "文章网址：https://textlog.cc/about\n\n 评论网址：https://news.ycombinator.com/item?id=49208458\n\n 积分：132\n\n # 评论: 58",
+          "summary": "Article URL: https://textlog.cc/about\n\n Comments URL: https://news.ycombinator.com/item?id=49208458\n\n Points: 159\n\n # Comments: 65",
+          "summaryZh": "文章网址：https://textlog.cc/about\n\n 评论网址：https://news.ycombinator.com/item?id=49208458\n\n 积分：159\n\n # 评论: 65",
           "publishedAt": "2026-08-07T10:52:21.000Z",
           "comments": "https://news.ycombinator.com/item?id=49208458",
           "author": "stagas"
@@ -223,22 +234,11 @@
           "title": "Kitesurf: Agent-first browser that runs in V8 isolates",
           "titleZh": "Kitesurf：在 V8 隔离中运行的代理优先浏览器",
           "link": "https://blog.cloudflare.com/kitesurf/",
-          "summary": "Article URL: https://blog.cloudflare.com/kitesurf/\n\n Comments URL: https://news.ycombinator.com/item?id=49208393\n\n Points: 160\n\n # Comments: 42",
-          "summaryZh": "文章网址：https://blog.cloudflare.com/kitesurf/\n\n 评论网址：https://news.ycombinator.com/item?id=49208393\n\n 积分：160\n\n # 评论: 42",
+          "summary": "Article URL: https://blog.cloudflare.com/kitesurf/\n\n Comments URL: https://news.ycombinator.com/item?id=49208393\n\n Points: 183\n\n # Comments: 48",
+          "summaryZh": "文章网址：https://blog.cloudflare.com/kitesurf/\n\n 评论网址：https://news.ycombinator.com/item?id=49208393\n\n 积分：183\n\n # 评论: 48",
           "publishedAt": "2026-08-07T10:42:07.000Z",
           "comments": "https://news.ycombinator.com/item?id=49208393",
           "author": "m3h"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=49207236",
-          "title": "2027 memory capacity is reportedly sold out",
-          "titleZh": "据报道2027年内存容量已售罄",
-          "link": "https://www.ign.com/articles/ramageddon-continues-another-year-as-2027-memory-capacity-is-reportedly-sold-out",
-          "summary": "Article URL: https://www.ign.com/articles/ramageddon-continues-another-year-as-2027-memory-capacity-is-reportedly-sold-out\n\n Comments URL: https://news.ycombinator.com/item?id=49207236\n\n Points: 221\n\n # Comments: 214",
-          "summaryZh": "文章网址：https://www.ign.com/articles/ramgeddon-continues-another-year-as-2027-memory-capacity-is-reportedly-sold-out\n\n 评论网址：https://news.ycombinator.com/item?id=49207236\n\n 积分：221\n\n # 评论：214",
-          "publishedAt": "2026-08-07T07:58:24.000Z",
-          "comments": "https://news.ycombinator.com/item?id=49207236",
-          "author": "inigyou"
         }
       ]
     },
@@ -248,175 +248,9 @@
       "url": "https://rss.arxiv.org/rss/cs.AI",
       "home": "https://arxiv.org/list/cs.AI/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-08-08T01:09:05.029Z",
-      "count": 15,
-      "items": [
-        {
-          "id": "oai:arXiv.org:2608.05159v1",
-          "title": "Agentic Nesting: A New Methodology for Existing Enterprise Application Integration and Services",
-          "titleZh": "代理嵌套：现有企业应用程序集成和服务的新方法",
-          "link": "https://arxiv.org/abs/2608.05159",
-          "summary": "arXiv:2608.05159v1 Announce Type: new\nAbstract: Enterprise operations extensively rely on multiple heterogeneous business systems and information applications, which also result in severe data silos and process fragmentation. Enterprises have invested considerable financial and material resources in building these applications, however, effectively leveraging and orchestrating them remains a formidable challenge. Conventional approaches to enterprise application integration, encompassing middleware architectures such as Enterprise Service Bus (ESB), API gateway infrastructures, and Robotic Process Automation (RPA), suffer from inherent limitations like high architectural coupling, escalating operation and maintenance costs, and limited intelligence capabilities. This paper proposes Agentic Nesting, a multi-agent collaboration framework in which existing enterprise applications are encapsulated as autonomous AI agents within a hierarchically nested structure. Rather than flat interconnection, agents are organized into layered stewardship topologies that mirror the compositional complexity of enterprise ecosystems. The framework extracts a digital agent proxy from each legacy application to enable natural-language interaction and autonomous manipulation, coordinates multiple agents through a central orchestrator for task decomposition and dynamic dispatching, and exposes a unified conversational interface for cross-application querying and process orchestration. The main contributions of this paper are the proposition of the \"Application-as-Agent\" integration paradigm and the \"Conversation-as-Integration\" interaction philosophy, together with an exploration of the generalization potential of this methodology in scenarios encompassing heterogeneous system coordination, and large-scale data applications.",
-          "summaryZh": "arXiv:2608.05159v1 公告类型：新\n摘要： 企业运营广泛依赖于多种异构业务系统和信息应用，也导致了严重的数据孤岛和流程碎片化。企业投入了大量的财力和物力来构建这些应用程序，然而，有效利用和编排它们仍然是一个艰巨的挑战。传统的企业应用集成方法，包括企业服务总线（ESB）、API网关基础设施和机器人流程自动化（RPA）等中间件架构，存在架构耦合度高、运维成本不断上升、智能能力有限等固有局限性。本文提出了 Agentic Nesting，这是一种多代理协作框架，其中现有的企业应用程序被封装为分层嵌套结构中的自治 AI 代理。代理不是扁平互连，而是被组织成分层管理拓扑，反映了企业生态系统的组成复杂性。该框架从每个遗留应用程序中提取数字代理代理，以实现自然语言交互和自主操作，通过中央编排器协调多个代理以进行任务分解和动态调度，并公开用于跨应用程序查询和流程编排的统一对话接口。本文的主要贡献是提出“应用即代理”集成范式和“对话即集成”交互哲学，并探索了该方法在异构系统协调和大规模数据应用等场景中的泛化潜力。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Xi Wang, Kun Li, Xianyao Ling, Gang Yin, Liang Zhang, Jiang Wu, Wenbo Lei, Jun Xu, Annie Wang, Fu Zhang, Weizhe Wang"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05160v1",
-          "title": "The Ignition Index: Measuring Global Workspace Dynamics in Language Models",
-          "titleZh": "点火指数：测量语言模型中的全球工作空间动态",
-          "link": "https://arxiv.org/abs/2608.05160",
-          "summary": "arXiv:2608.05160v1 Announce Type: new\nAbstract: We introduce the Ignition Index (I), a validated scalar metric that operationalizes Global Workspace Theory's (GWT) all-or-none ignition prediction in transformer language models. The metric fits a four-parameter sigmoid to per-layer linear probe accuracy as a function of input signal strength, extracting steepness parameter beta-hat: high values indicate abrupt, ignition-like transitions; low values indicate graded build-up. Across 11 models spanning five architecture families, shuffled-label controls demonstrate 9.6-fold selectivity for genuine linguistic structure over spurious probe capacity (p < 0.001, Mann-Whitney U-test). We find: (1) Feedforward transformers exceed SSMs by 89% in aggregate beta-hat (p < 1e-13, Cohen's d = 0.52), with Mamba exhibiting near-linear profiles consistent with absent global broadcast. (2) Huginn-3.5B exhibits 2.12-fold higher ignition along its iteration axis than its depth axis, demonstrating that recurrent architectures manifest workspace-like transitions along the recurrence dimension. (3) Pythia-410M shows a PELT-detected phase transition at training step 256 (+67%), preceding induction-head formation. (4) Hypotheses linking ignition to model scale and signal strength were not confirmed, suggesting transformer architectures may saturate available ignition mechanisms. The Ignition Index provides the first validated quantitative bridge between GWT's dynamical predictions and mechanistic interpretability, with 9.6-fold measurement selectivity and architecture-level discriminability not previously characterized in the scaling literature. Code: https://github.com/saman-rahbar/ignition-index",
-          "summaryZh": "arXiv:2608.05160v1 公告类型：新\n摘要：我们引入了点火指数 (I)，这是一种经过验证的标量度量，可在 Transformer 语言模型中实现全局工作空间理论 (GWT) 的全或无点火预测。该指标将四参数 sigmoid 拟合到每层线性探针精度，作为输入信号强度的函数，提取陡度参数 beta-hat：高值表示突然的、类似点火的转变；低值表示分级堆积。在跨越 5 个架构系列的 11 个模型中，打乱标签控件显示出对真实语言结构的选择性是虚假探针能力的 9.6 倍（p < 0.001，Mann-Whitney U 检验）。我们发现：(1) 前馈变压器在总计 beta-hat 方面超过 SSM 89%（p < 1e-13，Cohen's d = 0.52），Mamba 表现出与缺少全局广播一致的近线性配置文件。 (2) Huginn-3.5B 沿其迭代轴的点火比其深度轴高 2.12 倍，这表明循环架构沿循环维度表现出类似工作空间的过渡。 (3) Pythia-410M 显示在诱导头形成之前的训练步骤 256 (+67%) 处 PELT 检测到的相变。 (4) 将点火与模型规模和信号强度联系起来的假设尚未得到证实，这表明变压器架构可能会使可用的点火机制饱和。 Ignition Index 在 GWT 的动态预测和机械解释性之间提供了第一个经过验证的定量桥梁，具有 9.6 倍的测量选择性和体系结构级别的辨别力，这是以前在缩放文献中未描述过的。代码：https://github.com/saman-rahbar/ignition-index",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Saman Rahbar"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05168v1",
-          "title": "Woodpecker Distillation: Weak Models Diagnose Reasoning Bugs in Strong Models",
-          "titleZh": "啄木鸟蒸馏：弱模型诊断强模型中的推理错误",
-          "link": "https://arxiv.org/abs/2608.05168",
-          "summary": "arXiv:2608.05168v1 Announce Type: new\nAbstract: Large language models often fail on reasoning tasks despite possessing the capability to solve them. We argue that many such failures arise from localized reasoning bugs in intermediate steps rather than from global incompetence. We show that these bugs are frequently repairable: inserting a short patch generated by a weak probe model after the same strong-model reasoning prefix can redirect the trajectory toward a correct solution.\n However, this corrective effect is not reliably internalized by directly fine-tuning on weak patches or repaired trajectories, suggesting that the useful signal lies not in the intervention text itself, but in how it reshapes the model's future reasoning distribution. We therefore propose Woodpecker Distillation, a weak-to-strong training framework that learns from contrastive local interventions. Our method contrasts successful and unsuccessful weak-model patches at the same prefix, constructs a corrective teacher distribution from their induced future token predictions, and distills this signal into the strong model.\n Experiments on mathematical reasoning benchmarks show that Woodpecker Distillation consistently improves strong-model performance and outperforms direct imitation baselines.",
-          "summaryZh": "arXiv:2608.05168v1 公告类型：新\n摘要：尽管大型语言模型具有解决推理任务的能力，但在推理任务上常常失败。我们认为，许多此类失败源于中间步骤中的局部推理错误，而不是全局无能。我们证明这些错误通常是可以修复的：在相同的强模型推理前缀之后插入由弱探测模型生成的短补丁可以将轨迹重定向到正确的解决方案。\n 然而，这种纠正效果并不能通过直接对薄弱补丁或修复轨迹进行微调来可靠地内化，这表明有用的信号不在于干预文本本身，而在于它如何重塑模型的未来推理分布。因此，我们提出啄木鸟蒸馏，这是一种从弱到强的训练框架，可以从对比的当地干预措施中学习。我们的方法对比相同前缀的成功和不成功的弱模型补丁，根据其诱导的未来标记预测构建校正教师分布，并将该信号提炼到强模型中。\n 数学推理基准实验表明，啄木鸟蒸馏持续提高了强模型性能，并且优于直接模仿基准。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Dayu Wang, Jiaye Yang, Weikang Li, Jiahui Liang, Yang Li, Deguo Xia, Jizhou Huang"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05203v1",
-          "title": "From Continuous Predictors to Clinical Thresholds: Early Evidence on Performance Trade-offs of Guideline-Based Categorisation for Ischaemic Stroke Outcome Prediction",
-          "titleZh": "从连续预测因子到临床阈值：关于缺血性卒中结果预测基于指南的分类性能权衡的早期证据",
-          "link": "https://arxiv.org/abs/2608.05203",
-          "summary": "arXiv:2608.05203v1 Announce Type: new\nAbstract: Machine learning models achieve strong predictive accuracy for 90-day outcome prediction in acute ischaemic stroke, yet clinical adoption is limited by the misalignment of model explanations with clinicians' reasoning. Motivated by a clinician user study calling for clinical guideline-aligned cut-offs, we ask whether continuous predictors can be replaced by clinically informed categorical encodings without sacrificing performance. On a multi-centre European registry stratified into three treatment cohorts, we compare standard and fully categorised gradient-boosted models, the latter using stroke guideline-aligned, treatment-specific thresholds. The fully categorised models are statistically indistinguishable from their continuous counterparts in two of the treatment cohorts, with a significant drop in predictive accuracy in one cohort. Global feature importance rankings remain consistent, suggesting that discretising continuous predictors into guideline-based categories preserves the core hierarchy of prognostic factors across all treatment groups. Guideline-based categorisation is thus a viable design choice for stroke-outcome models.",
-          "summaryZh": "arXiv:2608.05203v1 公告类型：新\n摘要：机器学习模型对急性缺血性中风的 90 天结果预测具有很强的预测准确性，但由于模型解释与临床医生的推理不一致，临床采用受到限制。受临床医生用户研究要求与临床指南一致的截止值的推动，我们询问是否可以在不牺牲性能的情况下用临床知情的分类编码取代连续预测变量。在分为三个治疗队列的多中心欧洲登记中，我们比较了标准模型和完全分类的梯度增强模型，后者使用与卒中指南一致的特定治疗阈值。完全分类的模型在统计上与两个治疗队列中的连续模型没有区别，其中一个队列的预测准确性显着下降。全局特征重要性排名保持一致，这表明将连续预测因子离散化为基于指南的类别可以保留所有治疗组中预后因素的核心层次结构。因此，基于指南的分类是卒中结果模型的可行设计选择。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Esra Zihni, Katryna Cisek, Hamzah Ziadeh, Hendrik Knoche, Robert Mikulik, John D. Kelleher"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05204v1",
-          "title": "SkillTrace: Multi-Trace Provenance Auditing for LLM-Agent Skill Reuse",
-          "titleZh": "SkillTrace：LLM 代理技能重用的多跟踪出处审核",
-          "link": "https://arxiv.org/abs/2608.05204",
-          "summary": "arXiv:2608.05204v1 Announce Type: new\nAbstract: LLM-agent ecosystems are rapidly growing around reusable skills: mixed-modality packages of metadata, natural-language instructions, code, tools, references, and operational workflows. As skills become marketplace artifacts, auditing their reuse is no longer the same problem as ordinary code clone detection. Existing detectors target single-modality source code or whole-package similarity, yet skill reuse evidence is distributed across authored text, implementation fragments, and operational structure. As a result, they can miss reuse that preserves only one part of a skill. We present SKILLTRACE, a multi-trace provenance auditing framework for LLM-agent skill reuse. SKILLTRACE extracts three provenance traces: Expression, Implementation, and Operational. It represents the Operational Trace as a Skill Operational Graph (SOG) that captures activation, procedure, and resource-flow structure. An LLM assists only the Operational-trace extraction, once at ingestion; at audit time SKILLTRACE compares cached traces deterministically, calibrates each trace against same-function strict negatives, and reports which trace supports a reuse decision. On SKILLTRACE-BENCH, with 820 transformed reuse positives over 100 marketplace anchors and 751 negative controls, SKILLTRACE achieves AUROC 0.938 and F1 0.898. A 36,446-skill wild audit further shows that trace-attributed evidence surfaces actionable reuse review queues beyond repository-level baselines.",
-          "summaryZh": "arXiv:2608.05204v1 公告类型：新\n摘要：LLM 代理生态系统围绕可重用技能快速发展：元数据、自然语言指令、代码、工具、参考文献和操作工作流程的混合模式包。随着技能成为市场工件，审核其重用不再是与普通代码克隆检测相同的问题。现有的检测器针对单模态源代码或整个包的相似性，但技能重用证据分布在编写的文本、实现片段和操作结构中。因此，他们可能会错过仅保留技能一部分的重用。我们推出了 SKILLTRACE，这是一个用于 LLM 代理技能重用的多跟踪来源审计框架。 SKILLTRACE 提取三个来源跟踪：表达式、实现和操作。它将操作跟踪表示为技能操作图 (SOG)，捕获激活、过程和资源流结构。法学硕士仅在摄取时协助操作痕迹提取；在审核时，SKILLTRACE 确定性地比较缓存的跟踪，根据相同功能的严格否定校准每个跟踪，并报告哪些跟踪支持重用决策。在 SKILLTRACE-BENCH 上，SKILLTRACE 凭借超过 100 个市场锚点的 820 个转化的重用阳性样本和 751 个阴性对照，实现了 AUROC 0.938 和 F1 0.898。一项 36,446 项技能的野外审计进一步表明，跟踪归因的证据显示了超出存储库级别基线的可操作的重用审查队列。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Jialuo Chen, Minghe Wang, Lingqi Jiang, Jianan Ma, Xinhao Deng, Xiaohu Du, Ruixiao Lin, Yunhao Feng, Linkang Du, Jingyi Wang"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05205v1",
-          "title": "Abstract Event Causal Rules: Induction and Application",
-          "titleZh": "抽象事件因果规则：归纳与应用",
-          "link": "https://arxiv.org/abs/2608.05205",
-          "summary": "arXiv:2608.05205v1 Announce Type: new\nAbstract: Event-centric intelligent analytical systems heavily depend on explicit causal event knowledge for risk early warning, decision-making support and narrative comprehension. Nevertheless, existing instance-level causal pairs suffer severe generalization deficits on low-frequency long-tail and unseen event combinations. To address this limitation, this work proposes Abstract Event Causal Rule (AECR), a novel relation-level causal abstraction paradigm that transforms concrete cause-effect pairs into generalized abstract causal logic while retaining their intrinsic causal relationships. We design a multi-agent Concrete-to-Abstract Causal Induction (CACI) system coupled with similarity-constrained clustering to distill trustworthy AECRs from noisy raw causal data, based on which two complete AECR knowledge bases are built. To validate the practical utility of abstract causal knowledge, we propose an Abstract Rule-Guided Causal Attention Encoder (AR-GCAE), which injects the retrieved AECRs into the causality Graph Event Prediction (CGEP) benchmark task via rule-guided attention layers and gated representation fusion. Quantitative experimental results reveal that applying AECRs substantially strengthens the generalization capacity of event causal reasoning and brings consistent performance improvements to event prediction, with the most prominent gains observed on rare and unseen event samples.",
-          "summaryZh": "arXiv:2608.05205v1 公告类型：新\n摘要：以事件为中心的智能分析系统严重依赖于明确的因果事件知识来进行风险预警、决策支持和叙述理解。然而，现有的实例级因果对在低频长尾和未见过的事件组合上存在严重的泛化缺陷。为了解决这一限制，本文提出了抽象事件因果规则（AECR），这是一种新颖的关系级因果抽象范式，它将具体的因果对转换为广义的抽象因果逻辑，同时保留其内在的因果关系。我们设计了一个多智能体具体到抽象因果归纳（CACI）系统，与相似性约束聚类相结合，从嘈杂的原始因果数据中提取可信的 AECR，并在此基础上构建了两个完整的 AECR 知识库。为了验证抽象因果知识的实用性，我们提出了一种抽象规则引导因果注意力编码器（AR-GCAE），它通过规则引导注意力层和门控表示融合将检索到的 AECR 注入因果关系图事件预测（CGEP）基准任务中。定量实验结果表明，应用 AECR 大大增强了事件因果推理的泛化能力，并为事件预测带来了一致的性能改进，在罕见和未见的事件样本上观察到最显着的增益。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Ziwei Zheng, Peiqiong Chen, Bang Wang"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05206v1",
-          "title": "Otter: A Time-Aware, History-Conditioned Human Chess AI",
-          "titleZh": "Otter：具有时间意识、历史条件的人类国际象棋人工智能",
-          "link": "https://arxiv.org/abs/2608.05206",
-          "summary": "arXiv:2608.05206v1 Announce Type: new\nAbstract: Otter is a 15.3M-parameter human chess AI that predicts human move selection by modeling play as a time-aware, sequential process rather than treating each position in isolation. It combines two conditioning signals: (1) a move history encoder that conditions predictions on the last 20 moves, capturing opening preferences, positional drift, and intra-game behavioral tendencies; and (2) a time control module that modulates predictions based on clock pressure. Otter is trained on 6.1 billion positions from 117 million Lichess rapid games over 30 days on a single T4 GPU.\n Otter achieves 55.23% top-1 and 90.95% top-5 move-prediction accuracy, surpassing the prior state-of-the-art human chess model, Maia 2, with far fewer parameters and less training data. Across 11 Elo brackets ( =2000), accuracy peaks at 57.38% in the 1900-1999 bracket. These results show that modeling chess as a time-aware, sequential activity yields more human-accurate move prediction than position-only approaches, using a smaller model. Code, trained models, and complete training logs are publicly released.",
-          "summaryZh": "arXiv:2608.05206v1 公告类型：新\n摘要：Otter 是一个 1530 万参数的人类国际象棋人工智能，它通过将比赛建模为时间感知的顺序过程来预测人类的走法选择，而不是孤立地处理每个位置。它结合了两个条件信号：（1）一个走棋历史编码器，用于对最后 20 个走棋进行预测，捕获开局偏好、位置漂移和游戏内行为倾向； (2) 时间控制模块，根据时钟压力调整预测。 Otter 在 30 天内在单个 T4 GPU 上对 1.17 亿场 Lichess 快速游戏中的 61 亿个位置进行了训练。\n Otter 的 top-1 着法预测准确率达到 55.23%，top-5 着法预测准确率达到 90.95%，超越了之前最先进的人类国际象棋模型 Maia 2，且参数和训练数据都少得多。在 11 个 Elo 区间 (=2000) 中，1900-1999 区间的准确率达到峰值 57.38%。这些结果表明，使用较小的模型，将国际象棋建模为时间感知的顺序活动，比仅使用位置的方法产生更准确的移动预测。代码、训练模型和完整的训练日志均公开发布。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Tarun Kumar S"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05212v1",
-          "title": "SearchAuditor: Auditing and Attributing Failures in Long-Horizon Search Agents",
-          "titleZh": "SearchAuditor：审计和归因长期搜索代理中的失败",
-          "link": "https://arxiv.org/abs/2608.05212",
-          "summary": "arXiv:2608.05212v1 Announce Type: new\nAbstract: Deep search agents tackle challenging questions through long-horizon web interactions, a process that is both complex and fragile: small reasoning errors may propagate through long, noisy trajectories into fluent but incorrect answers. Diagnosing such failures is difficult, requiring the manual inspection of extremely long execution traces, which could be beyond human capacity. We therefore introduce SearchAuditBench, a benchmark that evaluates whether LLM auditors can localize, attribute, and repair these failures, thereby reducing the human burden. SearchAuditBench comprises 1,243 failed trajectories, averaging 73.1 messages and 65.1K tokens, collected from eight open-weight models on five deep-search benchmarks, each expert-annotated with the critical error step, a search-specific root cause, and a reference repair with grading rubrics. We further propose SearchAuditor, a multi-perspective auditing framework that effectively localizes, attributes, and repairs search-agent failures through evidence-grounded adjudication. Experimental results show that even the strongest baseline, when powered by a frontier model like GPT-5.5, attains only a 26.6% end-to-end pass rate. In contrast, our SearchAuditor consistently outperforms all baselines across different frontier models, achieving an end-to-end pass rate of 32.3%, and resuming failed runs with its repairs enables agents to better recover from errors.",
-          "summaryZh": "arXiv:2608.05212v1 公告类型：新\n摘要：深度搜索代理通过长范围网络交互来解决具有挑战性的问题，这是一个既复杂又脆弱的过程：小的推理错误可能会通过长而嘈杂的轨迹传播为流畅但不正确的答案。诊断此类故障很困难，需要手动检查极长的执行轨迹，这可能超出了人类的能力。因此，我们引入了SearchAuditBench，这是一个评估LLM审核员是否能够定位、归因和修复这些故障的基准，从而减轻人力负担。 SearchAuditBench 包含 1,243 个失败轨迹，平均 73.1 条消息和 65.1K 个令牌，从五个深度搜索基准的八个开放权重模型中收集，每个专家都注释了关键错误步骤、特定于搜索的根本原因以及带有评分标准的参考修复。我们进一步提出了 SearchAuditor，这是一种多视角审计框架，可以通过基于证据的裁决有效地定位、归因和修复搜索代理故障。实验结果表明，即使是最强的基线，在 GPT-5.5 这样的前沿模型的支持下，也只能获得 26.6% 的端到端通过率。相比之下，我们的 SearchAuditor 始终优于不同前沿模型的所有基线，实现了 32.3% 的端到端通过率，并且通过修复恢复失败的运行使代理能够更好地从错误中恢复。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Zhixiang Liang, Yifei Liu, Yidan Huang, Haozhe Zhao, Beichen Huang, Jiaqi Wang, Nan Duan, Qiong Cao"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05218v1",
-          "title": "PD-GS: Phoneme-Driven 3DGS for Audio-Driven Talking Heads",
-          "titleZh": "PD-GS：用于音频驱动头显的音素驱动 3DGS",
-          "link": "https://arxiv.org/abs/2608.05218",
-          "summary": "arXiv:2608.05218v1 Announce Type: new\nAbstract: 3D Gaussian Splatting (3DGS) enables fast, photorealistic talking-head rendering, yet accurate lip articulation remains elusive: mouth motion is often over-smoothed and may violate hard articulatory constraints such as bilabial closures, producing the notorious ``leaky mouth'' artifact. A key difficulty is that brief, discrete articulatory events are inferred from a continuous acoustic embedding under a regression objective, which biases predictions toward averaged mouth configurations. While modern self-supervised speech encoders provide rich prosodic and phonetic cues, they do not provide an explicit, frame-aligned linguistic target that reliably disambiguates closure-level events. We propose \\textbf{Phoneme-Driven Gaussian Splatting (PD-GS)}, which augments a 3DGS talker with time-aligned phoneme tokens obtained from an automatic ASR and forced-alignment pipeline. Our core component, the \\textbf{Linguistic Fusion Module (LFM)}, adaptively fuses continuous audio context with discrete phoneme embeddings through a learned gate, allowing the model to preserve smooth audio-driven dynamics while strengthening phoneme guidance on articulation-critical segments. PD-GS is trained purely from monocular video using image reconstruction and lip landmark supervision. On HDTF, PD-GS achieves the best lip geometry among the compared baselines (LMD 2.66) and qualitatively reduces closure violations in challenging phoneme sequences, yielding more linguistically faithful neural avatars.",
-          "summaryZh": "arXiv:2608.05218v1 公告类型：新\n摘要：3D 高斯喷射 (3DGS) 可以实现快速、逼真的头部说话渲染，但准确的嘴唇发音仍然难以实现：嘴巴运动通常过于平滑，并且可能违反双唇闭合等硬发音约束，从而产生臭名昭著的“漏嘴”伪像。一个关键的困难是，从回归目标下的连续声学嵌入中推断出简短、离散的发音事件，这使得预测偏向于平均嘴部配置。虽然现代自监督语音编码器提供了丰富的韵律和语音提示，但它们没有提供明确的、框架对齐的语言目标来可靠地消除闭包级别事件的歧义。我们提出 \\textbf{Phoneme-Driven Gaussian Splatting (PD-GS)}，它使用从自动 ASR 和强制对齐管道获得的时间对齐音素标记来增强 3DGS 说话者。我们的核心组件 \\textbf{语言融合模块 (LFM)} 通过学习门自适应地将连续音频上下文与离散音素嵌入融合在一起，使模型能够保持平滑的音频驱动动态，同时加强对发音关键片段的音素指导。 PD-GS 纯粹使用图像重建和唇部标志监督从单目视频进行训练。在 HDTF 上，PD-GS 在比较基线 (LMD 2.66) 中实现了最佳的嘴唇几何形状，并定性地减少了具有挑战性的音素序列中的闭合违规，从而产生了语言上更忠实的神经化身。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Ao Fu, Yi Zhou"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05219v1",
-          "title": "When Privileged Guidance Misaligns: State-Matched Routing and Contextualized Self-Distillation for Multi-Turn Agents",
-          "titleZh": "当特权指导不一致时：多轮代理的状态匹配路由和上下文自蒸馏",
-          "link": "https://arxiv.org/abs/2608.05219",
-          "summary": "arXiv:2608.05219v1 Announce Type: new\nAbstract: Privileged on-policy distillation provides dense supervision for multi-turn agents by allowing a synchronized teacher to re-score the student's response at every turn with access to training-only references, such as successful trajectories. In interactive environments, however, the student's preceding actions continually change the execution state. As the student takes different actions or completes subgoals in a different order, its rollout may reach states not covered by the reference, making the reference an unreliable source of guidance for the state actually reached. Applying privileged distillation indiscriminately therefore creates state--reference mismatch. This mismatch motivates a central objective: providing privileged reference guidance that remains compatible with the student's current execution state. We introduce State-Matched Routing and Contextualized Self-Distillation (SMRC-SD), which explicitly determines when and how a privileged trajectory should guide an on-policy student. At each turn, SMRC-SD verifies whether the student's current execution state matches a supported state along the reference trajectory. Distillation is applied only at matched states, filtering out turns for which the reference lacks locally compatible guidance. For each matched state, SMRC-SD further constructs state-conditioned teacher context from the successful trajectory, grounding supervision in the state actually reached. Across ALFWorld and WebShop, SMRC-SD consistently outperforms unconditional successful full-path distillation. With Qwen3-1.7B, it improves task success from $0.746$ to $0.865$ on ALFWorld and from $0.574$ to $0.693$ on WebShop. Controlled routing and context ablations support both selecting locally supported turns and constructing state-compatible teacher context as contributors to these gains. Code is available at https://github.com/liujunzhuo/SMRC-SD.",
-          "summaryZh": "arXiv:2608.05219v1 公告类型：新\n摘要：特权同策略蒸馏允许同步教师在每个回合重新评分学生的反应，并访问仅限训练的参考（例如成功的轨迹），从而为多回合代理提供密集的监督。然而，在交互式环境中，学生之前的操作会不断改变执行状态。当学生采取不同的行动或以不同的顺序完成子目标时，其推出可能会达到参考未涵盖的状态，从而使参考成为实际达到的状态的不可靠的指导来源。因此，不加区别地应用特权蒸馏会导致状态-引用不匹配。这种不匹配激发了一个中心目标：提供与学生当前执行状态保持兼容的特权参考指导。我们引入了状态匹配路由和上下文自蒸馏（SMRC-SD），它明确确定了特权轨迹何时以及如何指导政策学生。在每个回合，SMRC-SD 都会验证学生当前的执行状态是否与参考轨迹上的支持状态匹配。蒸馏仅适用于匹配状态，过滤掉参考缺乏局部兼容指导的轮次。对于每个匹配的状态，SMRC-SD 进一步根据成功轨迹构建状态条件教师上下文，将监督扎根于实际达到的状态。在 ALFWorld 和 WebShop 中，SMRC-SD 始终优于无条件成功的全路径蒸馏。借助 Qwen3-1.7B，它可以将 ALFWorld 上的任务成功率从 $0.746$ 提高到 $0.865$，将 WebShop 上的任务成功率从 $0.574$ 提高到 $0.693$。受控路由和上下文消融支持选择本地支持的转弯和构建状态兼容的教师上下文作为这些收益的贡献者。代码可在 https://github.com/liujunzhuo/SMRC-SD 获取。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Junzhuo Liu, Weiwei Li, Jun Ling, Peng Wang"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05224v1",
-          "title": "Small Foundation Models of Human Cognition and Behaviour",
-          "titleZh": "人类认知和行为的小型基础模型",
-          "link": "https://arxiv.org/abs/2608.05224",
-          "summary": "arXiv:2608.05224v1 Announce Type: new\nAbstract: Large language models fine-tuned on human behavioural data have emerged as general-purpose cognitive proxies, but the scale this requires, and whether these models process task structure or exploit statistical shortcuts, remain open questions. We train fourteen models from 135M to 14B parameters across four architecture families on Psych-101, a dataset of 10.7 million trial-level choices from 160 experiments. In-distribution, scale barely matters. The models fall within a narrow band, as though against a ceiling, and 0.6B to 1B parameters suffice to match a 70B baseline on held-out participants. Out-of-distribution, that band opens into a markedly steeper scaling gradient, with larger models clearly advantaged in generalisation to novel task structure. To determine what information these models use, we run two diagnostics. We progressively strip four prompt channels -- task instructions, experimental stimuli, outcome feedback, and choice history -- across 27 experiments, and permute trial order. Masking the content of stimuli and feedback destroys 75.7% of learned information and pushes models below chance, demonstrating that choice history alone does not account for performance. Permutation reveals invariance on tasks with independent trials but sensitivity where trial order is determined by prior responses. Small cognitively fine-tuned models therefore show promise as noise ceiling estimators for psychological experiments, though their scope remains bounded by the paradigms seen in training.",
-          "summaryZh": "arXiv:2608.05224v1 公告类型：新\n摘要：根据人类行为数据进行微调的大型语言模型已成为通用认知代理，但其所需的规模以及这些模型是否处理任务结构或利用统计捷径仍然是悬而未决的问题。我们在 Psych-101（包含来自 160 个实验的 1070 万个试验级选择的数据集）上跨四个架构系列训练了 14 个模型，参数范围从 1.35 亿到 14B 个。在分销方面，规模几乎不重要。这些模型落在一个狭窄的范围内，就像面对天花板一样，0.6B 到 1B 的参数足以匹配坚持参加的参与者的 70B 基线。在分布之外，该带会出现明显更陡的缩放梯度，较大的模型在泛化到新颖的任务结构方面明显具有优势。为了确定这些模型使用哪些信息，我们进行了两次诊断。我们在 27 个实验中逐步剥离四个提示通道——任务说明、实验刺激、结果反馈和选择历史，并重新排列试验顺序。掩盖刺激和反馈的内容会破坏 75.7% 的学习信息，并使模型低于概率，这表明选择历史本身并不能解释性能。排列揭示了独立​​试验任务的不变性，但试验顺序由先前的响应决定的敏感性。因此，小型认知微调模型显示出作为心理实验的噪声上限估计器的前景，尽管它们的范围仍然受到训练中看到的范式的限制。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Nick Oh, Fernand Gobet"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05225v1",
-          "title": "Project2Task: Graph-Guided Project-Level Planning for Autonomous Research",
-          "titleZh": "Project2Task：用于自主研究的图引导项目级规划",
-          "link": "https://arxiv.org/abs/2608.05225",
-          "summary": "arXiv:2608.05225v1 Announce Type: new\nAbstract: Research agents can increasingly search literature, propose hypotheses, generate code, run experiments, and draft manuscripts from a single topic. However, a research project is not merely a larger task: it is a long-horizon agenda that must be advanced through multiple bounded tasks with distinct but related objectives, parallel alternatives, and dependency-aware sequences. Existing single-task systems often treat the project as one oversized task, produce a flat set of vague or overlapping tasks, or leave task boundaries and execution order to manual coordination. We introduce Project2Task, a graph-guided project-level planning layer for autonomous research. Given a project brief, it represents candidate contributions as innovation atoms and organizes them in a directed lineage graph. A lightweight Bernoulli block-model objective selects among horizontal, vertical, and hybrid portfolio decompositions. Project2Task then generates bounded tasks with explicit contribution ownership, repairs overlaps and missing execution fields, and emits dependency-aware task contracts that specify objectives, inputs, expected artifacts, evaluation requirements, boundary constraints, dependencies, and execution order. The contracts are independent of any particular downstream research executor and support integration of task outputs into a coherent project-level result. On a benchmark of ten project briefs yielding roughly 30 tasks, manuscript-based portfolio evaluation gives Project2Task an average quality score of 7.15, compared with 4.58 for the Brief Baseline and 5.31 for the Topic-only Setting. Integrating its contracts with AutoResearchClaw increases average downstream task accuracy from 0.536 to 0.759. These results demonstrate the value of explicit project-to-task planning for producing coherent, non-redundant, and executable research-task portfolios.",
-          "summaryZh": "arXiv:2608.05225v1 公告类型：新\n摘要：研究人员可以越来越多地搜索文献、提出假设、生成代码、运行实验以及起草单个主题的手稿。然而，研究项目不仅仅是一项更大的任务：它是一个长期议程，必须通过具有不同但相关目标、并行替代方案和依赖性感知序列的多个有界任务来推进。现有的单任务系统通常将项目视为一个超大任务，产生一组模糊或重叠的任务，或者将任务边界和执行顺序留给手动协调。我们引入了 Project2Task，这是一个用于自主研究的图形引导的项目级规划层。给定一个项目简介，它将候选者的贡献表示为创新原子，并将它们组织在有向谱系图中。轻量级伯努利块模型目标在水平、垂直和混合投资组合分解之间进行选择。然后，Project2Task 生成具有明确贡献所有权的有界任务，修复重叠和缺失的执行字段，并发出依赖项感知任务契约，指定目标、输入、预期工件、评估要求、边界约束、依赖项和执行顺序。这些合同独立于任何特定的下游研究执行者，并支持将任务输出整合为连贯的项目级结果。在包含大约 30 项任务的 10 个项目摘要的基准上，基于手稿的组合评估给 Project2Task 的平均质量得分为 7.15，而摘要基线的平均质量得分为 4.58，纯主题设置的平均质量得分为 5.31。将其合约与 AutoResearchClaw 集成可将平均下游任务准确度从 0.536 提高到 0.759。这些结果证明了明确的项目到任务规划对于产生连贯的、非冗余的和可执行的研究任务组合的价值。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Huirui Xu, Runtao Xu, Shuo Ren, Jiajun Zhang"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05228v1",
-          "title": "TriQua: Reconciling Granularity and Context in Factuality Evaluation",
-          "titleZh": "TriQua：协调事实评估中的粒度和背景",
-          "link": "https://arxiv.org/abs/2608.05228",
-          "summary": "arXiv:2608.05228v1 Announce Type: new\nAbstract: The \"decompose-then-verify\" paradigm for LLM factuality evaluation faces a fundamental trade-off: atomic facts, i.e., one sentence conveying one unit of information, often omit essential context, while broader statements lack the granularity needed for precise assessment. To address this, we introduce TriQua, a framework that flexibly models facts based on their complexity. Simple claims are extracted as standard triples, while complex claims are represented as hyperrelational facts by attaching auxiliary contextual qualifiers. This adaptive structure preserves the necessary context for accurate retrieval and verification without sacrificing atomicity. Furthermore, TriQua's verification process directly annotates concrete errors within specific triples and qualifiers, providing fine-grained explainability for error detection. Alongside the framework, we propose TriQuaScore to quantify the factuality of these structured fact units. Empirical evaluations show that TriQuaScore strongly aligns with human annotated factuality scores, TriQua achieves robust decomposition quality, and outperforms existing decomposition-based frameworks in evidence-based fact verification.",
-          "summaryZh": "arXiv:2608.05228v1 公告类型：新\n摘要：法学硕士事实性评估的“分解然后验证”范式面临着一个基本的权衡：原子事实，即一个句子传达一个信息单元，往往会忽略重要的上下文，而更广泛的陈述缺乏精确评估所需的粒度。为了解决这个问题，我们引入了 TriQua，这是一个根据事实的复杂性灵活建模的框架。简单的主张被提取为标准三元组，而复杂的主张则通过附加辅助上下文限定符表示为超关系事实。这种自适应结构在不牺牲原子性的情况下保留了准确检索和验证所需的上下文。此外，TriQua 的验证过程直接注释特定三元组和限定符内的具体错误，为错误检测提供细粒度的可解释性。除了该框架之外，我们还提出 TriQuaScore 来量化这些结构化事实单元的真实性。实证评估表明，TriQuaScore 与人类注释的事实性评分高度一致，TriQua 实现了稳健的分解质量，并且在基于证据的事实验证方面优于现有的基于分解的框架。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Jin Liu, Steffen Thoma, Achim Rettinger"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05233v1",
-          "title": "Coherence-Oriented Dream Scene Visualisation",
-          "titleZh": "面向连贯性的梦境可视化",
-          "link": "https://arxiv.org/abs/2608.05233",
-          "summary": "arXiv:2608.05233v1 Announce Type: new\nAbstract: Dreams can be emotionally intense but difficult to communicate. We describe the Dream Scene Visualiser (DSV) system which turns written dream descriptions into a temporal sequence of four panel images visualising the dream. This starts with a large language model prompted to split a dream description into four chronological parts. Then a text-to-image model produces images for each part with visual coherence maintained across the sequence, and DSV regenerates any image not suitably matching the text. We evaluate DSV over 50 visualisations from dream descriptions in DreamBank, and report quality, fidelity and coherence results via objective measures employing the CLIP, DINOv2 and Qwen2-VL vision-language models.",
-          "summaryZh": "arXiv:2608.05233v1 公告类型：新\n摘要：梦的情感可能很强烈，但很难沟通。我们描述了梦境可视化器（DSV）系统，该系统将书面的梦境描述转化为将梦境可视化的四个面板图像的时间序列。首先是一个大型语言模型，提示将梦的描述分成四个按时间顺序排列的部分。然后，文本到图像模型为每个部分生成图像，并在整个序列中保持视觉连贯性，并且 DSV 重新生成与文本不适当匹配的任何图像。我们评估了 DreamBank 中梦境描述的 50 多个可视化结果，并通过使用 CLIP、DINOv2 和 Qwen2-VL 视觉语言模型的客观测量来报告质量、保真度和连贯性结果。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Azra A\\c{c}{\\i}l, Simon Colton"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05245v1",
-          "title": "Search2Skill: Skill Distillation Beyond Knowledge Boundaries Via Rubric-Based Reinforcement Learning",
-          "titleZh": "Search2Skill：通过基于标题的强化学习超越知识边界的技能蒸馏",
-          "link": "https://arxiv.org/abs/2608.05245",
-          "summary": "arXiv:2608.05245v1 Announce Type: new\nAbstract: Reusable skills, which encapsulate the procedural knowledge required to solve real-world professional tasks, offer LLM-based agents a path toward self-evolution in expert domains. Existing self-evolving skill methods construct skills internally from the model's parametric knowledge or trajectories, and are therefore bounded by what the model already knows. However, the domain conventions and standard procedures underlying professional skills often lie beyond this boundary and are hard to elicit from the agent alone. To address this issue, we therefore propose a novel framework, Search2Skill, that automatically identifies the agent's capability gaps, searches external sources to address them, and distills the retrieved evidence into structured, reusable skills. Specifically, Search2Skill is optimized by a rubric-based reinforcement learning scheme that jointly improves when to search, how to search, and how to generate skills. Experiments on eight expert-level domains from three benchmarks show that Search2Skill consistently outperforms both search-augmented and trajectory-based skill-learning baselines under both streaming and held-out evaluation protocols. Further analyses show that the gains arise from skill abstraction rather than raw retrieved evidence, and that the acquired skills transfer across model scales.",
-          "summaryZh": "arXiv:2608.05245v1 公告类型：新\n摘要：可重用技能封装了解决现实世界专业任务所需的程序知识，为基于 LLM 的代理提供了一条在专家领域自我进化的途径。现有的自我进化技能方法根据模型的参数知识或轨迹在内部构建技能，因此受到模型已知知识的限制。然而，专业技能背后的领域约定和标准程序往往超出了这个界限，并且很难仅从代理那里获得。为了解决这个问题，我们提出了一个新颖的框架，Search2Skill，它可以自动识别代理的能力差距，搜索外部资源来解决这些问题，并将检索到的证据提炼成结构化的、可重用的技能。具体来说，Search2Skill 通过基于规则的强化学习方案进行了优化，该方案共同改进了何时搜索、如何搜索以及如何生成技能。根据三个基准对八个专家级领域进行的实验表明，在流式和保留评估协议下，Search2Skill 始终优于搜索增强和基于轨迹的技能学习基线。进一步的分析表明，收益来自技能抽象，而不是原始检索的证据，并且获得的技能可以跨模型尺度转移。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Muyang Ye, Tian Lan, Feihu Jiang, Yongshi Ye, Wuyunsiqin, Bin Zhu, Qianghuai Jia, Zhao Xu, Weihua Luo, Ye Wang, Jinyang Zhang, Longyue Wang, Lingfeng Bao"
-        }
-      ]
+      "fetchedAt": "2026-08-08T06:40:42.595Z",
+      "count": 0,
+      "items": []
     },
     {
       "id": "arxiv-cs-lg",
@@ -424,175 +258,9 @@
       "url": "https://rss.arxiv.org/rss/cs.LG",
       "home": "https://arxiv.org/list/cs.LG/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-08-08T01:09:05.449Z",
-      "count": 15,
-      "items": [
-        {
-          "id": "oai:arXiv.org:2608.05196v1",
-          "title": "MS-MLB: An Open Machine Learning Benchmark for Blood-Based MS Classification",
-          "titleZh": "MS-MLB：基于血液的 MS 分类的开放机器学习基准",
-          "link": "https://arxiv.org/abs/2608.05196",
-          "summary": "arXiv:2608.05196v1 Announce Type: new\nAbstract: Multiple sclerosis (MS) is diagnosed through clinical assessment, magnetic resonance imaging, laboratory evidence when appropriate, and exclusion of better explanations. Blood RNA expression data may contain disease associated immune signal, but a blood RNA classifier cannot be treated as a replacement for clinical diagnosis. This paper presents MS-MLB (Multiple Sclerosis Machine Learning Benchmark), a reproducible open benchmark for machine learning based MS research classification from whole blood RNA expression data. MS-MLB uses the public GSE17048 cohort, converts it into an MS versus healthy control task, and evaluates multiple algorithms under a shared, leakage controlled pipeline that a researcher can rerun without reconfiguring the evaluation. The evaluation includes nested cross-validation, an untouched stratified holdout set, bootstrap confidence intervals, ROC and precision recall analysis, calibration measurement, and an exploratory MS Research Score. In the final benchmark summary, Gradient Boosting ranked first by MS Research Score on the holdout set, with an MS Research Score of 93.83, AUC-ROC of 0.989, sensitivity of 0.950, specificity of 0.778, $F_{1}$ score of 0.927, and Brier score of 0.050. Prior studies have applied machine learning to MS blood transcriptomic data, including PBMC stage classification and whole blood diagnostic signature modeling. The contribution here is different and narrower. To our knowledge, MS-MLB is the first open benchmark focused on MS versus healthy control classification from GSE17048 whole blood RNA expression data with a documented external model submission pathway built into the framework. The score is intended for research comparison only and has not been clinically validated. The benchmark is accessible here: https://github.com/duckyquang/MS-MLB.",
-          "summaryZh": "arXiv:2608.05196v1 公告类型：新\n摘要：多发性硬化症（MS）是通过临床评估、磁共振成像、适当的实验室证据以及排除更好的解释来诊断的。血液 RNA 表达数据可能包含疾病相关的免疫信号，但血液 RNA 分类器不能替代临床诊断。本文提出了 MS-MLB（多发性硬化症机器学习基准），这是一种可重复的开放基准，用于根据全血 RNA 表达数据进行基于机器学习的 MS 研究分类。 MS-MLB 使用公共 GSE17048 队列，将其转换为 MS 与健康控制任务，并在共享的泄漏控制管道下评估多种算法，研究人员可以重新运行该管道，而无需重新配置评估。评估包括嵌套交叉验证、未触及的分层保留集、引导置信区间、ROC 和精确召回分析、校准测量以及探索性 MS 研究评分。在最终的基准摘要中，Gradient Boosting 在保留集上的 MS 研究得分排名第一，MS 研究得分为 93.83，AUC-ROC 为 0.989，敏感性为 0.950，特异性为 0.778，$F_{1}$ 得分为 0.927，Brier 得分为 0.050。先前的研究已将机器学习应用于 MS 血液转录组数据，包括 PBMC 阶段分类和全血诊断特征建模。这里的贡献是不同的，而且范围更窄。据我们所知，MS-MLB 是第一个专注于根据 GSE17048 全血 RNA 表达数据对 MS 与健康对照进行分类的开放基准，框架中内置有记录的外部模型提交路径。该分数仅用于研究比较，尚未经过临床验证。该基准可在此处访问：https://github.com/duckyquang/MS-MLB。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Adam Simson, Ankush Dutta, Quang Bui"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05207v1",
-          "title": "When Do Corrective Features Help? An Agent for Corrective Feature Discovery on Black-Box Forecasters",
-          "titleZh": "纠正功能何时有帮助？黑盒预报器修正特征发现代理",
-          "link": "https://arxiv.org/abs/2608.05207",
-          "summary": "arXiv:2608.05207v1 Announce Type: new\nAbstract: Frozen pretrained forecasters often fail in structured, recurring ways that are costly to repair through fine-tuning. We study corrective feature discovery: mining interpretable features of a frozen forecaster's residual to drive a lightweight post-hoc corrector. Prior automated feature engineering models the data-generating process; corrective features instead model the model-failure process. We present CRAFTER (Corrective Residual Agent with Feature-based Temporal Exploration and Reasoning), which keeps the backbone frozen and mines its residual with two complementary generators: a compositional search over the raw input channels, and a large language model (LLM) that proposes named feature combinations, binary flags, and short executable code. A single validation-grounded gate accepts or rejects every candidate regardless of its origin, and a validation-selected corrector applies the accepted features or leaves the forecast unchanged. This source-agnostic pipeline also allows prior feature-engineering systems to be evaluated under identical conditions, making CRAFTER an instrument for attributing forecast improvements to the feature source alone. Across six public datasets and six frozen backbones, CRAFTER surpasses every dedicated feature-engineering system at every feature budget, roughly doubling the improvement achieved by the corrector alone and reducing the error of the weakest backbones by up to 27%. These gains are robust across different LLM backends and persist even when applied on top of fine-tuned backbones.",
-          "summaryZh": "arXiv:2608.05207v1 公告类型：新\n摘要：冻结的预训练预测器通常会以结构化、重复性的方式失败，而通过微调进行修复的成本高昂。我们研究校正特征发现：挖掘冻结预测器残差的可解释特征来驱动轻量级事后校正器。先前的自动化特征工程对数据生成过程进行建模；纠正特征而是对模型失效过程进行建模。我们提出了 CRAFTER（具有基于特征的时间探索和推理的校正残差代理），它使主干保持冻结状态，并使用两个互补的生成器挖掘其残差：对原始输入通道的组合搜索，以及提出命名特征组合、二进制标志和简短可执行代码的大型语言模型（LLM）。单个基于验证的门接受或拒绝每个候选者，无论其来源如何，并且验证选择的校正器应用接受的特征或保持预测不变。这种与源无关的管道还允许在相同条件下评估先前的特征工程系统，从而使 CRAFTER 成为将预测改进单独归因于特征源的工具。在六个公共数据集和六个冻结骨干网中，CRAFTER 在每个特征预算上都超越了每个专用特征工程系统，将仅校正器所实现的改进大约翻倍，并将最弱骨干网的错误减少高达 27%。这些收益在不同的 LLM 后端中都很强大，即使应用于微调的骨干网也能持续存在。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Fangxin Wang, Ziyi Zhang, Diyi Zhuang, Langzhou He, Shiyu Wang, Baichuan Mo, Philip S. Yu"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05234v1",
-          "title": "PPDL: LLM-Based Flows as Probabilistic Programs",
-          "titleZh": "PPDL：基于 LLM 的流程作为概率程序",
-          "link": "https://arxiv.org/abs/2608.05234",
-          "summary": "arXiv:2608.05234v1 Announce Type: new\nAbstract: Building reliable applications that leverage large language models (LLMs) remains a significant challenge. While LLMs offer impressive capabilities across diverse tasks, their outputs often lack accuracy and provide no clear measure of confidence. This uncertainty compounds in flows of multiple calls to LLMs and other tools, making it difficult for developers and end-users to trust the results. This paper introduces a probabilistic language for programming LLM-based flows. It enables developers to quantify and propagate uncertainty throughout the application's flow, and experiment with different inference scaling techniques without adding a single line of code beyond the flow's logic. We present an experimental study to demonstrate this capability, and a case study building a theorem proving agent for the Rocq theorem prover.",
-          "summaryZh": "arXiv:2608.05234v1 公告类型：新\n摘要：构建利用大型语言模型 (LLM) 的可靠应用程序仍然是一项重大挑战。虽然法学硕士在不同的任务中提供了令人印象深刻的能力，但他们的输出往往缺乏准确性，并且无法提供明确的信心衡量标准。这种不确定性加剧了对法学硕士和其他工具的多次调用流程，使开发人员和最终用户难以信任结果。本文介绍了一种用于对基于 LLM 的流程进行编程的概率语言。它使开发人员能够在整个应用程序流程中量化和传播不确定性，并尝试不同的推理扩展技术，而无需在流程逻辑之外添加一行代码。我们提出了一项实验研究来证明这种能力，并进行了一个为 Rocq 定理证明者构建定理证明代理的案例研究。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Louis Mandel, Guillaume Baudart, Mandana Vaziri, Martin Hirzel"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05238v1",
-          "title": "Decoupling Perception from Description: Computation-Grounded Representation Alignment between Multivariate Time Series and Language",
-          "titleZh": "将感知与描述解耦：多元时间序列和语言之间基于计算的表示对齐",
-          "link": "https://arxiv.org/abs/2608.05238",
-          "summary": "arXiv:2608.05238v1 Announce Type: new\nAbstract: Training multimodal models to align time series with language runs into a self-supervision trap. The usual recipe asks an LLM to read a series and write a description, so label quality is capped by the perceptual skill the model is supposed to learn. The data can never teach more than the labeler already knows. A second gap makes this worse: most datasets use a single variable, but the patterns that matter (cross-channel correlation, lead-lag structure, co-occurring anomalies) appear only with several variables, right where the labeling LLM's limits are most exposed. These two problems create a trilemma: existing methods are reliable, realistic, or scalable, but none achieves all three. We resolve this by decoupling perception from description. Deterministic code computes a set of statistics from real, open-source multivariate series; the LLM verbalizes those precomputed facts. Perception, which LLMs do poorly, is handled by computation, while the LLM handles expression. This produces CGTime, our 4B-parameter computation-grounded time-series-language model. CGTime outperforms far larger general-purpose models on multivariate understanding tasks: it attains the best multivariate fact score on our held-out benchmark (0.283 vs. 0.173 for GPT-4o-mini and 0.203 for GPT-5.4-nano), a gap that survives Holm-corrected paired significance tests against every baseline. It also states verifiable numerical facts in generated captions more accurately and covers a broader range of statistical properties.",
-          "summaryZh": "arXiv:2608.05238v1 公告类型：新\n摘要：训练多模态模型以使时间序列与语言保持一致会陷入自我监督陷阱。通常的方法要求法学硕士阅读一系列文章并撰写描述，因此标签质量受到模型应该学习的感知技能的限制。数据所教的内容永远不会比贴标签者已经知道的更多。第二个差距使情况变得更糟：大多数数据集使用单个变量，但重要的模式（跨渠道相关性、超前滞后结构、同时出现的异常）仅出现在多个变量中，而这正是标记法学硕士的限制最明显的地方。这两个问题造成了一个三难困境：现有的方法是可靠的、现实的或可扩展的，但没有一个方法能够同时实现这三个目标。我们通过将感知与描述脱钩来解决这个问题。确定性代码根据真实的开源多元序列计算一组统计数据；法学硕士用语言表达了这些预先计算的事实。感知是法学硕士做得很差的，它是通过计算来处理的，而法学硕士则处理表达。这产生了 CGTime，我们的基于 4B 参数计算的时间序列语言模型。 CGTime 在多变量理解任务上的表现优于更大的通用模型：它在我们的基准测试中获得了最佳的多变量事实得分（GPT-4o-mini 为 0.283，GPT-4o-mini 为 0.173，GPT-5.4-nano 为 0.203），这一差距在针对每个基线的 Holm 校正配对显着性测试中仍然存在。它还更准确地在生成的标题中陈述可验证的数字事实，并涵盖更广泛的统计属性。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Xinran Feng, Yi Xie, Chao Zhang, Ruikun Li, Wanyun Ling, Ziyue Li, Chenxi Liu"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05242v1",
-          "title": "Disentangling 3D Modeling from Spatial Reasoning",
-          "titleZh": "将 3D 建模与空间推理分开",
-          "link": "https://arxiv.org/abs/2608.05242",
-          "summary": "arXiv:2608.05242v1 Announce Type: new\nAbstract: In this work, we explore an alternative paradigm for spatial reasoning by explicitly disentangling 3D perception from reasoning, rather than jointly acquiring implicit 3D perception and reasoning through large-scale training. Our key observation is that modern perception models excel at estimating continuous 3D geometry, whereas large language models (LLMs) are particularly effective at compositional and symbolic reasoning. Motivated by these complementary strengths, we propose the Disentangled Spatial Reasoner (DiSR), a simple yet effective framework that reconstructs the physical world into structured 3D evidence using off-the-shelf expert perception models and fine-tunes an LLM with LoRA to perform reasoning solely over this explicit geometric evidence. Without large-scale 3D VQA training or complex tool-use policies, DiSR achieves competitive performance on popular spatial reasoning benchmarks. Beyond its strong performance, DiSR offers improved interpretability, modularity, and computational efficiency, demonstrating that explicit separation of perception and reasoning is a scalable and effective alternative paradigm to end-to-end modeling for spatial intelligence.",
-          "summaryZh": "arXiv:2608.05242v1 公告类型：新\n摘要：在这项工作中，我们通过明确地将 3D 感知与推理分离来探索空间推理的替代范式，而不是通过大规模训练联合获取隐式 3D 感知和推理。我们的主要观察结果是，现代感知模型擅长估计连续 3D 几何形状，而大型语言模型 (LLM) 在组合和符号推理方面特别有效。受这些互补优势的推动，我们提出了解缠结空间推理器 (DiSR)，这是一个简单而有效的框架，它使用现成的专家感知模型将物理世界重建为结构化 3D 证据，并使用 LoRA 微调法学硕士，仅对这种明确的几何证据进行推理。无需大规模 3D VQA 训练或复杂的工具使用策略，DiSR 在流行的空间推理基准上即可实现具有竞争力的性能。除了强大的性能之外，DiSR 还提供了改进的可解释性、模块化和计算效率，证明感知和推理的显式分离是空间智能端到端建模的可扩展且有效的替代范例。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Haoze Sun, Jiequan Cui, Qingshan Xu, Richang Hong"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05243v1",
-          "title": "Marginal Matching Does Not License Factorized Sampling: Auditing Conditional Style Leakage in Factorized Generative Models",
-          "titleZh": "边际匹配不许可分解抽样：审核分解生成模型中的条件样式泄漏",
-          "link": "https://arxiv.org/abs/2608.05243",
-          "summary": "arXiv:2608.05243v1 Announce Type: new\nAbstract: Factorized generative models commonly regularize a latent style variable z_s by matching its marginal distribution to a fixed Gaussian prior and interpret this as evidence that the style representation is independent of class information. We show that this interpretation is incorrect. Matching only the marginal distribution places no constraint on the class-conditional distributions, allowing the latent style to remain highly predictive of the label despite appearing perfectly Gaussian in aggregate. We derive an exact decomposition showing that this mismatch is one of four conditions required for factorized sampling, and demonstrate that eliminating it is necessary but not sufficient to obtain the intended factorization.\n Empirically, our case-study model and four representative latent baselines achieve near-zero global MMD while still allowing a linear probe to recover class labels with 74%--100% accuracy (10% chance level). Our model reaches 99.15% clustering accuracy, whereas externally evaluated class-conditional generation succeeds only 16% of the time. This leakage remains under six independent perturbations involving model capacity, curriculum, prior geometry, and supervision across two datasets. Four mitigation strategies reduce probe accuracy to 21%--46%, although they leave within-class dependence largely unchanged. A post-hoc conditional prior improves externally evaluated class generation to 0.97 on MNIST without retraining but reaches only 0.41 on CIFAR-10, while an empirical style bank achieves 0.88 on CIFAR-10. These results demonstrate that no divergence computed solely on the marginal distribution of the style latent can certify independence from class labels, and that reporting marginal statistics alone does not verify the property commonly claimed in factorized generative models.",
-          "summaryZh": "arXiv:2608.05243v1 公告类型：新\n摘要：分解生成模型通常通过将潜在风格变量 z_s 的边缘分布与固定的高斯先验匹配来正则化它，并将其解释为风格表示独立于类别信息的证据。我们证明这种解释是不正确的。仅匹配边缘分布不会对类条件分布施加任何限制，从而允许潜在风格保持对标签的高度预测，尽管总体上呈现完美的高斯分布。我们得出了精确的分解，表明这种不匹配是分解采样所需的四个条件之一，并证明消除它是必要的，但不足以获得预期的分解。\n 根据经验，我们的案例研究模型和四个代表性潜在基线实现了接近零的全局 MMD，同时仍然允许线性探针以 74%--100% 的准确度（10% 机会水平）恢复类别标签。我们的模型达到 99.15% 的聚类准确率，而外部评估的类条件生成只有 16% 的成功率。这种泄漏仍然存在六个独立的扰动，涉及模型容量、课程、先验几何和两个数据集的监督。四种缓解策略将探测精度降低至 21%--46%，尽管它们使类内依赖性基本保持不变。事后条件先验将 MNIST 上的外部评估类生成率提高到 0.97，无需再训练，但在 CIFAR-10 上仅达到 0.41，而经验风格银行在 CIFAR-10 上达到 0.88。这些结果表明，仅根据潜在风格的边际分布计算的散度不能证明与类标签的独立性，并且仅报告边际统计数据并不能验证因式分解生成模型中通常声称的属性。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Duong Bach, Hai Nguyen Hong, Cuong Do"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05249v1",
-          "title": "PRISM: Priority-aware Rubric Internalization via Structured Multimodal Data Synthesis",
-          "titleZh": "PRISM：通过结构化多模态数据合成进行优先级感知的Rubric内化",
-          "link": "https://arxiv.org/abs/2608.05249",
-          "summary": "arXiv:2608.05249v1 Announce Type: new\nAbstract: Real-world multimodal instructions often bundle multiple requirements with unequal importance, yet most multimodal training data still reduce instruction following to answering one self-contained question. We study this gap through \\textbf{rubric comprehension}, which casts the model not as a generator measured against rubrics but as an \\textbf{executor} that follows them: given an image and a typed, prioritized rubric, the model must verify each rule before producing an overall judgment. To support this setting, we propose \\textbf{PRISM}, a four-stage data synthesis framework that produces persona--task pairs, prefix-guided rule sets, quality-filtered rubrics, and structured verification traces. We further introduce \\textbf{PRISM-Eval}, whose Loose and Strict metrics use deterministic matching against fixed labels and therefore require no inference-time judge model. With only 10K synthesized samples, PRISM lifts Qwen3-VL-4B from 9.5\\% to 30.1\\% Strict accuracy on PRISM-Eval while preserving average performance on general benchmarks, and the gains transfer to four additional open-source MLLMs across dense and MoE architectures, suggesting that structured rubric supervision is a scalable path toward multi-rule, priority-aware multimodal instruction following.",
-          "summaryZh": "arXiv:2608.05249v1 公告类型：新\n摘要：现实世界的多模态指令通常捆绑多个重要性不等的要求，但大多数多模态训练数据仍然将指令减少为回答一个独立的问题。我们通过 \\textbf{rubric 理解} 研究这一差距，它将模型不是作为针对评分标准进行测量的生成器，而是作为跟随它们的 \\textbf{executor}：给定图像和类型化、优先化的评分标准，模型必须在生成总体判断之前验证每个规则。为了支持这种设置，我们提出了 \\textbf{PRISM}，这是一个四阶段数据合成框架，可生成角色 - 任务对、前缀引导的规则集、质量过滤的规则和结构化验证跟踪。我们进一步引入 \\textbf{PRISM-Eval}，其松散和严格度量使用针对固定标签的确定性匹配，因此不需要推理时间判断模型。仅用 10K 合成样本，PRISM 将 Qwen3-VL-4B 在 PRISM-Eval 上的严格准确度从 9.5\\% 提升到 30.1\\%，同时保持一般基准的平均性能，并且收益转移到跨密集和 MoE 架构的四个额外开源 MLLM，这表明结构化标题监督是通向多规则、优先级感知多模式指令跟踪的可扩展路径。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Xiaomin He, Dongling Xiao, Jiahao Xie, Ruiqi Lu, Qianle Wang, Zhongbin Guo, Wanxuan Sun"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05250v1",
-          "title": "Beyond Full-Model Rollback: AuroSFT for Adapter-State Multi-Task Fine-Tuning",
-          "titleZh": "超越全模型回滚：用于适配器状态多任务微调的 AuroSFT",
-          "link": "https://arxiv.org/abs/2608.05250",
-          "summary": "arXiv:2608.05250v1 Announce Type: new\nAbstract: Multi-task supervised fine-tuning (SFT) often casts a heterogeneous data mixture as a single optimization problem, even though different tasks may reach their best generalization at different times. msft exposes this mismatch through task-wise roll-out, exclusion, and rollback, but its original formulation materializes the scheduler state as full-model checkpoints, making stage transitions costly to store, restore, and deploy. This paper introduces AuroSFT, a parameter-efficient framework that recasts the carried state of overfitting-aware multi-task SFT as a compact, mergeable adapter state. AuroSFT freezes the pretrained backbone, trains only injected adapters, rolls back adapter checkpoints at task-wise peaks, and continues on the remaining active mixture. At the layer level, each adapter applies an AuroRA-inspired adaptive nonlinear layer to a low-rank weight factor rather than to the sample representation. The resulting update remains linear in the input, rank-bounded, and exactly mergeable into the frozen projection. Under the retained-backbone comparison protocol, AuroSFT achieves 61.36% average accuracy, compared with 59.85% for the corresponding msft reference row, and obtains higher accuracy on all five backbones. Our code is available at the anonymous repository: https://anonymous.4open.science/r/AuroSFT-80D1.",
-          "summaryZh": "arXiv:2608.05250v1 公告类型：新\n摘要：多任务监督微调（SFT）通常将异构数据混合视为单个优化问题，即使不同的任务可能在不同的时间达到最佳泛化。 MSFT 通过按任务推出、排除和回滚来暴露这种不匹配，但其最初的表述将调度程序状态具体化为全模型检查点，从而使阶段转换的存储、恢复和部署成本高昂。本文介绍了 AuroSFT，这是一种参数高效的框架，它将过度拟合感知的多任务 SFT 的携带状态重新构建为紧凑的、可合并的适配器状态。 AuroSFT 冻结预训练的主干，仅训练注入的适配器，在任务峰值处回滚适配器检查点，并继续处理剩余的活动混合物。在层级别，每个适配器将受 AuroRA 启发的自适应非线性层应用于低秩权重因子而不是样本表示。生成的更新在输入中保持线性，有等级限制，并且可以完全合并到冻结投影中。在保留骨干比较协议下，AuroSFT 实现了 61.36% 的平均准确度，而相应的 msft 参考行的平均准确度为 59.85%，并且在所有五个骨干上获得了更高的准确度。我们的代码可在匿名存储库中找到：https://anonymous.4open.science/r/AuroSFT-80D1。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Yue Han, Ziniu Liu"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05253v1",
-          "title": "Beyond Rotations: AuroOFT for Expressive Quantized Orthogonal Fine-Tuning",
-          "titleZh": "超越旋转：AuroOFT 用于富有表现力的量化正交微调",
-          "link": "https://arxiv.org/abs/2608.05253",
-          "summary": "arXiv:2608.05253v1 Announce Type: new\nAbstract: Quantized orthogonal fine-tuning (qoft) enables parameter-efficient adaptation of low-bit language models by learning structured activation rotations before frozen quantized weights. However, its task-specific updates remain constrained to linear orthogonal transformations, limiting input-dependent nonlinear corrections. We introduce AuroOFT, which keeps qoft as a stable quantization-compatible branch while attaching a zero-start gated low-rank nonlinear residual to each adapted linear layer. AuroOFT maps activations into an RMS-normalized compact latent space and uses adaptive nonlinear bases with bounded or token-dependent gating. The zero-initialized up projection makes AuroOFT functionally identical to qoft at initialization, while orthogonality remains a branch-level stability property rather than a property of the combined nonlinear layer. Under matched data, optimization, decoding, and parser protocols, AuroOFT improves Macro-6 over matched qoft by 1.30-2.70% on the 1.5B/3B Qwen2.5 settings, exceeds QLoRA by 6.52-10.62%, and saves 32.3-44.7% trainable parameters relative to QLoRA in representative scales. The small exam-style multiple-choice math set is treated only as a protocol-sensitivity diagnostic. Our code is available at the anonymous repository: https://anonymous.4open.science/r/AuroOFT-F3FD.",
-          "summaryZh": "arXiv:2608.05253v1 公告类型：新\n摘要：量化正交微调（qoft）通过在冻结量化权重之前学习结构化激活旋转来实现低位语言模型的参数高效适应。然而，其特定于任务的更新仍然受限于线性正交变换，限制了依赖于输入的非线性校正。我们引入了 AuroOFT，它将 qoft 保持为稳定的量化兼容分支，同时将零开始门控低秩非线性残差附加到每个适应的线性层。 AuroOFT 将激活映射到 RMS 归一化紧凑潜在空间中，并使用具有有界或令牌相关门控的自适应非线性基。零初始化向上投影使得 AuroOFT 在初始化时在功能上与 qoft 相同，而正交性仍然是分支级稳定性属性，而不是组合非线性层的属性。在匹配数据、优化、解码和解析器协议下，AuroOFT 在 1.5B/3B Qwen2.5 设置上将 Macro-6 的匹配 qoft 提高了 1.30-2.70%，超过 QLoRA 6.52-10.62%，并在代表性尺度上相对于 QLoRA 节省了 32.3-44.7% 的可训练参数。小型考试式多项选择数学集仅被视为协议敏感性诊断。我们的代码可在匿名存储库中找到：https://anonymous.4open.science/r/AuroOFT-F3FD。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Yue Han, Dianlin Wang"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05255v1",
-          "title": "An Emerging Retail Portfolio Management Application: Personalized, Tax-Aware Reinforcement Learning with Natural Language Goals",
-          "titleZh": "新兴零售投资组合管理应用程序：具有自然语言目标的个性化、税务感知强化学习",
-          "link": "https://arxiv.org/abs/2608.05255",
-          "summary": "arXiv:2608.05255v1 Announce Type: new\nAbstract: Retail investors lack access to the kind of personalized, tax-aware portfolio management that institutional clients take for granted -- existing robo-advisors use static, rule-based allocation, and institutional-grade systems require account minimums and technology stacks unavailable to individual investors. We present a fully built, integration-tested application that closes this gap: a FastAPI backend and web dashboard that let a user describe an investment goal in plain language (e.g. \"I want steady growth but need to sell some shares next month for a down payment\"), routes that goal to one of six investment mandates, and produces a live, broker-integrated portfolio recommendation from athree-phase reinforcement learning system -- a self-supervised cross-asset encoder, a Mixture-of-Experts (MoE) allocation policy with a learned intent router, and a lightweight LoRA adapter that personalizes recommendations from an individual's revealed brokerage behavior without retraining the shared model. The system is functionally complete and integration-tested end-to-end against a live brokerage API (Alpaca, paper-trading mode), including multi-user authentication, a trust first preview-before-apply confirmation flow, daily email digests, and an auditable action-integrity chain, but has not yet been opened to real end-users; we report this honestly as an emerging, pre-deployment application with a concrete path to full deployment, alongside 14-day walk-forward backtests (bootstrapped confidence intervals included) as preliminary, pre-deployment validation rather than production performance. We also report several practical engineering lessons -- silently-inactive integration paths, hanging third-party API calls, and the value of end-to-end empirical verification over trusting checkpoint metadata -- that we believe generalize to other applied RL systems built on external, live data sources.",
-          "summaryZh": "arXiv:2608.05255v1 公告类型：新\n摘要：散户投资者缺乏机构客户认为理所当然的个性化、税务意识投资组合管理——现有的机器人顾问使用静态、基于规则的分配，而机构级系统要求账户最低限额和个人投资者无法获得的技术堆栈。我们提供了一个完全构建的、经过集成测试的应用程序，可以弥补这一差距：一个 FastAPI 后端和 Web 仪表板，让用户用简单的语言描述投资目标（例如“我想要稳定增长，但需要下个月出售一些股票以支付首付”），将该目标路由到六个投资任务之一，并从三相强化学习系统（一个自监督的跨资产编码器、一个专家混合体（MoE））生成实时的、经纪人集成的投资组合推荐具有学习意图路由器和轻量级 LoRA 适配器的分配策略，该适配器可以根据个人透露的经纪行为提供个性化建议，而无需重新训练共享模型。该系统功能完整，并针对实时经纪 API（Alpaca、纸质交易模式）进行了端到端集成测试，包括多用户身份验证、应用前信任先预览确认流程、每日电子邮件摘要和可审计的操作完整性链，但尚未向真正的最终用户开放；我们诚实地将其报告为一个新兴的预部署应用程序，具有全面部署的具体路径，以及作为初步部署前验证而不是生产性能的 14 天回溯测试（包括引导置信区间）。我们还报告了一些实际的工程经验教训——静默不活动的集成路径、挂起的第三方 API 调用，以及基于信任检查点元数据的端到端经验验证的价值——我们相信这些经验教训可以推广到基于外部实时数据源构建的其他应用 RL 系统。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Ramin Pishehvar"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05265v1",
-          "title": "Evaluating Machine Learning Models for Post-Wildfire Debris-Flow Prediction",
-          "titleZh": "评估野火后泥石流预测的机器学习模型",
-          "link": "https://arxiv.org/abs/2608.05265",
-          "summary": "arXiv:2608.05265v1 Announce Type: new\nAbstract: Prediction of post-wildfire debris flows is critical for mitigating hazards to communities, infrastructure, and resources during intense rainfall in recently burned areas. However, identifying reliable machine learning models is complicated by overlapping debris-flow and non-debris-flow events in feature space, the need for model interpretability, and limited training data. This paper addresses these challenges through a systematic evaluation of machine learning models in terms of predictive performance, feature importance, and synthetic data augmentation. Using basin-scale observations of post-wildfire debris-flow events across the western United States, we compare 15 models, including the Tabular Prior-Data Fitted Network (TabPFN). Repeated stratified cross-validation shows that TabPFN achieves the highest unaugmented performance with a threat score of 0.637, closely followed by the best tree-based models. SHapley Additive exPlanations (SHAP) are used to identify the features driving predictions, revealing that short-duration rainfall intensity and storm accumulation consistently rank highest, while burn severity and terrain features contribute less. We further evaluate synthetic data augmentation using TabPFN-generated samples to address the scarcity of debris-flow observations. Synthetic augmentation improves the performance of all models except CNN, with the largest mean threat score increase of +0.041 among the deep learning models. By combining rigorous model benchmarking, interpretable feature analysis, and synthetic data augmentation, this work provides a comprehensive framework for improving post-wildfire debris-flow prediction.",
-          "summaryZh": "arXiv:2608.05265v1 公告类型：新\n摘要：预测野火后泥石流对于减轻最近烧毁地区强降雨期间对社区、基础设施和资源的危害至关重要。然而，由于特征空间中泥石流和非泥石流事件的重叠、对模型可解释性的需求以及有限的训练数据，识别可靠的机器学习模型变得复杂。本文通过对机器学习模型在预测性能、特征重要性和合成数据增强方面的系统评估来解决这些挑战。通过对美国西部野火后泥石流事件的流域规模观测，我们比较了 15 个模型，包括表格先验数据拟合网络 (TabPFN)。重复的分层交叉验证表明，TabPFN 实现了最高的未增强性能，威胁得分为 0.637，紧随其后的是最好的基于树的模型。 SHapley 附加解释 (SHAP) 用于识别驱动预测的特征，揭示短期降雨强度和风暴累积始终排名最高，而燃烧严重程度和地形特征的贡献较小。我们使用 TabPFN 生成的样本进一步评估合成数据增强，以解决泥石流观测的稀缺问题。综合增强提高了除 CNN 之外的所有模型的性能，深度学习模型中平均威胁得分增幅最大，为 +0.041。通过结合严格的模型基准测试、可解释的特征分析和合成数据增强，这项工作为改进野火后泥石流预测提供了一个全面的框架。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Quinn Ledingham, Zhengsen Xu, Yimin Zhu, Zack Dewis, Mabel Heffring, Saeid Taleghanidoozdoozan, Motasem Alkayid, Megan Greenwood, Lincoln Linlin Xu"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05315v1",
-          "title": "Rectifying Geometric Misalignment: Online Source-Free Adaptation for Class-Imbalanced EEG",
-          "titleZh": "纠正几何错位：针对类不平衡脑电图的在线无源自适应",
-          "link": "https://arxiv.org/abs/2608.05315",
-          "summary": "arXiv:2608.05315v1 Announce Type: new\nAbstract: Electroencephalography (EEG) based Brain-Computer Interfaces (BCIs) often require unsupervised domain adaptation (UDA) to generalize across subjects and sessions. While Riemannian alignment methods like the Riemannian Centering Transformation (RCT) are effective for handling covariate shifts, they implicitly assume balanced class priors. However, in realistic online BCI scenarios, the label distributions vary dynamically (label shift), causing standard alignment techniques to geometrically misalign the target data distributions. In this work, we propose OSPDIM (Online SPD manifold information maximization), a source-free online UDA framework designed to address label shifts on the Riemannian manifold. OSPDIM introduces a manifold-constrained bias parameter into the tangent space mapping, which is optimized via information maximization to correct the geometric skew caused by imbalanced data streams. Unlike offline methods relying on global batch statistics, OSPDIM estimates and corrects geometric bias on-the-fly. Simulations on 2D SPD matrices visually demonstrate that OSPDIM successfully rectifies the misalignment where standard centering fails. Extensive experiments on multiple motor imagery datasets show that OSPDIM significantly outperforms standard Riemannian baselines, particularly in challenging online adaptation scenarios with severe class imbalance, offering a robust solution for practical, plug-and-play BCI systems.",
-          "summaryZh": "arXiv:2608.05315v1 公告类型：新\n摘要：基于脑电图 (EEG) 的脑机接口 (BCI) 通常需要无监督域适应 (UDA) 才能跨学科和会话进行推广。虽然像黎曼居中变换 (RCT) 这样的黎曼对齐方法对于处理协变量移位是有效的，但它们隐含地假设了平衡的类先验。然而，在现实的在线 BCI 场景中，标签分布动态变化（标签移位），导致标准对齐技术在几何上未对齐目标数据分布。在这项工作中，我们提出了 OSPDIM（在线 SPD 流形信息最大化），这是一种无源在线 UDA 框架，旨在解决黎曼流形上的标签移位问题。 OSPDIM在切空间映射中引入了流形约束的偏差参数，通过信息最大化来优化该偏差参数，以纠正由不平衡数据流引起的几何倾斜。与依赖全局批次统计数据的离线方法不同，OSPDIM 即时估计并纠正几何偏差。对 2D SPD 矩阵的模拟直观地表明 OSPDIM 成功纠正了标准居中失败的未对准情况。对多个运动想象数据集的大量实验表明，OSPDIM 显着优于标准黎曼基线，特别是在具有严重类别不平衡的挑战性在线适应场景中，为实用的即插即用 BCI 系统提供了强大的解决方案。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Shiwen Chu, Shanglin Li, Motoaki Kawanabe, Reinmar Kobler"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05326v1",
-          "title": "QEvict: Recoverable Quantized KV Eviction for Attention-Drift-Robust Long-Context Decoding",
-          "titleZh": "QEvict：用于注意力漂移鲁棒长上下文解码的可恢复量化 KV 驱逐",
-          "link": "https://arxiv.org/abs/2608.05326",
-          "summary": "arXiv:2608.05326v1 Announce Type: new\nAbstract: Autoregressive large language model inference is increasingly constrained by the memory footprint of the Key-Value (KV) cache. A dominant line of work reduces this footprint by evicting tokens that appear unimportant under attention-derived scores. However, such policies make an implicit irreversible decision: once a token is evicted, it cannot become useful again. We show that this assumption is brittle during decoding. Token and window importance drift as generated queries evolve, causing standard eviction policies to permanently discard states that later receive substantial attention under the full-cache model. To characterize this behaviour, we introduce Future Missed Mass and Global LIR, two diagnostics that measure future attention assigned to discarded states and the reactivation of historically inactive regions. We propose QEvict, a three-tier KV-cache management scheme that replaces binary retain-or-delete eviction with recoverable eviction. QEvict maintains high-confidence windows in full precision, stores intermediate windows in a quantized recoverable tier, and deletes only the lowest-confidence windows. During decoding, cumulative attention scores update window importance and when a quantized window becomes important again, it is dequantized and promoted to the full-precision. Under a fixed memory budget, this design preserves broader historical context while retaining exact full precision for the most important regions. Across long-context understanding, retrieval, and reasoning benchmarks, QEvict consistently improves over representative eviction and quantization baselines, reducing missed attention and improving information retention",
-          "summaryZh": "arXiv:2608.05326v1 公告类型：新\n摘要：自回归大型语言模型推理越来越受到键值（KV）缓存的内存占用的限制。主要工作线通过驱逐在注意力衍生分数下显得不重要的令牌来减少这种足迹。然而，此类政策做出了隐含的不可逆转的决定：一旦代币被驱逐，它就无法再次变得有用。我们证明这种假设在解码过程中是脆弱的。随着生成的查询的发展，令牌和窗口重要性发生变化，导致标准驱逐策略永久丢弃后来在全缓存模型下受到大量关注的状态。为了描述这种行为，我们引入了未来错过的质量和全局 LIR，这两种诊断方法可以衡量分配给废弃状态的未来注意力以及历史不活跃区域的重新激活。我们提出了 QEvict，一种三层 KV 缓存管理方案，用可恢复驱逐取代二进制保留或删除驱逐。 QEvict 以全精度维护高置信度窗口，将中间窗口存储在量化的可恢复层中，并仅删除最低置信度窗口。在解码过程中，累积注意力分数会更新窗口重要性，当量化窗口再次变得重要时，它会被反量化并提升为全精度。在固定的内存预算下，这种设计保留了更广泛的历史背景，同时保留了最重要区域的精确完整精度。在长上下文理解、检索和推理基准测试中，QEvict 持续改进代表性逐出和量化基线，减少注意力缺失并提高信息保留",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Ayushman Garg, Akshita Gupta, Shaswata Bhattacharya, Abhishek Gupta, Sandeep Kumar, Manoj Kumar"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05358v1",
-          "title": "DG-FedReuse: Proxy-Gradient-Gated Cached-Update Reuse with Matched Sparse Uplink Accounting",
-          "titleZh": "DG-FedReuse：具有匹配稀疏上行链路计费的代理梯度门控缓存更新重用",
-          "link": "https://arxiv.org/abs/2608.05358",
-          "summary": "arXiv:2608.05358v1 Announce Type: new\nAbstract: Federated learning repeatedly incurs local optimization and model-update transmission. We study DG-FedReuse, a simulator-level mechanism that allows selected clients to contribute age-decayed cached updates when a stochastic head-gradient discrepancy proxy remains below a round-dependent threshold. A hard cache-age limit and minimum fresh-client quota constrain reuse, while fresh updates use an adaptive per-tensor Top-K numerical-field representation. Experiments cover six image-classification datasets, 50 virtual clients, Dirichlet label heterogeneity ({\\alpha}=0.5), and three seeds. At a common 90-round budget, DG-FedReuse yields 83.36-85.42% modeled update-data-field uplink saving, compared with 76.88% for matched Top-K FedAvg; the seed-aligned accuracy differences range from -5.29 to -0.14 percentage points. Best-observed test accuracies obtained under test-controlled checkpointing are retained only as exploratory archival evidence and range from -2.38 to +0.45 percentage points relative to matched FedAvg. A symmetric dense-model-downlink sensitivity reduces the headline saving to 41.68-F42.71% and the incremental gain over Top-K FedAvg to 3.24-4.27 percentage points, demonstrating the dependence of communication conclusions on the accounting boundary. The study characterizes the proposed reuse rule in the implemented simulator; it does not establish unbiased generalization, end-to-end bandwidth reduction, runtime or energy savings, faster convergence, or superiority over existing stale-update and lazy-aggregation methods.",
-          "summaryZh": "arXiv:2608.05358v1 公告类型：新\n摘要：联邦学习反复引发局部优化和模型更新传输。我们研究了 DG-FedReuse，这是一种模拟器级别的机制，当随机头梯度差异代理保持低于回合相关阈值时，该机制允许选定的客户端贡献年龄衰减的缓存更新。硬缓存期限和最小新客户端配额限制了重用，而新更新则使用自适应每张量 Top-K 数值字段表示。实验涵盖六个图像分类数据集、50 个虚拟客户端、狄利克雷标签异质性 ({\\alpha}=0.5) 和三个种子。在常见的 90 轮预算中，DG-FedReuse 的建模更新数据字段上行链路节省率为 83.36-85.42%，而匹配的 Top-K FedAvg 的节省率为 76.88%；种子对齐准确率差异范围为 -5.29 到 -0.14 个百分点。在测试控制检查点下获得的最佳观察测试精度仅保留作为探索性档案证据，相对于匹配的 FedAvg 范围为 -2.38 至 +0.45 个百分点。对称密集模型下行链路敏感性将总体节省率降低至 41.68-F42.71%，并将相对于 Top-K FedAvg 的增量增益降低至 3.24-4.27 个百分点，这表明了通信结论对会计边界的依赖性。该研究描述了所实施的模拟器中所提议的重用规则的特征；它没有建立公正的泛化、端到端带宽减少、运行时间或能源节省、更快的收敛或优于现有的陈旧更新和惰性聚合方法。",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Rahil Aftab, Vineet Kumar Rakesh, Soumya Mazumdar, Tapas Samanta"
-        },
-        {
-          "id": "oai:arXiv.org:2608.05371v1",
-          "title": "Quantum-Structured World Models (QSWMs) for Predictive Latent Dynamics",
-          "titleZh": "用于预测潜在动力学的量子结构世界模型 (QSWM)",
-          "link": "https://arxiv.org/abs/2608.05371",
-          "summary": "arXiv:2608.05371v1 Announce Type: new\nAbstract: World models learn latent states that summarize interaction histories, evolve over time, and support prediction, simulation, or planning. Most existing world models represent these states using classical vectors, probability distributions, recurrent hidden states, or transformer activations. In this paper, we introduce Quantum-Structured World Models (QSWMs), a quantum-inspired framework for predictive world modeling with structured latent states, latent transition operators, and measurement-inspired decoding maps. We study whether mathematical structures inspired by quantum theory, such as complex-valued representations and density-matrix-like latents, provide useful inductive biases for world modeling. We establish three foundational properties: classical inclusion, predictive sufficiency, and structured compactness. We then instantiate complex-valued and density-matrix-like QSWM variants and evaluate them on elementary cellular automata against strong classical baselines. Results show promising local predictive potential for complex-valued QSWMs, while also revealing limitations in long-horizon rollout, density-matrix variants",
-          "summaryZh": "arXiv:2608.05371v1 公告类型：新\n摘要：世界模型学习总结交互历史、随时间演变并支持预测、模拟或规划的潜在状态。大多数现有的世界模型使用经典向量、概率分布、循环隐藏状态或变压器激活来表示这些状态。在本文中，我们介绍了量子结构世界模型（QSWM），这是一种受量子启发的框架，用于使用结构化潜在状态、潜在转移算子和测量启发的解码图进行预测世界建模。我们研究受量子理论启发的数学结构（例如复值表示和类似密度矩阵的潜在变量）是否为世界建模提供有用的归纳偏差。我们建立了三个基本属性：经典包容性、预测充分性和结构紧凑性。然后，我们实例化复值和类似密度矩阵的 QSWM 变体，并在基本细胞自动机上对照强大的经典基线对其进行评估。结果显示了复值 QSWM 的局部预测潜力，同时也揭示了长期部署、密度矩阵变体的局限性",
-          "publishedAt": "2026-08-07T04:00:00.000Z",
-          "comments": null,
-          "author": "Hailong Jiang, Emran Hossain, Feng Yu, Jianfeng Zhu, Guilin Zhang, Wulan Guo"
-        }
-      ]
+      "fetchedAt": "2026-08-08T06:40:43.004Z",
+      "count": 0,
+      "items": []
     }
   ]
 }
