@@ -1,0 +1,435 @@
+{
+  "source": "huggingface.co/api/daily_papers",
+  "attribution": "Data from Hugging Face Daily Papers (community curation). All rights belong to the original authors. Chinese text is machine-translated.",
+  "fetchedAt": "2026-08-08T08:39:19.934Z",
+  "date": "2026-08-08",
+  "sort": "trending",
+  "count": 15,
+  "locale": {
+    "summaryDefault": "zh",
+    "translated": true
+  },
+  "papers": [
+    {
+      "id": "2606.23050",
+      "title": "Unlimited OCR Works",
+      "summary": "Recently, end-to-end OCR models, exemplified by DeepSeek OCR, have once again thrust OCR into the spotlight. A widely held view is that employing a large language model (LLM) as the decoder allows the model to leverage the prior distribution of language, leading to improved OCR performance. However, the downside is equally evident: as the output sequence lengthens, the accumulated KV cache drives up memory consumption and progressively slows down generation. This stands in stark contrast to humans, who exhibit no such decline in efficiency during long-horizon copying tasks. In this technical report, we propose Unlimited OCR, a model designed to emulate human parsing working memory. Taking DeepSeek OCR as the baseline, we replace all attention layers in the decoder with our proposed Reference Sliding Window Attention (R-SWA), which reduces attention computation costs while maintaining a constant KV cache throughout the entire decoding process. By combining the high compression rate of DeepSeek OCR's encoder with our constant KV cache design, Unlimited OCR can transcribe dozens of pages of documents in a single forward pass under a standard maximum length of 32K. More importantly, R-SWA is a general-purpose parsing attention mechanism - beyond OCR, it is equally applicable to tasks such as ASR, translation, etc. Codes and model weights are publicly available at http://github.com/baidu/Unlimited-OCR.",
+      "summaryZh": "最近，以DeepSeek OCR为代表的端到端OCR模型再次将OCR推向了人们的视线。一种广泛持有的观点是，采用大型语言模型 (LLM) 作为解码器允许模型利用语言的先验分布，从而提高 OCR 性能。然而，缺点也同样明显：随着输出序列的延长，累积的 KV 缓存会增加内存消耗并逐渐减慢生成速度。这与人类形成鲜明对比，人类在执行长视距复制任务时并没有表现出效率下降的情况。在这份技术报告中，我们提出了 Unlimited OCR，一种旨在模拟人类解析工作记忆的模型。以 DeepSeek OCR 为基准，我们用我们提出的参考滑动窗口注意力（R-SWA）替换解码器中的所有注意力层，这降低了注意力计算成本，同时在整个解码过程中保持恒定的 KV 缓存。通过将 DeepSeek OCR 编码器的高压缩率与我们的恒定 KV 缓存设计相结合，Unlimited OCR 可以在标准最大长度 32K 的情况下在单次前向传递中转录数十页文档。更重要的是，R-SWA 是一种通用的解析注意力机制——除了 OCR 之外，它同样适用于 ASR、翻译等任务。代码和模型权重可在 http://github.com/baidu/Unlimited-OCR 上公开。",
+      "titleZh": "无限 OCR 作品",
+      "authors": [
+        "Youyang Yin",
+        "Huanhuan Liu",
+        "YY",
+        "Qunyi Xie",
+        "Chaorun Liu",
+        "Shiqi Yang",
+        "Shaohua Wang",
+        "Zhanlong Liu",
+        "Hao Zou",
+        "Jinyue Chen",
+        "Shu Wei",
+        "Jingjing Wu"
+      ],
+      "publishedAt": "2026-06-22T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-06-23T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 79,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2606.23050",
+        "arxiv": "https://arxiv.org/abs/2606.23050",
+        "pdf": "https://arxiv.org/pdf/2606.23050"
+      }
+    },
+    {
+      "id": "2608.03974",
+      "title": "JoyAI-Video-Edit: Real-Time Open-Ended Video Editing with Autoregressive Diffusion",
+      "summary": "Real-time video editing requires low-latency causal generation with bounded computational resources while preserving source fidelity and long-term temporal consistency. We present JoyAI-Video-Edit, a 16B-parameter autoregressive diffusion framework for real-time, open-ended video editing without access to future frames or a predefined video duration. Our method combines chunk-wise autoregressive adaptation, Source-Anchored Distribution Matching Distillation (SA-DMD), and Long-Horizon Autoregressive Distillation to reduce train--inference mismatch, preserve source fidelity during two-step generation, and mitigate accumulated temporal drift. Extensive automatic and human evaluations show that JoyAI-Video-Edit substantially outperforms existing streaming editors and remains competitive with strong offline systems on both short and long videos. The complete system achieves end-to-end 720p video editing at approximately 30 FPS on a single Nvidia B200 GPU. Code is available at https://github.com/jd-opensource/JoyAI-Video-Edit.",
+      "summaryZh": "实时视频编辑需要具有有限计算资源的低延迟因果生成，同时保持源保真度和长期时间一致性。我们推出了 JoyAI-Video-Edit，这是一个 16B 参数自回归扩散框架，用于实时、开放式视频编辑，无需访问未来帧或预定义的视频持续时间。我们的方法结合了块式自回归适应、源锚定分布匹配蒸馏（SA-DMD）和长视野自回归蒸馏，以减少训练-推理不匹配，在两步生成期间保持源保真度，并减轻累积的时间漂移​​。广泛的自动和人工评估表明，JoyAI-Video-Edit 的性能大大优于现有的流媒体编辑器，并且在短视频和长视频上与强大的离线系统保持竞争力。整个系统在单个 Nvidia B200 GPU 上以大约 30 FPS 的速度实现端到端 720p 视频编辑。代码可在 https://github.com/jd-opensource/JoyAI-Video-Edit 获取。",
+      "titleZh": "JoyAI-Video-Edit：具有自回归扩散功能的实时开放式视频编辑",
+      "authors": [
+        "Yicheng Xiao",
+        "Wenxun Dai",
+        "Xinran Qin",
+        "Lin Song",
+        "Maoquan Zhang",
+        "Hang Xu",
+        "Yukang Chen",
+        "Yitong Li",
+        "Guohui Zhang",
+        "Yuan Zhang",
+        "Xuying Zhang",
+        "Tommy Zhang"
+      ],
+      "publishedAt": "2026-08-04T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-08-05T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 87,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2608.03974",
+        "arxiv": "https://arxiv.org/abs/2608.03974",
+        "pdf": "https://arxiv.org/pdf/2608.03974"
+      }
+    },
+    {
+      "id": "2607.24653",
+      "title": "Kimi K3: Open Frontier Intelligence",
+      "summary": "We introduce Kimi K3, a 2.8T parameter Mixture-of-Experts model with 104 billion activated parameters, native vision capabilities, and a 1-million-token context window. Kimi K3 is built on Kimi Delta Attention and Attention Residuals, which improve information flow across sequence length and model depth. Together with Stable LatentMoE, which effectively activates 16 of 896 routed experts per token, and refined training and data recipes, these advances yield an approximately 2.5x improvement in overall scaling efficiency over Kimi K2. Post-training highlights reinforcement learning across general, agentic, and coding domains and multiple reasoning-effort levels, enabling compositional generalization and robust long-horizon execution. At 2.8T scale, Kimi K3 is supported by infrastructure advances in multiple areas: algorithm-system co-design for KDA, perfectly balanced expert-parallel training with efficient memory management, million-token agentic RL with persistent rollout and sandbox states, and deployment innovations. Extensive evaluations show that Kimi K3 achieves frontier-level performance across long-horizon coding, agentic, knowledge, reasoning, and vision tasks. While its overall performance still trails the most powerful proprietary models, namely Claude Fable 5 and GPT-5.6 Sol, Kimi K3 consistently outperforms other open and proprietary models evaluated in our suite. We release the full Kimi K3 model weights to facilitate future research and accelerate the broader deployment and adoption of frontier intelligence.",
+      "summaryZh": "我们推出 Kimi K3，一个 2.8T 参数 Mixture-of-Experts 模型，具有 1040 亿个激活参数、原生视觉功能和 100 万个令牌上下文窗口。 Kimi K3 基于 Kimi Delta Attention 和 Attention Residuals 构建，可改善跨序列长度和模型深度的信息流。与稳定的 LatentMoE（每个代币可有效激活 896 个路由专家中的 16 个）以及改进的训练和数据配方相结合，这些进步使整体扩展效率比 Kimi K2 提高了约 2.5 倍。训练后强调跨通用、代理和编码领域以及多个推理努力级别的强化学习，从而实现组合泛化和强大的长期执行。在 2.8T 规模上，Kimi K3 得到了多个领域基础设施进步的支持：KDA 的算法系统协同设计、具有高效内存管理的完美平衡的专家并行训练、具有持久部署和沙箱状态的百万代币代理强化学习以及部署创新。广泛的评估表明，Kimi K3 在长视野编码、代理、知识、推理和视觉任务中实现了前沿水平的性能。虽然其整体性能仍然落后于最强大的专有模型，即 Claude Fable 5 和 GPT-5.6 Sol，但 Kimi K3 的性能始终优于我们套件中评估的其他开放和专有模型。我们发布了完整的 Kimi K3 模型权重，以促进未来的研究并加速前沿情报的更广泛部署和采用。",
+      "titleZh": "Kimi K3：开放前沿智能",
+      "authors": [
+        "Kimi Team",
+        "Tongtong Bai",
+        "Yifan Bai",
+        "Yiping Bao",
+        "M. C.",
+        "Jianfeng Cai",
+        "Xinyuan Cai",
+        "Peizhou Cao",
+        "Yuxuan Cao",
+        "Ziwei Chai",
+        "Y. Charles",
+        "H. S. Che"
+      ],
+      "publishedAt": "2026-07-27T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-07-28T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 484,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2607.24653",
+        "arxiv": "https://arxiv.org/abs/2607.24653",
+        "pdf": "https://arxiv.org/pdf/2607.24653"
+      }
+    },
+    {
+      "id": "2412.20138",
+      "title": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+      "summary": "Significant progress has been made in automated problem-solving using\nsocieties of agents powered by large language models (LLMs). In finance,\nefforts have largely focused on single-agent systems handling specific tasks or\nmulti-agent frameworks independently gathering data. However, the multi-agent\nsystems' potential to replicate real-world trading firms' collaborative\ndynamics remains underexplored. TradingAgents proposes a novel stock trading\nframework inspired by trading firms, featuring LLM-powered agents in\nspecialized roles such as fundamental analysts, sentiment analysts, technical\nanalysts, and traders with varied risk profiles. The framework includes Bull\nand Bear researcher agents assessing market conditions, a risk management team\nmonitoring exposure, and traders synthesizing insights from debates and\nhistorical data to make informed decisions. By simulating a dynamic,\ncollaborative trading environment, this framework aims to improve trading\nperformance. Detailed architecture and extensive experiments reveal its\nsuperiority over baseline models, with notable improvements in cumulative\nreturns, Sharpe ratio, and maximum drawdown, highlighting the potential of\nmulti-agent LLM frameworks in financial trading. TradingAgents is available at\nhttps://github.com/TauricResearch/TradingAgents.",
+      "summaryZh": "使用自动化解决问题取得了重大进展\n由大型语言模型 (LLM) 提供支持的代理协会。在金融领域，\n工作主要集中在处理特定任务的单代理系统或\n多代理框架独立收集数据。然而，多代理\n系统复制现实世界贸易公司协作的潜力\n动力学仍有待探索。 TradingAgents 提出了一种新颖的股票交易方式\n受贸易公司启发的框架，以法学硕士支持的代理为特色\n专业角色，例如基本面分析师、情绪分析师、技术分析师\n具有不同风险状况的分析师和交易员。该框架包括 Bull\n贝尔斯登研究人员评估市场状况，风险管理团队\n监控风险敞口，交易者从辩论中综合见解\n历史数据以做出明智的决策。通过模拟动态，\n协作交易环境，该框架旨在改善交易\n性能。详细的架构和广泛的实验揭示了它的\n优于基线模型，累积显着改进\n回报率、夏普比率和最大回撤，凸显了\n金融交易中的多代理法学硕士框架。交易代理可在\nhttps://github.com/TauricResearch/TradingAgents。",
+      "titleZh": "TradingAgents：多代理LLM金融交易框架",
+      "authors": [
+        "Yijia Xiao",
+        "Edward Sun",
+        "Di Luo",
+        "Wei Wang"
+      ],
+      "publishedAt": "2024-12-28T12:54:06.000Z",
+      "submittedOnDailyAt": "2024-12-28T07:54:06.000Z",
+      "submitter": null,
+      "upvotes": 120,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2412.20138",
+        "arxiv": "https://arxiv.org/abs/2412.20138",
+        "pdf": "https://arxiv.org/pdf/2412.20138"
+      }
+    },
+    {
+      "id": "2608.01964",
+      "title": "LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks",
+      "summary": "Large language model (LLM) agents increasingly undertake long-horizon tasks that require sustained reasoning, tool use, and revision across many interdependent steps. However, existing agent harnesses maintain task execution, task state, and completion assessment within a growing context, making the state difficult to track and allowing incorrect self-assessments to propagate into later decisions. We reformulate long-horizon execution as a task-state management problem and propose LongHorizon-Harness, which maintains the task state explicitly outside execution and updates it only with facts independently verified from the environment. Its Manage-Execute-Audit(MEA) loop uses a manager to maintain the task state and determine the next subtask, a fresh-context executor to perform it, and a read-only auditor to verify the resulting environment state before the next round. A lightweight AgentAdapter supports interchangeable model and harness backends without modifying their native agent loops. LongHorizon-Harness improves Qwen~3.7-Plus from 51.8% to 80.7% on WeaveBench, from 69.7% to 77.2% on Terminal-Bench~2.1, and from 2.8% to 8.3% on OSWorld~2.0. It also raises Claude Opus~4.7 from 20.0% to 34.3% on an OSWorld2.0 subset, demonstrating consistent gains across models, harnesses, and interaction domains.",
+      "summaryZh": "大型语言模型 (LLM) 智能体越来越多地承担长期任务，这些任务需要在许多相互依赖的步骤中进行持续推理、工具使用和修改。然而，现有的代理工具在不断增长的环境中维护任务执行、任务状态和完成评估，这使得状态难以跟踪，并允许错误的自我评估传播到以后的决策中。我们将长视野执行重新表述为任务状态管理问题，并提出了 LongHorizo​​n-Harness，它在执行之外显式地维护任务状态，并仅使用从环境中独立验证的事实来更新它。其管理-执行-审核（MEA）循环使用管理器来维护任务状态并确定下一个子任务，使用新上下文执行器来执行它，并使用只读审核器来在下一轮之前验证结果环境状态。轻量级 AgentAdapter 支持可互换模型和利用后端，而无需修改其本机代理循环。 LongHorizo​​n-Harness 将 Qwen~3.7-Plus 在 WeaveBench 上的性能从 51.8% 提高到 80.7%，在 Terminal-Bench~2.1 上从 69.7% 提高到 77.2%，在 OSWorld~2.0 上从 2.8% 提高到 8.3%。它还将 OSWorld2.0 子集上的 Claude Opus~4.7 从 20.0% 提高到 34.3%，展示了跨模型、工具和交互领域的一致增益。",
+      "titleZh": "LongHorizo​​n-Harness：推进长视野智能体执行实际任务",
+      "authors": [
+        "Ziyu Ma",
+        "Hailang Huang",
+        "Shun Zou",
+        "Yong Wang",
+        "Shidong Yang",
+        "Yiming Hu",
+        "Fei Wei",
+        "XiangXiang Chu"
+      ],
+      "publishedAt": "2026-08-03T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-08-04T00:00:00.000Z",
+      "submitter": "seashell11",
+      "upvotes": 158,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2608.01964",
+        "arxiv": "https://arxiv.org/abs/2608.01964",
+        "pdf": "https://arxiv.org/pdf/2608.01964"
+      }
+    },
+    {
+      "id": "2509.22186",
+      "title": "MinerU2.5: A Decoupled Vision-Language Model for Efficient\n  High-Resolution Document Parsing",
+      "summary": "We introduce MinerU2.5, a 1.2B-parameter document parsing vision-language\nmodel that achieves state-of-the-art recognition accuracy while maintaining\nexceptional computational efficiency. Our approach employs a coarse-to-fine,\ntwo-stage parsing strategy that decouples global layout analysis from local\ncontent recognition. In the first stage, the model performs efficient layout\nanalysis on downsampled images to identify structural elements, circumventing\nthe computational overhead of processing high-resolution inputs. In the second\nstage, guided by the global layout, it performs targeted content recognition on\nnative-resolution crops extracted from the original image, preserving\nfine-grained details in dense text, complex formulas, and tables. To support\nthis strategy, we developed a comprehensive data engine that generates diverse,\nlarge-scale training corpora for both pretraining and fine-tuning. Ultimately,\nMinerU2.5 demonstrates strong document parsing ability, achieving\nstate-of-the-art performance on multiple benchmarks, surpassing both\ngeneral-purpose and domain-specific models across various recognition tasks,\nwhile maintaining significantly lower computational overhead.",
+      "summaryZh": "我们介绍MinerU2.5，一个1.2B参数的文档解析视觉语言\n该模型可实现最先进的识别精度，同时保持\n卓越的计算效率。我们的方法采用从粗到细的方法，\n将全局布局分析与局部布局分析分离的两阶段解析策略\n内容识别。第一阶段，模型进行高效布局\n对下采样图像进行分析以识别结构元素，规避\n处理高分辨率输入的计算开销。在第二个\n舞台上，以全球布局为导向，进行有针对性的内容识别\n从原始图像中提取的原始分辨率作物，保留\n密集文本、复杂公式和表格中的细粒度细节。支持\n根据这一策略，我们开发了一个全面的数据引擎，可以生成不同的、\n用于预训练和微调的大规模训练语料库。最终，\nMinerU2.5展现出强大的文档解析能力，实现\n在多个基准测试中具有最先进的性能，超越了两者\n跨各种识别任务的通用和特定领域模型，\n同时保持显着较低的计算开销。",
+      "titleZh": "MinerU2.5：一种高效的解耦视觉语言模型\n  高分辨率文档解析",
+      "authors": [
+        "Junbo Niu",
+        "Zheng Liu",
+        "Zhuangcheng Gu",
+        "Bin Wang",
+        "Linke Ouyang",
+        "Zhiyuan Zhao",
+        "Tao Chu",
+        "Tianyao He",
+        "Fan Wu",
+        "Qintong Zhang",
+        "Zhenjiang Jin",
+        "Guang Liang"
+      ],
+      "publishedAt": "2025-09-26T10:45:48.000Z",
+      "submittedOnDailyAt": "2025-09-29T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 177,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2509.22186",
+        "arxiv": "https://arxiv.org/abs/2509.22186",
+        "pdf": "https://arxiv.org/pdf/2509.22186"
+      }
+    },
+    {
+      "id": "2407.16741",
+      "title": "OpenDevin: An Open Platform for AI Software Developers as Generalist\n  Agents",
+      "summary": "Software is one of the most powerful tools that we humans have at our\ndisposal; it allows a skilled programmer to interact with the world in complex\nand profound ways. At the same time, thanks to improvements in large language\nmodels (LLMs), there has also been a rapid development in AI agents that\ninteract with and affect change in their surrounding environments. In this\npaper, we introduce OpenDevin, a platform for the development of powerful and\nflexible AI agents that interact with the world in similar ways to those of a\nhuman developer: by writing code, interacting with a command line, and browsing\nthe web. We describe how the platform allows for the implementation of new\nagents, safe interaction with sandboxed environments for code execution,\ncoordination between multiple agents, and incorporation of evaluation\nbenchmarks. Based on our currently incorporated benchmarks, we perform an\nevaluation of agents over 15 challenging tasks, including software engineering\n(e.g., SWE-Bench) and web browsing (e.g., WebArena), among others. Released\nunder the permissive MIT license, OpenDevin is a community project spanning\nacademia and industry with more than 1.3K contributions from over 160\ncontributors and will improve going forward.",
+      "summaryZh": "软件是我们人类拥有的最强大的工具之一\n处置；它允许熟练的程序员以复杂的方式与世界交互\n和深刻的方法。同时得益于大语言的改进\n模型（法学硕士），人工智能代理也得到了快速发展，\n与周围环境相互作用并影响其变化。在这个\n论文中，我们介绍了 OpenDevin，一个用于开发功能强大且\n灵活的人工智能代理，以类似于人类的方式与世界互动\n人类开发人员：通过编写代码、与命令行交互和浏览\n网络。我们描述了该平台如何允许实施新的\n代理，与沙盒环境安全交互以执行代码，\n多个主体之间的协调以及评估的结合\n基准。根据我们当前纳入的基准，我们执行\n对代理进行超过 15 项挑战性任务的评估，包括软件工程\n（例如，SWE-Bench）和网页浏览（例如，WebArena）等。已发布\n在 MIT 许可下，OpenDevin 是一个社区项目，涵盖\n学术界和工业界超过 160 人做出了超过 1,300 份贡献\n贡献者并将继续改进。",
+      "titleZh": "OpenDevin：面向多面手的人工智能软件开发人员的开放平台\n  代理商",
+      "authors": [
+        "Xingyao Wang",
+        "Boxuan Li",
+        "Yufan Song",
+        "Frank F. Xu",
+        "Xiangru Tang",
+        "Mingchen Zhuge",
+        "Jiayi Pan",
+        "Yueqi Song",
+        "Bowen Li",
+        "Jaskirat Singh",
+        "Hoang H. Tran",
+        "Fuqiang Li"
+      ],
+      "publishedAt": "2024-07-23T17:50:43.000Z",
+      "submittedOnDailyAt": "2024-07-25T00:00:00.000Z",
+      "submitter": "akhaliq",
+      "upvotes": 84,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2407.16741",
+        "arxiv": "https://arxiv.org/abs/2407.16741",
+        "pdf": "https://arxiv.org/pdf/2407.16741"
+      }
+    },
+    {
+      "id": "2508.02739",
+      "title": "Kronos: A Foundation Model for the Language of Financial Markets",
+      "summary": "The success of large-scale pre-training paradigm, exemplified by Large\nLanguage Models (LLMs), has inspired the development of Time Series Foundation\nModels (TSFMs). However, their application to financial candlestick (K-line)\ndata remains limited, often underperforming non-pre-trained architectures.\nMoreover, existing TSFMs often overlook crucial downstream tasks such as\nvolatility prediction and synthetic data generation. To address these\nlimitations, we propose Kronos, a unified, scalable pre-training framework\ntailored to financial K-line modeling. Kronos introduces a specialized\ntokenizer that discretizes continuous market information into token sequences,\npreserving both price dynamics and trade activity patterns. We pre-train Kronos\nusing an autoregressive objective on a massive, multi-market corpus of over 12\nbillion K-line records from 45 global exchanges, enabling it to learn nuanced\ntemporal and cross-asset representations. Kronos excels in a zero-shot setting\nacross a diverse set of financial tasks. On benchmark datasets, Kronos boosts\nprice series forecasting RankIC by 93% over the leading TSFM and 87% over the\nbest non-pre-trained baseline. It also achieves a 9% lower MAE in volatility\nforecasting and a 22% improvement in generative fidelity for synthetic K-line\nsequences. These results establish Kronos as a robust, versatile foundation\nmodel for end-to-end financial time series analysis. Our pre-trained model is\npublicly available at https://github.com/shiyu-coder/Kronos.",
+      "summaryZh": "大规模预训练范式的成功，以 Large 为例\n语言模型（LLM）启发了时间序列基金会的发展\n模型 (TSFM)。然而，它们在金融烛台（K 线）中的应用\n数据仍然有限，通常表现不佳非预先训练的架构。\n此外，现有的 TSFM 常常忽视关键的下游任务，例如\n波动率预测和合成数据生成。为了解决这些\n针对局限性，我们提出了 Kronos，一个统一的、可扩展的预训练框架\n为金融K线建模量身定制。 Kronos 推出了专门的\n标记器将连续的市场信息离散化为标记序列，\n保持价格动态和贸易活动模式。我们预训练 Kronos\n在超过 12 个的庞大、多市场语料库上使用自回归目标\n全球45家交易所十亿K线记录，细致入微\n时间和跨资产表示。 Kronos 擅长零射击设置\n跨越一系列不同的财务任务。在基准数据集上，Kronos 有所提升\n价格系列预测 RankIC 比领先的 TSFM 高 93%，比领先的 TSFM 高 87%\n最佳非预训练基线。它还实现了波动性 MAE 降低 9%\n预测，合成 K 线的生成保真度提高 22%\n序列。这些结果使 Kronos 成为一个强大、多功能的基础\n端到端金融时间序列分析模型。我们的预训练模型是\n公开发布于 https://github.com/shiyu-coder/Kronos。",
+      "titleZh": "Kronos：金融市场语言的基础模型",
+      "authors": [
+        "Yu Shi",
+        "Zongliang Fu",
+        "Shuo Chen",
+        "Bohan Zhao",
+        "Wei Xu",
+        "Changshui Zhang",
+        "Jian Li"
+      ],
+      "publishedAt": "2025-08-02T13:15:59.000Z",
+      "submittedOnDailyAt": "2025-08-02T09:15:59.000Z",
+      "submitter": null,
+      "upvotes": 51,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2508.02739",
+        "arxiv": "https://arxiv.org/abs/2508.02739",
+        "pdf": "https://arxiv.org/pdf/2508.02739"
+      }
+    },
+    {
+      "id": "2508.19205",
+      "title": "VibeVoice Technical Report",
+      "summary": "This report presents VibeVoice, a novel model designed to synthesize\nlong-form speech with multiple speakers by employing next-token diffusion,\nwhich is a unified method for modeling continuous data by autoregressively\ngenerating latent vectors via diffusion. To enable this, we introduce a novel\ncontinuous speech tokenizer that, when compared to the popular Encodec model,\nimproves data compression by 80 times while maintaining comparable performance.\nThe tokenizer effectively preserves audio fidelity while significantly boosting\ncomputational efficiency for processing long sequences. Thus, VibeVoice can\nsynthesize long-form speech for up to 90 minutes (in a 64K context window\nlength) with a maximum of 4 speakers, capturing the authentic conversational\n``vibe'' and surpassing open-source and proprietary dialogue models.",
+      "summaryZh": "本报告介绍了 VibeVoice，一种旨在合成\n通过使用下一个令牌扩散与多个说话者进行长篇语音，\n这是一种通过自回归对连续数据进行建模的统一方法\n通过扩散生成潜在向量。为了实现这一点，我们引入了一部小说\n连续语音标记器，与流行的 Encodec 模型相比，\n将数据压缩提高 80 倍，同时保持相当的性能。\n分词器有效地保留了音频保真度，同时显着提高了\n处理长序列的计算效率。因此，VibeVoice 可以\n合成长达 90 分钟的长篇语音（在 64K 上下文窗口中\n长度），最多 4 个发言者，捕捉真实的对话\n“vibe”并超越开源和专有对话模型。",
+      "titleZh": "VibeVoice 技术报告",
+      "authors": [
+        "Zhiliang Peng",
+        "Jianwei Yu",
+        "Wenhui Wang",
+        "Yaoyao Chang",
+        "Yutao Sun",
+        "Li Dong",
+        "Yi Zhu",
+        "Weijiang Xu",
+        "Hangbo Bao",
+        "Zehua Wang",
+        "Shaohan Huang",
+        "Yan Xia"
+      ],
+      "publishedAt": "2025-08-26T17:09:12.000Z",
+      "submittedOnDailyAt": "2025-08-27T00:00:00.000Z",
+      "submitter": "unilm",
+      "upvotes": 177,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2508.19205",
+        "arxiv": "https://arxiv.org/abs/2508.19205",
+        "pdf": "https://arxiv.org/pdf/2508.19205"
+      }
+    },
+    {
+      "id": "2309.06180",
+      "title": "Efficient Memory Management for Large Language Model Serving with\n  PagedAttention",
+      "summary": "High throughput serving of large language models (LLMs) requires batching\nsufficiently many requests at a time. However, existing systems struggle\nbecause the key-value cache (KV cache) memory for each request is huge and\ngrows and shrinks dynamically. When managed inefficiently, this memory can be\nsignificantly wasted by fragmentation and redundant duplication, limiting the\nbatch size. To address this problem, we propose PagedAttention, an attention\nalgorithm inspired by the classical virtual memory and paging techniques in\noperating systems. On top of it, we build vLLM, an LLM serving system that\nachieves (1) near-zero waste in KV cache memory and (2) flexible sharing of KV\ncache within and across requests to further reduce memory usage. Our\nevaluations show that vLLM improves the throughput of popular LLMs by\n2-4times with the same level of latency compared to the state-of-the-art\nsystems, such as FasterTransformer and Orca. The improvement is more pronounced\nwith longer sequences, larger models, and more complex decoding algorithms.\nvLLM's source code is publicly available at\nhttps://github.com/vllm-project/vllm",
+      "summaryZh": "大型语言模型 (LLM) 的高吞吐量服务需要批处理\n一次有足够多的请求。然而，现有系统却举步维艰\n因为每个请求的键值缓存（KV缓存）内存巨大并且\n动态增长和收缩。当管理效率低下时，该内存可能会被\n碎片和冗余重复造成了极大的浪费，限制了\n批量大小。为了解决这个问题，我们提出PagedAttention，一个注意力机制\n算法的灵感来自于经典的虚拟内存和分页技术\n操作系统。在此基础上，我们构建了 vLLM，一个 LLM 服务系统，\n实现 (1) KV 缓存内存近乎零浪费和 (2) KV 灵活共享\n在请求内和请求之间进行缓存，以进一步减少内存使用。我们的\n评估表明，vLLM 通过以下方式提高了流行 LLM 的吞吐量：\n与最先进的技术相比，相同延迟水平下的 2-4 倍\n系统，例如 FasterTransformer 和 Orca。改善效果更加明显\n具有更长的序列、更大的模型和更复杂的解码算法。\nvLLM 的源代码可在以下位置公开获取：\nhttps://github.com/vllm-project/vllm",
+      "titleZh": "大型语言模型的高效内存管理\n  分页注意力",
+      "authors": [
+        "Woosuk Kwon",
+        "Zhuohan Li",
+        "Siyuan Zhuang",
+        "Ying Sheng",
+        "Lianmin Zheng",
+        "Cody Hao Yu",
+        "Joseph E. Gonzalez",
+        "Hao Zhang",
+        "Ion Stoica"
+      ],
+      "publishedAt": "2023-09-12T12:50:04.000Z",
+      "submittedOnDailyAt": "2023-09-13T00:00:00.000Z",
+      "submitter": "akhaliq",
+      "upvotes": 65,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2309.06180",
+        "arxiv": "https://arxiv.org/abs/2309.06180",
+        "pdf": "https://arxiv.org/pdf/2309.06180"
+      }
+    },
+    {
+      "id": "2504.19413",
+      "title": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+      "summary": "Large Language Models (LLMs) have demonstrated remarkable prowess in\ngenerating contextually coherent responses, yet their fixed context windows\npose fundamental challenges for maintaining consistency over prolonged\nmulti-session dialogues. We introduce Mem0, a scalable memory-centric\narchitecture that addresses this issue by dynamically extracting,\nconsolidating, and retrieving salient information from ongoing conversations.\nBuilding on this foundation, we further propose an enhanced variant that\nleverages graph-based memory representations to capture complex relational\nstructures among conversational elements. Through comprehensive evaluations on\nLOCOMO benchmark, we systematically compare our approaches against six baseline\ncategories: (i) established memory-augmented systems, (ii) retrieval-augmented\ngeneration (RAG) with varying chunk sizes and k-values, (iii) a full-context\napproach that processes the entire conversation history, (iv) an open-source\nmemory solution, (v) a proprietary model system, and (vi) a dedicated memory\nmanagement platform. Empirical results show that our methods consistently\noutperform all existing memory systems across four question categories:\nsingle-hop, temporal, multi-hop, and open-domain. Notably, Mem0 achieves 26%\nrelative improvements in the LLM-as-a-Judge metric over OpenAI, while Mem0 with\ngraph memory achieves around 2% higher overall score than the base\nconfiguration. Beyond accuracy gains, we also markedly reduce computational\noverhead compared to full-context method. In particular, Mem0 attains a 91%\nlower p95 latency and saves more than 90% token cost, offering a compelling\nbalance between advanced reasoning capabilities and practical deployment\nconstraints. Our findings highlight critical role of structured, persistent\nmemory mechanisms for long-term conversational coherence, paving the way for\nmore reliable and efficient LLM-driven AI agents.",
+      "summaryZh": "大型语言模型（LLM）在以下领域表现出了非凡的能力：\n生成上下文连贯的响应，但它们的上下文窗口是固定的\n对长期保持一致性提出了根本性挑战\n多会话对话。我们引入 Mem0，一个可扩展的以内存为中心的\n通过动态提取解决此问题的架构，\n整合并从正在进行的对话中检索重要信息。\n在此基础上，我们进一步提出了一个增强的变体\n利用基于图形的内存表示来捕获复杂的关系\n对话元素之间的结构。通过综合评价\nLOCOMO 基准，我们系统地将我们的方法与六个基准进行比较\n类别：(i) 已建立的记忆增强系统，(ii) 检索增强系统\n具有不同块大小和 k 值的生成（RAG），（iii）完整上下文\n处理整个对话历史记录的方法，（iv）开源\n内存解决方案，(v) 专有模型系统，以及 (vi) 专用内存\n管理平台。实证结果表明我们的方法始终如一\n在四个问题类别上优于所有现有的记忆系统：\n单跳、时间、多跳和开放域。值得注意的是，Mem0 达到了 26%\nLLM-as-a-Judge 指标相对于 OpenAI 的相对改进，而 Mem0 具有\n图形内存的总体得分比基础得分高出约 2%\n配置。除了精度提升之外，我们还显着减少了计算量\n与全上下文方法相比的开销。特别是 Mem0 达到了 91%\n更低的 p95 延迟并节省 90% 以上的代币成本，提供引人注目的\n高级推理能力和实际部署之间的平衡\n限制。我们的研究结果强调了结构化、持久性的关键作用\n长期对话连贯性的记忆机制，为\n更可靠、更高效的法学硕士驱动的人工智能代理。",
+      "titleZh": "Mem0：使用可扩展的长期内存构建可投入生产的 AI 代理",
+      "authors": [
+        "Prateek Chhikara",
+        "Dev Khant",
+        "Saket Aryan",
+        "Taranjeet Singh",
+        "Deshraj Yadav"
+      ],
+      "publishedAt": "2025-04-28T01:46:35.000Z",
+      "submittedOnDailyAt": "2025-04-29T00:00:00.000Z",
+      "submitter": "akhaliq",
+      "upvotes": 69,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2504.19413",
+        "arxiv": "https://arxiv.org/abs/2504.19413",
+        "pdf": "https://arxiv.org/pdf/2504.19413"
+      }
+    },
+    {
+      "id": "2606.03264",
+      "title": "PaddleOCR-VL-1.6: Expanding the Frontier of Document Parsing with Under-Optimized Region Refinement and Progressive Post-Training",
+      "summary": "We introduce PaddleOCR-VL-1.6, an upgraded compact document parsing model built upon PaddleOCR-VL-1.5. Although PaddleOCR-VL-1.5 establishes a strong 0.9B baseline, its remaining errors concentrate in under-optimized regions where model behavior is unstable, data coverage is sparse, or supervision is unreliable. Rather than expanding the training corpus indiscriminately, PaddleOCR-VL-1.6 introduces a region-aware data optimization framework that identifies weak regions from the previous model, applies targeted enhancement to these regions, and improves the reliability of supervision signals. It further adopts a progressive post-training recipe based on curated data selection and reinforcement learning, pushing model performance to a higher level through staged optimization. PaddleOCR-VL-1.6 achieves a new state-of-the-art score of 96.33% on OmniDocBench v1.6, demonstrates strong competitiveness against top-tier VLMs, and provides a practical post-training recipe for the PaddleOCR-VL series.",
+      "summaryZh": "我们推出了 PaddleOCR-VL-1.6，这是一个基于 PaddleOCR-VL-1.5 构建的升级版紧凑文档解析模型。尽管 PaddleOCR-VL-1.5 建立了强大的 0.9B 基线，但其剩余错误集中在模型行为不稳定、数据覆盖稀疏或监督不可靠的欠优化区域。 PaddleOCR-VL-1.6并没有无差别地扩展训练语料库，而是引入了区域感知数据优化框架，该框架可以识别先前模型中的薄弱区域，对这些区域进行有针对性的增强，并提高监督信号的可靠性。它还采用基于精选数据选择和强化学习的渐进式后训练方法，通过分阶段优化将模型性能推向更高水平。 PaddleOCR-VL-1.6在OmniDocBench v1.6上取得了96.33%的最新分数，展现了与顶级VLM的强大竞争力，并为PaddleOCR-VL系列提供了实用的后训练配方。",
+      "titleZh": "PaddleOCR-VL-1.6：通过欠优化区域细化和渐进式后训练扩展文档解析的前沿",
+      "authors": [
+        "Zelun Zhang",
+        "Hongen Liu",
+        "Suyin Liang",
+        "Yubo Zhang",
+        "Yiqing Xiang",
+        "Jiaxuan Liu",
+        "Ting Sun",
+        "Manhui Lin",
+        "Yue Zhang",
+        "Changda Zhou",
+        "Tingquan Gao",
+        "Cheng Cui"
+      ],
+      "publishedAt": "2026-06-02T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-06-03T00:00:00.000Z",
+      "submitter": "ChengCui",
+      "upvotes": 27,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2606.03264",
+        "arxiv": "https://arxiv.org/abs/2606.03264",
+        "pdf": "https://arxiv.org/pdf/2606.03264"
+      }
+    },
+    {
+      "id": "2607.19191",
+      "title": "ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU",
+      "summary": "We present ABot-World-0, an action-conditioned video world model for real-time, long-horizon closed-loop interaction, supported by a multi-source data infrastructure spanning AAA games, simulation engines, and internet videos to learn controllable world dynamics. WorldExplorer performs agent-driven collection guided by training feedback, while a unified pipeline applies 14 deterministic quality checks, VLM-based assessment, and synchronized action and text annotation. We progressively distill a bidirectional action-conditioned teacher into a causal student through teacher forcing and ODE distillation, and introduce LongForcing to align long student self-rollouts with an extended-horizon teacher, mitigating accumulated distribution shift and autoregressive drift. Raw keyboard actions provide a unified control interface for scene roaming and third-person character interaction, while reference-character memory provides persistent appearance cues for identity consistency during third-person rollouts. For deployment, we co-design a streaming inference stack with a lightweight VAE decoder, efficient attention, memory-aware scheduling, and low-bit DiT inference. Across optimized low-bit configurations, ABot-World-0 streams 720P video at up to 16 FPS on a single NVIDIA RTX 5090 desktop GPU, with 1.2s action-to-first-frame latency and approximately 19GiB peak VRAM. Experiments on WorldRoamBench and extended interactive rollouts demonstrate competitive controllability and coherent long-horizon world evolution.",
+      "summaryZh": "我们提出了 ABot-World-0，一种用于实时、长视野闭环交互的动作条件视频世界模型，由涵盖 AAA 游戏、模拟引擎和互联网视频的多源数据基础设施支持，以学习可控的世界动态。 WorldExplorer 在训练反馈的指导下执行代理驱动的收集，同时统一的管道应用 14 项确定性质量检查、基于 VLM 的评估以及同步操作和文本注释。我们通过教师强制和 ODE 蒸馏，逐步将双向动作条件教师提炼为因果学生，并引入 LongForcing 将长期学生自我推出与扩展视野教师对齐，从而减轻累积分布偏移和自回归漂移。原始键盘操作为场景漫游和第三人称角色交互提供了统一的控制界面，而参考角色记忆则为第三人称推出期间的身份一致性提供了持久的外观线索。为了部署，我们共同设计了一个带有轻量级 VAE 解码器、高效注意力、内存感知调度和低位 DiT 推理的流推理堆栈。通过优化的低位配置，ABot-World-0 在单个 NVIDIA RTX 5090 桌面 GPU 上以高达 16 FPS 的速度传输 720P 视频，具有 1.2 秒的动作到第一帧延迟和大约 19GiB 峰值 VRAM。 WorldRoamBench 和扩展交互式部署的实验证明了竞争可控性和连贯的长期世界演化。",
+      "titleZh": "ABot-World-0：在单个桌面 GPU 上推出无限交互世界",
+      "authors": [
+        "Fan Jiang",
+        "Zhaoxu Sun",
+        "Mengchao Wang",
+        "Ziyu Zhu",
+        "Chiyu Wang",
+        "Yunpeng Zhang",
+        "Wenlin Liu",
+        "Yun Wang",
+        "Xue Zheng",
+        "Rui Sun",
+        "Junfeng Ni",
+        "Hongyu Pan"
+      ],
+      "publishedAt": "2026-07-21T15:26:50.000Z",
+      "submittedOnDailyAt": "2026-07-22T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 309,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2607.19191",
+        "arxiv": "https://arxiv.org/abs/2607.19191",
+        "pdf": "https://arxiv.org/pdf/2607.19191"
+      }
+    },
+    {
+      "id": "2512.14692",
+      "title": "Native and Compact Structured Latents for 3D Generation",
+      "summary": "Recent advancements in 3D generative modeling have significantly improved the generation realism, yet the field is still hampered by existing representations, which struggle to capture assets with complex topologies and detailed appearance. This paper present an approach for learning a structured latent representation from native 3D data to address this challenge. At its core is a new sparse voxel structure called O-Voxel, an omni-voxel representation that encodes both geometry and appearance. O-Voxel can robustly model arbitrary topology, including open, non-manifold, and fully-enclosed surfaces, while capturing comprehensive surface attributes beyond texture color, such as physically-based rendering parameters. Based on O-Voxel, we design a Sparse Compression VAE which provides a high spatial compression rate and a compact latent space. We train large-scale flow-matching models comprising 4B parameters for 3D generation using diverse public 3D asset datasets. Despite their scale, inference remains highly efficient. Meanwhile, the geometry and material quality of our generated assets far exceed those of existing models. We believe our approach offers a significant advancement in 3D generative modeling.",
+      "summaryZh": "3D 生成建模的最新进展显着提高了生成的真实性，但该领域仍然受到现有表示的阻碍，现有表示难以捕获具有复杂拓扑和详细外观的资产。本文提出了一种从原生 3D 数据中学习结构化潜在表示的方法，以应对这一挑战。其核心是一种称为 O-Voxel 的新稀疏体素结构，这是一种对几何和外观进行编码的全体素表示。 O-Voxel 可以对任意拓扑进行稳健建模，包括开放、非流形和全封闭表面，同时捕获纹理颜色之外的全面表面属性，例如基于物理的渲染参数。基于O-Voxel，我们设计了稀疏压缩VAE，它提供了高空间压缩率和紧凑的潜在空间。我们使用不同的公共 3D 资产数据集训练包含 4B 参数的大规模流匹配模型，用于 3D 生成。尽管规模很大，推理仍然非常高效。同时，我们生成的资产的几何形状和材质质量远远超过现有模型。我们相信我们的方法在 3D 生成建模方面取得了重大进步。",
+      "titleZh": "用于 3D 生成的原生紧凑结构化潜在模型",
+      "authors": [
+        "Jianfeng Xiang",
+        "Xiaoxue Chen",
+        "Sicheng Xu",
+        "Ruicheng Wang",
+        "Zelong Lv",
+        "Yu Deng",
+        "Hongyuan Zhu",
+        "Yue Dong",
+        "Hao Zhao",
+        "Nicholas Jing Yuan",
+        "Jiaolong Yang"
+      ],
+      "publishedAt": "2025-12-16T18:58:28.000Z",
+      "submittedOnDailyAt": "2025-12-16T13:58:28.000Z",
+      "submitter": null,
+      "upvotes": 6,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2512.14692",
+        "arxiv": "https://arxiv.org/abs/2512.14692",
+        "pdf": "https://arxiv.org/pdf/2512.14692"
+      }
+    },
+    {
+      "id": "2510.22200",
+      "title": "LongCat-Video Technical Report",
+      "summary": "Video generation is a critical pathway toward world models, with efficient\nlong video inference as a key capability. Toward this end, we introduce\nLongCat-Video, a foundational video generation model with 13.6B parameters,\ndelivering strong performance across multiple video generation tasks. It\nparticularly excels in efficient and high-quality long video generation,\nrepresenting our first step toward world models. Key features include: Unified\narchitecture for multiple tasks: Built on the Diffusion Transformer (DiT)\nframework, LongCat-Video supports Text-to-Video, Image-to-Video, and\nVideo-Continuation tasks with a single model; Long video generation:\nPretraining on Video-Continuation tasks enables LongCat-Video to maintain high\nquality and temporal coherence in the generation of minutes-long videos;\nEfficient inference: LongCat-Video generates 720p, 30fps videos within minutes\nby employing a coarse-to-fine generation strategy along both the temporal and\nspatial axes. Block Sparse Attention further enhances efficiency, particularly\nat high resolutions; Strong performance with multi-reward RLHF: Multi-reward\nRLHF training enables LongCat-Video to achieve performance on par with the\nlatest closed-source and leading open-source models. Code and model weights are\npublicly available to accelerate progress in the field.",
+      "summaryZh": "视频生成是通往世界模型的关键途径，具有高效\n长视频推理作为关键能力。为此，我们介绍\nLongCat-Video，一个具有13.6B参数的基础视频生成模型，\n在多个视频生成任务中提供强大的性能。它\n尤其擅长高效、高质量的长视频生成，\n代表我们迈向世界模式的第一步。主要功能包括： 统一\n多任务架构：基于 Diffusion Transformer (DiT) 构建\nLongCat-Video框架，支持文本转视频、图像转视频等\n单个模型的视频延续任务；长视频生成：\nVideo-Continuation 任务的预训练使 LongCat-Video 能够保持较高的性能\n生成长达几分钟的视频的质量和时间连贯性；\n高效推理：LongCat-Video 在几分钟内生成 720p、30fps 视频\n通过沿时间和时间方向采用从粗到细的生成策略\n空间轴。 Block Sparse Attention 进一步提高了效率，特别是\n高分辨率；多重奖励的强劲表现 RLHF：多重奖励\nRLHF 训练使 LongCat-Video 能够达到与\n最新的闭源和领先的开源模型。代码和模型权重是\n公开以加速该领域的进展。",
+      "titleZh": "长猫-视频技术报告",
+      "authors": [
+        "Meituan LongCat Team",
+        "Xunliang Cai",
+        "Qilong Huang",
+        "Zhuoliang Kang",
+        "Hongyu Li",
+        "Shijun Liang",
+        "Liya Ma",
+        "Siyu Ren",
+        "Xiaoming Wei",
+        "Rixu Xie",
+        "Tong Zhang"
+      ],
+      "publishedAt": "2025-10-25T07:41:02.000Z",
+      "submittedOnDailyAt": "2025-10-28T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 40,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2510.22200",
+        "arxiv": "https://arxiv.org/abs/2510.22200",
+        "pdf": "https://arxiv.org/pdf/2510.22200"
+      }
+    }
+  ]
+}
