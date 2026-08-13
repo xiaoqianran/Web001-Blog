@@ -1,7 +1,7 @@
 {
   "source": "content/feeds.json",
   "attribution": "Aggregated headlines/summaries from third-party RSS/Atom feeds for navigation only. All rights belong to original publishers and authors. Chinese text is machine-translated.",
-  "fetchedAt": "2026-08-13T07:18:39.482Z",
+  "fetchedAt": "2026-08-13T12:57:29.226Z",
   "date": "2026-08-13",
   "feedCount": 3,
   "itemCount": 50,
@@ -17,49 +17,49 @@
       "url": "https://hnrss.org/frontpage",
       "home": "https://news.ycombinator.com/",
       "group": "community",
-      "fetchedAt": "2026-08-13T07:18:05.213Z",
+      "fetchedAt": "2026-08-13T12:56:27.357Z",
       "count": 20,
       "items": [
+        {
+          "id": "https://news.ycombinator.com/item?id=49284774",
+          "title": "Deutsche Bank becomes first foreign yuan clearing bank in Europe",
+          "titleZh": "德意志银行成为欧洲首家人民币清算银行",
+          "link": "https://tradersunion.com/news/central-banks/show/2973571-deutsche-bank-becomes/",
+          "summary": "Article URL: https://tradersunion.com/news/central-banks/show/2973571-deutsche-bank-becomes/\n\n Comments URL: https://news.ycombinator.com/item?id=49284774\n\n Points: 54\n\n # Comments: 19",
+          "summaryZh": "文章网址：https://tradersunion.com/news/central-banks/show/2973571-deutsche-bank-becomes/\n\n 评论网址：https://news.ycombinator.com/item?id=49284774\n\n 积分：54\n\n # 评论: 19",
+          "publishedAt": "2026-08-13T12:09:50.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49284774",
+          "author": "Markoff"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49284697",
+          "title": "ATG (YC F25) Is Hiring Member of Technical Staff (Data Platform)",
+          "titleZh": "ATG（YC F25）正在招聘技术人员（数据平台）",
+          "link": "https://atg.science/careers",
+          "summary": "Article URL: https://atg.science/careers\n\n Comments URL: https://news.ycombinator.com/item?id=49284697\n\n Points: 0\n\n # Comments: 0",
+          "summaryZh": "文章网址：https://atg.science/careers\n\n 评论网址：https://news.ycombinator.com/item?id=49284697\n\n 积分：0\n\n # 评论: 0",
+          "publishedAt": "2026-08-13T12:01:02.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49284697",
+          "author": "dkobran"
+        },
         {
           "id": "https://news.ycombinator.com/item?id=49281916",
           "title": "ChatGPT Desktop (Codex Desktop) for Linux",
           "titleZh": "适用于 Linux 的 ChatGPT 桌面（Codex 桌面）",
           "link": "https://openai.com/codex/",
-          "summary": "Article URL: https://openai.com/codex/\n\n Comments URL: https://news.ycombinator.com/item?id=49281916\n\n Points: 17\n\n # Comments: 3",
-          "summaryZh": "文章网址：https://openai.com/codex/\n\n 评论网址：https://news.ycombinator.com/item?id=49281916\n\n 积分：17\n\n # 评论: 3",
+          "summary": "Article URL: https://openai.com/codex/\n\n Comments URL: https://news.ycombinator.com/item?id=49281916\n\n Points: 245\n\n # Comments: 158",
+          "summaryZh": "文章网址：https://openai.com/codex/\n\n 评论网址：https://news.ycombinator.com/item?id=49281916\n\n 积分：245\n\n # 评论: 158",
           "publishedAt": "2026-08-13T04:53:41.000Z",
           "comments": "https://news.ycombinator.com/item?id=49281916",
           "author": "allanrbo"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=49281839",
-          "title": "Celld: Self-hosted, distributed Durable Objects",
-          "titleZh": "Celld：自托管、分布式持久对象",
-          "link": "https://celld.dev/",
-          "summary": "Article URL: https://celld.dev/\n\n Comments URL: https://news.ycombinator.com/item?id=49281839\n\n Points: 9\n\n # Comments: 0",
-          "summaryZh": "文章网址：https://celld.dev/\n\n 评论网址：https://news.ycombinator.com/item?id=49281839\n\n 积分：9\n\n # 评论: 0",
-          "publishedAt": "2026-08-13T04:37:31.000Z",
-          "comments": "https://news.ycombinator.com/item?id=49281839",
-          "author": "godisdad"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=49280184",
-          "title": "Show HN: Ballet – Workflow automation that writes integrations against any API",
-          "titleZh": "Show HN：Ballet – 针对任何 API 编写集成的工作流程自动化",
-          "link": "https://www.ballet.dev/",
-          "summary": "Article URL: https://www.ballet.dev/\n\n Comments URL: https://news.ycombinator.com/item?id=49280184\n\n Points: 29\n\n # Comments: 7",
-          "summaryZh": "文章网址：https://www.ballet.dev/\n\n 评论网址：https://news.ycombinator.com/item?id=49280184\n\n 积分：29\n\n # 评论: 7",
-          "publishedAt": "2026-08-13T00:01:43.000Z",
-          "comments": "https://news.ycombinator.com/item?id=49280184",
-          "author": "danielkimber"
         },
         {
           "id": "https://news.ycombinator.com/item?id=49280103",
           "title": "Happy 45th Birthday to the IBM PC and Model F/XT",
           "titleZh": "祝 IBM PC 和 Model F/XT 45 岁生日快乐",
           "link": "https://sharktastica.co.uk/articles/pc-fxt-45",
-          "summary": "Article URL: https://sharktastica.co.uk/articles/pc-fxt-45\n\n Comments URL: https://news.ycombinator.com/item?id=49280103\n\n Points: 72\n\n # Comments: 20",
-          "summaryZh": "文章网址：https://sharktastica.co.uk/articles/pc-fxt-45\n\n 评论网址：https://news.ycombinator.com/item?id=49280103\n\n 积分：72\n\n # 评论: 20",
+          "summary": "Article URL: https://sharktastica.co.uk/articles/pc-fxt-45\n\n Comments URL: https://news.ycombinator.com/item?id=49280103\n\n Points: 103\n\n # Comments: 40",
+          "summaryZh": "文章网址：https://sharktastica.co.uk/articles/pc-fxt-45\n\n 评论网址：https://news.ycombinator.com/item?id=49280103\n\n 积分：103\n\n # 评论: 40",
           "publishedAt": "2026-08-12T23:50:33.000Z",
           "comments": "https://news.ycombinator.com/item?id=49280103",
           "author": "tart-lemonade"
@@ -69,30 +69,19 @@
           "title": "Flutter 3.47",
           "titleZh": "颤动3.47",
           "link": "https://flutter.dev/blog/whats-new-in-flutter-3-47",
-          "summary": "Article URL: https://flutter.dev/blog/whats-new-in-flutter-3-47\n\n Comments URL: https://news.ycombinator.com/item?id=49280061\n\n Points: 72\n\n # Comments: 63",
-          "summaryZh": "文章网址：https://flutter.dev/blog/whats-new-in-flutter-3-47\n\n 评论网址：https://news.ycombinator.com/item?id=49280061\n\n 积分：72\n\n # 评论: 63",
+          "summary": "Article URL: https://flutter.dev/blog/whats-new-in-flutter-3-47\n\n Comments URL: https://news.ycombinator.com/item?id=49280061\n\n Points: 141\n\n # Comments: 155",
+          "summaryZh": "文章网址：https://flutter.dev/blog/whats-new-in-flutter-3-47\n\n 评论网址：https://news.ycombinator.com/item?id=49280061\n\n 积分：141\n\n # 评论：155",
           "publishedAt": "2026-08-12T23:46:00.000Z",
           "comments": "https://news.ycombinator.com/item?id=49280061",
           "author": "gumby271"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=49280047",
-          "title": "Build Wide, Ship Narrow",
-          "titleZh": "建造宽阔，运输狭窄",
-          "link": "https://adapt.com/blog/build-wide-ship-narrow",
-          "summary": "Article URL: https://adapt.com/blog/build-wide-ship-narrow\n\n Comments URL: https://news.ycombinator.com/item?id=49280047\n\n Points: 78\n\n # Comments: 19",
-          "summaryZh": "文章网址：https://adapt.com/blog/build-wide-ship-narrow\n\n 评论网址：https://news.ycombinator.com/item?id=49280047\n\n 积分：78\n\n # 评论: 19",
-          "publishedAt": "2026-08-12T23:43:48.000Z",
-          "comments": "https://news.ycombinator.com/item?id=49280047",
-          "author": "ashumz"
         },
         {
           "id": "https://news.ycombinator.com/item?id=49279928",
           "title": "Principia Mathematica is modern and insightful",
           "titleZh": "《数学原理》既现代又富有洞察力",
           "link": "https://okmij.org/ftp/Computation/Impressions/PrincipiaMathematica.html",
-          "summary": "Article URL: https://okmij.org/ftp/Computation/Impressions/PrincipiaMathematica.html\n\n Comments URL: https://news.ycombinator.com/item?id=49279928\n\n Points: 124\n\n # Comments: 56",
-          "summaryZh": "文章网址：https://okmij.org/ftp/Computation/Impressions/PrincipiaMathematica.html\n\n 评论网址：https://news.ycombinator.com/item?id=49279928\n\n 积分：124\n\n # 评论: 56",
+          "summary": "Article URL: https://okmij.org/ftp/Computation/Impressions/PrincipiaMathematica.html\n\n Comments URL: https://news.ycombinator.com/item?id=49279928\n\n Points: 197\n\n # Comments: 91",
+          "summaryZh": "文章网址：https://okmij.org/ftp/Computation/Impressions/PrincipiaMathematica.html\n\n 评论网址：https://news.ycombinator.com/item?id=49279928\n\n 积分：197\n\n # 评论: 91",
           "publishedAt": "2026-08-12T23:26:21.000Z",
           "comments": "https://news.ycombinator.com/item?id=49279928",
           "author": "matt_d"
@@ -102,8 +91,8 @@
           "title": "Thanks to social media, canned sardines are a scarcity on the supermarket shelf",
           "titleZh": "感谢社交媒体，沙丁鱼罐头在超市货架上变得稀缺",
           "link": "https://corneroffifth.studio/why-cant-you-find-canned-sardines-right-now/",
-          "summary": "Article URL: https://corneroffifth.studio/why-cant-you-find-canned-sardines-right-now/\n\n Comments URL: https://news.ycombinator.com/item?id=49279013\n\n Points: 103\n\n # Comments: 119",
-          "summaryZh": "文章网址：https://corneroffifth.studio/why-cant-you-find-canned-sardines-right-now/\n\n 评论网址：https://news.ycombinator.com/item?id=49279013\n\n 积分：103\n\n # 评论: 119",
+          "summary": "Article URL: https://corneroffifth.studio/why-cant-you-find-canned-sardines-right-now/\n\n Comments URL: https://news.ycombinator.com/item?id=49279013\n\n Points: 145\n\n # Comments: 188",
+          "summaryZh": "文章网址：https://corneroffifth.studio/why-cant-you-find-canned-sardines-right-now/\n\n 评论网址：https://news.ycombinator.com/item?id=49279013\n\n 积分：145\n\n # 评论: 188",
           "publishedAt": "2026-08-12T21:45:29.000Z",
           "comments": "https://news.ycombinator.com/item?id=49279013",
           "author": "carabiner"
@@ -113,8 +102,8 @@
           "title": "Breaking the WAL",
           "titleZh": "打破 WAL",
           "link": "https://antithesis.com/blog/2026/wal-reset-bug/",
-          "summary": "Article URL: https://antithesis.com/blog/2026/wal-reset-bug/\n\n Comments URL: https://news.ycombinator.com/item?id=49277799\n\n Points: 92\n\n # Comments: 42",
-          "summaryZh": "文章网址：https://antithesis.com/blog/2026/wal-reset-bug/\n\n 评论网址：https://news.ycombinator.com/item?id=49277799\n\n 积分：92\n\n # 评论: 42",
+          "summary": "Article URL: https://antithesis.com/blog/2026/wal-reset-bug/\n\n Comments URL: https://news.ycombinator.com/item?id=49277799\n\n Points: 133\n\n # Comments: 47",
+          "summaryZh": "文章网址：https://antithesis.com/blog/2026/wal-reset-bug/\n\n 评论网址：https://news.ycombinator.com/item?id=49277799\n\n 积分：133\n\n # 评论: 47",
           "publishedAt": "2026-08-12T20:00:16.000Z",
           "comments": "https://news.ycombinator.com/item?id=49277799",
           "author": "wwilson"
@@ -124,8 +113,8 @@
           "title": "Delta",
           "titleZh": "三角洲",
           "link": "https://zed.dev/blog/introducing-delta",
-          "summary": "Article URL: https://zed.dev/blog/introducing-delta\n\n Comments URL: https://news.ycombinator.com/item?id=49276574\n\n Points: 508\n\n # Comments: 177",
-          "summaryZh": "文章网址：https://zed.dev/blog/introducing-delta\n\n 评论网址：https://news.ycombinator.com/item?id=49276574\n\n 积分：508\n\n # 评论: 177",
+          "summary": "Article URL: https://zed.dev/blog/introducing-delta\n\n Comments URL: https://news.ycombinator.com/item?id=49276574\n\n Points: 592\n\n # Comments: 220",
+          "summaryZh": "文章网址：https://zed.dev/blog/introducing-delta\n\n 评论网址：https://news.ycombinator.com/item?id=49276574\n\n 积分：592\n\n # 评论：220",
           "publishedAt": "2026-08-12T18:19:59.000Z",
           "comments": "https://news.ycombinator.com/item?id=49276574",
           "author": "khy"
@@ -146,41 +135,19 @@
           "title": "HTML over WebSockets: real-time SPAs with barely any JavaScript",
           "titleZh": "HTML over WebSockets：几乎不需要任何 JavaScript 的实时 SPA",
           "link": "https://en.andros.dev/blog/ef4968f5/html-over-websockets-real-time-spas-with-barely-any-javascript/",
-          "summary": "Article URL: https://en.andros.dev/blog/ef4968f5/html-over-websockets-real-time-spas-with-barely-any-javascript/\n\n Comments URL: https://news.ycombinator.com/item?id=49275335\n\n Points: 181\n\n # Comments: 125",
-          "summaryZh": "文章网址：https://en.andros.dev/blog/ef4968f5/html-over-websockets-real-time-spas-with-barely-any-javascript/\n\n 评论网址：https://news.ycombinator.com/item?id=49275335\n\n 积分：181\n\n # 评论: 125",
+          "summary": "Article URL: https://en.andros.dev/blog/ef4968f5/html-over-websockets-real-time-spas-with-barely-any-javascript/\n\n Comments URL: https://news.ycombinator.com/item?id=49275335\n\n Points: 221\n\n # Comments: 152",
+          "summaryZh": "文章网址：https://en.andros.dev/blog/ef4968f5/html-over-websockets-real-time-spas-with-barely-any-javascript/\n\n 评论网址：https://news.ycombinator.com/item?id=49275335\n\n 积分：221\n\n # 评论: 152",
           "publishedAt": "2026-08-12T16:51:25.000Z",
           "comments": "https://news.ycombinator.com/item?id=49275335",
           "author": "redbell"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=49274858",
-          "title": "Lovable raises $400M Series C",
-          "titleZh": "Lovable C 轮融资 4 亿美元",
-          "link": "https://lovable.dev/blog/series-c",
-          "summary": "Article URL: https://lovable.dev/blog/series-c\n\n Comments URL: https://news.ycombinator.com/item?id=49274858\n\n Points: 128\n\n # Comments: 121",
-          "summaryZh": "文章网址：https://lovable.dev/blog/series-c\n\n 评论网址：https://news.ycombinator.com/item?id=49274858\n\n 积分：128\n\n # 评论: 121",
-          "publishedAt": "2026-08-12T16:20:34.000Z",
-          "comments": "https://news.ycombinator.com/item?id=49274858",
-          "author": "thoughtpeddler"
-        },
-        {
-          "id": "https://news.ycombinator.com/item?id=49274757",
-          "title": "Pixel Watch 5",
-          "titleZh": "像素手表 5",
-          "link": "https://blog.google/products-and-platforms/devices/pixel/pixel-watch-5/",
-          "summary": "Article URL: https://blog.google/products-and-platforms/devices/pixel/pixel-watch-5/\n\n Comments URL: https://news.ycombinator.com/item?id=49274757\n\n Points: 133\n\n # Comments: 252",
-          "summaryZh": "文章网址：https://blog.google/products-and-platforms/devices/pixel/pixel-watch-5/\n\n 评论网址：https://news.ycombinator.com/item?id=49274757\n\n 积分：133\n\n # 评论：252",
-          "publishedAt": "2026-08-12T16:14:37.000Z",
-          "comments": "https://news.ycombinator.com/item?id=49274757",
-          "author": "ortusdux"
         },
         {
           "id": "https://news.ycombinator.com/item?id=49274600",
           "title": "DeepSeek V4 Pro 0813",
           "titleZh": "DeepSeek V4 Pro 0813",
           "link": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
-          "summary": "https://api-docs.deepseek.com/ https://artificialanalysis.ai/models/deepseek-v4-pro https://twitter.com/ChrisGPT/status/2087572834650407024 , https://xcancel.com/ChrisGPT/status/2087572834650407024\n\n Comments URL: https://news.ycombinator.com/item?id=49274600\n\n Points: 871\n\n # Comments: 351",
-          "summaryZh": "https://api-docs.deepseek.com/ https://artificialanalysis.ai/models/deepseek-v4-pro https://twitter.com/ChrisGPT/status/2087572834650407024，https://xcancel.com/ChrisGPT/status/2087572834650407024\n\n 评论网址：https://news.ycombinator.com/item?id=49274600\n\n 积分：871\n\n # 评论: 351",
+          "summary": "https://api-docs.deepseek.com/ https://artificialanalysis.ai/models/deepseek-v4-pro https://twitter.com/ChrisGPT/status/2087572834650407024 , https://xcancel.com/ChrisGPT/status/2087572834650407024\n\n Comments URL: https://news.ycombinator.com/item?id=49274600\n\n Points: 967\n\n # Comments: 418",
+          "summaryZh": "https://api-docs.deepseek.com/ https://artificialanalysis.ai/models/deepseek-v4-pro https://twitter.com/ChrisGPT/status/2087572834650407024，https://xcancel.com/ChrisGPT/status/2087572834650407024\n\n 评论网址：https://news.ycombinator.com/item?id=49274600\n\n 积分：967\n\n # 评论: 418",
           "publishedAt": "2026-08-12T16:04:50.000Z",
           "comments": "https://news.ycombinator.com/item?id=49274600",
           "author": "explosion-s"
@@ -190,8 +157,8 @@
           "title": "Grok 4.6",
           "titleZh": "格洛克4.6",
           "link": "https://x.ai/news/grok-4-6",
-          "summary": "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-a...\n\n Comments URL: https://news.ycombinator.com/item?id=49274027\n\n Points: 504\n\n # Comments: 459",
-          "summaryZh": "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-a...\n\n 评论网址：https://news.ycombinator.com/item?id=49274027\n\n 积分：504\n\n # 评论：459",
+          "summary": "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-a...\n\n Comments URL: https://news.ycombinator.com/item?id=49274027\n\n Points: 584\n\n # Comments: 532",
+          "summaryZh": "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-a...\n\n 评论网址：https://news.ycombinator.com/item?id=49274027\n\n 积分：584\n\n # 评论: 532",
           "publishedAt": "2026-08-12T15:32:50.000Z",
           "comments": "https://news.ycombinator.com/item?id=49274027",
           "author": "iLuddite"
@@ -201,8 +168,8 @@
           "title": "Qwen3.8-2.4T",
           "titleZh": "Qwen3.8-2.4T",
           "link": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
-          "summary": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B-FP8\n\n Comments URL: https://news.ycombinator.com/item?id=49273478\n\n Points: 582\n\n # Comments: 135",
-          "summaryZh": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B-FP8\n\n 评论网址：https://news.ycombinator.com/item?id=49273478\n\n 积分：582\n\n # 评论: 135",
+          "summary": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B-FP8\n\n Comments URL: https://news.ycombinator.com/item?id=49273478\n\n Points: 660\n\n # Comments: 154",
+          "summaryZh": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B-FP8\n\n 评论网址：https://news.ycombinator.com/item?id=49273478\n\n 积分：660\n\n # 评论：154",
           "publishedAt": "2026-08-12T15:01:17.000Z",
           "comments": "https://news.ycombinator.com/item?id=49273478",
           "author": "Philpax"
@@ -220,11 +187,11 @@
         },
         {
           "id": "https://news.ycombinator.com/item?id=49272832",
-          "title": "We tracked down the 16-year-old WAL-reset SQLite bug",
-          "titleZh": "我们追踪到了 16 年之久的 WAL 重置 SQLite bug",
+          "title": "Tracking down the 16-year-old WAL-reset SQLite bug",
+          "titleZh": "追踪 16 年之久的 WAL 重置 SQLite 错误",
           "link": "https://tailscale.com/blog/sqlite-wal-reset-bug",
-          "summary": "Article URL: https://tailscale.com/blog/sqlite-wal-reset-bug\n\n Comments URL: https://news.ycombinator.com/item?id=49272832\n\n Points: 967\n\n # Comments: 183",
-          "summaryZh": "文章网址：https://tailscale.com/blog/sqlite-wal-reset-bug\n\n 评论网址：https://news.ycombinator.com/item?id=49272832\n\n 积分：967\n\n # 评论: 183",
+          "summary": "Article URL: https://tailscale.com/blog/sqlite-wal-reset-bug\n\n Comments URL: https://news.ycombinator.com/item?id=49272832\n\n Points: 1096\n\n # Comments: 205",
+          "summaryZh": "文章网址：https://tailscale.com/blog/sqlite-wal-reset-bug\n\n 评论网址：https://news.ycombinator.com/item?id=49272832\n\n 积分：1096\n\n # 评论：205",
           "publishedAt": "2026-08-12T14:22:30.000Z",
           "comments": "https://news.ycombinator.com/item?id=49272832",
           "author": "ropbear"
@@ -234,11 +201,44 @@
           "title": "Tim King, AmigaDOS developer, has died",
           "titleZh": "AmigaDOS 开发者 Tim King 去世",
           "link": "https://amiga-news.de/en/news/AN-2026-08-00070-EN.html",
-          "summary": "Article URL: https://amiga-news.de/en/news/AN-2026-08-00070-EN.html\n\n Comments URL: https://news.ycombinator.com/item?id=49272655\n\n Points: 262\n\n # Comments: 31",
-          "summaryZh": "文章网址：https://amiga-news.de/en/news/AN-2026-08-00070-EN.html\n\n 评论网址：https://news.ycombinator.com/item?id=49272655\n\n 积分：262\n\n # 评论: 31",
+          "summary": "Article URL: https://amiga-news.de/en/news/AN-2026-08-00070-EN.html\n\n Comments URL: https://news.ycombinator.com/item?id=49272655\n\n Points: 282\n\n # Comments: 35",
+          "summaryZh": "文章网址：https://amiga-news.de/en/news/AN-2026-08-00070-EN.html\n\n 评论网址：https://news.ycombinator.com/item?id=49272655\n\n 积分：282\n\n # 评论: 35",
           "publishedAt": "2026-08-12T14:09:11.000Z",
           "comments": "https://news.ycombinator.com/item?id=49272655",
           "author": "doener"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49272569",
+          "title": "Someone is running mass vulnerability scans, spoofing AI bots like ClaudeBot",
+          "titleZh": "有人正在运行大规模漏洞扫描，欺骗像 ClaudeBot 这样的人工智能机器人",
+          "link": "https://knownagents.com/insights",
+          "summary": "Article URL: https://knownagents.com/insights\n\n Comments URL: https://news.ycombinator.com/item?id=49272569\n\n Points: 286\n\n # Comments: 216",
+          "summaryZh": "文章网址：https://knownagents.com/insights\n\n 评论网址：https://news.ycombinator.com/item?id=49272569\n\n 积分：286\n\n # 评论：216",
+          "publishedAt": "2026-08-12T14:02:46.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49272569",
+          "author": "gavinhking"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49272549",
+          "title": "Why tiny JPEGs look different in Chrome",
+          "titleZh": "为什么微小的 JPEG 在 Chrome 中看起来不同",
+          "link": "https://guillaumetech.github.io/posts/jpg-scaling-chrome/",
+          "summary": "Article URL: https://guillaumetech.github.io/posts/jpg-scaling-chrome/\n\n Comments URL: https://news.ycombinator.com/item?id=49272549\n\n Points: 319\n\n # Comments: 66",
+          "summaryZh": "文章网址：https://guillaumetech.github.io/posts/jpg-scaling-chrome/\n\n 评论网址：https://news.ycombinator.com/item?id=49272549\n\n 积分：319\n\n # 评论: 66",
+          "publishedAt": "2026-08-12T14:00:54.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49272549",
+          "author": "gutechh"
+        },
+        {
+          "id": "https://news.ycombinator.com/item?id=49271757",
+          "title": "Shade Map",
+          "titleZh": "阴影图",
+          "link": "https://shademap.app",
+          "summary": "Article URL: https://shademap.app\n\n Comments URL: https://news.ycombinator.com/item?id=49271757\n\n Points: 219\n\n # Comments: 55",
+          "summaryZh": "文章网址：https://shademap.app\n\n 评论网址：https://news.ycombinator.com/item?id=49271757\n\n 积分：219\n\n # 评论: 55",
+          "publishedAt": "2026-08-12T13:01:21.000Z",
+          "comments": "https://news.ycombinator.com/item?id=49271757",
+          "author": "fredley"
         }
       ]
     },
@@ -248,7 +248,7 @@
       "url": "https://rss.arxiv.org/rss/cs.AI",
       "home": "https://arxiv.org/list/cs.AI/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-08-13T07:18:05.742Z",
+      "fetchedAt": "2026-08-13T12:56:27.974Z",
       "count": 15,
       "items": [
         {
@@ -279,7 +279,7 @@
           "titleZh": "康威 99 图的强制结构约简和可验证界限",
           "link": "https://arxiv.org/abs/2608.11211",
           "summary": "arXiv:2608.11211v1 Announce Type: new\nAbstract: Conway's 99-graph problem asks whether a strongly regular graph with parameters $\\mathrm{srg}(99,14,1,2)$ exists. We report a systematic, fully reproducible attack by an autonomous AI research agent, scored under the track's partial-credit metric. Our verifiable contributions are: (1) an exhaustive proof that no circulant graph on $\\mathbb{Z}/99$ satisfies more than $3366/4950=68.0\\%$ of the constraints ($33$ of $49$ difference-classes), with the same ceiling for the other abelian group of order $99$; (2) a forced-structure reduction: $\\lambda=1$ makes each neighbourhood a perfect matching and $\\mu=2$ puts the outer vertices in bijection with non-matched neighbour-pairs, collapsing existence to a $12$-regular graph on $84$ vertices, encoded for CP-SAT and validated by recovering the unique $\\mathrm{srg}(9,4,1,2)$; (3) a validated prescribed-automorphism orbit-existence framework (fixed-point-free and single-fixed-point actions, checked on $\\mathrm{srg}(9,4,1,2)$ and the Paley graph $\\mathrm{srg}(13,6,2,3)$), and (4) a best verified artifact at $69.43\\%$, with evidence that this is a robust frontier (fourteen distinct methods, none exceeding it) entangled with the open question, since any provable bound below $4950$ is a non-existence proof.",
-          "summaryZh": "arXiv:2608.11211v1 公告类型：新\n摘要：康威 99 图问题询问是否存在参数为 $\\mathrm{srg}(99,14,1,2)$ 的强正则图。我们报告了由自主人工智能研究代理发起的系统性、完全可重现的攻击，并根据赛道的部分信用指标进行评分。我们可验证的贡献是：（1）详尽证明 $\\mathbb{Z}/99$ 上没有循环图满足超过 $3366/4950=68.0\\%$ 的约束（$49$ 差异类的 $33$），对于其他阶 $99$ 的阿贝尔群具有相同的上限； （2）强制结构简化：$\\lambda=1$使每个邻域成为完美匹配，$\\mu=2$将外部顶点与不匹配的邻居对进行双射，将存在性折叠为$84$顶点上的$12$正则图，针对CP-SAT进行编码，并通过恢复唯一的$\\mathrm{srg}(9,4,1,2)$进行验证； （3）一个经过验证的规定自同构轨道存在框架（无定点和单定点动作，在 $\\mathrm{srg}(9,4,1,2)$ 和 Paley 图 $\\mathrm{srg}(13,6,2,3)$ 上检查），以及（4）一个最佳验证的工件，位于 $69.43\\%$，有证据表明这是一个稳健的前沿（十四种不同的方法，没有超过它）与悬而未决的问题纠缠在一起，因为任何低于 4950 美元的可证明界限都是不存在的证明。",
+          "summaryZh": "arXiv:2608.11211v1 公告类型：新\n摘要：康威的 99 图问题询问是否存在参数为 $\\mathrm{srg}(99,14,1,2)$ 的强正则图。我们报告了由自主人工智能研究代理发起的系统性、完全可重现的攻击，并根据赛道的部分信用指标进行评分。我们可验证的贡献是：（1）详尽证明 $\\mathbb{Z}/99$ 上没有循环图满足超过 $3366/4950=68.0\\%$ 的约束（$49$ 差异类的 $33$），对于其他阶 $99$ 的阿贝尔群具有相同的上限； （2）强制结构简化：$\\lambda=1$使每个邻域成为完美匹配，$\\mu=2$将外部顶点与不匹配的邻居对进行双射，将存在性折叠为$84$顶点上的$12$正则图，针对CP-SAT进行编码，并通过恢复唯一的$\\mathrm{srg}(9,4,1,2)$进行验证； （3）一个经过验证的规定自同构轨道存在框架（无定点和单定点动作，在 $\\mathrm{srg}(9,4,1,2)$ 和 Paley 图 $\\mathrm{srg}(13,6,2,3)$ 上检查），以及（4）一个最佳验证的工件，位于 $69.43\\%$，有证据表明这是一个稳健的前沿（十四种不同的方法，没有超过它）与悬而未决的问题纠缠在一起，因为任何低于 4950 美元的可证明界限都是不存在的证明。",
           "publishedAt": "2026-08-13T04:00:00.000Z",
           "comments": null,
           "author": "Aalok Thakkar"
@@ -345,7 +345,7 @@
           "titleZh": "流程图工程法学硕士：从最佳 PFD 到经过验证的 P&ID",
           "link": "https://arxiv.org/abs/2608.11220",
           "summary": "arXiv:2608.11220v1 Announce Type: new\nAbstract: Nowadays, the creation of a process flow diagram (PFD) and its subsequent transformation into a piping and instrumentation diagram (P&ID) is predominantly performed manually. Applying artificial intelligence in the task could potentially lead not only to process automation and time savings, but also to financial gains by exploring numerous diagram's topology options and reducing manual labor. This research presents P&ID Pilot - a practical end-to-end AI pipeline capable of handling flowsheet developing for both stages. The first stage focuses on PFD synthesis, whereas the second is directed toward modifying the generated PFD into P&ID. After comparing four different methods, the hybrid approach combining genetic algorithms (GA) and large language models (LLM) is shown to generate the optimal valid PFD topology, achieving the lowest loss value among all the methods, while satisfying the required outlet flow parameters without engineering-rule violations. For the second stage, the proposed LLM-based agent successfully transforms the generated PFD into a source-grounded P&ID by producing validated, executable modifications through a restricted engineering software development kit, achieving 100% execution success while maintaining compliance with domain-specific rules and reference graph structures. This unified pipeline - coupling GA/LLM-driven synthesis with an LLM-based transformation agent - offers a feasible path toward end-to-end process design automation by producing validated, deployable outputs and substantially reduces manual engineering effort.",
-          "summaryZh": "arXiv:2608.11220v1 公告类型：新\n摘要：如今，工艺流程图 (PFD) 的创建及其随后转换为管道和仪表图 (P&ID) 的工作主要是手动执行的。在任务中应用人工智能不仅可以实现流程自动化和节省时间，还可以通过探索大量图表的拓扑选项和减少体力劳动来获得财务收益。这项研究提出了 P&ID Pilot——一种实用的端到端 AI 管道，能够处理两个阶段的流程图开发。第一阶段侧重于 PFD 合成，而第二阶段旨在将生成的 PFD 修改为 P&ID。在比较四种不同的方法后，结合遗传算法（GA）和大语言模型（LLM）的混合方法被证明可以生成最佳的有效PFD拓扑，在所有方法中实现最低的损失值，同时满足所需的出口流量参数而不违反工程规则。对于第二阶段，所提出的基于 LLM 的代理通过受限的工程软件开发套件生成经过验证的可执行修改，成功地将生成的 PFD 转换为基于源的 P&ID，实现 100% 的执行成功，同时保持符合特定于域的规则和参考图结构。这种统一的管道将 GA/LLM 驱动的合成与基于 LLM 的转换代理相结合，通过生成经过验证的、可部署的输出，提供了一条实现端到端流程设计自动化的可行路径，并大大减少了手动工程工作量。",
+          "summaryZh": "arXiv:2608.11220v1 公告类型：新\n摘要：如今，工艺流程图 (PFD) 的创建及其随后转换为管道和仪表图 (P&ID) 的工作主要是手动执行的。在任务中应用人工智能不仅可以实现流程自动化和节省时间，还可以通过探索大量图表的拓扑选项和减少体力劳动来获得财务收益。这项研究提出了 P&ID Pilot——一种实用的端到端 AI 管道，能够处理两个阶段的流程图开发。第一阶段侧重于 PFD 合成，第二阶段旨在将生成的 PFD 修改为 P&ID。在比较四种不同的方法后，结合遗传算法（GA）和大语言模型（LLM）的混合方法被证明可以生成最佳的有效PFD拓扑，在所有方法中实现最低的损失值，同时满足所需的出口流量参数而不违反工程规则。对于第二阶段，所提出的基于 LLM 的代理通过受限的工程软件开发套件生成经过验证的可执行修改，成功地将生成的 PFD 转换为基于源的 P&ID，实现 100% 的执行成功，同时保持符合特定于域的规则和参考图结构。这种统一的管道将 GA/LLM 驱动的合成与基于 LLM 的转换代理相结合，通过生成经过验证的、可部署的输出，提供了一条实现端到端流程设计自动化的可行路径，并大大减少了手动工程工作量。",
           "publishedAt": "2026-08-13T04:00:00.000Z",
           "comments": null,
           "author": "Timur Zakarin, Sergei Voitov, Sergei Shumilin, Evgeny Burnaev"
@@ -378,7 +378,7 @@
           "titleZh": "外部身份：人工智能人格克隆的概念框架和研究计划",
           "link": "https://arxiv.org/abs/2608.11225",
           "summary": "arXiv:2608.11225v1 Announce Type: new\nAbstract: AI \"personality clones\" force a re-examination of personal identity in operational terms. Setting aside the hard problem of consciousness, we approach identity through the indiscernibility of manifestations, as assessed by an observer over a duration. We distinguish three criteria that \"identity\" conflates: fidelity to a target person, generic human-likeness, and individuality. We propose a six-term factorization of observed identity (substrate, dispositions, memory, update dynamics, context, exogenous contingencies), with a state-space formulation. Indiscernibility is defined as one minus a judge's distinguishing advantage, and the factorization's coefficients become local sensitivities estimable by randomized ablation. The central claim is a conditional conjecture: given hypotheses about the agent's information on its own persistence and about consequences bearing on its own stakes, versionability tends to degrade long-horizon indiscernibility. An analogy with lambda-calculus, linear typing, and bisimulation clarifies what linearity does and does not establish. Between product-clone and individual we identify a third object, the delegate: a task-limited, bounded-lifespan partial clone ending in a bandwidth-limited testament. We map the empirical literature onto the three criteria, propose an experimental program, and argue that the correct long-horizon criterion is not trajectory fidelity but climate fidelity: matching the conditional distribution of a person's possible responses. The best clone is the one that diverges from the original as the original would have diverged from itself.",
-          "summaryZh": "arXiv:2608.11225v1 公告类型：新\n摘要：人工智能“人格克隆”迫使人们从操作角度重新审视个人身份。抛开意识这个难题，我们通过观察者在一段时间内对表现的不可辨别性来评估身份。我们区分了“身份”合并的三个标准：对目标人的忠诚度、一般人类相似性和个性。我们提出了对观察到的身份（基质、处置、记忆、更新动态、背景、外生偶然事件）进行六项分解，并采用状态空间公式。不可辨别性被定义为一减去法官的区分优势，并且因式分解的系数成为可通过随机消融估计的局部敏感性。核心主张是一个条件猜想：考虑到关于代理自身持久性的信息以及对其自身利益产生的后果的假设，版本性往往会降低长期的不可辨别性。与 lambda 演算、线性类型和互模拟的类比阐明了线性能建立和不能建立什么。在产品克隆和个人之间，我们确定了第三个对象，即委托：一个任务有限、寿命有限的部分克隆，以带宽有限的遗嘱结束。我们将实证文献映射到这三个标准，提出一个实验计划，并认为正确的长期标准不是轨迹保真度，而是气候保真度：匹配一个人可能反应的条件分布。最好的克隆是与原始版本不同的克隆，因为原始版本会与其自身不同。",
+          "summaryZh": "arXiv:2608.11225v1 公告类型：新\n摘要：人工智能“人格克隆”迫使人们从操作角度重新审视个人身份。抛开意识这个难题，我们通过观察者在一段时间内对表现的不可辨别性来评估身份。我们区分了“身份”合并的三个标准：对目标人的忠诚度、一般的人类相似性和个性。我们提出了对观察到的身份（基质、处置、记忆、更新动态、背景、外生偶然事件）进行六项分解，并采用状态空间公式。不可辨别性被定义为一减去法官的区分优势，并且因式分解的系数成为可通过随机消融估计的局部敏感性。核心主张是一个条件猜想：考虑到关于代理自身持久性的信息以及对其自身利益产生的后果的假设，版本性往往会降低长期的不可辨别性。与 lambda 演算、线性类型和互模拟的类比阐明了线性能建立和不能建立什么。在产品克隆和个人之间，我们确定了第三个对象，即委托：一个任务有限、寿命有限的部分克隆，以带宽有限的遗嘱结束。我们将实证文献映射到这三个标准，提出一个实验计划，并认为正确的长期标准不是轨迹保真度，而是气候保真度：匹配一个人可能反应的条件分布。最好的克隆是与原始版本不同的克隆，因为原始版本会与其自身不同。",
           "publishedAt": "2026-08-13T04:00:00.000Z",
           "comments": null,
           "author": "Luc E. Brunet"
@@ -411,7 +411,7 @@
           "titleZh": "在人类自主团队中将信念与二阶心理理论同步（扩展版）",
           "link": "https://arxiv.org/abs/2608.11229",
           "summary": "arXiv:2608.11229v1 Announce Type: new\nAbstract: Comparative feedback, asking people which of two behaviors they prefer, has become a standard way to align robot and agent behavior with human intent when the reward itself cannot be specified directly. Preference-based reward learning typically casts the human teacher as a passive oracle answering learner-generated queries. We argue this forfeits the teacher's defining advantage: knowledge of the objective. A teacher who knows the target can construct training examples more efficiently than any learner-driven acquisition strategy, an advantage that widens as the reward's feature dimension grows. However, exploiting this advantage requires an accurate model of what the learner currently knows. We therefore recast preference learning as a human-autonomy team problem coupling two behavioral models: the teacher maintains a model of the learner to design an informative curriculum, and the learner maintains a second-order model of the teacher's model, emitting structured preference constraints (understanding statements) that keep the teacher's model of the learner synchronized. In simulation, an informed teacher outperforms learner-led selection; teacher-model drift under alternating teachers erodes this advantage; and understanding statements repair it, with second-order (ToM-2) statements outperforming mean-belief statements when the teacher's error about the learner is concentrated in a particular direction rather than spread evenly.",
-          "summaryZh": "arXiv:2608.11229v1 公告类型：新\n摘要：当奖励本身无法直接指定时，比较反馈（询问人们更喜欢两种行为中的哪一种）已成为将机器人和代理行为与人类意图保持一致的标准方法。基于偏好的奖励学习通常将人类教师视为回答学习者生成的查询的被动预言者。我们认为这丧失了教师的决定性优势：对目标的了解。了解目标的教师可以比任何学习者驱动的习得策略更有效地构建训练示例，这一优势随着奖励特征维度的增长而扩大。然而，利用这一优势需要学习者当前所知道的内容的准确模型。因此，我们将偏好学习重新定义为一个耦合两种行为模型的人类自主团队问题：教师维护学习者模型来设计信息丰富的课程，学习者维护教师模型的二阶模型，发出结构化偏好约束（理解语句），使教师的学习者模型保持同步。在模拟中，消息灵通的教师胜过学习者主导的选择；教师交替下的教师模型漂移削弱了这一优势；当教师对学习者的错误集中在一个特定方向而不是均匀分布时，理解陈述可以修复它，二阶（ToM-2）陈述优于平均信念陈述。",
+          "summaryZh": "arXiv:2608.11229v1 公告类型：新\n摘要：当奖励本身无法直接指定时，比较反馈（询问人们更喜欢两种行为中的哪一种）已成为将机器人和代理行为与人类意图保持一致的标准方法。基于偏好的奖励学习通常将人类教师视为回答学习者生成的查询的被动预言家。我们认为这丧失了教师的决定性优势：对目标的了解。了解目标的教师可以比任何学习者驱动的习得策略更有效地构建训练示例，这一优势随着奖励特征维度的增长而扩大。然而，利用这一优势需要学习者当前所知道的内容的准确模型。因此，我们将偏好学习重新定义为一个耦合两种行为模型的人类自主团队问题：教师维护学习者模型来设计信息丰富的课程，学习者维护教师模型的二阶模型，发出结构化偏好约束（理解语句），使教师的学习者模型保持同步。在模拟中，消息灵通的教师胜过学习者主导的选择；教师交替下的教师模型漂移削弱了这一优势；当教师对学习者的错误集中在一个特定方向而不是均匀分布时，理解陈述可以修复它，二阶（ToM-2）陈述优于平均信念陈述。",
           "publishedAt": "2026-08-13T04:00:00.000Z",
           "comments": null,
           "author": "Jack Mirenzi, Henny Admoni"
@@ -424,7 +424,7 @@
       "url": "https://rss.arxiv.org/rss/cs.LG",
       "home": "https://arxiv.org/list/cs.LG/recent",
       "group": "arxiv",
-      "fetchedAt": "2026-08-13T07:18:06.166Z",
+      "fetchedAt": "2026-08-13T12:56:28.431Z",
       "count": 15,
       "items": [
         {
@@ -477,7 +477,7 @@
           "titleZh": "终端对称作为决策资源：随时验证构造的状态细化",
           "link": "https://arxiv.org/abs/2608.11318",
           "summary": "arXiv:2608.11318v1 Announce Type: new\nAbstract: Many sequential construction tasks exhibit exact symmetry at completion while their execution remains directed and history-dependent. We develop a decision-resource view of terminal symmetry: process evidence supplies directionality, terminal correspondence transports that structure across equivalent outcomes, realized-state evidence refines its current decision relevance after transitions, and a fixed verifier certifies execution. This decomposition yields transport--refine--certify. \\method{} instantiates the principle with an episode-fixed transported process structure, its state-restricted process rank, a state-dependent residual rank refreshed after accepted transitions, and an ordinal rank meet whose top-$k$ set is exactly the union of the two proposal prefixes. The meet provides a completion guarantee under prefix coverage and attains the tight worst-case verifier-query bound under the corresponding prefix information model; a two-state construction predicts a strict post-transition dynamic--static separation. Across CAD assembly, Mini-Programs, and exact-fill packing, statewise refresh improves anytime AUC by up to $6.77$, $21.75$, and $8.68$ points, respectively. On 1,135 target-removal episodes from the official GRN OOD scenes, \\method{} attains the lowest mean capped verifier cost at all three scales among the compared GRN and CDGS-style planners. The statewise signal also transfers across aggregation and scheduler organizations. Terminal symmetry thereby becomes a reusable decision resource for directed construction.",
-          "summaryZh": "arXiv:2608.11318v1 公告类型：新\n摘要：许多顺序构建任务在完成时表现出精确的对称性，同时它们的执行仍然是定向的且依赖于历史。我们开发了终端对称性的决策资源视图：过程证据提供方向性，终端对应在等效结果之间传输该结构，实现状态证据在转换后细化其当前决策相关性，并且固定验证者验证执行。这种分解产生了传输-精炼-认证。 \\method{} 使用情节固定的传输过程结构、其状态限制的过程等级、接受转换后刷新的状态相关剩余等级以及序数等级满足（其 top-$k$ 集恰好是两个提案前缀的并集）来实例化该原理。该满足提供了前缀覆盖下的完成保证，并在相应的前缀信息模型下获得了严格的最坏情况验证者查询界限；两国结构预示着过渡后严格的动态-静态分离。在 CAD 装配、小程序和精确填充打包中，状态刷新可随时将 AUC 分别提高 6.77 美元、21.75 美元和 8.68 美元点。在官方 GRN OOD 场景中的 1,135 个目标移除场景中，在比较的 GRN 和 CDGS 式规划器中，\\method{} 在所有三个尺度上获得了最低的平均上限验证者成本。状态信号还可以跨聚合和调度程序组织传输。因此，终端对称性成为定向构建的可重用决策资源。",
+          "summaryZh": "arXiv:2608.11318v1 公告类型：新\n摘要：许多顺序构建任务在完成时表现出精确的对称性，同时它们的执行仍然是有方向性的并且依赖于历史。我们开发了终端对称性的决策资源视图：过程证据提供方向性，终端对应在等效结果之间传输该结构，实现状态证据在转换后细化其当前决策相关性，并且固定验证者验证执行。这种分解产生了传输-精炼-认证。 \\method{} 使用情节固定的传输过程结构、其状态限制的过程等级、接受转换后刷新的状态相关剩余等级以及序数等级满足（其 top-$k$ 集恰好是两个提案前缀的并集）来实例化该原理。该满足提供了前缀覆盖下的完成保证，并在相应的前缀信息模型下获得了严格的最坏情况验证者查询界限；两国结构预示着过渡后严格的动态-静态分离。在 CAD 装配、小程序和精确填充打包中，状态刷新可随时将 AUC 分别提高 6.77 美元、21.75 美元和 8.68 美元点。在官方 GRN OOD 场景中的 1,135 个目标移除场景中，在比较的 GRN 和 CDGS 式规划器中，\\method{} 在所有三个尺度上获得了最低的平均上限验证者成本。状态信号还可以跨聚合和调度程序组织传输。因此，终端对称性成为定向构建的可重用决策资源。",
           "publishedAt": "2026-08-13T04:00:00.000Z",
           "comments": null,
           "author": "Yi Liu"
@@ -488,7 +488,7 @@
           "titleZh": "热带商业建筑 HVAC 控制的情境质量多样性进化强化学习",
           "link": "https://arxiv.org/abs/2608.11324",
           "summary": "arXiv:2608.11324v1 Announce Type: new\nAbstract: This paper proposes a contextual quality-diversity evolutionary reinforcement-learning controller, CQD-ERL, for the supervisory control of a tropical, water-cooled chiller plant and its associated air side. Rather than converging to a single scalarised policy, the controller maintains a product archive of specialised policies indexed jointly by a data- driven operating context, a cluster of daily weather and load regime, and a context-invariant behaviour descriptor, filled by a gradient-free evolutionary operator and a soft-actor-critic policy-gradient operator that share one replay buffer. Every action is filtered through a deterministic safety shield before execution. The controller is trained on a two-tier reduced-order environment representing the latent load, cooling-tower approach and humidity constraints of a Singapore commercial building, and is evaluated over a full annual backtest against an ASHRAE Guideline 36 baseline.",
-          "summaryZh": "arXiv:2608.11324v1 公告类型：新\n摘要：本文提出了一种上下文质量多样性进化强化学习控制器 CQD-ERL，用于热带水冷冷水机组及其相关空气侧的监控。控制器不是收敛于单一的分级策略，而是维护由数据驱动的操作上下文、一组日常天气和负载状况以及上下文不变的行为描述符联合索引的专用策略的产品档案，并由共享一个重播缓冲区的无梯度进化算子和软执行者批评策略梯度算子填充。每个动作在执行前都会经过确定性安全防护罩的过滤。该控制器在代表新加坡商业建筑的潜在负载、冷却塔方法和湿度限制的两层降阶环境中进行训练，并根据 ASHRAE 准则 36 基线进行完整的年度回测进行评估。",
+          "summaryZh": "arXiv:2608.11324v1 公告类型：新\n摘要：本文提出了一种上下文质量多样性进化强化学习控制器 CQD-ERL，用于热带水冷冷水机组及其相关空气侧的监控。控制器不是收敛于单一的分级策略，而是维护由数据驱动的操作上下文、一组日常天气和负载状况以及上下文不变的行为描述符联合索引的专用策略的产品档案，并由共享一个重放缓冲区的无梯度进化算子和软执行者批评策略梯度算子填充。每个动作在执行前都会经过确定性安全防护罩的过滤。该控制器在代表新加坡商业建筑的潜在负载、冷却塔方法和湿度限制的两层降阶环境中进行训练，并根据 ASHRAE 准则 36 基线进行完整的年度回测进行评估。",
           "publishedAt": "2026-08-13T04:00:00.000Z",
           "comments": null,
           "author": "Tran Le Vu"
@@ -499,7 +499,7 @@
           "titleZh": "使用 Forma 对完整财务报表进行长期预测",
           "link": "https://arxiv.org/abs/2608.11327",
           "summary": "arXiv:2608.11327v1 Announce Type: new\nAbstract: Specialist training beats generalist scale when forecasting financial statements. To our knowledge, no prior work jointly forecasts complete financial statements beyond one year, yet in a discounted-cash-flow valuation most firm value sits past that window. We release ProForma-20Q, a reproducible benchmark for forecasting 78 statement line items 1-20 quarters ahead, for anonymized firms, from past statements and an industry code, scored by change-space $R^2$. On it, Forma, a transformer that reads statements as sets of (account, quarter, value) tuples and maximizes a masked-tuple Gaussian likelihood, beats every competitor we field: classical machine learning, chained gradient boosting, a zero-shot time-series foundation model, and frontier large language models. Its lead widens with horizon, where valuation needs accuracy most, and its Gaussian predictive intervals never under-cover. Forma's forecasts nearly satisfy accounting identities; exact coherence is recoverable at no statistically significant accuracy cost. Its tuple interface supports scenario analysis without retraining, and we show that pinning future revenue paths sharpens the rest of the statement.",
-          "summaryZh": "arXiv:2608.11327v1 公告类型：新\n摘要：在预测财务报表时，专业培训胜过通才培训。据我们所知，之前的研究没有联合预测一年以上的完整财务报表，但在贴现现金流估值中，大多数公司的价值都超过了这个窗口。我们发布了 ProForma-20Q，这是一个可重复的基准，用于根据过去的报表和行业代码，为匿名公司预测未来 1-2​​0 个季度的 78 个报表行项目，并按变化空间 $R^2$ 进行评分。在其上，Forma 是一个将语句读取为（帐户、季度、价值）元组集合并最大化屏蔽元组高斯似然的转换器，它击败了我们所面对的每一个竞争对手：经典机器学习、链式梯度提升、零样本时间序列基础模型和前沿大型语言模型。它的领先优势随着视野的扩大而扩大，估值最需要准确性，而且它的高斯预测区间永远不会被掩盖。 Forma 的预测几乎满足会计恒等式；精确的一致性是可以恢复的，并且没有统计上显着的准确性成本。它的元组接口支持场景分析而无需重新训练，我们表明固定未来收入路径可以使声明的其余部分变得更加清晰。",
+          "summaryZh": "arXiv:2608.11327v1 公告类型：新\n摘要：在预测财务报表时，专业培训胜过通才培训。据我们所知，之前的研究没有联合预测一年以上的完整财务报表，但在贴现现金流估值中，大多数公司的价值都超过了这个窗口。我们发布了 ProForma-20Q，这是一个可重复的基准，用于根据过去的报表和行业代码，为匿名公司预测未来 1-2​​0 个季度的 78 个报表行项目，并按变化空间 $R^2$ 进行评分。在其上，Forma 是一个将语句读取为（帐户、季度、价值）元组集合并最大化屏蔽元组高斯似然的转换器，它击败了我们所面对的每一个竞争对手：经典机器学习、链式梯度提升、零样本时间序列基础模型和前沿大型语言模型。它的领先优势随着视野的扩大而扩大，其中估值最需要准确性，而且它的高斯预测区间永远不会被掩盖。 Forma 的预测几乎满足会计恒等式；可以在没有统计上显着的准确性成本的情况下恢复精确的一致性。它的元组接口支持场景分析而无需重新训练，我们表明固定未来收入路径可以使声明的其余部分变得更加清晰。",
           "publishedAt": "2026-08-13T04:00:00.000Z",
           "comments": null,
           "author": "Travis L. Johnson, Jiannan Jiang, Soumyabrata Chaudhuri, Yihao Chen, Lauren Falvey, Donal O'Cofaigh"
@@ -540,10 +540,10 @@
         {
           "id": "oai:arXiv.org:2608.11361v1",
           "title": "Lifecycle-Optimal Tokenization: Vocabulary Size as a Deployment-Regime-Dependent Infrastructure Parameter",
-          "titleZh": "生命周期最佳标记化：词汇量大小作为部署机制相关的基础设施参数",
+          "titleZh": "生命周期最佳标记化：词汇量大小作为依赖于部署机制的基础设施参数",
           "link": "https://arxiv.org/abs/2608.11361",
           "summary": "arXiv:2608.11361v1 Announce Type: new\nAbstract: Tokenizer vocabulary size is a foundational design choice in large language model (LLM) infrastructure, yet it is typically fixed at training time based on convention rather than deployment analysis. We show that the cost-optimal vocabulary is not a constant but a function of the serving regime. We formalize total deployment cost as $C_{lifecycle}(V) = C_{train}(V) + \\lambda \\cdot C_{infer}(V, B)$, where $\\lambda$ is inference volume and $B$ is the serving batch size. Through controlled experiments on two GPU families spanning the memory-bound to compute-bound regimes (A10G, ridge $\\approx$ 117 FLOP/byte; A100, ridge $\\approx$ 183 FLOP/byte), we demonstrate: (1) the inference-optimal vocabulary shifts 16x with serving batch, from 32k at $B=1$ to 524k at $B=64+$, driven by amortization of the $V \\times d$ unembedding matrix read; (2) at 1.3-2.3B model scale, quality (bits per byte, BPB) is optimized at $V=65$k, confirming scale-dependent vocabulary preference; (3) the lifecycle-optimal vocabulary diverges from training-optimal by up to 16x for production deployments. Quality is approximately invariant across the optimal range ($<$2% BPB spread), making vocabulary a pure systems optimization with no quality penalty in the measured range. Our results provide actionable capacity planning guidance: on-device deployments ($B=1$) should use $V \\approx 32$k; datacenter serving ($B \\geq 64$, $\\lambda \\geq 10$) should use $V \\approx 131$-262k.",
-          "summaryZh": "arXiv:2608.11361v1 公告类型：新\n摘要：分词器词汇量是大型语言模型 (LLM) 基础设施中的基本设计选择，但它通常根据约定而不是部署分析在训练时固定。我们表明，成本最优词汇不是一个常数，而是服务制度的函数。我们将总部署成本形式化为 $C_{lifecycle}(V) = C_{train}(V) + \\lambda \\cdot C_{infer}(V, B)$，其中 $\\lambda$ 是推理量，$B$ 是服务批量大小。通过对跨越内存绑定到计算绑定机制的两个 GPU 系列（A10G，ridge $\\approx$ 117 FLOP/byte；A100，ridge $\\approx$ 183 FLOP/byte）进行受控实验，我们演示了：(1) 推理最佳词汇量随着服务批次的变化而变化 16 倍，从 $B=1$ 时的 32k 到 $B=64+$ 时的 524k，由读取的 $V \\times d$ 去嵌入矩阵的摊销驱动； (2) 在 1.3-2.3B 模型规模下，质量（每字节位数，BPB）在 $V=65$k 处优化，确认了与规模相关的词汇偏好； (3) 对于生产部署，生命周期最佳词汇与训练最佳词汇的偏差高达 16 倍。质量在最佳范围内大致保持不变（$<$2% BPB 分布），使词汇成为纯粹的系统优化，在测量范围内没有质量损失。我们的结果提供了可行的容量规划指导：设备上部署 ($B=1$) 应使用 $V \\大约 32$k；数据中心服务（$B \\geq 64$、$\\lambda \\geq 10$）应使用 $V \\approx 131$-262k。",
+          "summaryZh": "arXiv:2608.11361v1 公告类型：新\n摘要：分词器词汇量是大型语言模型 (LLM) 基础设施中的基本设计选择，但它通常根据约定而不是部署分析在训练时固定。我们表明，成本最优词汇不是一个常数，而是服务制度的函数。我们将总部署成本形式化为 $C_{lifecycle}(V) = C_{train}(V) + \\lambda \\cdot C_{infer}(V, B)$，其中 $\\lambda$ 是推理量，$B$ 是服务批量大小。通过对跨越内存绑定到计算绑定机制的两个 GPU 系列（A10G，ridge $\\approx$ 117 FLOP/byte；A100，ridge $\\approx$ 183 FLOP/byte）进行受控实验，我们演示了：(1) 推理最佳词汇量随着服务批次的变化而变化 16 倍，从 $B=1$ 时的 32k 到 $B=64+$ 时的 524k，由读取的 $V \\times d$ 去嵌入矩阵的摊销驱动； (2) 在 1.3-2.3B 模型规模下，质量（每字节位数，BPB）在 $V=65$k 处优化，确认了规模相关的词汇偏好； (3) 对于生产部署，生命周期最佳词汇与训练最佳词汇的差异高达 16 倍。质量在最佳范围内大致保持不变（$<$2% BPB 分布），使词汇成为纯粹的系统优化，在测量范围内没有质量损失。我们的结果提供了可行的容量规划指导：设备上部署 ($B=1$) 应使用 $V \\大约 32$k；数据中心服务（$B \\geq 64$、$\\lambda \\geq 10$）应使用 $V \\approx 131$-262k。",
           "publishedAt": "2026-08-13T04:00:00.000Z",
           "comments": null,
           "author": "Rima Mittal, Ankit Gubrani, Satyanarayana Kakollu"
