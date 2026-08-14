@@ -1,5 +1,33 @@
 {
   "version": 1,
-  "folders": [],
-  "docs": []
+  "folders": [
+    {
+      "id": "notes",
+      "name": "notes",
+      "parentId": null,
+      "order": 0
+    }
+  ],
+  "docs": [
+    {
+      "slug": "deep-research-report-formatted",
+      "folderId": null,
+      "order": 0
+    },
+    {
+      "slug": "kb-wiki-alpha",
+      "folderId": "notes",
+      "order": 1
+    },
+    {
+      "slug": "kb-wiki-beta",
+      "folderId": "notes",
+      "order": 2
+    },
+    {
+      "slug": "post-mrferezb",
+      "folderId": null,
+      "order": 3
+    }
+  ]
 }
