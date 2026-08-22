@@ -1,0 +1,433 @@
+{
+  "source": "huggingface.co/api/daily_papers",
+  "attribution": "Data from Hugging Face Daily Papers (community curation). All rights belong to the original authors. Chinese text is machine-translated.",
+  "fetchedAt": "2026-08-22T08:27:53.731Z",
+  "date": "2026-08-22",
+  "sort": "trending",
+  "count": 15,
+  "locale": {
+    "summaryDefault": "zh",
+    "translated": true
+  },
+  "papers": [
+    {
+      "id": "2608.09888",
+      "title": "BDH-CQ: In-Context Learning with Recurrent Latent Reasoning",
+      "summary": "We introduce BDH-CQ, a reasoning model that combines in-context learning with recurrent latent reasoning. Inputs presented at inference time continuously update the model's recurrent memory; the model then solves a query through iterative computation in a high-dimensional latent space, without verbalizing its intermediate reasoning. We evaluate the model on the public ARC-AGI-1 evaluation set and use controlled ARC-like interventions to study what it learns from demonstrations, how consistently it applies an inferred transformation, and which concepts remain difficult. A 150M-parameter configuration reaches 29.5% pass@2 at a computed inference cost of \\$0.0007 per task. This operating point breaks through the previously reported ARC-AGI-1 cost-accuracy Pareto frontier, establishing a new state of the art in benchmark cost efficiency.",
+      "summaryZh": "我们引入了 BDH-CQ，这是一种将上下文学习与循环潜在推理相结合的推理模型。推理时出现的输入会不断更新模型的循环记忆；然后，该模型通过高维潜在空间中的迭代计算来解决查询，而无需用语言表达其中间推理。我们在公共 ARC-AGI-1 评估集上评估模型，并使用受控的类似 ARC 的干预措施来研究它从演示中学到了什么、它应用推断转换的一致性以及哪些概念仍然困难。 150M 参数配置达到 29.5% pass@2，计算得出的每个任务的推理成本为 0.0007 美元。该工作点突破了之前报道的 ARC-AGI-1 成本精度帕累托前沿，建立了基准成本效率的新技术水平。",
+      "titleZh": "BDH-CQ：具有循环潜在推理的情境学习",
+      "authors": [
+        "Björn Engdahl",
+        "Adrian Kosowski",
+        "Jan Chorowski",
+        "Zuzanna Stamirowska",
+        "Przemysław Uznański",
+        "Junlin Jiang",
+        "Rohan Phadke",
+        "Remigiusz Kinas",
+        "Richard Zhong"
+      ],
+      "publishedAt": "2026-08-10T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-08-11T00:00:00.000Z",
+      "submitter": "janchorowski",
+      "upvotes": 703,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2608.09888",
+        "arxiv": "https://arxiv.org/abs/2608.09888",
+        "pdf": "https://arxiv.org/pdf/2608.09888"
+      }
+    },
+    {
+      "id": "2608.20335",
+      "title": "4DAnyone: Create Anyone in 4D from a Casual Monocular Video",
+      "summary": "We present 4DAnyone, a framework for reconstructing 4D humans from an uncalibrated monocular video by generating reconstruction-grade multiview-consistent videos and lifting them into 4D Gaussian Splatting (4DGS). Existing camera-controlled video diffusion models synthesize plausible novel-view videos but fail to maintain consistency when scaled to the tens of target views required for 4DGS reconstruction. We identify this failure as a bounded-attention-context problem: when target views exceed the capacity of a single DiT forward pass, they must be split into groups, exposing two coupled bottlenecks. On the reference-context side, conditioning on all previously generated views grows as O(N), weakening cross-view appearance guidance. On the target-context side, disjoint groups cannot directly exchange information, causing global structural drift. 4DAnyone addresses both bottlenecks with two complementary designs: Reference Context Packing (RCP) compresses growing reference views into a fixed-length mixed-resolution context with O(1) reference-context complexity, while Target Context Routing (TCR) rotates target-view groupings during denoising to share context across groups at high-noise steps and stabilize details at low-noise steps. We further build the MVGameHuman dataset using our in-house game engine and combine it with light-stage and in-the-wild video datasets for training. Experiments on DNA-Rendering and DyMVHumans show that 4DAnyone outperforms prior methods in both novel-view video quality and downstream 4DGS reconstruction, with robust in-the-wild generalization. See our project page for video results and source code: https://4danyone.github.io.",
+      "summaryZh": "我们提出了 4DAnyone，这是一个框架，用于通过生成重建级多视图一致视频并将其提升为 4D 高斯泼溅 (4DGS)，从未经校准的单眼视频重建 4D 人类。现有的摄像机控制视频扩散模型可以合成合理的新颖视图视频，但在扩展到 4DGS 重建所需的数十个目标视图时无法保持一致性。我们将这种失败视为有界注意力上下文问题：当目标视图超过单个 DiT 前向传递的容量时，它们必须分成组，从而暴露两个耦合的瓶颈。在参考上下文方面，对所有先前生成的视图的调节随着 O(N) 增长，削弱了跨视图外观指导。在目标上下文方面，不相交的群体无法直接交换信息，导致全局结构漂移。 4DAnyone 通过两种互补设计解决了这两个瓶颈：参考上下文打包 (RCP) 将不断增长的参考视图压缩为参考上下文复杂度为 O(1) 的固定长度混合分辨率上下文，而目标上下文路由 (TCR) 在去噪期间旋转目标视图分组，以在高噪声步骤中跨组共享上下文，并在低噪声步骤中稳定细节。我们使用我们的内部游戏引擎进一步构建 MVGameHuman 数据集，并将其与光舞台和野外视频数据集相结合进行训练。 DNA-Rendering 和 DyMVHumans 的实验表明，4DAnyone 在新视角视频质量和下游 4DGS 重建方面均优于现有方法，并具有强大的野外泛化能力。请参阅我们的项目页面以获取视频结果和源代码：https://4danone.github.io。",
+      "titleZh": "4DAnyone：通过休闲单眼视频以 4D 形式创建任何人",
+      "authors": [
+        "Yudong Jin",
+        "Tao Xie",
+        "Qihang Zhang",
+        "Zehong Shen",
+        "Zhen Xu",
+        "Yujun Shen",
+        "Hujun Bao",
+        "Xiaowei Zhou",
+        "Yinghao Xu"
+      ],
+      "publishedAt": "2026-08-20T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-08-21T00:00:00.000Z",
+      "submitter": "krahets",
+      "upvotes": 60,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2608.20335",
+        "arxiv": "https://arxiv.org/abs/2608.20335",
+        "pdf": "https://arxiv.org/pdf/2608.20335"
+      }
+    },
+    {
+      "id": "2607.05391",
+      "title": "LLM-as-a-Verifier: A General-Purpose Verification Framework",
+      "summary": "Scaling pre-training, post-training, and test-time compute have become the central paradigms for improving the capabilities of LLMs. In this work, we identify verification, the ability to determine the correctness of a solution, as a new scaling axis. To unlock this and demonstrate its effectiveness, we introduce LLM-as-a-Verifier, a general-purpose verification framework that provides fine-grained feedback for agentic tasks without requiring additional training. Unlike standard LM judges that prompt LLMs to produce discrete scores for candidate solutions, LLM-as-a-Verifier computes the expectation over the distribution of scoring token logits to generate continuous scores. This probabilistic formulation enables verification to scale along multiple dimensions: (1) score granularity, (2) repeated evaluation, and (3) criteria decomposition. In particular, we show that scaling the scoring granularity leads to better separation between positive and negative solutions, resulting in more calibrated comparisons. Moreover, scaling repeated evaluation and criteria decomposition consistently lead to additional gains in verification accuracy through variance and complexity reduction. We further introduce a cost-efficient ranking algorithm for selecting the best solution among candidates using the verifier's continuous scores. LLM-as-a-Verifier achieves state-of-the-art performance on Terminal-Bench V2 (86.5%), SWE-Bench Verified (78.2%), RoboRewardBench (87.4%), and MedAgentBench (73.3%). Beyond verification, the fine-grained signals from LLM-as-a-Verifier can also serve as a proxy for estimating task progress. We build an extension for Claude Code, enabling developers to monitor and improve their own agentic systems. Finally, we show that LLM-as-a-Verifier can provide dense feedback for RL, improving the sample efficiency of SAC and GRPO on robotics and mathematical reasoning benchmarks.",
+      "summaryZh": "扩展训练前、训练后和测试时计算已成为提高法学硕士能力的核心范例。在这项工作中，我们将验证（确定解决方案正确性的能力）确定为新的缩放轴。为了解锁这一点并证明其有效性，我们引入了 LLM-as-a-Verifier，这是一种通用验证框架，可以为代理任务提供细粒度的反馈，而无需额外的培训。与标准的 LM 法官提示 LLM 为候选解决方案生成离散分数不同，LLM 作为验证者计算评分标记 logits 分布的期望以生成连续分数。这种概率公式使验证能够沿多个维度扩展：(1) 评分粒度，(2) 重复评估，以及 (3) 标准分解。特别是，我们表明，缩放评分粒度可以更好地分离正解和负解，从而产生更校准的比较。此外，通过减少方差和复杂性，扩展重复评估和标准分解可以不断提高验证准确性。我们进一步引入了一种经济高效的排名算法，用于使用验证者的连续分数在候选者中选择最佳解决方案。 LLM-as-a-Verifier 在 Terminal-Bench V2 (86.5%)、SWE-Bench Verified (78.2%)、RoboRewardBench (87.4%) 和 MedAgentBench (73.3%) 上实现了最先进的性能。除了验证之外，来自 LLM-as-a-Verifier 的细粒度信号还可以充当估计任务进度的代理。我们为 Claude Code 构建了一个扩展，使开发人员能够监控和改进他们自己的代理系统。最后，我们证明 LLM-as-a-Verifier 可以为 RL 提供密集的反馈，提高 SAC 和 GRPO 在机器人和数学推理基准上的样本效率。",
+      "titleZh": "LLM-as-a-Verifier：通用验证框架",
+      "authors": [
+        "Jacky Kwok",
+        "Shulu Li",
+        "Pranav Atreya",
+        "Yuejiang Liu",
+        "Yixing Jiang",
+        "Chelsea Finn",
+        "Marco Pavone",
+        "Ion Stoica",
+        "Azalia Mirhoseini"
+      ],
+      "publishedAt": "2026-07-06T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-07-07T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 18,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2607.05391",
+        "arxiv": "https://arxiv.org/abs/2607.05391",
+        "pdf": "https://arxiv.org/pdf/2607.05391"
+      }
+    },
+    {
+      "id": "2606.31227",
+      "title": "Securing the AI Agent: A Unified Framework for Multi-Layer Agent Red Teaming",
+      "summary": "The fast growth of open-source AI infrastructure, from model serving engines and agent platforms to the Model Context Protocol (MCP) ecosystem and the language models themselves, has outpaced the security tooling available to defend it. We present AI-Infra-Guard, an open-source framework that organizes AI red teaming around a single observation: the attack surface of an AI agent is stratified across layers (infrastructure, protocol/tool, agent behavior, and model), and no single detection paradigm fits all of them. The framework therefore matches a paradigm to each layer, from deterministic rule matching over 75+ AI components and 1{,}400+ vulnerability rules, through LLM-driven agentic auditing of MCP servers and agent-skill packages and multi-turn black-box agent red teaming, to a jailbreak harness with 26+ attack operators over sixteen datasets. To our knowledge it is the only open-source framework to span all of these, including supply-chain auditing of the agent skills that increasingly extend AI agents. We release AI-Infra-Guard as open source so that layer-paradigm matching can serve as a practical foundation for agent security and a shared base for the community to build on.",
+      "summaryZh": "开源人工智能基础设施的快速增长，从模型服务引擎和代理平台到模型上下文协议（MCP）生态系统和语言模型本身，已经超过了可用于保护它的安全工具。我们提出了 AI-Infra-Guard，这是一个开源框架，它围绕单一观察组织 AI 红队：AI 代理的攻击面是跨层（基础设施、协议/工具、代理行为和模型）分层的，并且没有单一的检测范例适合所有这些。因此，该框架将范式与每一层相匹配，从匹配超过 75 个人工智能组件和 1{,}400 多个漏洞规则的确定性规则，通过 LLM 驱动的 MCP 服务器和代理技能包代理审计以及多轮黑盒代理红队，到超过 16 个数据集上超过 26 个攻击操作员的越狱工具。据我们所知，它是唯一涵盖所有这些内容的开源框架，包括对不断扩展人工智能代理的代理技能进行供应链审核。我们将 AI-Infra-Guard 作为开源发布，以便层范式匹配可以作为代理安全的实用基础和社区构建的共享基础。",
+      "titleZh": "保护 AI 代理的安全：多层代理红队的统一框架",
+      "authors": [
+        "Yong Yang",
+        "Xing Zheng",
+        "Huiyu Wu",
+        "Huangsheng Cheng",
+        "Xiaorong Shi",
+        "Jing Guo",
+        "Bo Yang",
+        "Yi Zhou",
+        "Xiangfan Wu",
+        "Zonghao Ying"
+      ],
+      "publishedAt": "2026-06-30T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-07-06T00:00:00.000Z",
+      "submitter": "Zonghao2025",
+      "upvotes": 14,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2606.31227",
+        "arxiv": "https://arxiv.org/abs/2606.31227",
+        "pdf": "https://arxiv.org/pdf/2606.31227"
+      }
+    },
+    {
+      "id": "2605.31264",
+      "title": "COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation",
+      "summary": "LLM agents are increasingly expected not only to complete isolated tasks, but also to carry bounded representations of human expertise, judgment, and interaction style. Building such person-grounded agents remains difficult because actionable knowledge associated with a person or role is usually embedded in heterogeneous traces rather than written as clean instructions. Existing memory and persona systems capture fragments of this evidence, while skill frameworks provide portable packaging formats; however, there is no end-to-end workflow for distilling these traces into inspectable, correctable, and agent-usable skills. We present an automated trace-to-skill distillation system for generating person-grounded AI skills via expert knowledge distillation. Given materials from a target person or role, COLLEAGUE.SKILL produces a versioned skill package with two coordinated tracks: a capability track for practices, mental models, and decision heuristics, and a bounded behavior track for communication style, interaction rules, and correction history. The package can be inspected, invoked, updated through natural-language feedback, rolled back, installed across agent hosts, and optionally prepared for controlled distribution. We describe the artifact contract, generation workflow, correction lifecycle, deployment surface, and domain presets implemented in the open-source system. At the time of writing, the public repository has approximately 18.5k GitHub stars; the gallery lists 215 skills from 165 contributors and more than 100k cumulative stars across listed skill cards. The system illustrates how person-grounded skills can be represented as portable, correctable packages rather than opaque prompts or hidden memories.",
+      "summaryZh": "人们越来越期望法学硕士代理不仅能够完成孤立的任务，而且还能够承载人类专业知识、判断力和交互风格的有限表征。构建这种以人为本的代理仍然很困难，因为与人或角色相关的可操作知识通常嵌入在异构痕迹中，而不是编写为干净的指令。现有的记忆和角色系统捕获这些证据的片段，而技能框架提供便携式包装格式；然而，没有端到端的工作流程可以将这些痕迹提炼成可检查、可纠正和代理可用的技能。我们提出了一种自动跟踪技能蒸馏系统，用于通过专家知识蒸馏生成以人为本的人工智能技能。给定目标人员或角色的材料，COLLEAGUE.SKILL 会生成一个版本化的技能包，其中包含两个协调的轨道：用于实践、心智模型和决策启发的能力轨道，以及用于沟通风格、交互规则和纠正历史的有界行为轨道。该包可以通过自然语言反馈进行检查、调用、更新、回滚、跨代理主机安装，并可选择准备受控分发。我们描述了开源系统中实现的工件契约、生成工作流程、校正生命周期、部署表面和域预设。截至撰写本文时，公共存储库拥有大约 18,500 个 GitHub star；该图库列出了来自 165 位贡献者的 215 项技能，并在列出的技能卡中累积了超过 10 万颗星星。该系统说明了如何将以人为本的技能表示为可移植、可纠正的包，而不是不透明的提示或隐藏的记忆。",
+      "titleZh": "COLLEAGUE.SKILL：通过专家知识蒸馏自动生成 AI 技能",
+      "authors": [
+        "Tianyi Zhou",
+        "Dongrui Liu",
+        "Leitao Yuan",
+        "Jing Shao",
+        "Xia Hu"
+      ],
+      "publishedAt": "2026-05-29T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-06-01T00:00:00.000Z",
+      "submitter": "jasonrqh",
+      "upvotes": 129,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2605.31264",
+        "arxiv": "https://arxiv.org/abs/2605.31264",
+        "pdf": "https://arxiv.org/pdf/2605.31264"
+      }
+    },
+    {
+      "id": "2510.22200",
+      "title": "LongCat-Video Technical Report",
+      "summary": "Video generation is a critical pathway toward world models, with efficient\nlong video inference as a key capability. Toward this end, we introduce\nLongCat-Video, a foundational video generation model with 13.6B parameters,\ndelivering strong performance across multiple video generation tasks. It\nparticularly excels in efficient and high-quality long video generation,\nrepresenting our first step toward world models. Key features include: Unified\narchitecture for multiple tasks: Built on the Diffusion Transformer (DiT)\nframework, LongCat-Video supports Text-to-Video, Image-to-Video, and\nVideo-Continuation tasks with a single model; Long video generation:\nPretraining on Video-Continuation tasks enables LongCat-Video to maintain high\nquality and temporal coherence in the generation of minutes-long videos;\nEfficient inference: LongCat-Video generates 720p, 30fps videos within minutes\nby employing a coarse-to-fine generation strategy along both the temporal and\nspatial axes. Block Sparse Attention further enhances efficiency, particularly\nat high resolutions; Strong performance with multi-reward RLHF: Multi-reward\nRLHF training enables LongCat-Video to achieve performance on par with the\nlatest closed-source and leading open-source models. Code and model weights are\npublicly available to accelerate progress in the field.",
+      "summaryZh": "视频生成是通往世界模型的关键途径，具有高效\n长视频推理作为关键能力。为此，我们介绍\nLongCat-Video，一个具有13.6B参数的基础视频生成模型，\n在多个视频生成任务中提供强大的性能。它\n尤其擅长高效、高质量的长视频生成，\n代表我们迈向世界模式的第一步。主要功能包括： 统一\n多任务架构：基于 Diffusion Transformer (DiT) 构建\nLongCat-Video框架，支持文本转视频、图像转视频等\n单个模型的视频延续任务；长视频生成：\nVideo-Continuation 任务的预训练使 LongCat-Video 能够保持较高的性能\n生成长达几分钟的视频的质量和时间连贯性；\n高效推理：LongCat-Video 在几分钟内生成 720p、30fps 视频\n通过沿时间和时间方向采用从粗到细的生成策略\n空间轴。 Block Sparse Attention 进一步提高了效率，特别是\n高分辨率；多重奖励的强劲表现 RLHF：多重奖励\nRLHF 训练使 LongCat-Video 能够达到与\n最新的闭源和领先的开源模型。代码和模型权重是\n公开以加速该领域的进展。",
+      "titleZh": "长猫-视频技术报告",
+      "authors": [
+        "Meituan LongCat Team",
+        "Xunliang Cai",
+        "Qilong Huang",
+        "Zhuoliang Kang",
+        "Hongyu Li",
+        "Shijun Liang",
+        "Liya Ma",
+        "Siyu Ren",
+        "Xiaoming Wei",
+        "Rixu Xie",
+        "Tong Zhang"
+      ],
+      "publishedAt": "2025-10-25T07:41:02.000Z",
+      "submittedOnDailyAt": "2025-10-28T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 40,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2510.22200",
+        "arxiv": "https://arxiv.org/abs/2510.22200",
+        "pdf": "https://arxiv.org/pdf/2510.22200"
+      }
+    },
+    {
+      "id": "2412.20138",
+      "title": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+      "summary": "Significant progress has been made in automated problem-solving using\nsocieties of agents powered by large language models (LLMs). In finance,\nefforts have largely focused on single-agent systems handling specific tasks or\nmulti-agent frameworks independently gathering data. However, the multi-agent\nsystems' potential to replicate real-world trading firms' collaborative\ndynamics remains underexplored. TradingAgents proposes a novel stock trading\nframework inspired by trading firms, featuring LLM-powered agents in\nspecialized roles such as fundamental analysts, sentiment analysts, technical\nanalysts, and traders with varied risk profiles. The framework includes Bull\nand Bear researcher agents assessing market conditions, a risk management team\nmonitoring exposure, and traders synthesizing insights from debates and\nhistorical data to make informed decisions. By simulating a dynamic,\ncollaborative trading environment, this framework aims to improve trading\nperformance. Detailed architecture and extensive experiments reveal its\nsuperiority over baseline models, with notable improvements in cumulative\nreturns, Sharpe ratio, and maximum drawdown, highlighting the potential of\nmulti-agent LLM frameworks in financial trading. TradingAgents is available at\nhttps://github.com/TauricResearch/TradingAgents.",
+      "summaryZh": "使用自动化解决问题取得了重大进展\n由大型语言模型 (LLM) 提供支持的代理协会。在金融领域，\n工作主要集中在处理特定任务的单代理系统或\n多代理框架独立收集数据。然而，多代理\n系统复制现实世界贸易公司协作的潜力\n动力学仍有待探索。 TradingAgents 提出了一种新颖的股票交易方式\n受贸易公司启发的框架，以法学硕士支持的代理为特色\n专业角色，例如基本面分析师、情绪分析师、技术分析师\n具有不同风险状况的分析师和交易员。该框架包括 Bull\n贝尔斯登研究人员评估市场状况，风险管理团队\n监控风险敞口，交易者从辩论中综合见解\n历史数据以做出明智的决策。通过模拟动态，\n协作交易环境，该框架旨在改善交易\n性能。详细的架构和广泛的实验揭示了它的\n优于基线模型，累积显着改进\n回报率、夏普比率和最大回撤，凸显了\n金融交易中的多代理法学硕士框架。交易代理可在\nhttps://github.com/TauricResearch/TradingAgents。",
+      "titleZh": "TradingAgents：多代理LLM金融交易框架",
+      "authors": [
+        "Yijia Xiao",
+        "Edward Sun",
+        "Di Luo",
+        "Wei Wang"
+      ],
+      "publishedAt": "2024-12-28T12:54:06.000Z",
+      "submittedOnDailyAt": "2024-12-28T07:54:06.000Z",
+      "submitter": null,
+      "upvotes": 123,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2412.20138",
+        "arxiv": "https://arxiv.org/abs/2412.20138",
+        "pdf": "https://arxiv.org/pdf/2412.20138"
+      }
+    },
+    {
+      "id": "2608.16859",
+      "title": "HarnessEval-W: Agentifying the Evaluation of Visual Worlds",
+      "summary": "A benchmark should deliver more than a scalar score: what makes an evaluation trustworthy is the reasoning that justifies the score. This is especially critical for world models, where judging a rollout requires understanding whether physics, causality, and world state evolve correctly. Humans spot such violations naturally, yet no existing benchmark automates this capability: metrics are computed brute-force, leaving no reasoning chain that can be examined or verified. We introduce HarnessEval-W, an agentified evaluation pipeline that brings the harness paradigm from the LLM ecosystem to world model benchmarking. Rather than applying a fixed rubric, HarnessEval-W interprets the context of each evaluation case, decomposes the evaluation question into measurable subproblems, and spawns specialized sub-agents, each equipped with tailored context and diagnostic tools to reason over its own subproblem. The parent agent then validates the gathered evidence and summarizes it into the final verdict. This hierarchical workflow turns every evaluation into a transparent evidence tree whose complete reasoning chain justifies the result. We apply HarnessEval-W to 18 representative world models over 330 evaluation cases. Its judgments closely align with human preferences while providing verifiable, fine-grained diagnoses of every generated rollout. We open-source the full pipeline as a live benchmark and invite the broad community to contribute to grow new skills and evaluation cases as world models evolve.",
+      "summaryZh": "基准测试应该提供的不仅仅是标量分数：使评估值得信赖的是证明分数合理性的推理。这对于世界模型尤其重要，因为判断模型的推出需要了解物理、因果关系和世界状态是否正确演化。人类会自然地发现此类违规行为，但现有的基准测试还没有自动执行此功能：指标是暴力计算的，没有留下可以检查或验证的推理链。我们推出了 HarnessEval-W，这是一个代理评估管道，它将 LLM 生态系统中的 Harness 范例引入了世界模型基准测试。 HarnessEval-W 不是应用固定的标题，而是解释每个评估案例的上下文，将评估问题分解为可测量的子问题，并生成专门的子代理，每个子代理都配备了定制的上下文和诊断工具来推理自己的子问题。然后，家长代理验证收集到的证据并将其总结为最终裁决。这种分层工作流程将每个评估变成一个透明的证据树，其完整的推理链证明了结果的合理性。我们将 HarnessEval-W 应用于 18 个具有代表性的世界模型，超过 330 个评估案例。它的判断与人类偏好紧密一致，同时为每个生成的部署提供可验证的、细粒度的诊断。我们开源完整的管道作为实时基准，并邀请广大社区随着世界模型的发展为发展新技能和评估案例做出贡献。",
+      "titleZh": "HarnessEval-W：视觉世界评估的代理化",
+      "authors": [
+        "Weiliang Chen",
+        "Haowen Sun",
+        "Jun Gao",
+        "Jiawei Chi",
+        "Hanyang Wang",
+        "Qiyu Dai",
+        "Yihao Li",
+        "Hao Li",
+        "Jingnan Gao",
+        "Yi-Hsin Hung",
+        "Xingzhuo Guo",
+        "Shangchen Miao"
+      ],
+      "publishedAt": "2026-08-17T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-08-18T00:00:00.000Z",
+      "submitter": "manchery",
+      "upvotes": 123,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2608.16859",
+        "arxiv": "https://arxiv.org/abs/2608.16859",
+        "pdf": "https://arxiv.org/pdf/2608.16859"
+      }
+    },
+    {
+      "id": "2407.16741",
+      "title": "OpenDevin: An Open Platform for AI Software Developers as Generalist\n  Agents",
+      "summary": "Software is one of the most powerful tools that we humans have at our\ndisposal; it allows a skilled programmer to interact with the world in complex\nand profound ways. At the same time, thanks to improvements in large language\nmodels (LLMs), there has also been a rapid development in AI agents that\ninteract with and affect change in their surrounding environments. In this\npaper, we introduce OpenDevin, a platform for the development of powerful and\nflexible AI agents that interact with the world in similar ways to those of a\nhuman developer: by writing code, interacting with a command line, and browsing\nthe web. We describe how the platform allows for the implementation of new\nagents, safe interaction with sandboxed environments for code execution,\ncoordination between multiple agents, and incorporation of evaluation\nbenchmarks. Based on our currently incorporated benchmarks, we perform an\nevaluation of agents over 15 challenging tasks, including software engineering\n(e.g., SWE-Bench) and web browsing (e.g., WebArena), among others. Released\nunder the permissive MIT license, OpenDevin is a community project spanning\nacademia and industry with more than 1.3K contributions from over 160\ncontributors and will improve going forward.",
+      "summaryZh": "软件是我们人类拥有的最强大的工具之一\n处置；它允许熟练的程序员以复杂的方式与世界互动\n和深刻的方法。同时得益于大语言的改进\n模型（法学硕士），人工智能代理也得到了快速发展，\n与周围环境相互作用并影响其变化。在这个\n论文中，我们介绍了 OpenDevin，一个用于开发功能强大且\n灵活的人工智能代理，以类似于人类的方式与世界互动\n人类开发人员：通过编写代码、与命令行交互和浏览\n网络。我们描述了该平台如何允许实施新的\n代理，与沙盒环境安全交互以执行代码，\n多个主体之间的协调以及评估的结合\n基准。根据我们当前纳入的基准，我们执行\n对代理进行超过 15 项挑战性任务的评估，包括软件工程\n（例如，SWE-Bench）和网页浏览（例如，WebArena）等。已发布\n在 MIT 许可下，OpenDevin 是一个社区项目，涵盖\n学术界和工业界超过 160 人做出了超过 1,300 份贡献\n贡献者并将继续改进。",
+      "titleZh": "OpenDevin：面向多面手的人工智能软件开发人员的开放平台\n  代理商",
+      "authors": [
+        "Xingyao Wang",
+        "Boxuan Li",
+        "Yufan Song",
+        "Frank F. Xu",
+        "Xiangru Tang",
+        "Mingchen Zhuge",
+        "Jiayi Pan",
+        "Yueqi Song",
+        "Bowen Li",
+        "Jaskirat Singh",
+        "Hoang H. Tran",
+        "Fuqiang Li"
+      ],
+      "publishedAt": "2024-07-23T17:50:43.000Z",
+      "submittedOnDailyAt": "2024-07-25T00:00:00.000Z",
+      "submitter": "akhaliq",
+      "upvotes": 84,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2407.16741",
+        "arxiv": "https://arxiv.org/abs/2407.16741",
+        "pdf": "https://arxiv.org/pdf/2407.16741"
+      }
+    },
+    {
+      "id": "2605.12500",
+      "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
+      "summary": "Recent large vision-language models (VLMs) remain fundamentally constrained by a persistent dichotomy: understanding and generation are treated as distinct problems, leading to fragmented architectures, cascaded pipelines, and misaligned representation spaces. We argue that this divide is not merely an engineering artifact, but a structural limitation that hinders the emergence of native multimodal intelligence. Hence, we introduce SenseNova-U1, a native unified multimodal paradigm built upon NEO-unify, in which understanding and generation evolve as synergistic views of a single underlying process. We launch two native unified variants, SenseNova-U1-8B-MoT and SenseNova-U1-A3B-MoT, built on dense (8B) and mixture-of-experts (30B-A3B) understanding baselines, respectively. Designed from first principles, they rival top-tier understanding-only VLMs across text understanding, vision-language perception, knowledge reasoning, agentic decision-making, and spatial intelligence. Meanwhile, they deliver strong semantic consistency and visual fidelity, excelling in conventional or knowledge-intensive any-to-image (X2I) synthesis, complex text-rich infographic generation, and interleaved vision-language generation, with or without think patterns. Beyond performance, we show detailed model design, data preprocessing, pre-/post-training, and inference strategies to support community research. Last but not least, preliminary evidence demonstrates that our models extend beyond perception and generation, performing strongly in vision-language-action (VLA) and world model (WM) scenarios. This points toward a broader roadmap where models do not translate between modalities, but think and act across them in a native manner. Multimodal AI is no longer about connecting separate systems, but about building a unified one and trusting the necessary capabilities to emerge from within.",
+      "summaryZh": "最近的大型视觉语言模型（VLM）从根本上仍然受到持续二分法的限制：理解和生成被视为不同的问题，导致支离破碎的架构、级联的管道和不对齐的表示空间。我们认为，这种鸿沟不仅仅是一个工程制品，而且是阻碍本地多模态智能出现的结构性限制。因此，我们引入了 SenseNova-U1，这是一种基于 NEO-unify 的原生统一多模式范式，其中理解和生成作为单个基础过程的协同视图而演变。我们推出了两个原生统一变体，SenseNova-U1-8B-MoT 和 SenseNova-U1-A3B-MoT，分别建立在密集（8B）和专家混合（30B-A3B）理解基线上。它们根据第一原理设计，在文本理解、视觉语言感知、知识推理、代理决策和空间智能方面可与顶级仅理解 VLM 相媲美。同时，它们提供强大的语义一致性和视觉保真度，在传统或知识密集型任意图像 (X2I) 合成、复杂的文本丰富的信息图生成以及带或不带思维模式的交错视觉语言生成方面表现出色。除了性能之外，我们还展示了详细的模型设计、数据预处理、训练前/训练后以及推理策略，以支持社区研究。最后但并非最不重要的一点是，初步证据表明，我们的模型超越了感知和生成，在视觉-语言-动作（VLA）和世界模型（WM）场景中表现强劲。这指向了一个更广泛的路线图，其中模型不会在模式之间转换，而是以本机方式思考和行动。多模式人工智能不再是连接单独的系统，而是构建一个统一的系统并信任从内部产生的必要功能。",
+      "titleZh": "SenseNova-U1：通过 NEO-unify 架构统一多模态理解和生成",
+      "authors": [
+        "Haiwen Diao",
+        "Penghao Wu",
+        "Hanming Deng",
+        "Jiahao Wang",
+        "Shihao Bai",
+        "Silei Wu",
+        "Weichen Fan",
+        "Wenjie Ye",
+        "Wenwen Tong",
+        "Xiangyu Fan",
+        "Yan Li",
+        "Yubo Wang"
+      ],
+      "publishedAt": "2026-05-12T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-05-13T00:00:00.000Z",
+      "submitter": "Paranioar",
+      "upvotes": 197,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2605.12500",
+        "arxiv": "https://arxiv.org/abs/2605.12500",
+        "pdf": "https://arxiv.org/pdf/2605.12500"
+      }
+    },
+    {
+      "id": "2608.16157",
+      "title": "FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution",
+      "summary": "Frontier open-weight models are increasingly available, but serving them still largely assumes datacenter infrastructure. We present FreeToken, an edge-native MoE serving system that treats a personal machine not as a small GPU, but as a unified, elastic inference platform. FreeToken co-designs the full serving stack, including model layout and loading, expert residency, CPU--GPU execution, agentic state reuse, and runtime memory management, around two realities of local AI: agent workloads continuously change their execution pattern, and edge hardware exposes heterogeneous resources whose balance differs from machine to machine. Rather than committing to a fixed offloading strategy, FreeToken continuously maps computation and model state onto the resources actually available. FreeToken supports more than 20 MoE models and real coding and tool-using agents across hardware ranging from an 8GB laptop GPU to a single workstation GPU. More importantly, it changes what these machines can practically serve, from a 35B model on a laptop to a 284B model on a gaming desktop and the 753B GLM-5.2 on a single workstation GPU. FreeToken turns open weights into deployable local software, making the machines users already own a practical platform for frontier-scale intelligence. We release the system at flashml.ai.",
+      "summaryZh": "前沿开放权重模型越来越可用，但为它们提供服务仍然很大程度上假设数据中心基础设施。我们推出 FreeToken，这是一种边缘原生 MoE 服务系统，它不会将个人机器视为小型 GPU，而是将其视为统一的、弹性的推理平台。 FreeToken 围绕本地 AI 的两个现实共同设计了完整的服务堆栈，包括模型布局和加载、专家驻留、CPU-GPU 执行、代理状态重用和运行时内存管理：代理工作负载不断改变其执行模式，边缘硬件公开异构资源，其平衡因机器而异。 FreeToken 没有采用固定的卸载策略，而是不断地将计算和模型状态映射到实际可用的资源上。 FreeToken 支持 20 多种 MoE 模型以及跨硬件（从 8GB 笔记本电脑 GPU 到单个工作站 GPU）的真实编码和工具使用代理。更重要的是，它改变了这些机器的实际服务范围，从笔记本电脑上的 35B 型号到游戏台式机上的 284B 型号以及单个工作站 GPU 上的 753B GLM-5.2。 FreeToken 将开放权重转化为可部署的本地软件，使机器用户已经拥有了一个前沿智能的实用平台。我们在 flashml.ai 上发布了该系统。",
+      "titleZh": "FreeToken：具有带宽自适应执行能力的高效边缘原生 MoE 服务",
+      "authors": [
+        "Shuo Yang",
+        "Xiaoze Fan",
+        "Melissa Pan",
+        "Haocheng Xi",
+        "Zhe Wang",
+        "Shanlin Sun",
+        "Kurt Keutzer",
+        "Song Han",
+        "Matei Zaharia",
+        "Chenfeng Xu",
+        "Ion Stoica"
+      ],
+      "publishedAt": "2026-08-17T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-08-19T00:00:00.000Z",
+      "submitter": "andy-yang",
+      "upvotes": 75,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2608.16157",
+        "arxiv": "https://arxiv.org/abs/2608.16157",
+        "pdf": "https://arxiv.org/pdf/2608.16157"
+      }
+    },
+    {
+      "id": "2608.19880",
+      "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
+      "summary": "LLM agents learn by interacting with environments, yet these environments are hand-built and static: blind to an agent's weaknesses, and quickly left behind as it improves. While recent environment generation methods attempt to address this, they require domain-specific pipelines, rely on expensive or unreliable verifiers, and still produce static environments. To alleviate the engineering burden of rebuilding environments from scratch, we propose Environment Harness (EnvHarness), a programmable layer of plug-in components that wraps a static environment to reshape its behavior without modifying the underlying logic. Operating through standard interfaces, EnvHarness applies across diverse domains while ensuring every reshaped environment retains its original verifier. To automate this process, we introduce EnvRigger, which treats the target policy as a black box, observing its execution trajectories to synthesize EnvHarness components targeting diagnosed flaws, and validating them via fresh rollouts. Across five benchmarks in four domains, EnvHarness outperforms both original environments and domain-specific environment generation pipelines, achieving up to a 9.0-point improvement on held-out instances with 9.8% fewer execution steps. Furthermore, EnvHarness provides a superior optimization signal for reinforcement learning, enabling continuous, targeted co-evolution of the policy and its environment.",
+      "summaryZh": "LLM 代理通过与环境交互来学习，但这些环境是手工构建的、静态的：对代理的弱点视而不见，并且随着代理的改进很快就会落后。虽然最近的环境生成方法试图解决这个问题，但它们需要特定于域的管道，依赖昂贵或不可靠的验证器，并且仍然生成静态环境。为了减轻从头开始重建环境的工程负担，我们提出了环境线束（EnvHarness），这是一个可编程的插件组件层，它包装静态环境以重塑其行为，而无需修改底层逻辑。 EnvHarness 通过标准接口进行操作，适用于不同的领域，同时确保每个重塑的环境保留其原始验证器。为了自动化此过程，我们引入了 EnvRigger，它将目标策略视为黑匣子，观察其执行轨迹以合成针对诊断缺陷的 EnvHarness 组件，并通过新的部署来验证它们。在四个领域的五个基准测试中，EnvHarness 的性能优于原始环境和特定于域的环境生成管道，在保留实例上实现了高达 9.0 点的改进，执行步骤减少了 9.8%。此外，EnvHarness 为强化学习提供了卓越的优化信号，实现了策略及其环境的持续、有针对性的共同进化。",
+      "titleZh": "EnvHarness：唤醒代理学习的静态世界",
+      "authors": [
+        "Chengsong Huang",
+        "Zifeng Wang",
+        "Rujun Han",
+        "Jun Yan",
+        "Yanfei Chen",
+        "Zoey CuiZhu",
+        "Ke Jiang",
+        "Peng Xia",
+        "Han Yu",
+        "Yufan Zhuang",
+        "Yifei Ming",
+        "Jiaqi Pan"
+      ],
+      "publishedAt": "2026-08-20T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-08-21T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 242,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2608.19880",
+        "arxiv": "https://arxiv.org/abs/2608.19880",
+        "pdf": "https://arxiv.org/pdf/2608.19880"
+      }
+    },
+    {
+      "id": "2309.06180",
+      "title": "Efficient Memory Management for Large Language Model Serving with\n  PagedAttention",
+      "summary": "High throughput serving of large language models (LLMs) requires batching\nsufficiently many requests at a time. However, existing systems struggle\nbecause the key-value cache (KV cache) memory for each request is huge and\ngrows and shrinks dynamically. When managed inefficiently, this memory can be\nsignificantly wasted by fragmentation and redundant duplication, limiting the\nbatch size. To address this problem, we propose PagedAttention, an attention\nalgorithm inspired by the classical virtual memory and paging techniques in\noperating systems. On top of it, we build vLLM, an LLM serving system that\nachieves (1) near-zero waste in KV cache memory and (2) flexible sharing of KV\ncache within and across requests to further reduce memory usage. Our\nevaluations show that vLLM improves the throughput of popular LLMs by\n2-4times with the same level of latency compared to the state-of-the-art\nsystems, such as FasterTransformer and Orca. The improvement is more pronounced\nwith longer sequences, larger models, and more complex decoding algorithms.\nvLLM's source code is publicly available at\nhttps://github.com/vllm-project/vllm",
+      "summaryZh": "大型语言模型 (LLM) 的高吞吐量服务需要批处理\n一次有足够多的请求。然而，现有系统却举步维艰\n因为每个请求的键值缓存（KV缓存）内存巨大并且\n动态增长和收缩。当管理效率低下时，该内存可能会被\n碎片和冗余重复造成了极大的浪费，限制了\n批量大小。为了解决这个问题，我们提出PagedAttention，一个注意力机制\n算法的灵感来自于经典的虚拟内存和分页技术\n操作系统。在此基础上，我们构建了 vLLM，一个 LLM 服务系统，\n实现 (1) KV 缓存内存近乎零浪费和 (2) KV 灵活共享\n在请求内和请求之间进行缓存，以进一步减少内存使用。我们的\n评估表明，vLLM 通过以下方式提高了流行 LLM 的吞吐量：\n与最先进的技术相比，相同延迟水平下的 2-4 倍\n系统，例如 FasterTransformer 和 Orca。改善效果更加明显\n具有更长的序列、更大的模型和更复杂的解码算法。\nvLLM 的源代码可在以下位置公开获取：\nhttps://github.com/vllm-project/vllm",
+      "titleZh": "大型语言模型的高效内存管理\n  分页注意力",
+      "authors": [
+        "Woosuk Kwon",
+        "Zhuohan Li",
+        "Siyuan Zhuang",
+        "Ying Sheng",
+        "Lianmin Zheng",
+        "Cody Hao Yu",
+        "Joseph E. Gonzalez",
+        "Hao Zhang",
+        "Ion Stoica"
+      ],
+      "publishedAt": "2023-09-12T12:50:04.000Z",
+      "submittedOnDailyAt": "2023-09-13T00:00:00.000Z",
+      "submitter": "akhaliq",
+      "upvotes": 68,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2309.06180",
+        "arxiv": "https://arxiv.org/abs/2309.06180",
+        "pdf": "https://arxiv.org/pdf/2309.06180"
+      }
+    },
+    {
+      "id": "2606.23050",
+      "title": "Unlimited OCR Works",
+      "summary": "Recently, end-to-end OCR models, exemplified by DeepSeek OCR, have once again thrust OCR into the spotlight. A widely held view is that employing a large language model (LLM) as the decoder allows the model to leverage the prior distribution of language, leading to improved OCR performance. However, the downside is equally evident: as the output sequence lengthens, the accumulated KV cache drives up memory consumption and progressively slows down generation. This stands in stark contrast to humans, who exhibit no such decline in efficiency during long-horizon copying tasks. In this technical report, we propose Unlimited OCR, a model designed to emulate human parsing working memory. Taking DeepSeek OCR as the baseline, we replace all attention layers in the decoder with our proposed Reference Sliding Window Attention (R-SWA), which reduces attention computation costs while maintaining a constant KV cache throughout the entire decoding process. By combining the high compression rate of DeepSeek OCR's encoder with our constant KV cache design, Unlimited OCR can transcribe dozens of pages of documents in a single forward pass under a standard maximum length of 32K. More importantly, R-SWA is a general-purpose parsing attention mechanism - beyond OCR, it is equally applicable to tasks such as ASR, translation, etc. Codes and model weights are publicly available at http://github.com/baidu/Unlimited-OCR.",
+      "summaryZh": "最近，以DeepSeek OCR为代表的端到端OCR模型再次将OCR推向了人们的视线。一种广泛持有的观点是，采用大型语言模型 (LLM) 作为解码器允许模型利用语言的先验分布，从而提高 OCR 性能。然而，缺点也同样明显：随着输出序列的延长，累积的 KV 缓存会增加内存消耗并逐渐减慢生成速度。这与人类形成鲜明对比，人类在执行长视距复制任务时并没有表现出效率下降的情况。在这份技术报告中，我们提出了 Unlimited OCR，一种旨在模拟人类解析工作记忆的模型。以 DeepSeek OCR 为基准，我们用我们提出的参考滑动窗口注意力（R-SWA）替换解码器中的所有注意力层，这降低了注意力计算成本，同时在整个解码过程中保持恒定的 KV 缓存。通过将 DeepSeek OCR 编码器的高压缩率与我们的恒定 KV 缓存设计相结合，Unlimited OCR 可以在标准最大长度 32K 的情况下在单次前向传递中转录数十页文档。更重要的是，R-SWA 是一种通用的解析注意力机制——除了 OCR 之外，它同样适用于 ASR、翻译等任务。代码和模型权重可在 http://github.com/baidu/Unlimited-OCR 上公开。",
+      "titleZh": "无限 OCR 作品",
+      "authors": [
+        "Youyang Yin",
+        "Huanhuan Liu",
+        "YY",
+        "Qunyi Xie",
+        "Chaorun Liu",
+        "Shiqi Yang",
+        "Shaohua Wang",
+        "Zhanlong Liu",
+        "Hao Zou",
+        "Jinyue Chen",
+        "Shu Wei",
+        "Jingjing Wu"
+      ],
+      "publishedAt": "2026-06-22T00:00:00.000Z",
+      "submittedOnDailyAt": "2026-06-23T00:00:00.000Z",
+      "submitter": "taesiri",
+      "upvotes": 84,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2606.23050",
+        "arxiv": "https://arxiv.org/abs/2606.23050",
+        "pdf": "https://arxiv.org/pdf/2606.23050"
+      }
+    },
+    {
+      "id": "2503.11576",
+      "title": "SmolDocling: An ultra-compact vision-language model for end-to-end\n  multi-modal document conversion",
+      "summary": "We introduce SmolDocling, an ultra-compact vision-language model targeting\nend-to-end document conversion. Our model comprehensively processes entire\npages by generating DocTags, a new universal markup format that captures all\npage elements in their full context with location. Unlike existing approaches\nthat rely on large foundational models, or ensemble solutions that rely on\nhandcrafted pipelines of multiple specialized models, SmolDocling offers an\nend-to-end conversion for accurately capturing content, structure and spatial\nlocation of document elements in a 256M parameters vision-language model.\nSmolDocling exhibits robust performance in correctly reproducing document\nfeatures such as code listings, tables, equations, charts, lists, and more\nacross a diverse range of document types including business documents, academic\npapers, technical reports, patents, and forms -- significantly extending beyond\nthe commonly observed focus on scientific papers. Additionally, we contribute\nnovel publicly sourced datasets for charts, tables, equations, and code\nrecognition. Experimental results demonstrate that SmolDocling competes with\nother Vision Language Models that are up to 27 times larger in size, while\nreducing computational requirements substantially. The model is currently\navailable, datasets will be publicly available soon.",
+      "summaryZh": "我们推出 SmolDocling，一种超紧凑的视觉语言模型\n端到端文档转换。我们的模型全面处理整个\n通过生成 DocTags 来创建页面，DocTags 是一种新的通用标记格式，可以捕获所有内容\n页面元素的完整上下文和位置。与现有方法不同\n依赖于大型基础模型，或依赖于集成解决方案\nSmolDocling 提供多种专业模型的手工制作管道\n端到端转换，准确捕捉内容、结构和空间\n256M 参数视觉语言模型中文档元素的位置。\nSmolDocling 在正确复制文档方面表现出强大的性能\n代码清单、表格、方程、图表、列表等功能\n涵盖各种文档类型，包括商业文档、学术文档\n论文、技术报告、专利和表格——大大超出了\n普遍观察到的焦点是科学论文。此外，我们还贡献\n图表、表格、方程和代码的新颖公共数据集\n认可。实验结果表明 SmolDocling 与\n其他视觉语言模型的尺寸最多大 27 倍，而\n大大减少计算需求。目前该型号为\n可用，数据集将很快公开。",
+      "titleZh": "SmolDocling：一种超紧凑的端到端视觉语言模型\n  多模式文档转换",
+      "authors": [
+        "Ahmed Nassar",
+        "Andres Marafioti",
+        "Matteo Omenetti",
+        "Maksym Lysak",
+        "Nikolaos Livathinos",
+        "Christoph Auer",
+        "Lucas Morin",
+        "Rafael Teixeira de Lima",
+        "Yusik Kim",
+        "A. Said Gurbuz",
+        "Michele Dolfi",
+        "Miquel Farré"
+      ],
+      "publishedAt": "2025-03-14T16:44:14.000Z",
+      "submittedOnDailyAt": "2025-03-17T00:00:00.000Z",
+      "submitter": "andito",
+      "upvotes": 166,
+      "urls": {
+        "hf": "https://huggingface.co/papers/2503.11576",
+        "arxiv": "https://arxiv.org/abs/2503.11576",
+        "pdf": "https://arxiv.org/pdf/2503.11576"
+      }
+    }
+  ]
+}
